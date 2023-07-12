@@ -1,0 +1,102 @@
+.page-header {
+    background-color: #1b18cabe;
+    margin: 0px 0px 40px 0px;
+    padding: 20px 20px 20px 40px;
+    
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #aac922;
+    font-size: 60pt;
+    text-decoration: none;
+    /*margin: 0px;*/
+    padding: 5px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #108d25;
+    font-family: 'lobster', cursive;
+    font-stretch: 50%;
+}
+
+article {
+    /*border: 3px solid rgb(170, 59, 59);*/
+    background-color: rgb(207, 207, 125);
+    padding: 20px;
+}
+
+body {
+    margin: 20px;
+    color: rgb(8, 4, 54);
+    background: rgb(73, 126, 62);
+    text-align: start;
+}
+
+.date {
+    color: #076c97;
+    font-size: 15pt;
+    text-decoration: none;
+    float: right;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea,
+.post-form input {
+    width: 80%;
+}
+
+.top-menu,
+.top-menu:visited {
+    color: #c4a1a1;
+    float: right;
+    font-size: 24pt;
+    margin-right: 20px;
+}
+
+top-menu:hover {
+    color: #5a4a94;
+}
+
+.post {
+    color: #260544d5;
+    margin: 20px 20px 40px 20px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+    color: #7c064f;
+    text-decoration: none;
+}
+
+.post>.date,
+.post>.actions {
+    float: top;
+    color: #2a1281;
+}
+
+.btn-secondary,
+.btn-secondary:visited {
+    color: #dedee9;
+    background: #033166;
+    border-color: #db590e;
+    float: right;
+}
+
+.btn-secondary:hover {
+    color: #1d0c5e;
+    background-color: #5ee2cc;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
+    color: #1f1888;
+}

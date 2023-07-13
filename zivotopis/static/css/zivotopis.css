@@ -9,7 +9,7 @@
 .page-header h1 a,
 .page-header h1 a:visited,
 .page-header h1 a:active {
-    color: #aac922;
+    color: #dee9af;
     font-size: 60pt;
     text-decoration: none;
     /*margin: 0px;*/
@@ -20,14 +20,14 @@ h1,
 h2,
 h3,
 h4 {
-    color: #108d25;
-    font-family: 'lobster', cursive;
+    color: #90e49e;
+    font-family: 'Roboto Mono';
     font-stretch: 50%;
 }
 
 article {
     /*border: 3px solid rgb(170, 59, 59);*/
-    background-color: rgb(207, 207, 125);
+    background-color: rgb(233, 233, 158);
     padding: 20px;
 }
 

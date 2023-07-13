@@ -10,10 +10,16 @@
     <body>
         <header class="page-header">
             <div class="container">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New item in CV">
+                        <svg class="bi text-info">
+                            {% include './icons/plus-square.svg' %}
+                        </svg>
+                    </a>
+                {% endif %}
                 <h1><a href="/">Životopis</a></h1>
             </div>
         </header>
-
         <main class="container">
             <div class="row">
                 <div class="col">

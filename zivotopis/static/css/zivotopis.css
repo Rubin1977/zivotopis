@@ -59,10 +59,9 @@ body {
     color: #c4a1a1;
     float: right;
     font-size: 24pt;
-    margin-right: 20px;
 }
 
-top-menu:hover {
+.top-menu:hover {
     color: #5a4a94;
 }
 

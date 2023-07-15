@@ -20,7 +20,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: #90e49e;
+    color: #81d423;
     font-family: 'Roboto Mono';
     font-stretch: 50%;
 }
@@ -56,13 +56,13 @@ body {
 
 .top-menu,
 .top-menu:visited {
-    color: #c4a1a1;
+    color: #da0c0c;
     float: right;
     font-size: 24pt;
 }
 
 .top-menu:hover {
-    color: #5a4a94;
+    color: #0b9712;
 }
 
 .post {
@@ -92,7 +92,7 @@ body {
 
 .btn-secondary:hover {
     color: #1d0c5e;
-    background-color: #5ee2cc;
+    background-color: #0a8d50;
 }
 
 .comment {

@@ -11,11 +11,11 @@
         <header class="page-header">
             <div class="container">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New item in CV">
-                        <svg class="bi text-info">
-                            {% include './icons/plus-square.svg' %}
-                        </svg>
-                    </a>
+                    <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New Post">{% include './icons/plus-square.svg' %}</a>
+                    <a href="{% url 'post_draft_list' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="Post draft list">{% include './icons/pencil-square.svg' %}</a>
+                    <p class="top-menu">Ahoj {{ user.username }} <small><a href="{% url 'logout' %}">Odhlásenie</button></a></small></p>
+                {% else %} 
+                    <a class="btn btn-primary " href="{% url 'login' %}" class="top-menu" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</button></a>
                 {% endif %}
                 <h1><a href="/">Životopis</a></h1>
             </div>

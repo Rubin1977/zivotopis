@@ -5,6 +5,8 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import EmailForm
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -59,5 +61,14 @@ def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
+
+def send_email(request):
+    if request.method == "POST":
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = EmailForm()
+    return render(request, 'registration/send_email.html', {'form': form})
 
 # Create your views here.

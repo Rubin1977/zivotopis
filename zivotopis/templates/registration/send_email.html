@@ -1,0 +1,24 @@
+{% extends "zivotopis/base.html" %}
+
+{% block content %}
+    <form method="post" action="{% url 'send_email' %}">
+        {% csrf_token %}
+        <label for="{{ form.sender_name.id_for_label }}"> {{ form.sender_name.label }} </label>
+        <br>
+        {{ form.sender_name }}
+        <br>
+        <label for="{{ form.sender_email.id_for_label }}"> {{ form.sender_email.label }} </label>
+        <br>
+        {{ form.sender_email }}
+        <br>
+        <label for="{{ form.subject.id_for_label }}"> {{ form.subject.label }} </label>
+        <br>
+        {{ form.subject }}
+        <br>
+        <label for="{{ form.message.id_for_label }}"> {{ form.message.label }} </label>
+        <br>
+        {{ form.message }}
+        <br>
+        <button type="submit">Odoslať</button>
+    </form>
+{% endblock %}

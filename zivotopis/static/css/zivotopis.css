@@ -10,7 +10,7 @@
 .page-header h1 a:visited,
 .page-header h1 a:active {
     color: #dee9af;
-    font-size: 60pt;
+    font-size: 40pt;
     text-decoration: none;
     /*margin: 0px;*/
     padding: 5px;
@@ -56,7 +56,7 @@ body {
 
 .top-menu,
 .top-menu:visited {
-    color: #da0c0c;
+    color: #ada237;
     float: right;
     font-size: 24pt;
 }
@@ -99,3 +99,4 @@ body {
     margin: 20px 0px 20px 20px;
     color: #1f1888;
 }
+

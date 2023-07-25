@@ -1,8 +1,7 @@
 .page-header {
     background-color: #1b18cabe;
     margin: 0px 0px 40px 0px;
-    padding: 20px 20px 20px 40px;
-    
+    padding: 20px 20px;   
 }
 
 .page-header h1,
@@ -58,11 +57,29 @@ body {
 .top-menu:visited {
     color: #ada237;
     float: right;
-    font-size: 24pt;
+    font-size: 15pt;
+    text-decoration: none;
 }
 
 .top-menu:hover {
     color: #0b9712;
+}
+.top-menu .icon-envelope:hover {
+    color: #2be9b0d5
+    /* Príslušný hover štýl pre ikonku obálky */
+}
+
+.top-menu-links {
+    display: inline-block;
+    margin-right: 20px;
+    color: #ada237;
+    float: none;
+    font-size: 15pt;
+    text-decoration: none;
+}
+
+.center-text {
+    text-align: center;
 }
 
 .post {

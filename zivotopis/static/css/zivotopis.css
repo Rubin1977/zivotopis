@@ -33,7 +33,10 @@ article {
 body {
     margin: 20px;
     color: rgb(8, 4, 54);
-    background: rgb(73, 126, 62);
+    background-image: url("/static/css/IMG_20230611_114206.jpg");
+        background-size: cover;
+        background-position: center;
+    /*background: rgb(86, 189, 66);*/
     text-align: start;
 }
 

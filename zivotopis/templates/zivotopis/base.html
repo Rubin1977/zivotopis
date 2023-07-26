@@ -13,7 +13,7 @@
             <div class="container">
                 {% if user.is_authenticated %}
                     <div class="top-menu">
-                        <p class="text-align: center;"> Prihlásený: {{ user.username }} </p>
+                        <p class="text-align: center;"> Prihlásený ako: {{ user.username }} </p>
                         <a class="btn btn-primary top-menu" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</button></a>
                         <div style="text-align: center;">
                             <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New Post">
@@ -40,7 +40,7 @@
                         <br>
                         <a href="https://www.google.com/maps/place/Sib%C3%ADrska+1608%2F4,+831+02+Bratislava" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Sibírska 1608/4 831 02 Bratislava, Slovakia">
                             <span class="icon-envelope"> {% include './icons/geo-fill.svg' %} </span>
-                            Adresa
+                            Moja adresa
                         </a>
                     </div>
                 {% endif %}

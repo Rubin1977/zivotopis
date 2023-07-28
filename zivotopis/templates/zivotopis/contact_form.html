@@ -1,0 +1,35 @@
+{% extends "zivotopis/base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="contact-info">
+        <div class="contact-info-frame">
+            <p>Môžete ma kontaktovať pomocou nižšie uvedeného formulára: </p>
+        </div><br>   
+    </div>
+</div>    
+    <form method="post" action="{% url 'contact_form' %}">   
+        {% csrf_token %}
+        <label for="{{ form.jmeno.id_for_label }}"> {{ form.jmeno.label }} </label>
+        <br>
+        {{ form.jmeno }}
+        <br>
+        <label for="{{ form.email.id_for_label }}"> {{ form.email.label }} </label>
+        <br>
+        {{ form.email }}
+        <br>
+        <label for="{{ form.predmet.id_for_label }}"> {{ form.predmet.label }} </label>
+        <br>
+        {{ form.predmet }}
+        <br>
+        <label for="{{ form.rok.id_for_label }}"> {{ form.rok.label }} </label>
+        <br>
+        {{ form.rok }}
+        <br>
+        <label for="{{ form.sprava.id_for_label }}"> {{ form.sprava.label }} </label>
+        <br>
+        {{ form.sprava }}
+        <br>
+        <button type="submit">Odoslať</button>
+    </form>
+{% endblock %}

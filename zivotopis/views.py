@@ -87,7 +87,12 @@ def contact_form(request):
             hlavicka += "\nMIME-Version: 1.0\n"
             hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n" 
             predmet_odosielatela = 'Predmet: ' + form.cleaned_data['predmet']
-            uspech = send_mail(predmet, form.cleaned_data['predmet'], form.cleaned_data['email'], [adresa], fail_silently=False, html_message= meno + hlavicka + predmet_odosielatela + sprava)
+            uspech = send_mail(predmet, 
+                               form.cleaned_data['predmet'], 
+                               form.cleaned_data['email'], 
+                               [adresa], 
+                               fail_silently=False, 
+                               html_message=meno + hlavicka + predmet_odosielatela + sprava)
             if uspech:
                 hlaska = 'Email byl úspěšně odeslán, brzy vám odpovíme.'
             else:

@@ -8,27 +8,27 @@
         </div><br>   
     </div>
 </div>    
-    <form method="post" action="{% url 'contact_form' %}">   
+    <form method="post" action="{% url 'send_email' %}">   
         {% csrf_token %}
-        <label for="{{ form.jmeno.id_for_label }}"> {{ form.jmeno.label }} </label>
+        <label for="{{ form.sender_name.id_for_label }}"> {{ form.sender_name.label }} </label>
         <br>
-        {{ form.jmeno }}
+        {{ form.sender_name }}
         <br>
-        <label for="{{ form.email.id_for_label }}"> {{ form.email.label }} </label>
+        <label for="{{ form.sender_email.id_for_label }}"> {{ form.sender_email.label }} </label>
         <br>
-        {{ form.email }}
+        {{ form.sender_email }}
         <br>
-        <label for="{{ form.predmet.id_for_label }}"> {{ form.predmet.label }} </label>
+        <label for="{{ form.subject.id_for_label }}"> {{ form.subject.label }} </label>
         <br>
-        {{ form.predmet }}
+        {{ form.subject }}
         <br>
         <label for="{{ form.rok.id_for_label }}"> {{ form.rok.label }} </label>
         <br>
         {{ form.rok }}
         <br>
-        <label for="{{ form.sprava.id_for_label }}"> {{ form.sprava.label }} </label>
+        <label for="{{ form.message.id_for_label }}"> {{ form.message.label }} </label>
         <br>
-        {{ form.sprava }}
+        {{ form.message }}
         <br>
         <button type="submit">Odoslať</button>
     </form>

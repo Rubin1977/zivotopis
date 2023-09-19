@@ -68,6 +68,7 @@ def send_email(request):
         form = EmailForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('send_email')
     else:
         form = EmailForm()
     return render(request, 'registration/send_email.html', {'form': form})

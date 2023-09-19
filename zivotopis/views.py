@@ -65,14 +65,14 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-"""def send_email(request):
+def send_email(request):
     if request.method == "POST":
         form = EmailForm(request.POST)
         if form.is_valid():
             form.save()
     else:
         form = EmailForm()
-    return render(request, 'registration/send_email.html', {'form': form})"""
+    return render(request, 'registration/send_email.html', {'form': form})
 
 def contact_form(request):
     if request.method == 'POST':

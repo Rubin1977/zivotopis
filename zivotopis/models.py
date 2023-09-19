@@ -17,7 +17,7 @@ class Post(models.Model):
         return self.title
 
 class Email(models.Model):
-    sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné)")
+    sender_name = models.CharField(max_length=100, verbose_name="Vaše meno aj (povinné)")
     sender_email = models.EmailField(verbose_name="Váš email (povinné)")
     subject = models.CharField(max_length=200, verbose_name="Predmet")
     message = models.TextField(verbose_name="Správa")

@@ -1,6 +1,8 @@
 from django import forms
 from .models import Post
 from .models import Email
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
 class PostForm(forms.ModelForm):
 
@@ -20,4 +22,7 @@ class ContactForm(forms.Form):
     predmet = forms.CharField(label='Predmet', max_length=80)
     #rok = forms.IntegerField(label='Aktuálny rok')
     sprava = forms.CharField(label='Správa', widget=forms.Textarea)
+    #recaptcha = ReCaptchaField()
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    
 

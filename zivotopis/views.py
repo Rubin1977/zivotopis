@@ -79,12 +79,15 @@ def contact_form(request):
         form = ContactForm(request.POST)
         
         if form.is_valid():
-            hlavicka = 'From:' + form.cleaned_data['email']
-            hlavicka += "\nMIME-Version: 1.0\n"
-            hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n"
             adresa = 'ruzbacky@yahoo.com'
-            #predmet = 'Nová zpráva z mailformu'
-            uspech = send_mail(form.cleaned_data['predmet'], form.cleaned_data['sprava'], form.cleaned_data['email'], [adresa], fail_silently=False, html_message=hlavicka)
+            predmet = 'Nová zpráva z životopis formulára!'
+            meno = 'Meno odosielatela: ' + form.cleaned_data['jmeno']
+            sprava = '\nSpráva: ' + form.cleaned_data['sprava'] 
+            hlavicka = '\na jeho emailová adresa:\n' + form.cleaned_data['email']
+            hlavicka += "\nMIME-Version: 1.0\n"
+            hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n" 
+            predmet_odosielatela = 'Predmet: ' + form.cleaned_data['predmet']
+            uspech = send_mail(predmet, form.cleaned_data['predmet'], form.cleaned_data['email'], [adresa], fail_silently=False, html_message= meno + hlavicka + predmet_odosielatela + sprava)
             if uspech:
                 hlaska = 'Email byl úspěšně odeslán, brzy vám odpovíme.'
             else:

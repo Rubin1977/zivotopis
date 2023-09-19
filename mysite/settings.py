@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django_recaptcha import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,11 @@ SECRET_KEY = 'django-insecure--8xb9ke-(n_s!*buw%g%om#=iy8rvkt@vo-m=dvax2uj8wrgdo
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'eu.pythonanywhere.com' ]
+RECAPTCHA_PUBLIC_KEY = '6LcZjm4nAAAAANiS1LzGOAwMjhOikg5S-OOWqPbW'
+RECAPTCHA_PRIVATE_KEY = '6LcZjm4nAAAAAAvTXjzph9_RaqVX-BPkcWhKrOr0'
+RECAPTCHA_REQUIRED = True
+#RECAPTCHA_TESTING = False
+#SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zivotopis',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +139,6 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+

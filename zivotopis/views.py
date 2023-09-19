@@ -3,12 +3,10 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, EmailForm, ContactForm
+from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail, get_connection
-from django.http import HttpResponse
-from django.conf import settings
+from .forms import EmailForm
 #from .forms import EmailForm
 
 def post_list(request):

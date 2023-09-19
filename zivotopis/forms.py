@@ -14,7 +14,7 @@ class PostForm(forms.ModelForm):
 class EmailForm(forms.ModelForm):
     class Meta:
         model = Email
-        fields = ('sender_name', 'sender_email', 'subject', 'message', )
+        fields = ('sender_name', 'sender_email', 'subject', 'message',)
 
 #class ContactForm(forms.Form):
 #    jmeno = forms.CharField(label='Vaše meno (povinné)', max_length=100)
@@ -23,6 +23,6 @@ class EmailForm(forms.ModelForm):
 #    #rok = forms.IntegerField(label='Aktuálny rok')
 #    sprava = forms.CharField(label='Správa', widget=forms.Textarea)
 #    #recaptcha = ReCaptchaField()
-    #captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+     #captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
     
 

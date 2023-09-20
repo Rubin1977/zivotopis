@@ -7,6 +7,7 @@ from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import EmailForm
+from django.contrib import messages
 #from .forms import EmailForm
 
 def post_list(request):
@@ -68,10 +69,15 @@ def send_email(request):
         form = EmailForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('send_email')
+            messages.success(request, "Email bol úspešne odoslaný!")
+            return redirect('success_view') 
+            #return redirect('success.html')
     else:
         form = EmailForm()
     return render(request, 'registration/send_email.html', {'form': form})
+
+def success_view(request):
+    return render(request, 'zivotopis/success.html')
 
 #def contact_form(request):
 #    if request.method == 'POST':

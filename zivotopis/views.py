@@ -71,7 +71,6 @@ def send_email(request):
             form.save()
             messages.success(request, "Email bol úspešne odoslaný!")
             return redirect('success_view') 
-            #return redirect('success.html')
     else:
         form = EmailForm()
     return render(request, 'registration/send_email.html', {'form': form})

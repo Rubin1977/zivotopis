@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import EmailForm
 from django.contrib import messages
-#from .forms import EmailForm
+from django.core.mail import send_mail
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -64,48 +64,49 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-def send_email(request):
-    if request.method == "POST":
-        form = EmailForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Email bol úspešne odoslaný!")
-            return redirect('success_view') 
-    else:
-        form = EmailForm()
-    return render(request, 'registration/send_email.html', {'form': form})
+#def send_email(request):
+#    if request.method == "POST":
+#        form = EmailForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            messages.success(request, "Email bol úspešne odoslaný!")
+#            return redirect('success_view') 
+#    else:
+#        form = EmailForm()
+#    return render(request, 'registration/send_email.html', {'form': form})
 
 def success_view(request):
     return render(request, 'zivotopis/success.html')
 
-#def contact_form(request):
-#    if request.method == 'POST':
-#        form = ContactForm(request.POST)
-#        
-#        if form.is_valid():
-#            adresa = 'ruzbacky@yahoo.com'
-#            predmet = 'Nová zpráva z životopis formulára!'
-#            meno = 'Meno odosielatela: ' + form.cleaned_data['jmeno']
-#            sprava = '\nSpráva: ' + form.cleaned_data['sprava'] 
-#            hlavicka = '\na jeho emailová adresa:\n' + form.cleaned_data['email']
-#            hlavicka += "\nMIME-Version: 1.0\n"
-#            hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n" 
-#            predmet_odosielatela = 'Predmet: ' + form.cleaned_data['predmet']
-#            uspech = send_mail(predmet, 
-#                               form.cleaned_data['predmet'], 
-#                               form.cleaned_data['email'], 
-#                               [adresa], 
-#                               fail_silently=False, 
-#                               html_message=meno + hlavicka + predmet_odosielatela + sprava)
-#            if uspech:
-#                hlaska = 'Email byl úspěšně odeslán, brzy vám odpovíme.'
-#            else:
-#                hlaska = 'Email se nepodařilo odeslat. Zkontrolujte adresu.'
-#        else:
-#            hlaska = 'Formulář není správně vyplněný!'
-#    else:
-#        form = ContactForm() 
-#        hlaska = ''   
-#    return render(request, 'zivotopis/contact_form.html', {'form': form, 'hlaska': hlaska})
+def send_email(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.save()
+            adresa = 'ruzbacky@yahoo.com'
+            predmet = 'Nová zpráva z životopis formulára!'
+            meno = 'Meno odosielatela: ' + form.cleaned_data['sender_name']
+            sprava = '\nSpráva: ' + form.cleaned_data['message'] 
+            hlavicka = '\na jeho emailová adresa:\n' + form.cleaned_data['sender_email']
+            hlavicka += "\nMIME-Version: 1.0\n"
+            hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n" 
+            predmet_odosielatela = 'Predmet: ' + form.cleaned_data['subject']
+            uspech = send_mail (predmet, 
+                               form.cleaned_data['subject'], 
+                               form.cleaned_data['sender_email'], 
+                               [adresa], 
+                               fail_silently=False, 
+                               html_message=meno + hlavicka + predmet_odosielatela + sprava)
+            if uspech:
+                messages.success(request, "Email bol úspešne odoslaný!")
+                return redirect('success_view')
+            else:
+                hlaska = 'Email se nepodařilo odeslat. Zkontrolujte adresu.'
+        else:
+            hlaska = 'Formulář není správně vyplněný!'
+    else:
+        form = EmailForm() 
+        hlaska = ''   
+    return render(request, 'registration/send_email.html', {'form': form, 'hlaska': hlaska})
 
 # Create your views here.

@@ -96,17 +96,15 @@ def send_email(request):
                                form.cleaned_data['sender_email'], 
                                [adresa], 
                                fail_silently=False, 
-                               html_message=meno + hlavicka + predmet_odosielatela + sprava)
+                               html_message=meno + hlavicka + predmet_odosielatela + sprava
+                               )
             if uspech:
                 messages.success(request, "Email bol úspešne odoslaný!")
                 return redirect('success_view')
             else:
-                hlaska = 'Email se nepodařilo odeslat. Zkontrolujte adresu.'
-        else:
-            hlaska = 'Formulář není správně vyplněný!'
+                messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
     else:
-        form = EmailForm() 
-        hlaska = ''   
-    return render(request, 'registration/send_email.html', {'form': form, 'hlaska': hlaska})
+        form = EmailForm()    
+    return render(request, 'registration/send_email.html', {'form': form})
 
 # Create your views here.

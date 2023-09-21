@@ -23,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure--8xb9ke-(n_s!*buw%g%om#=iy8rvkt@vo-m=dvax2uj8wrgdo'
 
+RECAPTCHA_PUBLIC_KEY = '6LeywEIoAAAAAACL-5GXgtWD6Sh-06YS16qEOFOF'
+RECAPTCHA_PRIVATE_KEY = '6LeywEIoAAAAAJCRnfCrcCHaKhbQ1zbsWLK8UZvW'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -46,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zivotopis',
-    #'captcha',
+    'captcha',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post
 from .models import Email
-#from captcha.fields import ReCaptchaField
+from captcha.fields import ReCaptchaField
 #from captcha.widgets import ReCaptchaV2Checkbox
 
 class PostForm(forms.ModelForm):
@@ -15,6 +15,7 @@ class EmailForm(forms.ModelForm):
     class Meta:
         model = Email
         fields = ('sender_name', 'sender_email', 'subject', 'message',)
+        captcha = ReCaptchaField()
 
 #class ContactForm(forms.Form):
 #    jmeno = forms.CharField(label='Vaše meno (povinné)', max_length=100)

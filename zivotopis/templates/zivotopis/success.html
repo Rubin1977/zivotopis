@@ -1,6 +1,19 @@
 {% extends 'zivotopis/base.html' %}
     
+{% comment  %}%}
 {% block content %}
     <h1>Email bol úspešne odoslaný!</h1>
     <a href="{% url 'post_list' %}"><button>Návrat späť</button></a>
+{% endblock %}
+{% endcomment %}
+
+{% block content %}
+  <h1>Email bol úspešne odoslaný!</h1>
+  <button id="backButton">Návrat späť</button>
+
+  <script>
+    document.getElementById("backButton").addEventListener("click", function() {
+      window.location.href = "{% url 'post_list' %}";
+    });
+  </script>
 {% endblock %}

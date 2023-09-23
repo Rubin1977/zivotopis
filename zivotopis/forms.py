@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post
 from .models import Email
-from captcha.fields import ReCaptchaField
+#from captcha.fields import ReCaptchaField
 #from captcha.widgets import ReCaptchaV2Checkbox
 
 class PostForm(forms.ModelForm):

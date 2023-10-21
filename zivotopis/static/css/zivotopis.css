@@ -4,17 +4,6 @@
     padding: 20px 20px;   
 }
 
-.page-header h1,
-.page-header h1 a,
-.page-header h1 a:visited,
-.page-header h1 a:active {
-    color: #dee9af;
-    font-size: 40pt;
-    text-decoration: none;
-    /*margin: 0px;*/
-    padding: 5px;
-}
-
 h1,
 h2,
 h3,
@@ -33,11 +22,50 @@ article {
 body {
     margin: 20px;
     color: rgb(188, 185, 221);
-    background-image: url("/static/css/IMG_20230611_114206.jpg");
-        background-size: cover;
-        background-position: center;
+    background: url("/static/css/IMG_20230611_114206.jpg") no-repeat center center/cover;
     /*background: rgb(86, 189, 66);*/
     text-align: start;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #dee9af;
+    font-size: 40pt;
+    text-decoration: none;
+    /*margin: 0px;*/
+    padding: 5px;
+}
+
+.top-menu,
+.top-menu:visited {
+    color: #ada237;
+    float: right;
+    font-size: 15pt;
+    text-decoration: none;
+}
+
+.top-menu:hover {
+    color: #0b9712;
+}
+
+.top-menu .icon-envelope:hover {
+    color: #2be9b0d5
+        /* Príslušný hover štýl pre ikonku obálky */
+}
+
+.btn-secondary,
+.btn-secondary:visited {
+    color: #dedee9;
+    background: #033166;
+    border-color: #db590e;
+    float: right;
+}
+
+.btn-secondary:hover {
+    color: #1d0c5e;
+    background-color: #0a8d50;
 }
 
 .date {
@@ -70,21 +98,6 @@ body {
     float: left
 }
 
-.top-menu,
-.top-menu:visited {
-    color: #ada237;
-    float: right;
-    font-size: 15pt;
-    text-decoration: none;
-}
-
-.top-menu:hover {
-    color: #0b9712;
-}
-.top-menu .icon-envelope:hover {
-    color: #2be9b0d5
-    /* Príslušný hover štýl pre ikonku obálky */
-}
 
 .top-menu-links {
     display: inline-block;
@@ -114,19 +127,6 @@ body {
 .post>.actions {
     float: top;
     color: #2a1281;
-}
-
-.btn-secondary,
-.btn-secondary:visited {
-    color: #dedee9;
-    background: #033166;
-    border-color: #db590e;
-    float: right;
-}
-
-.btn-secondary:hover {
-    color: #1d0c5e;
-    background-color: #0a8d50;
 }
 
 .comment {

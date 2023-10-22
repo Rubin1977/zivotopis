@@ -1,5 +1,5 @@
 .page-header {
-    background-color: #1b18cabe;
+    background-color: #9a31d6be;
     margin: 0px 0px 40px 0px;
     padding: 20px 20px;   
 }
@@ -15,14 +15,14 @@ h4 {
 
 article {
     border: 3px solid rgb(170, 59, 59);
-    background-color: rgb(212, 224, 188);
+    background-color: rgb(145, 170, 95);
     padding: 20px;
 }
 
 body {
     margin: 20px;
     color: rgb(188, 185, 221);
-    background: url("/static/css/IMG_20230611_114206.jpg") no-repeat center center/cover;
+    background: rgb(149, 179, 157);
     /*background: rgb(86, 189, 66);*/
     text-align: start;
 }
@@ -31,7 +31,7 @@ body {
 .page-header h1 a,
 .page-header h1 a:visited,
 .page-header h1 a:active {
-    color: #dee9af;
+    color: #3ab836;
     font-size: 40pt;
     text-decoration: none;
     /*margin: 0px;*/

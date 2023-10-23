@@ -13,9 +13,9 @@
             <div class="container">
                 {% if user.is_authenticated %}
                     <div class="top-menu">
-                        <p class="text-align: center;"> Prihlásený užívateľ: {{ user.username }} </p>
+                        <p class="center-text"> Prihlásený užívateľ: {{ user.username }} </p>
                         <a class="btn btn-primary top-menu" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</button></a>
-                        <div style="text-align: center;">
+                        <div class="center-text">
                             <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New Post">
                                 {% include './icons/plus-square.svg' %}
                             </a>

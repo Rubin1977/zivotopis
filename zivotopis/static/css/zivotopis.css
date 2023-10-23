@@ -53,7 +53,7 @@ body {
 
 .top-menu .icon-envelope:hover {
     color: #2be9b0d5
-        /* Príslušný hover štýl pre ikonku obálky */
+    /* Príslušný hover štýl pre ikonku obálky a dalšie v tej triede */
 }
 
 .btn-primary,

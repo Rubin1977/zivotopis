@@ -56,6 +56,7 @@ body {
         /* Príslušný hover štýl pre ikonku obálky */
 }
 
+.btn-primary,
 .btn-secondary,
 .btn-secondary:visited {
     color: #dedee9;

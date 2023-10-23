@@ -13,7 +13,7 @@
             <div class="container">
                 {% if user.is_authenticated %}
                     <div class="top-menu">
-                        <p class="text-align: center;"> Prihlásený ako: {{ user.username }} </p>
+                        <p class="text-align: center;"> Prihlásený užívateľ: {{ user.username }} </p>
                         <a class="btn btn-primary top-menu" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</button></a>
                         <div style="text-align: center;">
                             <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New Post">
@@ -30,7 +30,7 @@
                     <div class="top-menu">
                         <a href="{% url 'send_email' %}" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
                             <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} </span>
-                            Kontaktný formulár 
+                            Napíšte mi 
                         </a>
                         <br>
                         <a href="tel:+421 948 900 850" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Telefónne číslo">

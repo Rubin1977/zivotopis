@@ -14,7 +14,7 @@
                 {% if user.is_authenticated %}
                     <div class="top-menu">
                         <p class="center-text"> Prihlásený užívateľ: {{ user.username }} </p>
-                        <a class="btn btn-primary top-menu" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</button></a>
+                        <a class="btn btn-primary top-menu" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</a>
                         <div class="center-text">
                             <a href="{% url 'post_new' %}" class="top-menu" data-toggle="tooltip" data-placement="left" title="New Post">
                                 {% include './icons/plus-square.svg' %}
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</button></a>
+                    <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                     <div class="top-menu">
                         <a href="{% url 'send_email' %}" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
                             <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} </span>

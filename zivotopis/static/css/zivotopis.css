@@ -26,6 +26,7 @@ body {
     background: rgb(186, 196, 189);
     /*background: rgb(86, 189, 66);*/
     text-align: start;
+    box-sizing: border-box;
 }
 
 .page-header h1,
@@ -134,3 +135,11 @@ body {
     color: #1f1888;
 }
 
+#logo {
+     height: 40px;
+    margin: auto 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url('static/css/favicon-logo.png') no-repeat;
+    background-size: 40px 40px;

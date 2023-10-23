@@ -11,6 +11,10 @@
     <body>
         <header class="page-header">
             <div class="container">
+                <div id="logo">
+                    <h1><a href="/">Rastislav<span>Ružbacký</span></a></h1>
+                    <small>IT self student</small>
+                </div>
                 {% if user.is_authenticated %}
                     <div class="top-menu">
                         <p class="center-text"> Prihlásený užívateľ: {{ user.username }} </p>
@@ -44,7 +48,6 @@
                         </a>
                     </div>
                 {% endif %}
-                <h1><a href="/">Rastislav Ružbacký</a></h1>
             </div>
         </header>
         <main class="container">

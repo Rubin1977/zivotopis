@@ -11,11 +11,6 @@
     <body>
         <header>
             <div class="container">
-                <div id="logo" class="center-text">
-                    <h1><a href="/">Rastislav Ružbacký</a></h1>
-                    <img src="css/favicon-logo.png" alt="logo"/>
-                    <p>IT self student</p>
-                </div>
                 {% if user.is_authenticated %}
                     <div class="top-menu">
                         <p class="center-text"> Prihlásený užívateľ: {{ user.username }} </p>
@@ -49,6 +44,11 @@
                         </a>
                     </div>
                 {% endif %}
+                <div id="logo" class="center-text">
+                    <h1><a href="/">Rastislav Ružbacký</a></h1>
+                    <img src="css/favicon-logo.png" alt="logo"/>
+                    <p>IT self student</p>
+                </div>
             </div>
         </header>
         <main class="container">

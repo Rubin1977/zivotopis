@@ -108,7 +108,7 @@ footer p {
 
 .contact-info-frame {
     text-align: left;
-    margin-bottom: 20px;
+    margin: 20px 10px 10px 0px;
     background-color: #7f99b6;
     border: 3px solid #bdba20;
     max-width: fit-content;

@@ -141,5 +141,5 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url('static/css/favicon-logo.png') no-repeat;
+    background: url(' {% static "favicon-logo.png" }') no-repeat;
     background-size: 40px 40px;

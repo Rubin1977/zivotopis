@@ -141,6 +141,6 @@ header h1 a:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: blue;
+    background-color: blue;
     background-size: 25px 25px;
 

@@ -141,6 +141,6 @@ header h1 a:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url('{% static "favicon-logo.png" %}') no-repeat;
+    background: url('{% static "zivotopis/static/css/favicon-logo.png" %}') no-repeat;
     background-size: 40px 40px;
 

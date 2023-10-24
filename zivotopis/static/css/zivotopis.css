@@ -9,7 +9,7 @@ body {
 body>header {
     height: fit-content;
     width: 100%;
-    background: #9a31d6be;
+    background: #bb77e2be;
     color: white;
     padding: 25px;
     display: flex;
@@ -45,7 +45,7 @@ p {
 
 .top-menu,
 .top-menu:visited {
-    color: #ada237;
+    color: #3d3808;
     float: right;
     font-size: 15pt;
     text-decoration: none;
@@ -60,7 +60,11 @@ p {
     /* Príslušný hover štýl pre ikonku obálky a dalšie v tej triede */
 }
 
-.btn-primary,
+.btn-primary,{
+    float: :left;
+
+}
+
 .btn-secondary,
 .btn-secondary:visited {
     color: #dedee9;

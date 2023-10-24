@@ -44,6 +44,16 @@ p {
     margin-top: auto;
 }
 
+footer {
+    background-color: #f8f9fa;
+    border-top: 2px solid #343a40;
+    padding: 20px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
 .top-menu,
 .top-menu:visited {
     color: #3d3808;
@@ -150,3 +160,4 @@ p {
     background-color: rgb(79, 79, 168);
     background-size: 25px 25px;
 }
+

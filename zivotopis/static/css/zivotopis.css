@@ -60,9 +60,8 @@ p {
     /* Príslušný hover štýl pre ikonku obálky a dalšie v tej triede */
 }
 
-.btn-primary,{
-    float: :left;
-
+.btn-primary {
+    float: left;
 }
 
 .btn-secondary,

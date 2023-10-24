@@ -50,6 +50,7 @@ p {
     float: right;
     font-size: 15pt;
     text-decoration: none;
+    margin-left: 20px;
 }
 
 .top-menu:hover {
@@ -63,7 +64,7 @@ p {
 
 .btn-primary {
     float: left;
-    margin: 0px 50px 0px 0px
+    margin: 0px 30px 0px 0px
 }
 
 .btn-secondary,
@@ -146,6 +147,6 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: blue;
+    background-color: rgb(79, 79, 168);
     background-size: 25px 25px;
 }

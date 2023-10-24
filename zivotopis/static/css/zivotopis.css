@@ -1,3 +1,20 @@
+body {
+    margin: 0;
+    color: rgb(23, 11, 148);
+    background: rgb(186, 196, 189);
+    text-align: start;
+    box-sizing: border-box;
+}
+
+body>header {
+    height: fit-content;
+    width: 100%;
+    background: #9a31d6be;
+    color: white;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 h1, h2, h3, h4 {
     color: #81d423;
@@ -11,26 +28,7 @@ article {
     padding: 20px;
 }
 
-body {
-    margin: 0;
-    color: rgb(23, 11, 148);
-    background: rgb(186, 196, 189);
-    /*background: rgb(86, 189, 66);*/
-    text-align: start;
-    box-sizing: border-box;
-}
 
-body > header {
-    height: fit-content;
-    width: 100%;
-    background: #9a31d6be;
-    color: white;
-    padding: 20px 20px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-header h1,
 header h1 a,
 header h1 a:visited,
 header h1 a:active {
@@ -39,6 +37,10 @@ header h1 a:active {
     text-decoration: none;
     /*margin: 0px;*/
     padding: 5px;
+}
+
+p {
+    margin-top: auto;
 }
 
 .top-menu,

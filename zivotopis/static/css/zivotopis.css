@@ -20,6 +20,7 @@ h1, h2, h3, h4 {
     color: #81d423;
     font-family: 'Times New Roman';
     font-stretch: 50%;
+    text-shadow: 0 0 2px #04627D;
 }
 
 article {

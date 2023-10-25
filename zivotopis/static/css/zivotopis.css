@@ -13,13 +13,13 @@ body>header {
     color: white;
     padding: 25px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
 }
 
 h1, h2, h3, h4 {
     color: #81d423;
-    font-family: 'Times New Roman';
-    font-stretch: 50%;
+    font-family: 'Roboto Mono';
+    font-stretch: normal;
     text-shadow: 0 0 2px #04627D;
 }
 
@@ -36,7 +36,6 @@ header h1 a:active {
     color: #3ab836;
     font-size: 40pt;
     text-decoration: none;
-    /*margin: 0px;*/
     padding: 5px;
 }
 
@@ -74,7 +73,7 @@ footer p {
 
 .btn-primary {
     float: left;
-    margin: 0px 30px 0px 0px
+    margin: 0 30px 0 0;
 }
 
 .btn-secondary,
@@ -108,7 +107,7 @@ footer p {
 
 .contact-info-frame {
     text-align: left;
-    margin: 20px 10px 10px 0px;
+    margin: 20px 10px 10px 0;
     background-color: #7f99b6;
     border: 3px solid #bdba20;
     max-width: fit-content;
@@ -133,26 +132,26 @@ footer p {
     margin: 20px 20px 40px 20px;
 }
 
-.post h2 a,
-.post h2 a:visited {
+.post a,
+.post a:visited {
     color: #7c064f;
     text-decoration: none;
 }
 
 .post>.date,
 .post>.actions {
-    float: top;
+    float: right;
     color: #2a1281;
 }
 
 .comment {
-    margin: 20px 0px 20px 20px;
+    margin: 20px 0 20px 20px;
     color: #1f1888;
 }
 
 #logo {
     height: 90px;
-    margin: 0px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

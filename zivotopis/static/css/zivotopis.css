@@ -122,7 +122,6 @@ footer p {
 
 .center-text {
     text-align: center;
-
 }
 
 .post {
@@ -149,7 +148,7 @@ footer p {
 
 #logo {
     height: 90px;
-    margin: 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

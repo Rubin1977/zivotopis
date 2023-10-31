@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="sk">
     <head>
+        <meta charset="utf-8" />
         <title>Rastislav Ružbacký | Životopis</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
@@ -46,7 +47,7 @@
                     </div>
                     <div id="logo" class="center-text">
                         <h1>
-                            <a href="/">Rastislav Ružbacký</a>
+                            <a href="/" id="logo">Rastislav Ružbacký</a>
                         </h1>
                         <!--<img src="css/favicon-logo.png" alt="logo"/>-->
                         <p>IT self student</p>
@@ -58,7 +59,6 @@
             <div class="row">
                 <div class="col">
                 {% block content %}
-                    <a>Ako?</a>
                 {% endblock %}
                 </div>
             </div>

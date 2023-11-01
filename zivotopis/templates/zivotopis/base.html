@@ -29,13 +29,6 @@
                     </div>
                 {% else %}
                     <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
-                    <div class="h1">
-                        <img src="{% static 'css/favicon-logo.png' %}" alt="logo" width="30" height="30">
-                        <h1>
-                            <a href="/">Rastislav Ružbacký</a>
-                        </h1>
-                        <p>\IT self student\</p>
-                    </div>
                     <div class="top-menu">
                         <a href="{% url 'send_email' %}" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
                             <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} </span>
@@ -51,6 +44,12 @@
                             <span class="icon-envelope"> {% include './icons/geo-fill.svg' %} </span>
                             Adresa
                         </a>
+                    </div>
+                    <div class="h1">
+                        <img src="{% static 'css/favicon-logo.png' %}" alt="logo" width="30" height="30">
+                        <h1>
+                            <a href="/">Rastislav Ružbacký</a>
+                        </h1>
                     </div>
                 {% endif %}
             </div>

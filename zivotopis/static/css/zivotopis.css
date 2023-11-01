@@ -61,10 +61,6 @@ footer p {
     margin-left: 20px;
 }
 
-.h1 {
-    display: flex;
-    align-items: center;
-}
 
 .top-menu:hover {
     color: #0b9712;

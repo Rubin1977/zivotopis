@@ -27,16 +27,10 @@ article {
     border: 3px solid rgb(170, 59, 59);
     background-color: rgb(145, 170, 95);
     padding: 20px;
+    width:80%;
 }
 
 
-header h1 a, header h1 a:visited, header h1 a:active {
-    color: #3ab836;
-    font-size: 32px;
-    text-decoration: none;
-    padding: 5px;
-    margin: auto;
-}
 
 p {
     margin-top: auto;

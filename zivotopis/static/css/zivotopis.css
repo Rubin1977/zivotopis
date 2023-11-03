@@ -8,12 +8,12 @@ body {
 
 body>header {
     height: 120px;
-    width: 100%;
+    width: %;
     background: #bb77e2be;
     color: #613131;
     padding: 20px;
     display: flex;
-    justify-content:space-evenly;
+    justify-content:space-between;
 }
 
 h1, h2, h3, h4 {

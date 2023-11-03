@@ -1,19 +1,19 @@
 body {
-    font: 14px;
+    font-size: 14px;
     margin: 0;
     color: rgb(23, 11, 148);
-    background: rgb(186, 196, 189);
+    /*background: rgb(186, 196, 189);*/
     box-sizing: border-box;
 }
 
 body>header {
     height: 120px;
-    width: %;
+    width: 100%;
     background: #bb77e2be;
     color: #613131;
     padding: 20px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-evenly;
 }
 
 h1, h2, h3, h4 {
@@ -38,10 +38,12 @@ footer {
     background-color: #f8f9fa;
     border-top: 2px solid #343a40;
     padding: 20px;
+    width: 100%
 }
 
 footer p {
     margin-bottom: 0;
+
 }
 
 a {
@@ -149,12 +151,17 @@ a {
 }
 
 #logo {
-    height: 90px;
-    margin: auto;
+    height: 32px;
+    margin: auto 0 auto 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(79, 79, 168);
-    background-size: 25px 25px;
+    background: url('{% static "css/favicon-logo.png" %}');
+    background-size: 32px 32px;
 }
+
+#logo>* {
+    margin: 0 0 0 50px;
+}
+
 

@@ -70,7 +70,9 @@ a {
 }
 
 .btn-primary {
-    float: left;
+    color: #dedee9;
+    float: right;
+    border-color: #db590e;
     margin: 0 30px 0 0;
 }
 

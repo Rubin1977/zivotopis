@@ -30,7 +30,6 @@
                             </div>
                         </div>
                     {% else %}
-                        <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                         <div class="top-menu">
                             <a href="{% url 'send_email' %}" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
                                 <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} </span>
@@ -69,6 +68,7 @@
                         <p>
                             <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
                             &copy; RR 2023 pre <a href="http://rastislavruzbacky.eu.pythonanywhere.com/">Môj web</a>
+                            <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                         </p>
                     </div>
                 </div>

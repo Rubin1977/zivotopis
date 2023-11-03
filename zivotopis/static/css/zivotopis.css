@@ -11,7 +11,7 @@ body>header {
     width: 100%;
     background: #bb77e2be;
     color: #613131;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     justify-content:space-evenly;
 }
@@ -26,11 +26,9 @@ h1, h2, h3, h4 {
 article {
     border: 3px solid rgb(170, 59, 59);
     background-color: rgb(145, 170, 95);
-    padding: 20px;
+    padding: 10px;
     width:80%;
 }
-
-
 
 p {
     margin-top: auto;
@@ -44,6 +42,12 @@ footer {
 
 footer p {
     margin-bottom: 0;
+}
+
+a {
+    color: #7efd0d;
+    text-decoration: unset;
+    font-size: 20px
 }
 
 .top-menu,

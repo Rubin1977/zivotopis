@@ -35,7 +35,7 @@ p {
 }
 
 footer {
-    background-color: #f8f9fa;
+    background-color: #8598ab;
     border-top: 3px solid #343a40;
     padding: 20px;
     width: 100%
@@ -56,9 +56,8 @@ a {
 .top-menu:visited {
     color: #3d3808;
     float: right;
-    font-size: 15px;
+    font-size: 18px;
     text-decoration: none;
-    margin-left: 20px;
 }
 
 
@@ -98,8 +97,7 @@ a {
     float: right;
 }
 
-.post-form textarea,
-.post-form input {
+.post-form textarea, .post-form input {
     width: 80%;
 }
 

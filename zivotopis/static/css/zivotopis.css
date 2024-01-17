@@ -37,10 +37,10 @@ p {
 }
 
 footer {
-    background-color: linear-gradient(180deg, rgb(125, 125, 0),
+    background: linear-gradient(180deg, rgb(125, 125, 0),
         rgb(125, 125, 60),
         rgb(125, 125, 120));
-    border-top: 3px solid linear-gradient(90deg, #343a40, #1f73c7);
+    border-top: 3px solid red;
     padding: 20px;
     width: 100%
 }

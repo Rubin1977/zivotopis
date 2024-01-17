@@ -20,7 +20,7 @@ h1, h2, h3 {
     color: #5f8b2c;
     font-family: 'Roboto Mono';
     font-stretch: normal;
-    text-shadow: 0 0 2px #04627D;
+    text-shadow: 0 0 3px #045970;
 }
 
 article {
@@ -38,7 +38,7 @@ footer {
     background-color: linear-gradient(90deg, rgb(125, 125, 0),
         rgb(125, 125, 60),
         rgb(125, 125, 120));
-    border-top: 3px solid #343a40;
+    border-top: 3px solid linear-gradient(90deg, #343a40, #1f73c7);
     padding: 20px;
     width: 100%
 }

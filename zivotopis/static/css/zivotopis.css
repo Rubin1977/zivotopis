@@ -55,6 +55,10 @@ a {
     text-decoration: unset;
     font-size: 20px
 }
+ 
+img {
+    margin-right: 10px;
+}
 
 .top-menu,
 .top-menu:visited {

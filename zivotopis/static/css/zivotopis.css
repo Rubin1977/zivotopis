@@ -35,7 +35,9 @@ p {
 }
 
 footer {
-    background-color: linear-gradient(90deg, rgb(125, 125, 0), rgb(125, 125, 120));
+    background-color: linear-gradient(90deg, rgb(125, 125, 0),
+        rgb(125, 125, 60),
+        rgb(125, 125, 120));
     border-top: 3px solid #343a40;
     padding: 20px;
     width: 100%

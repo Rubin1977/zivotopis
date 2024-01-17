@@ -14,6 +14,7 @@ body>header {
         rgb(112 112 168) 100%);
     color: #613131;
     padding: 20px 20px;
+    border-bottom: 2px solid red;
     display: flex;
     justify-content: space-evenly;
 }
@@ -50,15 +51,19 @@ footer p {
 
 }
 
+img {
+    margin-right: 10px;
+}
+
 a {
     color: #223115;
     text-decoration: unset;
     font-size: 20px
 }
  
-img {
-    margin-right: 10px;
-}
+
+
+
 
 .top-menu,
 .top-menu:visited {

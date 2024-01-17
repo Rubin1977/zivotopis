@@ -9,7 +9,9 @@ body {
 body>header {
     height: 120px;
     width: 100%;
-    background: linear-gradient(180deg, rgb(0, 125, 0) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
+    background: linear-gradient(180deg, rgb(91 176 91) 0%,
+        rgb(0, 255, 0) 50%,
+        rgb(112 112 168) 100%);
     color: #613131;
     padding: 20px 20px;
     display: flex;
@@ -35,7 +37,7 @@ p {
 }
 
 footer {
-    background-color: linear-gradient(90deg, rgb(125, 125, 0),
+    background-color: linear-gradient(180deg, rgb(125, 125, 0),
         rgb(125, 125, 60),
         rgb(125, 125, 120));
     border-top: 3px solid linear-gradient(90deg, #343a40, #1f73c7);

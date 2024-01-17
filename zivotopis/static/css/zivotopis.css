@@ -28,8 +28,8 @@ h1, h2, h3 {
 
 article {
     border: 3px solid rgb(170, 59, 59);
-    background-color: linear-gradient(180deg, rgb(60, 117, 60) 0%, rgb(0, 255, 0) 50%,
-                        rgb(71, 71, 148) 100%);
+    background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%,
+                rgb(169 168 108) 100%);
     padding: 20px;
     width: 70%;
 }

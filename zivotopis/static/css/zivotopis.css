@@ -9,7 +9,7 @@ body {
 body>header {
     height: 120px;
     width: 100%;
-    background: #bb77e2be;
+    background: linear-gradient(180deg, rgb(0, 125, 0) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
     color: #613131;
     padding: 20px 20px;
     display: flex;

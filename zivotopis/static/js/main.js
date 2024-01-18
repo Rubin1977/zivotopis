@@ -1,3 +1,1 @@
-<script>
-    alert("Vitajte na mojej stránke!");
-</script>
+alert("Vitajte na mojej stránke!");

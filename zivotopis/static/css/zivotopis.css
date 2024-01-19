@@ -63,6 +63,9 @@ a {
     font-size: 20px
 }
 
+html {
+    box-sizing: border-box;
+}
 .top-menu,
 .top-menu:visited {
     color: #3d3808;

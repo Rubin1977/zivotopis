@@ -1,4 +1,3 @@
-
 // Získame odkaz na tlačidlo pomocou ID
 var myButton = document.getElementById("myButton");
 // Pridáme event listener, aby sme zachytili kliknutie na tlačidlo

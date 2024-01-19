@@ -1,4 +1,4 @@
-alert("Vitajte na mojej stránke!");
+
 window.onload = function () {
     var myButton = document.getElementById("myButton");
     // Pridáme event listener, aby sme zachytili kliknutie na tlačidlo

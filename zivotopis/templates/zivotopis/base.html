@@ -57,19 +57,14 @@
                 </div>            
             </div>
         </header>
-        {% block content %}
-            <!-- Iný obsah stránky -->
-            <button id="myButton">Zobraziť uvítaciu správu</button>
-            <p id="myText"></p>
-        {% endblock %}
         <main class="container">
             <div class="row">
                 <div class="col">
-                    
-                    
-                    
-                    
-                    
+                    {% block content %}
+                        <!-- Iný obsah stránky -->
+                        <button id="myButton">Zobraziť uvítaciu správu</button>
+                        <p id="myText"></p>
+                    {% endblock %}
                 </div>
             </div>
         </main>

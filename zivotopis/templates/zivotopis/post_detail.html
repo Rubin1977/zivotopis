@@ -1,9 +1,8 @@
 {% extends 'zivotopis/base.html' %}
 
 {% block content %}
-    <h1>Tak ako?</h1>
     <button id="myButton">Zobraziť uvítaciu správu</button>
-    <p id="myText">Tak ako?</p>
+    <p id="myText"></p>
     <article class="post">
         <aside class="actions">
             {% if user.is_authenticated %}

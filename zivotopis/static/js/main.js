@@ -1,7 +1,9 @@
-// Získame odkaz na tlačidlo pomocou ID
-var myButton = document.getElementById("myButton");
-// Pridáme event listener, aby sme zachytili kliknutie na tlačidlo
-myButton.addEventListener("click", function () {
-    // Zmeníme text v elemente s ID "myText" na uvítaciu správu
-    document.getElementById("myText").innerHTML = "Vitajte na mojej stránke!";
+document.addEventListener("DOMContentLoaded", function () {
+    var myButton = document.getElementById("myButton");
+    var myText = document.getElementById("myText");
+
+    myButton.addEventListener("click", function () {
+        // Zmeníme text v elemente s ID "myText" na uvítaciu správu
+        myText.innerHTML = "Vitajte na mojej stránke!";
+    });
 });

@@ -7,7 +7,7 @@ body {
 }
 
 body>header {
-    height: 120px;
+    height: 110px;
     width: 100%;
     background: linear-gradient(18deg, rgb(91 176 91) 0%,
             rgb(0, 255, 0) 50%,

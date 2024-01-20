@@ -20,6 +20,24 @@ header {
     border-bottom: 3px solid red;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Zabezpečuje, aby kontajner zaberával 100% výšky rodičovského elementu (napr. tela stránky) */
+}
+
+.row {
+    width: 100%;
+    /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
+}
+
+.col {
+    text-align: center;
+    /* Zabezpečuje zacentrovanie obsahu v stĺpci */
+}
+
 main {
     flex: 1;
     /* Táto časť sa rozťahuje a zaberá zvyšný voľný priestor */

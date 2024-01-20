@@ -47,8 +47,9 @@ footer {
     padding: 20px;
     right: 0;
     left: 0;
-    position: absolute / fixed;
-    width: 100%
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 footer p {

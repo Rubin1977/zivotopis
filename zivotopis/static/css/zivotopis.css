@@ -52,9 +52,6 @@ footer {
         rgb(125, 125, 120));
     border-top: 3px solid red;
     padding: 10px;
-    right: 0;
-    left: 0;
-    bottom: 0;
     position: sticky;
     width: 100%;
 }
@@ -110,7 +107,7 @@ a {
 
 .date {
     color: #076c97;
-    font-size: 15px;
+    font-size: 10px;
     text-decoration: none;
     float: right;
 }
@@ -126,8 +123,8 @@ a {
 .contact-info-frame {
     text-align: left;
     margin: 20px 10px 10px 0;
-    background-color: #7f99b6;
-    border: 3px solid #bdba20;
+    background-color: #b4c8df;
+    border: 3px solid #afad10;
     max-width: fit-content;
 }
 

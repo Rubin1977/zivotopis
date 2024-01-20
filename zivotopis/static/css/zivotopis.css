@@ -48,7 +48,7 @@ footer {
     right: 0;
     left: 0;
     bottom: 0;
-    position: absolute;
+    position: sticky;
     width: 100%;
 }
 

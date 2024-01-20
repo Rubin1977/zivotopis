@@ -9,7 +9,7 @@ body {
     flex-direction: column;
 }
 
-body>header {
+header {
     height: 110px;
     width: 100%;
     background: linear-gradient(18deg, rgb(91 176 91) 0%,
@@ -17,9 +17,7 @@ body>header {
             rgb(112 112 168) 100%);
     color: #613131;
     padding: 20px 20px;
-    border-bottom: 2px solid red;
-    display: flex;
-    align-items: center;
+    border-bottom: 3px solid red;
 }
 
 main {

@@ -45,6 +45,9 @@ footer {
         rgb(125, 125, 120));
     border-top: 3px solid red;
     padding: 20px;
+    right: 0;
+    left: 0;
+    position: absolute / fixed;
     width: 100%
 }
 
@@ -63,9 +66,6 @@ a {
     font-size: 20px
 }
 
-html {
-    box-sizing: border-box;
-}
 .top-menu,
 .top-menu:visited {
     color: #3d3808;

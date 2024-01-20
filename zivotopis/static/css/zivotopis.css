@@ -35,10 +35,10 @@ header {
     /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
 }
 
-.col {
+/*.col {
     text-align: center;
     /* Zabezpečuje zacentrovanie obsahu v stĺpci */
-}
+
 
 main {
     flex: 1;

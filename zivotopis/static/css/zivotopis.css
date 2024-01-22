@@ -90,7 +90,8 @@ a {
 }
 
 .top-menu,
-.top-menu:visited {
+.top-menu:visited,
+.icon-envelope {
     color: #3d3808;
     float: right;
     font-size: 25px;

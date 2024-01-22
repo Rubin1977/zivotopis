@@ -93,8 +93,11 @@ a {
 .top-menu:visited {
     color: #3d3808;
     float: right;
-    font-size: 18px;
+    font-size: 25px;
     text-decoration: none;
+    border: solid green 4px;
+    margin: auto
+
 }
 
 

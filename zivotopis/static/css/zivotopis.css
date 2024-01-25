@@ -89,6 +89,11 @@ a {
     font-size: 20px
 }
 
+.name {
+ display: contents;
+ 
+}
+
 .top-menu,
 .top-menu:visited {
     color: #3d3808;
@@ -97,7 +102,6 @@ a {
     font-size: 25px;
     text-decoration: none;
     border: solid green 4px;
-    margin: 0 0 20px 0;
     padding: 0 0 10px 10px; 
 
 }

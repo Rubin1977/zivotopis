@@ -101,15 +101,24 @@ a {
 .top-menu:visited {
     color: #3d3808;
     float: right;
-    background-color: #076c97;
+    background-color: #9bd4ed;
     text-decoration: none;
     border: solid green 4px;
 
 }
 
+.top-menu-links {
+    display: inline-block;
+    margin-right:  20px;
+    color: #31273b;
+    float: none;
+    font-size: 15px;
+    text-decoration: none;
+}
+
 
 .top-menu:hover {
-    color: #0b9712;
+    color: #072e09;
 }
 
 
@@ -156,14 +165,6 @@ a {
     max-width: fit-content;
 }
 
-.top-menu-links {
-    display: inline-block;
-    margin-right: 30px;
-    color: #3b3609;
-    float: none;
-    font-size: 15px;
-    text-decoration: none;
-}
 
 .center-text {
     text-align: center;

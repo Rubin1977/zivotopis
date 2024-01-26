@@ -110,16 +110,6 @@ a {
 
 }
 
-.top-menu-links {
-    display: inline-block;
-    margin: 0 20px 0 10px;
-    color: #31273b;
-    float: none;
-    font-size: 15px;
-    text-decoration: none;
-}
-
-
 .top-menu:hover {
     color: #072e09;
 }

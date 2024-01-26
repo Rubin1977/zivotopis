@@ -99,12 +99,14 @@ a {
 
 .top-menu,
 .top-menu:visited {
+    display: flex;
+    justify-content: space-evenly;
     color: #3d3808;
     float: right;
     background-color: #9bd4ed;
     text-decoration: none;
     border: solid green 4px;
-    
+
 
 }
 

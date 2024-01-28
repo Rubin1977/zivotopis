@@ -30,24 +30,28 @@
                             </div>
                         </div>
                     {% else %}
-                        <div class="name">
-                            <a href="/"> 
-                                <h1 class="mb-0"><img class="img" src="{% static 'css/IMG_20230611_114206.jpg' %}" alt="kvet-obrazok" width="30" height="30">Rastislav Ružbacký</h1>
-                            </a>
-                        </div> 
-                        <div class="top-menu mt-1">
-                            <a href="{% url 'send_email' %}" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
-                                <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
-                            </a>
-                            <a href="tel:+421 948 900 850" data-toggle="tooltip" data-placement="left" title="+421 948 900 850">
-                                <span class="icon-envelope"> {% include './icons/telephone-fill.svg' %} </span>
-                                Mobil
-                            </a>
-                            <!--<a href="https://www.google.com/maps/place/Sib%C3%ADrska+1608%2F4,+831+02+Bratislava" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Sibírska 1608/4 831 02 Bratislava, Slovakia">
-                                <span class="icon-envelope"> {% include './icons/geo-fill.svg' %} </span>
-                                Adresa
-                            </a>-->
-                        </div>   
+                        <div class="col h-100">
+                            <div class="name">
+                                <a href="/"> 
+                                    <h1 class="mb-0"><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="kvet-obrazok" width="30" height="30">Rastislav Ružbacký</h1>
+                                </a>
+                            </div> 
+                        </div>
+                        <div class="col h-100">
+                            <div class="top-menu mt-1">
+                                <a href="{% url 'send_email' %}" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
+                                    <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
+                                </a>
+                                <a href="tel:+421 948 900 850" data-toggle="tooltip" data-placement="left" title="+421 948 900 850">
+                                    <span class="icon-envelope"> {% include './icons/telephone-fill.svg' %} </span>
+                                    Mobil
+                                </a>
+                                <!--<a href="https://www.google.com/maps/place/Sib%C3%ADrska+1608%2F4,+831+02+Bratislava" class="top-menu-links" data-toggle="tooltip" data-placement="left" title="Sibírska 1608/4 831 02 Bratislava, Slovakia">
+                                    <span class="icon-envelope"> {% include './icons/geo-fill.svg' %} </span>
+                                    Adresa
+                                </a>-->
+                            </div>
+                        </div>  
                     {% endif %}       
                 </div>            
             </div>

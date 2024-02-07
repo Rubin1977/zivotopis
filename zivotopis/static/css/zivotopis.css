@@ -93,6 +93,21 @@ a {
     font-size: 20px
 }
 
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    margin: 10px;
+    /* Medzera medzi obrázkami */
+    width: 200px;
+    /* Šírka obrázkov */
+    height: auto;
+    /* Automatická výška */
+}
+
 .name {
     display: flex;
     align-content: stretch;
@@ -161,7 +176,6 @@ a {
     border: 3px solid #afad10;
     max-width: fit-content;
 }
-
 
 .center-text {
     text-align: center;

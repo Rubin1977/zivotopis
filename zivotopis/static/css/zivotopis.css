@@ -23,7 +23,7 @@ header {
 }
 
 * {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     box-sizing: border-box;
 }
 .container {
@@ -51,7 +51,7 @@ main {
 
 h1, h2, h3 {
     color: #44651e;
-    font-family: 'Roboto Mono';
+    /*font-family: 'Roboto Mono';*/
     font-stretch: normal;
     text-shadow: 0 0 3px #045970;
 }

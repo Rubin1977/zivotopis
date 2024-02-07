@@ -94,15 +94,15 @@ a {
 }
 
 .gallery {
-    display: contents;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
 }
 
 .gallery img {
     margin: 15px;
     /* Medzera medzi obrázkami */
-    width: 100%;
+    width: 15%;
     /* Šírka obrázkov */
     height: auto;
     /* Automatická výška */

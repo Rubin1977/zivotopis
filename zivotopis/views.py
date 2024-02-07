@@ -23,20 +23,20 @@ def post_detail(request, pk):
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
-        image = ImageForm(request.POST, request.FILES)
-        if form.is_valid() and image.is_valid():
+        image_form = ImageForm(request.POST, request.FILES)
+        if form.is_valid() and image_form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             #post.published_date = timezone.now()
             post.save()
-            image = image.save(commit=False)
+            image = image_form.save(commit=False)
             image.post = post
             image.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-        image = ImageForm()
-    return render(request, 'zivotopis/post_edit.html', {'form': form, 'image': image})
+        image_form = ImageForm()
+    return render(request, 'zivotopis/post_edit.html', {'form': form, 'image_form': image_form})
 
 @login_required
 def post_edit(request, pk):

@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block content %}
-    <button id="myButton">Kliknutím zmeniť pozadie tlačidla na náhodnú farbu</button>
+    <button id="myButton">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
     <p id="myText"></p>
     <article class="post">
         <aside class="actions">
@@ -24,13 +24,11 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </article>
-    <div style="padding-bottom: 20px;"></div>
-{% endblock %}
-{% block gallery %}
     <div class="gallery">
         <img src="{% static 'css/Zima_na_Kamziku (1).jpg' %}" alt="Zima_na_Kamziku">
         <img src="{% static 'css/Zima_na_Kamziku (2).jpg' %}" alt="Zima_na_Kamziku">
         <img src="{% static 'css/Zima_na_Kamziku (3).jpg' %}" alt="Zima_na_Kamziku">
         <!-- Pokračujte pridávaním ďalších obrázkov -->
     </div>
+    <div style="padding-bottom: 20px;"></div>
 {% endblock %}

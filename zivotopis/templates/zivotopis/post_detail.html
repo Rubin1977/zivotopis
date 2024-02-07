@@ -22,10 +22,12 @@
         {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
-        <!-- <div class="gallery">
-            <img src="css/Zima_na_Kamziku (1).jpg" alt="Zima_na_Kamziku">
-            Pokračujte pridávaním ďalších obrázkov 
-        </div> -->
     </article>
     <div style="padding-bottom: 20px;"></div>
+{% endblock %}
+{% block gallery %}
+    <div class="gallery">
+        <img src="{% static 'css/Zima_na_Kamziku (1).jpg' %}" alt="Zima_na_Kamziku">
+        <!-- Pokračujte pridávaním ďalších obrázkov -->
+    </div>
 {% endblock %}

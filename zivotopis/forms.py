@@ -1,6 +1,7 @@
 from django import forms
 from .models import Post
 from .models import Email
+from .models import Image
 #from captcha.fields import ReCaptchaField
 #from captcha.widgets import ReCaptchaV2Checkbox
 
@@ -15,6 +16,11 @@ class EmailForm(forms.ModelForm):
     class Meta:
         model = Email
         fields = ('sender_name', 'sender_email', 'subject', 'message',)
+        
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image']
         
 
 #class ContactForm(forms.Form):

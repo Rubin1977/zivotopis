@@ -2,9 +2,10 @@
 
 {% block content %}
     <h2>New post</h2>
-    <form method="POST" class="post-form">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        {{ image_form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>
 {% endblock %}

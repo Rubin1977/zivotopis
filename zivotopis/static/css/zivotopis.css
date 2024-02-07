@@ -104,7 +104,7 @@ a {
     /* Medzera medzi obrázkami */
     width: 15%;
     /* Šírka obrázkov */
-    height: auto;
+    height: 100%;
     /* Automatická výška */
 }
 

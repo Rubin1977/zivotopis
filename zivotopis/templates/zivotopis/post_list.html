@@ -8,6 +8,11 @@
             </time>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
+            <div class="gallery">
+                {% for image in post.images.all %}
+                    <img src="{{ image.image.url }}" alt="{{ image.image.name }}">
+                {% endfor %}
+            </div>
         </article>
     {% endfor %}
 {% endblock %}

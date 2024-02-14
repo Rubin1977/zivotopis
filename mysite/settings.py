@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+
 #from django_recaptcha import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

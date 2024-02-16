@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 
 #from django_recaptcha import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
@@ -24,8 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--8xb9ke-(n_s!*buw%g%om#=iy8rvkt@vo-m=dvax2uj8wrgdo'
+#SECRET_KEY = 'django-insecure--8xb9ke-(n_s!*buw%g%om#=iy8rvkt@vo-m=dvax2uj8wrgdo'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 

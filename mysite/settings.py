@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-load_dotenv()
+dotenv_path = 'C:/Users/Ruzbacky/django_zivotopis/.env'
+load_dotenv(dotenv_path)
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure--8xb9ke-(n_s!*buw%g%om#=iy8rvkt@vo-m=dvax2uj8wrgdo'
 SECRET_KEY = os.getenv('SECRET_KEY')

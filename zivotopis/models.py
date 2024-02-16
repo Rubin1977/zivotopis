@@ -8,6 +8,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    image = models.ImageField(upload_to='media/', blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -26,7 +27,7 @@ class Email(models.Model):
     def __str__(self):
         return self.subject
 
-class Image(models.Model):
-    post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/')
+#class Image(models.Model):
+    #post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+   #image = models.ImageField(upload_to='media/')
 # Create your models here.

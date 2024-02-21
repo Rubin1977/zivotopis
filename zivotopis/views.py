@@ -106,9 +106,9 @@ def send_email(request):
             if uspech:
                 # nefunguje: messages.success(request, "Email bol úspešne odoslaný!")
                 return redirect('success_view')
-            else:
-                return redirect('unsuccess_view')
-                #messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
+        else:
+            return redirect('unsuccess_view')
+            #messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
     else:
         form = EmailForm()    
     return render(request, 'registration/send_email.html', {'form': form})

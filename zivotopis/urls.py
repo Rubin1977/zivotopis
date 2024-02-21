@@ -10,5 +10,6 @@ urlpatterns = [
     path('post/<int:pk>/publish/', views.post_publish, name='post_publish'),
     path('post/<int:pk>/remove/', views.post_remove, name='post_remove'),
     path('email/', views.send_email, name='send_email'),
-    path('success/', views.success_view, name='success_view'),    
+    path('success/', views.success_view, name='success_view'),  
+    path('unsuccess/', views.unsuccess_view, name='unsuccess_view'),    
 ]

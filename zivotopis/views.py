@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.utils import timezone
+from django.utils import timezone, format_html #formátuje hlavičku
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -86,12 +86,15 @@ def send_email(request):
             form.save()
             adresa = 'ruzbacky@yahoo.com'
             predmet = 'Nová zpráva z životopis formulára!'
-            meno = 'Meno odosielatela: ' + form.cleaned_data['sender_name']
+            meno = 'Meno odosielateľa: ' + form.cleaned_data['sender_name']
             sprava = '\nSpráva: ' + form.cleaned_data['message'] 
-            hlavicka = '\na jeho emailová adresa:\n' + form.cleaned_data['sender_email']
-            hlavicka += "\nMIME-Version: 1.0\n"
-            hlavicka += "Content-Type: text/html; charset=\"utf-8\"\n" 
+            hlavicka = '\nJeho emailová adresa:\n' + form.cleaned_data['sender_email']
+            hlavicka += "\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"utf-8\"\n"
             predmet_odosielatela = 'Predmet: ' + form.cleaned_data['subject']
+            #hlavicka = format_html(
+                #"<p>{}</p><p>MIME-Version: 1.0</p><p>Content-Type: text/html; charset=\"utf-8\"</p>",
+                #meno + "<br>" + predmet_odosielatela + "<br>" + sprava
+            #)    
             uspech = send_mail (predmet, 
                                form.cleaned_data['subject'], 
                                form.cleaned_data['sender_email'], 
@@ -101,7 +104,7 @@ def send_email(request):
                                )
             if uspech:
                 messages.success(request, "Email bol úspešne odoslaný!")
-                return redirect('success_view')
+                #return redirect('success_view')
             else:
                 messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
     else:

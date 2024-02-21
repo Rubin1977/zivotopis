@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.utils import timezone, #format_html #formátuje hlavičku
+from django.utils import timezone #format_html #formátuje hlavičku
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -77,6 +77,9 @@ def post_remove(request, pk):
 def success_view(request):
     return render(request, 'zivotopis/success.html')
 
+def unsuccess_view(request):
+    return render(request, 'zivotopis/unsuccess.html')
+
 def send_email(request):
     if request.method == 'POST':
         form = EmailForm(request.POST)
@@ -101,8 +104,8 @@ def send_email(request):
                                html_message=meno + hlavicka + predmet_odosielatela + sprava
                                )
             if uspech:
-                messages.success(request, "Email bol úspešne odoslaný!")
-                #return redirect('success_view')
+                # nefunguje: messages.success(request, "Email bol úspešne odoslaný!")
+                return redirect('success_view')
             else:
                 messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
     else:

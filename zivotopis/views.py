@@ -63,16 +63,6 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-#def send_email(request):
-#    if request.method == "POST":
-#        form = EmailForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            messages.success(request, "Email bol úspešne odoslaný!")
-#            return redirect('success_view') 
-#    else:
-#        form = EmailForm()
-#    return render(request, 'registration/send_email.html', {'form': form})
 
 def success_view(request):
     return render(request, 'zivotopis/success.html')
@@ -104,11 +94,9 @@ def send_email(request):
                                html_message=meno + hlavicka + predmet_odosielatela + sprava
                                )
             if uspech:
-                # nefunguje: messages.success(request, "Email bol úspešne odoslaný!")
                 return redirect('success_view')
         else:
-            return redirect('unsuccess_view')
-            #messages.error(request, 'Email se nepodařilo odeslat. Zkontrolujte adresu.') 
+            return redirect('unsuccess_view') 
     else:
         form = EmailForm()    
     return render(request, 'registration/send_email.html', {'form': form})

@@ -2,11 +2,11 @@
     
 {% block content %}
   <h1>Email se nepodarilo odoslať. Skontrolujte adresu.</h1>
-  <button id="backButton">Návrat späť</button>
+  <button id="backButton">Návrat do kontaktného formulára</button>
 
   <script>
     document.getElementById("backButton").addEventListener("click", function() {
-      window.location.href = "{% url 'post_list' %}";
+      window.location.href = "{% url 'send_email' %}";
     });
   </script>
 {% endblock %}

@@ -23,6 +23,9 @@
         {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
     </article>
     <div class="gallery">
         <img src="{% static 'css/Zima_na_Kamziku (1).jpg' %}" alt="Zima_na_Kamziku">

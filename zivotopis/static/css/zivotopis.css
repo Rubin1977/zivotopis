@@ -109,6 +109,15 @@ a {
     /* Automatická výška */
 }
 
+.gallery post img {
+    margin: 15px;
+    /* Medzera medzi obrázkami */
+    width: 100%;
+    /* Šírka obrázkov */
+    height: auto;
+    /* Automatická výška */
+}
+
 .name {
     display: flex;
     align-content: stretch;

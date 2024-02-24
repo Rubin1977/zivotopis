@@ -109,13 +109,16 @@ a {
     /* Automatická výška */
 }
 
-.gallery post img {
-    margin: 15px;
-    /* Medzera medzi obrázkami */
-    width: 100%;
-    /* Šírka obrázkov */
+.post-images {
+    display: flex;
+    justify-content: center;
+}
+
+.post-image {
+    max-width: 100%;
     height: auto;
-    /* Automatická výška */
+    margin-bottom: 10px;
+    /* prispôsobte podľa potreby */
 }
 
 .name {

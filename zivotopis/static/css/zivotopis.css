@@ -94,6 +94,20 @@ a {
     font-size: 20px
 }
 
+/* Štýly pre obrázky vo vnútri postu */
+.post-images {
+    display: flex;
+    justify-content: center;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    /* prispôsobte podľa potreby */
+}
+
+/* Štýly pre obrázky v galerii */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -107,18 +121,6 @@ a {
     /* Šírka obrázkov */
     height: auto;
     /* Automatická výška */
-}
-
-.post-images {
-    display: flex;
-    justify-content: center;
-}
-
-.post-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    /* prispôsobte podľa potreby */
 }
 
 .name {

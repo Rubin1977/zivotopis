@@ -101,7 +101,7 @@ a {
 }
 
 .post-image {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     margin-bottom: 10px;
     /* prispôsobte podľa potreby */
@@ -117,7 +117,7 @@ a {
 .gallery img {
     margin: 15px;
     /* Medzera medzi obrázkami */
-    width: 100%;
+    width: 80%;
     /* Šírka obrázkov */
     height: auto;
     /* Automatická výška */

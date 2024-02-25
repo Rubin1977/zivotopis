@@ -16,6 +16,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Image(models.Model):
+    post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/')
     
 #class Image(models.Model):
 #    image = models.ImageField(upload_to='images/', null=True, blank=True)
@@ -33,7 +37,4 @@ class Email(models.Model):
     def __str__(self):
         return self.subject
 
-#class Image(models.Model):
-    #post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
-   #image = models.ImageField(upload_to='media/')
 # Create your models here.

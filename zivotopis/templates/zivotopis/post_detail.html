@@ -19,21 +19,15 @@
             </time>
         {% else %}
             <a class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Post publish" href="{% url 'post_publish' pk=post.pk %}">
-            {% include './icons/plus-circle.svg' %}</a>
+            Publish</a>
         {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
         <div class="post-images">
-        {% if post.image %}
-            <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
+            {% if post.image %}
+                <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% endif %}
         </div>
     </article>
-    <div class="gallery">
-        <img src="{% static 'css/Zima_na_Kamziku (1).jpg' %}" alt="Zima_na_Kamziku">
-        <img src="{% static 'css/Zima_na_Kamziku (2).jpg' %}" alt="Zima_na_Kamziku">
-        <img src="{% static 'css/Zima_na_Kamziku (3).jpg' %}" alt="Zima_na_Kamziku">
-        <!-- Pokračujte pridávaním ďalších obrázkov -->
-    </div>
     <div style="padding-bottom: 20px;"></div>
 {% endblock %}

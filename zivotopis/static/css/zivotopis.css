@@ -140,7 +140,7 @@ a {
     background-color: #9bd4ed;
     text-decoration: none;
     border: solid green 4px;
-
+    padding: 5px;
 
 }
 
@@ -150,17 +150,16 @@ a {
 
 
 .btn-primary {
-    color: #dedee9;
     float: right;
-    border-color: #db590e;
-    margin: 0 30px 0 0;
+    border-color: #813509;
+    margin: 0 30px 0;
 }
 
 .btn-secondary,
 .btn-secondary:visited {
     color: #dedee9;
-    background: #033166;
-    border-color: #db590e;
+    background: #dfce72;
+    border-color: #0c0e95;
     float: right;
 }
 

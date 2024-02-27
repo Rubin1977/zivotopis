@@ -17,9 +17,8 @@
                 {% if user.is_authenticated %}
                     <div class="top-menu d-flex align-items-center justify-content-between">
                         <p class="mb-3"> 
-                            Prihlásený užívateľ: <br>
-                            {{ user.username }} 
-                         </p>
+                            Prihlásený: {{ user.username }} 
+                        </p>
                         <div class="d-flex align-items-center">
                             <a class="btn btn-primary" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</a>
                             <div class="text-center">

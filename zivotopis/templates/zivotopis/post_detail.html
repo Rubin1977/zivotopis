@@ -24,6 +24,9 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
         <div class="post-images">
+            {% if post.image %}
+                <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% endif %}
             {% if post.images.all %}
                 {% for image in post.images.all %}
                     <img class="post-image" src="{{ image.image.url }}" alt="{{ post.title }}">

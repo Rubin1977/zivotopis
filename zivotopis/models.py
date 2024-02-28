@@ -8,7 +8,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    images = models.ImageField(upload_to='media/', null=True, blank=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -19,7 +19,7 @@ class Post(models.Model):
 
 class Image(models.Model):
     post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/')
+    image = models.ImageField(upload_to='media/', null=True, blank=True)
     
 #class Image(models.Model):
 #    image = models.ImageField(upload_to='images/', null=True, blank=True)

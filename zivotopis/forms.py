@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Image
 from .models import Email
 #from captcha.fields import ReCaptchaField
 #from captcha.widgets import ReCaptchaV2Checkbox
@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text', 'image')
+        fields = ('title', 'text', 'images')
         
 
 class EmailForm(forms.ModelForm):

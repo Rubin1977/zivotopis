@@ -8,7 +8,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    images = models.ManyToManyField('Image', null=True, blank=True)
+    images = models.ManyToManyField('Image', related_name='posts', blank=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -18,7 +18,7 @@ class Post(models.Model):
         return self.title
 
 class Image(models.Model):
-    #post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='post_images', on_delete=models.CASCADE, default=None)
     image = models.ImageField(upload_to='media/', null=True, blank=True)
     
 #class Image(models.Model):

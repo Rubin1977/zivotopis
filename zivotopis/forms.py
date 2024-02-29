@@ -10,6 +10,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'text', 'images')
         
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image']
 
 class EmailForm(forms.ModelForm):
     class Meta:

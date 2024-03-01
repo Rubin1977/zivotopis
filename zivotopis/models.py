@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone 
 
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -16,16 +17,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
+    
 class Image(models.Model):
     post = models.ForeignKey(Post, related_name='post_images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='media/', null=True, blank=True)
+
     
-#class Image(models.Model):
-#    image = models.ImageField(upload_to='images/', null=True, blank=True)
-#
-#    def __str__(self):
-#        return self.image.url
 
 class Email(models.Model):
     sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné)")

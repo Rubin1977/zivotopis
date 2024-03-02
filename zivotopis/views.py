@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone #format_html #formátuje hlavičku
 from .models import Post, Image
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, ImageForm
 from django.contrib.auth.decorators import login_required
 from .forms import EmailForm
 from django.contrib import messages

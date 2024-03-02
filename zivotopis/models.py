@@ -22,7 +22,8 @@ class Image(models.Model):
     post = models.ForeignKey(Post, related_name='post_images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='media/', null=True, blank=True)
 
-    
+    def __str__(self):
+        return f"Image for Post '{self.post.title}'"
 
 class Email(models.Model):
     sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné)")

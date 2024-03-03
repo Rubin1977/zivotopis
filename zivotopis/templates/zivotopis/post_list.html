@@ -11,7 +11,9 @@
             <!-- Zobrazenie obrázkov pre daný príspevok -->
             {% if images_dict|length %}
                 {% for image in images_dict[post.pk] %}
-                    <img src="{{ image.image.url }}" alt="{{ post.title }}">
+                    {% with images=images_dict|get:post.pk %}
+                        <img src="{{ image.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
                 {% endfor %}
             {% endif %}
             <a href="{% url 'post_detail' pk=post.pk %}">Detail</a>

@@ -102,17 +102,18 @@ a {
 }
 
 .post-image {
-    width: 200px; /* definujte požadovanú šírku */
+    width: max-content; /* definujte požadovanú šírku */
     height: 200px; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
     object-fit: cover; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
+    border: 2px solid #6b3838
 }
 
 /* Štýly pre obrázky v galerii */
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: flex-start;
 }
 
 .gallery img {

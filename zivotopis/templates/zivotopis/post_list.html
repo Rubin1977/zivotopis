@@ -9,13 +9,13 @@
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
             <!-- Zobrazenie obrázkov pre daný príspevok -->
-            {% if images_dict|length %}
-                {% for image in images_dict[post.pk] %}
-                    {% with images=images_dict|get:post.pk %}
+            {% with images=images_dict|get:post.pk %}
+                {% if images %}
+                    {% for image in images %}
                         <img src="{{ image.image.url }}" alt="{{ post.title }}">
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <a href="{% url 'post_detail' pk=post.pk %}">Detail</a>
         </article>
     {% endfor %}

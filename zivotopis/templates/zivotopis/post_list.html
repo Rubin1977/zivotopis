@@ -10,8 +10,8 @@
             <p>{{ post.text|linebreaksbr }}</p>
             <!-- Zobrazenie obrázkov pre daný príspevok -->
             {% if images_dict|length %}
-                {% if images_dict|get:post.pk %}
-                    {% for image in images_dict|get:post.pk %}
+                {% if images_dict.post.pk %}
+                    {% for image in images_dict.post.pk %}
                         <img src="{{ image.image.url }}" alt="{{ post.title }}">
                     {% endfor %}
                 {% endif %}

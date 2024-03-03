@@ -97,7 +97,11 @@ a {
 /* Štýly pre obrázky vo vnútri postu */
 .post-images {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: flex-start;
 }
 
 .post-image {

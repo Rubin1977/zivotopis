@@ -8,11 +8,14 @@ from .forms import EmailForm
 from django.contrib import messages
 from django.core.mail import send_mail
 
-
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    images = Image.objects.filter(post=post)
-    return render(request, 'zivotopis/post_list.html', {'posts': posts, 'images': images})
+    # Získať zoznam obrázkov pre každý príspevok
+    images_dict = {}
+    for post in posts:
+        images = Image.objects.filter(post=post)
+        images_dict[post.pk] = images
+    return render(request, 'zivotopis/post_list.html', {'posts': posts, 'images_dict': images_dict})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)

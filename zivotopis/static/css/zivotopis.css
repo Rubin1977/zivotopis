@@ -98,17 +98,14 @@ a {
 .post-images {
     display: flex;
     justify-content: space-around;
-    flex-direction: column-reverse;
     flex-wrap: wrap;
-    align-content: space-between;
-    align-items: flex-start;
 }
 
 .post-image {
-    max-width: 50%;
-    height: auto;
-    margin-bottom: 10px;
-    /* prispôsobte podľa potreby */
+    width: 200px; /* definujte požadovanú šírku */
+    height: 200px; /* definujte požadovanú výšku */
+    margin: 10px; /* definujte okraje */
+    object-fit: cover; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
 }
 
 /* Štýly pre obrázky v galerii */

@@ -97,7 +97,7 @@ a {
 /* Štýly pre obrázky vo vnútri postu */
 .post-images {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 

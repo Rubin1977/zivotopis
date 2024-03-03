@@ -23,7 +23,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='media/', null=True, blank=True)
 
     def __str__(self):
-        return f"Obrázok pre: '{self.post.title}'"
+        return f"Obrázok pre post: {self.post.title}"
 
 class Email(models.Model):
     sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné)")

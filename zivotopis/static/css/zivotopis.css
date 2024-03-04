@@ -108,8 +108,16 @@ a {
     object-fit: cover; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;
     border-radius: 10px;
+    cursor: pointer;/* Zmení kurzor na ruku, aby naznačil, že obrázok je klikateľný */
 }
 
+.zoomed-in {
+    width: 500px;
+    /* Po kliknutí zväčšíme obrázok na 500px */
+    height: 500px;
+    transition: width 0.5s, height 0.5s;
+    /* Plynulý prechod veľkosti obrázka */
+}
 .name {
     display: flex;
     align-content: stretch;

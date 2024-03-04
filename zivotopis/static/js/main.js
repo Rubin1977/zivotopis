@@ -29,6 +29,6 @@ var images = document.querySelectorAll('.post-image');
   images.forEach(function(image) {
       image.addEventListener('click', function () {
           // Ak obrázok má triedu 'zoomed-in', odstráňme ju, inak ju pridajte
-          this.classList.toggle('zoomed-in');
+          this.classList.toggle('.zoomed-in');
       });
 });

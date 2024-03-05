@@ -51,7 +51,7 @@ main {
 }
 
 h1, h2, h3 {
-    color: #44651e;
+    color: #1a196b;
     /*font-family: 'Roboto Mono';*/
     font-stretch: normal;
     text-shadow: 0 0 3px #045970;
@@ -197,7 +197,7 @@ a {
 
 .post a,
 .post a:visited {
-    color: #7c064f;
+    color: #03460c;
     text-decoration: none;
 }
 

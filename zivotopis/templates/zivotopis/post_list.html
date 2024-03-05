@@ -7,7 +7,7 @@
                 {{ post.published_date }}
             </time>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|truncatechars:100 }}</p>
+            <p>{{ post.text|truncatechars:150 }}</p>
             <!-- Zobrazenie obrázkov pre daný príspevok -->
             {% if images_dict|length %}
                 {% if images_dict.post.pk %}
@@ -16,7 +16,7 @@
                     {% endfor %}
                 {% endif %}
             {% endif %}
-            <a href="{% url 'post_detail' pk=post.pk %}" style="text-align: right;">Detail</a>
+            <a href="{% url 'post_detail' pk=post.pk %}">Detail</a>
         </article>
     {% endfor %}
 {% endblock %}

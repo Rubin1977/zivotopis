@@ -58,10 +58,12 @@
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=BE&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" width="290" height="250" frameborder="1" style="border: 1px solid #10658E;border-radius: 8px"></iframe>
+                    <div class="col-md-6">
                         {% block content %}
                         {% endblock %}
+                    </div>
+                    <div class="col-md-6">
+                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=BE&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" width="290" height="250" frameborder="1" style="border: 1px solid #10658E;border-radius: 8px"></iframe>
                     </div>
                 </div>
             </div>

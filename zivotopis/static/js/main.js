@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // úvodný kód pre galériu
+document.addEventListener("DOMContentLoaded", function () {
 let slideIndex = 0;
 
 const showSlides = () => {
@@ -55,3 +56,4 @@ document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
 document.querySelector('.next').addEventListener('click', () => plusSlides(1));
 
 showSlides();
+});

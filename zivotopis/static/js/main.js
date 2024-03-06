@@ -34,3 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// úvodný kód pre galériu
+let slideIndex = 0;
+
+const showSlides = () => {
+    const slides = document.querySelectorAll('.slides img');
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[slideIndex].style.display = 'block';
+}
+
+const plusSlides = (n) => {
+    slideIndex += n;
+    showSlides();
+}
+
+document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
+document.querySelector('.next').addEventListener('click', () => plusSlides(1));
+
+showSlides();

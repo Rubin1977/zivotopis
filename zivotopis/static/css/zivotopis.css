@@ -102,10 +102,10 @@ a {
 }
 
 .post-image {
-    width: 200px; /* definujte požadovanú šírku */
+    width: 80%; /* definujte požadovanú šírku */
     height: 200px; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
-    object-fit: cover; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
+    object-fit: scale-down; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;
     border-radius: 10px;
     cursor: pointer;/* Zmení kurzor na ruku, aby naznačil, že obrázok je klikateľný */

@@ -115,7 +115,7 @@ a {
     width: 500px;
     /* Po kliknutí zväčšíme obrázok na 500px */
     height: 500px;
-    transition: width 1s, height 0.5s;
+    transition: width 0.5s, height 0.5s;
     /* Plynulý prechod veľkosti obrázka */
 }
 .name {

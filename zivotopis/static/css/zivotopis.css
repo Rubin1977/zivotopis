@@ -233,11 +233,14 @@ a {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .slides {
     display: flex;
     transition: transform 0.5s ease-out;
+    justify-content: center;
+    align-items: center;
 }
 
 .slides img {

@@ -240,7 +240,7 @@ a {
 .slides {
     display: flex;
     transition: transform 0.5s ease-out;
-    justify-content: center;
+    justify-content: normal;
     align-items: center;
     max-height: 400px;
 }

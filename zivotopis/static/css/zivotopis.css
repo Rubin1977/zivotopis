@@ -242,7 +242,7 @@ a {
     transition: transform 0.5s ease-out;
     justify-content: normal;
     align-items: center;
-    max-height: 400px;
+    max-height: fit-content;
 }
 
 .slides img {

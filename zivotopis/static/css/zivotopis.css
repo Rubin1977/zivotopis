@@ -250,7 +250,7 @@ a {
 }
 
 .controls {
-    position: absolute;
+    position: unset;
     bottom: 10px;
     left: 0;
     width: 100%;
@@ -258,8 +258,8 @@ a {
 }
 
 .controls button {
-    background-color: transparent;
-    border: none;
+    background-color: aqua;
+    border: chocolate;
     font-size: 24px;
     cursor: pointer;
 }

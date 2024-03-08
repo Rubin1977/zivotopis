@@ -139,6 +139,7 @@ a {
 .post-image:hover::before {
     opacity: 1;
     /* Zobraziť nápis po najazdení myšou */
+}
 
 .zoomed-in {
     width: 500px;

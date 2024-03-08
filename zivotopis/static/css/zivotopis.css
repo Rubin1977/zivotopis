@@ -111,6 +111,35 @@ a {
     cursor: pointer;/* Zmení kurzor na ruku, aby naznačil, že obrázok je klikateľný */
 }
 
+.post-image::before {
+    content: "Kliknutím zväčšite";
+    /* Textový nápis */
+    position: absolute;
+    /* Nastaviť pozíciu na absolutnú vzhľadom k .post-image */
+    bottom: 10px;
+    /* Vzdialenosť od spodnej hrany obrázka */
+    left: 50%;
+    /* Zarovnanie vodorovne na stred */
+    transform: translateX(-50%);
+    /* Presunutie o polovicu šírky obrázka doľava */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Farba pozadia s priehľadnosťou */
+    color: white;
+    /* Farba textu */
+    padding: 5px 10px;
+    /* Odsadenie textu */
+    border-radius: 5px;
+    /* Zaoblené rohy */
+    opacity: 0;
+    /* Pôvodne neviditeľné */
+    transition: opacity 0.3s ease;
+    /* Plynulý prechod pri zobrazení */
+}
+
+.post-image:hover::before {
+    opacity: 1;
+    /* Zobraziť nápis po najazdení myšou */
+
 .zoomed-in {
     width: 500px;
     /* Po kliknutí zväčšíme obrázok na 500px */

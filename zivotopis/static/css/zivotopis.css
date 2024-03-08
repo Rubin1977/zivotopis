@@ -246,6 +246,10 @@ a {
 
 .slides img {
     max-width: 100%;
+    border: 2px solid #ccc;
+        /* farba a šírka orámovania */
+    border-radius: 10px;
+        /* zaoblenie okrajov */
    
 }
 

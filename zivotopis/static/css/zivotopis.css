@@ -134,6 +134,7 @@ a {
     /* Pôvodne neviditeľné */
     transition: opacity 0.3s ease;
     /* Plynulý prechod pri zobrazení */
+    z-index: 1
 }
 
 .post-image:hover::before {

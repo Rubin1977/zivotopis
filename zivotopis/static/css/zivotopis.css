@@ -102,13 +102,21 @@ a {
 }
 
 .post-image {
+    position: relative;
     width: 80%; /* definujte požadovanú šírku */
     height: 200px; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
     object-fit: scale-down; /* zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;
     border-radius: 10px;
+    overflow: hidden;
     cursor: pointer;/* Zmení kurzor na ruku, aby naznačil, že obrázok je klikateľný */
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post-image::before {
@@ -116,8 +124,8 @@ a {
     /* Textový nápis */
     position: absolute;
     /* Nastaviť pozíciu na absolutnú vzhľadom k .post-image */
-    bottom: 10px;
-    /* Vzdialenosť od spodnej hrany obrázka */
+    top: 0;
+    /* Zobrazí text nad obrázkom */
     left: 50%;
     /* Zarovnanie vodorovne na stred */
     transform: translateX(-50%);

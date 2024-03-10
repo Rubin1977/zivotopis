@@ -35,6 +35,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Funkcia na zobrazenie modálneho okna s obrázkom
+function showModal(imageSrc) {
+    // Odkaz na modálne okno
+    var modal = document.getElementById("zoomed-in-modal");
+    // Odkaz na obrázok v modálnom okne
+    var zoomedImage = document.getElementById("zoomed-in-image");
+    // Nastaviť obrázok v modálnom okne
+    zoomedImage.src = imageSrc;
+    // Zobraziť modálne okno
+    modal.style.display = "block";
+}
+
+// Udalosť na kliknutie mimo obrázka (skryje modálne okno)
+window.onclick = function (event) {
+    var modal = document.getElementById("zoomed-in-modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 // úvodný kód pre galériu
 document.addEventListener("DOMContentLoaded", function () {
 let slideIndex = 0;

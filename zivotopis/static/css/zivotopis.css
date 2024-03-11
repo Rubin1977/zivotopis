@@ -33,6 +33,17 @@ header {
     /* Zabezpečuje, aby kontajner zaberával 100% výšky rodičovského elementu (napr. tela stránky) */
 }
 
+/* Media query pre zariadenia s maximálnou šírkou obrazovky 768px (napr. tablety a mobilné zariadenia) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Zmení flex-direction na column pre vertikálny layout */
+        justify-content: center;
+        /* Zarovná obsah vertikálne do stredu */
+        height: auto;
+        /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah */
+    }
+}
 .row {
     width: 100%;
     /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */

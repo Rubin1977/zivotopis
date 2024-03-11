@@ -170,11 +170,10 @@ a {
     display: flex;
     justify-content: space-evenly;
     color: #3d3808;
-    float: right;
-    background-color: #b2c6cf;;
+    background-color: #d4dcdf;
     text-decoration: none;
-    border: solid green 4px;
-    border-radius: 5px;
+    border: solid rgb(8, 53, 8) 4px;
+    border-radius: 7px;
     padding: 5px;
 
 }

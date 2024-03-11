@@ -84,6 +84,7 @@ footer p {
 
 .facebook-link {
     margin-left: 20px;
+    border-radius: 5px;
 }
 
 img {
@@ -283,8 +284,8 @@ a {
 }
 
 .controls {
-    position: unset;
-    bottom: 10px;
+    position: relative;
+    margin: 10px 0;
     left: 0;
     width: 100%;
     text-align: center;
@@ -292,9 +293,10 @@ a {
 
 .controls button {
     background-color: aqua;
-    border: chocolate;
+    border: solid 2px rgb(148, 72, 18);;
     font-size: 24px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .prev {

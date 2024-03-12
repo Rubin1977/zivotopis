@@ -121,7 +121,7 @@ a {
     width: 80%; /* definujte požadovanú šírku */
     height: 200px; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
-    /* object-fit: scale-down; zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
+    object-fit: scale-down; /*zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;
     border-radius: 10px;
     overflow: hidden;
@@ -134,36 +134,36 @@ a {
     object-fit: cover;
 }
 
-.post-image::before {
-    content: "Kliknutím zväčšite";
-    /* Textový nápis */
-    position: absolute;
-    /* Nastaviť pozíciu na absolutnú vzhľadom k .post-image */
-    top: 0;
-    /* Zobrazí text nad obrázkom */
-    left: 50%;
-    /* Zarovnanie vodorovne na stred */
-    transform: translateX(-50%);
-    /* Presunutie o polovicu šírky obrázka doľava */
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Farba pozadia s priehľadnosťou */
-    color: white;
-    /* Farba textu */
-    padding: 5px 10px;
-    /* Odsadenie textu */
-    border-radius: 5px;
-    /* Zaoblené rohy */
-    opacity: 0;
-    /* Pôvodne neviditeľné */
-    transition: opacity 0.3s ease;
-    /* Plynulý prechod pri zobrazení */
-    z-index: 1
-}
-
-.post-image:hover::before {
-    opacity: 1;
-    /* Zobraziť nápis po najazdení myšou */
-}
+/*.post-image::before {
+/*    content: "Kliknutím zväčšite";
+/*    /* Textový nápis */
+/*    position: absolute;
+/*    /* Nastaviť pozíciu na absolutnú vzhľadom k .post-image */
+/*    top: 0;
+/*    /* Zobrazí text nad obrázkom */
+/*    left: 50%;
+/*    /* Zarovnanie vodorovne na stred */
+/*    transform: translateX(-50%);
+/*    /* Presunutie o polovicu šírky obrázka doľava */
+/*    background-color: rgba(0, 0, 0, 0.7);
+/*    /* Farba pozadia s priehľadnosťou */
+/*    color: white;
+/*    /* Farba textu */
+/*    padding: 5px 10px;
+/*    /* Odsadenie textu */
+/*    border-radius: 5px;
+/*    /* Zaoblené rohy */
+/*    opacity: 0;
+/*    /* Pôvodne neviditeľné */
+/*    transition: opacity 0.3s ease;
+/*    /* Plynulý prechod pri zobrazení */
+/*    z-index: 1
+/*}
+/*
+/*.post-image:hover::before {
+/*    opacity: 1;
+/*    /* Zobraziť nápis po najazdení myšou */
+/*}*/
 
 .zoomed-in {
     width: 500px;

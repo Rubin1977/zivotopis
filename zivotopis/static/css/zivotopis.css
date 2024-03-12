@@ -119,7 +119,7 @@ a {
 .post-image {
     position: relative;
     width: 80%; /* definujte požadovanú šírku */
-    height: 200px; /* definujte požadovanú výšku */
+    height: unset; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
     object-fit: scale-down; /*zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;

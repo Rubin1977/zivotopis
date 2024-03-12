@@ -34,25 +34,25 @@ header {
 }
 
 /* Media query pre zariadenia s maximálnou šírkou obrazovky 768px (napr. tablety a mobilné zariadenia) */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
     .container {
         flex-direction: column;
-        /* Zmení flex-direction na column pre vertikálny layout */
+        /* Zmení flex-direction na column pre vertikálny layout 
         justify-content: center;
-        /* Zarovná obsah vertikálne do stredu */
+        /* Zarovná obsah vertikálne do stredu *
         height: auto;
-        /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah */
+        /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah 
     }
-}
+}*/
 .row {
     width: 100%;
     /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
 }
 
-/*.col {
-    text-align: center;
+.col {
+    width: 100%;
     /* Zabezpečuje zacentrovanie obsahu v stĺpci */
-
+}
 
 main {
     flex: 1;

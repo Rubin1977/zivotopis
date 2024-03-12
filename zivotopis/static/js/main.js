@@ -60,7 +60,7 @@ function showModal(imageSrc) {
 // Udalosť na kliknutie mimo obrázka (skryje modálne okno)
 window.onclick = function (event) {
     var modal = document.getElementById("zoomed-in-modal");
-        if (event.target == modal) {
+        if (event.target != modal) {
             modal.style.display = "none";
     }
 }

@@ -111,9 +111,9 @@ a {
 
 /* Štýly pre obrázky vo vnútri postu */
 .post-images {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    display: contents;
+    /* justify-content: flex-start;
+    flex-wrap: wrap; */
 }
 
 .post-image {
@@ -121,7 +121,7 @@ a {
     width: 80%; /* definujte požadovanú šírku */
     height: unset; /* definujte požadovanú výšku */
     margin: 10px; /* definujte okraje */
-    object-fit: scale-down; /*zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
+    /* object-fit: scale-down; zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
     border: 2px solid #6b3838;
     border-radius: 10px;
     overflow: hidden;

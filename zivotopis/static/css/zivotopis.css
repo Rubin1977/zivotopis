@@ -174,7 +174,7 @@ a {
 }
 
 /* Štýly pre zatvárací tlačidlo */
-.close {
+#close {
     position: absolute;
     top: 15px;
     right: 35px;

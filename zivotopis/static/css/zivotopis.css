@@ -134,37 +134,6 @@ a {
     object-fit: cover;
 }
 
-/*.post-image::before {
-/*    content: "Kliknutím zväčšite";
-/*    /* Textový nápis */
-/*    position: absolute;
-/*    /* Nastaviť pozíciu na absolutnú vzhľadom k .post-image */
-/*    top: 0;
-/*    /* Zobrazí text nad obrázkom */
-/*    left: 50%;
-/*    /* Zarovnanie vodorovne na stred */
-/*    transform: translateX(-50%);
-/*    /* Presunutie o polovicu šírky obrázka doľava */
-/*    background-color: rgba(0, 0, 0, 0.7);
-/*    /* Farba pozadia s priehľadnosťou */
-/*    color: white;
-/*    /* Farba textu */
-/*    padding: 5px 10px;
-/*    /* Odsadenie textu */
-/*    border-radius: 5px;
-/*    /* Zaoblené rohy */
-/*    opacity: 0;
-/*    /* Pôvodne neviditeľné */
-/*    transition: opacity 0.3s ease;
-/*    /* Plynulý prechod pri zobrazení */
-/*    z-index: 1
-/*}
-/*
-/*.post-image:hover::before {
-/*    opacity: 1;
-/*    /* Zobraziť nápis po najazdení myšou */
-/*}*/
-
 .zoomed-in {
     width: 500px;
     /* Po kliknutí zväčšíme obrázok na 500px */
@@ -172,13 +141,58 @@ a {
     transition: width 0.5s, height 0.5s;
     /* Plynulý prechod veľkosti obrázka */
 }
-.name {
+/* Skrytie modálneho okna predtým, než je aktivované */
+#zoomed-in-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    /* Zabezpečuje, aby bolo modálne okno nad ostatnými elementmi */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    /* Prehľadné pozadie */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Prehľadné pozadie s alfa hodnotou */
+}
+
+/* Štýly pre modálne okno s obrázkom */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80%;
+    object-fit: contain;
+    /* Zabezpečuje, aby sa obrázok zmestil do modálneho okna */
+}
+
+/* Štýly pre zatvárací tlačidlo */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #bbb;
+    /* Farebná zmena pri najazdení myšou */
+}
+
+/*.name {
     display: flex;
     align-content: stretch;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-}
+} */
 
 .top-menu,
 .top-menu:visited {

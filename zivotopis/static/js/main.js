@@ -35,6 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    var images = document.querySelectorAll('.post-image');
+    // Pridať onClick udalosť každému obrázku
+    images.forEach(function (image) {
+        image.addEventListener('click', function () {
+            // Ak obrázok je kliknutý, získať jeho src atribút a zobraziť modálne okno s týmto obrázkom
+            showModal(this.src);
+        });
+    });
+});
+
 //Funkcia na zobrazenie modálneho okna s obrázkom
 function showModal(imageSrc) {
     //Odkaz na modálne okno
@@ -44,9 +55,8 @@ function showModal(imageSrc) {
     // Nastaviť obrázok v modálnom okne
     zoomedImage.src = imageSrc;
     // Zobraziť modálne okno
-    modal.style.display = "block";
+    modal.style.display = "block"
 }
-
 // Udalosť na kliknutie mimo obrázka (skryje modálne okno)
 window.onclick = function (event) {
     var modal = document.getElementById("zoomed-in-modal");

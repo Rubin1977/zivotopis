@@ -161,19 +161,19 @@ a {
 .modal-content {
     margin: 10%;
     display: block;
-    width: auto;
+    /*width: auto;
     /* Zmena šírky na auto */
     max-width: 80%;
     /* Maximálna šírka */
-    height: auto;
-    /* Zmena výšky na auto */
+    /*height: auto;
+    /* Zmena výšky na auto 
     max-height: 80%;
     /* Maximálna výška */    
     object-fit: contain;
     /* Zabezpečuje, aby sa obrázok zmestil do modálneho okna */
 }
 
-/* Štýly pre zatvárací tlačidlo */
+/* Štýly pre zatváracie tlačidlo */
 #close {
     position: absolute;
     top: 15px;
@@ -185,7 +185,7 @@ a {
     cursor: pointer;
 }
 
-.close:hover {
+#close:hover {
     color: #bb1414;
     /* Farebná zmena pri najazdení myšou */
 }

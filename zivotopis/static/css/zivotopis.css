@@ -159,7 +159,7 @@ a {
 
 /* Štýly pre modálne okno s obrázkom */
 .modal-content {
-    margin: auto;
+    margin: 10%;
     display: block;
     width: auto;
     /* Zmena šírky na auto */

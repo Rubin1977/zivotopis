@@ -134,13 +134,14 @@ a {
     object-fit: cover;
 }
 
-.zoomed-in {
+/*.zoomed-in {
     width: 500px;
     /* Po kliknutí zväčšíme obrázok na 500px */
-    height: 500px;
+    /*height: 500px;
     transition: width 0.5s, height 0.5s;
     /* Plynulý prechod veľkosti obrázka */
-}
+/*}
+
 /* Skrytie modálneho okna predtým, než je aktivované */
 #zoomed-in-modal {
     display: none;
@@ -162,9 +163,14 @@ a {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: auto;
+    /* Zmena šírky na auto */
+    max-width: 80%;
+    /* Maximálna šírka */
+    height: auto;
+    /* Zmena výšky na auto */
     max-height: 80%;
+    /* Maximálna výška */    
     object-fit: contain;
     /* Zabezpečuje, aby sa obrázok zmestil do modálneho okna */
 }

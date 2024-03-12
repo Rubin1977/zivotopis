@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // Kódový blok 2: Zväčšenie obrázkov po kliknutí
 
 // Získať všetky obrázky s triedou 'post-image'
-document.addEventListener("DOMContentLoaded", function () {
-    var images = document.querySelectorAll('.post-image');
+//document.addEventListener("DOMContentLoaded", function () {
+    //var images = document.querySelectorAll('.post-image');
     // Pridáme onClick udalosť každému obrázku
-    images.forEach(function (image) {
-        image.addEventListener('click', function () {
+    //images.forEach(function (image) {
+        //image.addEventListener('click', function () {
             // Ak obrázok má triedu 'zoomed-in', odstráňme ju, inak ju pridajte
-            this.classList.toggle('zoomed-in');
-        });
-    });
-});
+            //this.classList.toggle('zoomed-in');
+        //});
+    //});
+//});
 
 document.addEventListener("DOMContentLoaded", function () {
     var images = document.querySelectorAll('.post-image');

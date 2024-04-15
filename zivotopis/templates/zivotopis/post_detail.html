@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block content %}
-    <button id="myButton">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
+    <button id="myButton" class="mt-2">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
     <p id="myText"></p>
     <article class="post">
         <aside class="actions">
@@ -33,7 +33,9 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <a class="btn btn-primary" href="http://rastislavruzbacky.eu.pythonanywhere.com/" data-toggle="tooltip" data-placement="right" title="Návrat späť">Home</a>
+        <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Návrat späť">
+            {% include './icons/house-fill.svg' %} Home
+        </a>
     </article>
     <div style="padding-bottom: 20px;"></div>
     <!-- Modálne okno pre zväčšený obrázok -->

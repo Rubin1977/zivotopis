@@ -55,14 +55,11 @@
             </div>
         </header>
         <main>
-            <div class="container">
+            <div class="container text-center">
                 <div class="row">
                     <div class="col-md-5">
                         {% block content %}
                         {% endblock %}
-                    </div>
-                    <div class="col-md-5">
-                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" width="50%" height="270" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; margin-top: 20px"  class="float-end"></iframe>
                     </div>
                     <div class="col-md-5">
                         <div class="gallery">
@@ -77,6 +74,9 @@
                             <button class="next">&#10095;</button>
                         </div>
                         </div>
+                    </div>
+                    <div class="col-md-5">
+                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" width="50%" height="270" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; margin-top: 20px"  class="float-end"></iframe>
                     </div>
                 </div>
             </div>

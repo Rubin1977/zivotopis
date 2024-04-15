@@ -68,7 +68,6 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-
 def success_view(request):
     return render(request, 'zivotopis/success.html')
 

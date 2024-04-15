@@ -55,13 +55,13 @@
             </div>
         </header>
         <main>
-            <div class="container text-center">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col">
                         {% block content %}
                         {% endblock %}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col">
                         <div class="gallery">
                             <div class="slides">
                               <img src="{% static 'images/Zima_na_Kamziku (1).jpg' %}" alt="Photo 1">
@@ -75,7 +75,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col">
                         <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" width="50%" height="270" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; margin-top: 20px"  class="float-end"></iframe>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <p class="text-center">
                     <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
                     &copy; RR 2023 pre: 
-                    <a href="http://rastislavruzbacky.eu.pythonanywhere.com/"> Môj web</a>
+                    <a href="/"> Môj web</a>
                     <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                     <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
                         <img src="{% static 'css/facebook_ikona.jpg' %}" alt="Facebook" width="30" height="30">

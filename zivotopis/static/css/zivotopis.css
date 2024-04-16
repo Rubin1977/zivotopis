@@ -50,7 +50,7 @@ header {
 }
 
 .col {
-    width: 100%;
+    width: 75%;
     /* Zabezpečuje zacentrovanie obsahu v stĺpci */
 }
 
@@ -71,7 +71,7 @@ article {
     background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%,
                 rgb(169 168 108) 100%);
     padding: 20px;
-    width: 70%;
+    width: 75%;
 }
 
 p {
@@ -265,7 +265,7 @@ a {
 
 .post {
     color: #260544d5;
-    margin: 20px 20px 40px 20px;
+    margin: 20px 20px 40px 0;
     border-radius: 10px;
 }
 

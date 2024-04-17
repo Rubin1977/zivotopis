@@ -45,12 +45,12 @@ header {
     }
 }*/
 .row {
-    width: 100%;
+    width: 90%;
     /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
 }
 
 .col {
-    width: 75%;
+    width: 80%;
     /* Zabezpečuje zacentrovanie obsahu v stĺpci */
 }
 
@@ -290,7 +290,7 @@ a {
 /* stýly pre galériu */
 .gallery {
     position: relative;
-    width: 100%;
+    width: 90%;
     max-height: fit-content;
     overflow: hidden;
 }

@@ -88,15 +88,21 @@
         </main>
         <footer>
             <div id="footer">
-                <p class="text-center">
-                    <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
-                    &copy; RR 2023 pre: 
-                    <a href="/"> Môj web</a>
-                    <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
-                    <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
-                        <img src="{% static 'css/facebook_ikona.jpg' %}" alt="Facebook" width="30" height="30">
-                    </a>
-                </p>  
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
+                            &copy; RR 2023 pre: 
+                            <a href="/"> Môj web</a>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
+                            <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
+                                <img src="{% static 'css/facebook_ikona.jpg' %}" alt="Facebook" width="30" height="30">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
         <script src="{% static 'js/main.js' %}"></script>

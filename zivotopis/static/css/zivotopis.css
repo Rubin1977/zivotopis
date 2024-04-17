@@ -290,7 +290,6 @@ a {
 /* stýly pre galériu */
 .gallery {
     position: relative;
-    width: 90%;
     max-height: fit-content;
     overflow: hidden;
 }
@@ -321,11 +320,13 @@ a {
 }
 
 .controls button {
-    background-color: aqua;
-    border: solid 2px rgb(148, 72, 18);;
-    font-size: 24px;
+    background-color: rgb(38, 0, 255);
+    border: solid 2px rgb(18, 63, 148);
+    font-size: 20px;
     cursor: pointer;
+    color: #fff;
     border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .prev {

@@ -21,6 +21,49 @@ header {
     flex-direction: column;
 }
 
+headerr {
+    height: 80px;
+    width: 100%;
+    background: grey;
+    position: relative;
+    padding: 0 8%;
+    border-bottom: 3px solid #00f1ff;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    background: #ff3d00;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
 * {
     /*border: 1px solid black;*/
     box-sizing: border-box;
@@ -29,7 +72,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    /*height: 100%;
     /* Zabezpečuje, aby kontajner zaberával 100% výšky rodičovského elementu (napr. tela stránky) */
 }
 
@@ -45,7 +88,7 @@ header {
     }
 }*/
 .row {
-    width: 90%;
+    width: 100%;
     /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
 }
 
@@ -60,10 +103,10 @@ main {
 }
 
 h1, h2, h3 {
-    color: #1a196b;
+    color: #16148a;
     /*font-family: 'Roboto Mono';*/
     font-stretch: normal;
-    text-shadow: 0 0 3px #045970;
+    /*text-shadow: 0 0 3px #045970;*/
 }
 
 article {
@@ -78,20 +121,17 @@ p {
     margin-top: auto;
 }
 
-#footer {
+footer {
     background: linear-gradient(180deg, rgb(51 125 0),
             rgb(195 195 107),
             rgb(125 125 120 / 58%));
     border-top: 3px solid red;
     padding: 2%;
-    position: sticky;
+    position: sti;
+    bottom: 0;
     width: 100%;
 }
 
-footer p {
-    margin: 0;
-
-}
 
 .facebook-link {
     margin-left: 20px;

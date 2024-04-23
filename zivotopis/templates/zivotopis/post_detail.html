@@ -11,15 +11,20 @@
         <link href="//fonts.googleapis.com/css?family=Roboto Mono&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <header>
-            <div class="container">
-                <div class="name">
-                    <a href="/"> 
-                        <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="30" height="30">Rastislav Ružbacký</h1>
-                    </a>
-                </div>
+        <headerr>
+            <a href="/"> 
+                <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="30" height="30">Rastislav Ružbacký</h1>
+            </a>
+            <div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Domov</a></li>
+                        <li><a href="">Životopis</a></li>
+                        <li><a href="{% url 'send_email' %}">Kontaktný formulár</a></li>
+                    </ul>
+                </nav>
             </div>
-        </header>
+        </headerr>
         <main>
             <button id="myButton" class="mt-2">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
             <p id="myText"></p>
@@ -62,7 +67,7 @@
                 <span id="close" onclick="closeModal()">&times;</span>
                 <img id="zoomed-in-image" class="modal-content">
             </div> 
-        <main>
+        </main>
         <footer>
             <div id="footer">
                 <p class="text-center">

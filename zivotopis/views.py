@@ -103,4 +103,7 @@ def send_email(request):
         form = EmailForm()    
     return render(request, 'registration/send_email.html', {'form': form})
 
+def zivo_view(request):
+    return render(request, 'zivotopis/zivo.html')
+
 # Create your views here.

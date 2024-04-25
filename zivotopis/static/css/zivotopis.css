@@ -28,7 +28,7 @@ headerr {
     border-bottom: 3px solid #00f1ff;
     display: flex;
     align-items: center;
-    background-image: url('static/images/Vinica-pod-hradom.jpg') no-repeat;
+    background: url('/static/images/Licht-jazero.jpg') no-repeat;
     background-size: cover;
 }
 

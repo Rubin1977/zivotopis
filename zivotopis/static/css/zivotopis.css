@@ -14,22 +14,22 @@ header {
     background: linear-gradient(180deg, rgb(132 153 151) 10%,
                 rgb(175 235 120) 50%,
                 rgb(132 132 211) 90%);
-    color: #613131;
+    color: #963030;
     padding: 20px 20px;
     border-bottom: 3px solid #00f1ff;
     display: flex;
-    flex-direction: column;
 }
 
 headerr {
-    height: 80px;
+    height: 100px;
     width: 100%;
-    background: grey;
     position: relative;
     padding: 0 8%;
     border-bottom: 3px solid #00f1ff;
     display: flex;
     align-items: center;
+    background-image: url('static/images/Vinica-pod-hradom.jpg') no-repeat;
+    background-size: cover;
 }
 
 nav {
@@ -70,8 +70,10 @@ nav {
 }
 .container {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+
     /*height: 100%;
     /* Zabezpečuje, aby kontajner zaberával 100% výšky rodičovského elementu (napr. tela stránky) */
 }
@@ -109,17 +111,26 @@ h1, h2, h3 {
     /*text-shadow: 0 0 3px #045970;*/
 }
 
+h1 span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 article {
     border: 3px solid rgb(170, 59, 59);
     background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%,
                 rgb(169 168 108) 100%);
-    padding: 20px;
-    width: 75%;
+    padding: 7%;
+    
 }
 
 p {
-    margin-top: auto;
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 1.5;
+    display: block;
 }
+
 
 footer {
     background: linear-gradient(180deg, rgb(51 125 0),
@@ -127,8 +138,6 @@ footer {
             rgb(125 125 120 / 58%));
     border-top: 3px solid red;
     padding: 2%;
-    position: sti;
-    bottom: 0;
     width: 100%;
 }
 

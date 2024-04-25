@@ -1,3 +1,12 @@
+* {
+    /*border: 1px solid black;*/
+    box-sizing: border-box;
+}
+
+html {
+    
+}
+
 body {
     margin: 0;
     color: rgb(23, 11, 148);
@@ -21,10 +30,10 @@ header {
 }
 
 headerr {
-    height: 100px;
+    height: 8%;
     width: 100%;
     position: relative;
-    padding: 0 8%;
+    padding: 2% 4%;
     border-bottom: 3px solid #00f1ff;
     display: flex;
     align-items: center;
@@ -35,7 +44,7 @@ headerr {
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .nav-links li {
@@ -47,6 +56,7 @@ nav {
     text-decoration: none;
     padding: 5px 0;
     position: relative;
+    margin: 0 0 0 5%;
 }
 
 .nav-links li a::after {
@@ -64,10 +74,6 @@ nav {
     width: 100%;
 }
 
-* {
-    /*border: 1px solid black;*/
-    box-sizing: border-box;
-}
 .container {
     display: flex;
     flex-direction: row;

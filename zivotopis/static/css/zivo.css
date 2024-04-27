@@ -1,0 +1,93 @@
+* {
+    /*border: 1px solid black;*/
+    box-sizing: border-box;
+}
+
+html {
+
+}
+
+body {
+    margin: 0;
+    color: rgb(23, 11, 148);
+    padding: 4%;
+    font-size: 16px;
+    background: linear-gradient(180deg, rgb(158, 155, 131)0%, rgb(184, 210, 219)100%);
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.box {
+    height: auto;
+    width: 50%;
+    float: left;
+}
+
+.zivo-meno {
+    color: #fff;
+    background-color: #16148a;
+    max-width: 30%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    /* Zarovnanie obsahu na horizontálnu stred */
+    align-items: center;
+    /* Zarovnanie obsahu na vertikálnu stred */
+    position: relative;
+    top: 29px;
+    left: 8%;
+
+}
+
+.zivo-meno p {
+    max-width: 100%;
+    /* Nastavenie maximálnej šírky pre text */
+    font-size: 1.5em;
+    text-align: center;
+    /* Zarovnanie textu na stred */
+    /*text-transform: uppercase;*/
+}
+
+.zivo-pro {
+    color: #fff;
+    background-color: #07061f;
+    font-size: 0.5em;
+    width: fit-content;
+    padding: 2%;
+    position: relative;
+    top: 26px;
+    left: 20%
+}
+
+.img-container {
+    width: 140px;
+    /* Šírka rámčeka */
+    /* Výška rámčeka */
+    border: 2px solid #ccc;
+    /* Hrúbka a farba rámčeka */
+    border-radius: 5px;
+    /* Zaoblenie rohov rámčeka */
+    overflow: hidden;
+    /* Skrytie časti obrázka, ktorá by mohla vyčnievať */
+    box-shadow: 11px -27px 3px rgb(157 139 139 / 86%);
+    /* Tieň okolo rámčeka */
+    position: relative;
+    left: 74%;
+    top: -33px
+}
+
+.img-container img {
+    width: 100%;
+    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    height: 100%;
+    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    object-fit: cover;
+    /* Zabezpečenie zachovania pomeru strán obrázka */
+}

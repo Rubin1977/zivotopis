@@ -41,6 +41,64 @@ headerr {
     background-size: cover;
 }
 
+.zivo-meno {
+    color: #fff;
+    background-color: #16148a;
+    max-width: 30%;
+    height: 15%;
+    display: flex;
+    justify-content: center; /* Zarovnanie obsahu na horizontálnu stred */
+    align-items: center; /* Zarovnanie obsahu na vertikálnu stred */
+    position: relative;
+    top: 20px;
+    left: 6%;
+    
+}
+
+.zivo-pro {
+    color: #fff;
+    background-color: #07061f;
+    max-width: 60%;
+    height: 5%;
+    margin: 3% 5% 0 2%;
+    display: flex;
+    justify-content: center;
+    /* Zarovnanie obsahu na horizontálnu stred */
+    align-items: center;
+    /* Zarovnanie obsahu na vertikálnu stred */
+    position:relative;
+    top: 26px;
+    left: 20%
+}
+
+.zivo-meno p {
+    max-width: 100%;
+    /* Nastavenie maximálnej šírky pre text */
+    text-align: center;
+    /* Zarovnanie textu na stred */
+    text-transform: uppercase;
+}
+
+
+.img-container {
+    width: 120px; /* Šírka rámčeka */
+    height: 120px; /* Výška rámčeka */
+    border: 2px solid #ccc; /* Hrúbka a farba rámčeka */
+    border-radius: 5px; /* Zaoblenie rohov rámčeka */
+    overflow: hidden; /* Skrytie časti obrázka, ktorá by mohla vyčnievať */
+    box-shadow: 8px -68px 3px rgb(157 139 139 / 86%); /* Tieň okolo rámčeka */
+    position: relative;
+    left: 80%;
+    top: -62px
+}
+
+.img-container img {
+    width: 100%; /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    height: 100%; /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    object-fit: cover; /* Zabezpečenie zachovania pomeru strán obrázka */
+}
+
+
 nav {
     display: flex;
     align-items: center;
@@ -154,7 +212,6 @@ footer {
 }
 
 img {
-    margin: 10px 10px;
     border-radius: 5px;
 }
 

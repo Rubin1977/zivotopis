@@ -13,7 +13,6 @@ body {
     padding: 4%;
     font-size: 16px;
     background: linear-gradient(180deg, rgb(158, 155, 131)0%, rgb(184, 210, 219)100%);
-    box-sizing: border-box;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -28,6 +27,34 @@ main {
     height: auto;
     width: 50%;
     float: left;
+}
+
+.box-jaz {
+    height: auto;
+    /*display: flex;*/
+    width: 50%;
+    float: left;
+}
+
+.black-box {
+    background-color: black;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 4px 4px 1px 4px;
+}
+
+.small-square {
+    width: 20px;
+    /* Prispôsobte veľkosť štvorca podľa potreby */
+    height: 20px;
+    /* Prispôsobte veľkosť štvorca podľa potreby */
+    background-color: black;
+    margin-right: 10px;
+    /* Voliteľné nastavenie odstupu medzi štvorcami */
+    margin-bottom: 10px;
+    /* Voliteľné nastavenie odstupu medzi riadkami */
+    display: inline-block;
 }
 
 .zivo-meno {
@@ -76,7 +103,7 @@ main {
     /* Zaoblenie rohov rámčeka */
     overflow: hidden;
     /* Skrytie časti obrázka, ktorá by mohla vyčnievať */
-    box-shadow: 11px -27px 3px rgb(157 139 139 / 86%);
+    box-shadow: 13px -13px 3px rgb(157 139 139 / 86%);
     /* Tieň okolo rámčeka */
     position: relative;
     left: 74%;

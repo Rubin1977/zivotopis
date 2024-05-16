@@ -23,17 +23,27 @@ main {
     padding: 2%;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Medzera medzi prvkami */
+}
 .box {
     height: auto;
     width: 50%;
     float: left;
 }
 
+/*.mne, .skus:hover {
+    border: 2px solid #fff;
+}*/
+
 .box-jaz {
     height: auto;
     /*display: flex;*/
     width: 50%;
-    float: left;
+    display: inline-block;
 }
 
 .black-box {
@@ -45,12 +55,12 @@ main {
 }
 
 .small-square {
-    width: 20px;
+    width: 10px;
     /* Prispôsobte veľkosť štvorca podľa potreby */
-    height: 20px;
+    height: 10px;
     /* Prispôsobte veľkosť štvorca podľa potreby */
     background-color: black;
-    margin-right: 10px;
+    margin-right: 5px;
     /* Voliteľné nastavenie odstupu medzi štvorcami */
     margin-bottom: 10px;
     /* Voliteľné nastavenie odstupu medzi riadkami */
@@ -61,22 +71,23 @@ main {
     color: #fff;
     background-color: #16148a;
     max-width: 30%;
-    height: 15%;
+    height: fit-content;
     display: flex;
-    justify-content: center;
-    /* Zarovnanie obsahu na horizontálnu stred */
+    flex-direction: column;
+    padding: 15px;
+    /*justify-content: center;*/
+    /* Zarovnanie obsahu na horizontálny stred */
     align-items: center;
-    /* Zarovnanie obsahu na vertikálnu stred */
+    /* Zarovnanie obsahu na vertikálny stred */
     position: relative;
-    top: 29px;
-    left: 8%;
+    top: 30px;
+    left: 11%;
 
 }
 
 .zivo-meno p {
-    max-width: 100%;
-    /* Nastavenie maximálnej šírky pre text */
-    font-size: 1.5em;
+    margin: 0;
+    font-size: 1.7em;
     text-align: center;
     /* Zarovnanie textu na stred */
     /*text-transform: uppercase;*/
@@ -85,8 +96,8 @@ main {
 .zivo-pro {
     color: #fff;
     background-color: #07061f;
-    font-size: 0.5em;
-    width: fit-content;
+    font-size: 0.8em;
+    width: auto;
     padding: 2%;
     position: relative;
     top: 26px;
@@ -94,8 +105,9 @@ main {
 }
 
 .img-container {
-    width: 140px;
+    width: 155px;
     /* Šírka rámčeka */
+    height: 155px;
     /* Výška rámčeka */
     border: 2px solid #ccc;
     /* Hrúbka a farba rámčeka */
@@ -103,11 +115,11 @@ main {
     /* Zaoblenie rohov rámčeka */
     overflow: hidden;
     /* Skrytie časti obrázka, ktorá by mohla vyčnievať */
-    box-shadow: 13px -13px 3px rgb(157 139 139 / 86%);
+    box-shadow: 13px -13px 3px rgb(121 107 107 / 86%);
     /* Tieň okolo rámčeka */
     position: relative;
     left: 74%;
-    top: -33px
+    bottom: 60px;
 }
 
 .img-container img {

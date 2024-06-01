@@ -2,6 +2,11 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone 
 
+# Importy pre Wagtail
+from wagtail.models import Page
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.images.models import Image
+
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -34,5 +39,23 @@ class Email(models.Model):
 
     def __str__(self):
         return self.subject
+    
+class HomePage(Page):
+    intro_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    
+    introduction = models.TextField(blank=True)
+    name_picture = models.TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro_image'),
+        FieldPanel('introduction'),
+        FieldPanel('name_picture'),
+    ]
 
 # Create your models here.

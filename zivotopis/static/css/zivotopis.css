@@ -103,6 +103,10 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    background-color: #f8f9fa;
+        /* Pridajte pozadie, ak je potrebné */
+    padding: 10px;
+        /* Pridajte padding pre lepší vzhľad */
 }
 
 .nav-links li {

@@ -3,9 +3,6 @@
     box-sizing: border-box;
 }
 
-html {
-
-}
 
 body {
     margin: 0;
@@ -14,13 +11,35 @@ body {
     font-size: 16px;
     background: linear-gradient(180deg, rgb(158, 155, 131)0%, rgb(184, 210, 219)100%);
     min-height: 100vh;
+    min-width: 960px;
     display: flex;
     flex-direction: column;
 }
 
 main {
     border: 1px solid black;
-    padding: 2%;
+    padding: 120px 0px 0px 0px;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(210, 238, 50);
+    /* Alebo iná farba podľa dizajnu stránky */
+    z-index: 1;
+    /* Aby bola nad ostatnými prvkami */
+    padding: 10px;
+    display:flex;
+    box-shadow: inset -5px 5px 7px 8px rgba(0, 0, 0, 0.1);
+    /* Voliteľné: pridanie tieňa */
+}
+
+.fixed-header .zivo-meno,
+.fixed-header .img-container {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .container {
@@ -80,8 +99,7 @@ main {
     align-items: center;
     /* Zarovnanie obsahu na vertikálny stred */
     position: relative;
-    top: 30px;
-    left: 11%;
+    left: 14%;
 
 }
 
@@ -100,26 +118,24 @@ main {
     width: auto;
     padding: 2%;
     position: relative;
-    top: 26px;
-    left: 20%
+    top: 23px;
 }
 
 .img-container {
-    width: 155px;
+    width: 125px;
     /* Šírka rámčeka */
-    height: 155px;
+    height: 125px;
     /* Výška rámčeka */
     border: 2px solid #ccc;
     /* Hrúbka a farba rámčeka */
-    border-radius: 5px;
+    border-radius: 50%;
     /* Zaoblenie rohov rámčeka */
     overflow: hidden;
     /* Skrytie časti obrázka, ktorá by mohla vyčnievať */
-    box-shadow: 13px -13px 3px rgb(121 107 107 / 86%);
+    box-shadow: 11px 0 4px rgb(121 107 107 / 86%);
     /* Tieň okolo rámčeka */
     position: relative;
-    left: 74%;
-    bottom: 60px;
+    left: 20%;
 }
 
 .img-container img {

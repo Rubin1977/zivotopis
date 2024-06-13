@@ -6,13 +6,9 @@ charset-normalizer==3.3.2
 defusedxml==0.7.1
 Django==4.2.3
 django-filter==24.2
-django-modelcluster==6.3
 django-permissionedforms==0.1
 django-recaptcha==3.0.0
-django-taggit==5.0.1
-django-treebeard==4.7.1
 djangorestframework==3.15.1
-draftjs-exporter==5.0.0
 et-xmlfile==1.1.0
 filetype==1.2.0
 idna==3.7
@@ -27,9 +23,6 @@ requests==2.32.2
 six==1.16.0
 soupsieve==2.5
 sqlparse==0.4.4
-telepath==0.3.1
 typing_extensions==4.7.1
 tzdata==2023.3
 urllib3==2.2.1
-wagtail==6.1.1
-Willow==1.8.0

@@ -1,16 +1,17 @@
 {% load static %}
 <!doctype html>
 <html lang="sk">
-    <head>
-        <meta charset="utf-8">
-        <title>CV</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/zivo.css' %}">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/zivo.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="fixed-header">
         <div class="zivo-meno">
             <p><strong>Rastislav Ružbacký</strong></p>
             <div class="zivo-pro">
@@ -18,8 +19,9 @@
             </div>      
         </div> 
         <div class="img-container"> 
-            <img src="{% static 'images/Me-in-lich.jpg' %}" alt="Moja foto" width="120" height="120">
+            <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="120" height="120">
         </div>
+    </div>
     <main>
         <span class="icon-envelope">{% include './icons/house-door-fill.svg' %} Bratislava</span>
         <span class="icon-envelope">{% include './icons/telephone-fill.svg' %} +421 948 900 850</span>
@@ -75,7 +77,6 @@
             <li>Pripravovanie preparátov na mikroskopovanie, cytogenetické farbiace techniky (G, C-prúžkovanie), mikroskopavanie a automatické karyotypovanie (LUCIA), schopnosť vytvárať presné karyotypy a analýzy</li>
             <li>Hodnotenie cytogenetických sekcii metódami priamej mikroskopie, diferenčné farbenie chromozómov, vizuálna analýza a cytogenetická diagnostická determinácia</li>
             <li>Metodické a profesionálne vedenie prace v laboratóriu</li>
-
         </ul>
     </div>    
     <div class="box">
@@ -195,5 +196,5 @@
         {% include './icons/house-fill.svg' %} Home</a>
     </div>
     </main>    
-    </body>
+</body>
 </html>

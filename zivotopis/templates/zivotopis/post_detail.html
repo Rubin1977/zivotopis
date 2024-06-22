@@ -12,8 +12,8 @@
     </head>
     <body>
         <headerr>
-            <a href="/"> 
-                <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="40" height="40"><span>Rastislav Ružbacký</span></h1>
+            <a href="/" > 
+                <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="60" height="60"><span>Rastislav Ružbacký</span></h1>
             </a>
             <div>
                 <nav>
@@ -24,7 +24,6 @@
                     </ul>
                 </nav>
             </div>
-            <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
         </headerr>
         <main>
             <button id="myButton" class="mt-2">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
@@ -77,6 +76,7 @@
                 <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
                     <img src="{% static 'css/facebook_ikona.jpg' %}" alt="Facebook" width="30" height="30">
                 </a>
+                <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
             </p>  
         </footer>
         <script src="{% static 'js/main.js' %}"></script>

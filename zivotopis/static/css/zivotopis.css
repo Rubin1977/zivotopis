@@ -159,12 +159,14 @@ footer {
     border-top: 3px solid red;
     padding: 2%;
     width: 100%;
+    font-size: 16px;
 }
-
 
 .facebook-link {
     margin-left: 20px;
     border-radius: 5px;
+    transform: scale(1.1);
+    display: inline-block;
 }
 
 img {
@@ -361,6 +363,7 @@ a {
     position: relative;
     max-height: fit-content;
     overflow: hidden;
+    text-align: center;
 }
 
 .slides {

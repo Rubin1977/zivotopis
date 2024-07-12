@@ -32,6 +32,7 @@
                         </div>
                     </div>
                 {% else %}
+                    <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                     <div class="name">
                         <a href="/"> 
                             <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="40" height="40">Rastislav Ružbacký</h1>
@@ -42,7 +43,6 @@
                             <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
                         </a>
                     </div>
-                    <a class="btn btn-primary" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right" title="Prihlásenie">Log in</a>
                 {% endif %}                  
             </div>
         </header>
@@ -88,9 +88,13 @@
                         &copy; RR 2023 pre: <a href="/"> Môj web</a>
                     </div>
                     <div class="col-md-6 text-md-end">
+                        Nájdete ma na 
                         <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
-                            <img src="{% static 'css/facebook_ikona.jpg' %}" alt="Facebook" width="30" height="30">
+                            <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="30" height="30">
                         </a>
+                        <a class="facebook-link" href="https://www.instagram.com/rastorubin/" target="_blank">
+                            <img src="{% static 'css/instagram_icon.png' %}" alt="Facebook" width="30" height="30">
+                        </a>   
                     </div>
                 </div>
             </div>

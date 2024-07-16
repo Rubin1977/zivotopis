@@ -151,7 +151,6 @@ p {
     display: block;
 }
 
-
 footer {
     background: linear-gradient(180deg, rgb(51 125 0),
             rgb(195 195 107),
@@ -288,9 +287,11 @@ a {
 
 
 .btn-primary {
-    float: right;
-    border-color: #813509;
-    margin: 0 30px 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-color: #9c8a7f;
+    z-index: 2;
 }
 
 .btn-secondary,
@@ -364,6 +365,7 @@ a {
     max-height: fit-content;
     overflow: hidden;
     text-align: center;
+    margin: auto;
 }
 
 .slides {
@@ -371,6 +373,7 @@ a {
     justify-content: center;
     align-items: center;
     max-height: fit-content;
+    position: relative;
 }
 
 .slides img {
@@ -379,6 +382,8 @@ a {
         /* farba a šírka orámovania */
     border-radius: 10px;
         /* zaoblenie okrajov */
+    display: none;
+        /* Skryjeme všetky obrázky okrem jedného */
    
 }
 
@@ -402,8 +407,12 @@ a {
 
 .prev {
     left: 0;
+    border-radius: 3px 0 0 3px;
 }
 
 .next {
     right: 0;
+    border-radius: 3px 0 0 3px;
 }
+
+

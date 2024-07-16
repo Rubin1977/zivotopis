@@ -31,10 +31,10 @@ class Image(models.Model):
         return f"Obrázok pre post: {self.post.title}"
 
 class Email(models.Model):
-    sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné)")
-    sender_email = models.EmailField(verbose_name="Váš email (povinné)")
+    sender_name = models.CharField(max_length=100, verbose_name="Vaše meno (povinné):")
+    sender_email = models.EmailField(verbose_name="Váš email (povinné):")
     subject = models.CharField(max_length=200, verbose_name="Predmet:")
-    message = models.TextField(verbose_name="Správa")
+    message = models.TextField(verbose_name="Správa:")
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

@@ -38,11 +38,6 @@
                             <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="40" height="40">Rastislav Ružbacký</h1>
                         </a>
                     </div>
-                    <div class="top-menu d-flex" style="margin-left: 60px;">
-                        <a href="{% url 'send_email' %}" class="menu-item p-2" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
-                            <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
-                        </a>
-                    </div>
                 {% endif %}                  
             </div>
         </header>
@@ -82,11 +77,14 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col">
                         <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
                         &copy; RR 2023 pre: <a href="/"> Môj web</a>
                     </div>
-                    <div class="col-md-6 text-md-end">
+                    <a href="{% url 'send_email' %}" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
+                        <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
+                    </a>
+                    <div class="col">
                         Nájdete ma na 
                         <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
                             <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="30" height="30">

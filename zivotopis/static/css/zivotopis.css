@@ -109,13 +109,14 @@ nav {
         /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah 
     }
 }*/
-.row {
+/*.row {
     width: 100%;
-    /* Zabezpečuje, aby riadok zaberával 100% šírky kontajnera */
-}
+    
+}*/
 
 .col {
     width: 80%;
+    text-align: center;
     /* Zabezpečuje zacentrovanie obsahu v stĺpci */
 }
 
@@ -140,8 +141,7 @@ article {
     border: 3px solid rgb(170, 59, 59);
     background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%,
                 rgb(169 168 108) 100%);
-    padding: 7%;
-    
+    padding: 5%;
 }
 
 p {
@@ -338,8 +338,9 @@ a {
 
 .post {
     color: #260544d5;
-    margin: 20px 20px 40px 0;
+    margin: 20px 20px 40px 20px;
     border-radius: 10px;
+    width: 75%;
 }
 
 .post a,

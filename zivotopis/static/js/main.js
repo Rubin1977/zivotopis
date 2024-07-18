@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var myButton = document.getElementById("myButton");
     var myText = document.getElementById("myText");
 
+    if (!myButton) {
+        console.error('Element s ID "myButton" neexistuje.');
+        return;
+    }
+
+    if (!myText) {
+        console.error('Element s ID "myText" neexistuje.');
+        return;
+    }
+
     myButton.addEventListener("click", function () {
         // Zmeníme text v elemente s ID "myText" na uvítaciu správu
         myText.innerHTML = "Pozadie tlačidla sa zmenilo :-)";

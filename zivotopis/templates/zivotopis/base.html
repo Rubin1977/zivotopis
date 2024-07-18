@@ -63,13 +63,11 @@
                         <button class="prev">&#10094;</button>
                         <button class="next">&#10095;</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; padding: 10px; min-height: 325px; max-width: 100%;" class="mx-auto"></iframe>
+                        <div class="row">
+                            <div class="col">
+                                <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; padding: 10px; min-height: 325px; max-width: 100%;" class="mx-auto"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,18 +79,20 @@
                         <img src="{% static 'css/favicon-logo.png' %}" alt="Grafika" width="30" height="30">
                         &copy; RR 2023 pre: <a href="/"> Môj web</a>
                     </div>
-                    <a href="{% url 'send_email' %}" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
-                        <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
-                    </a>
                     <div class="col">
-                        Nájdete ma na 
+                        <a>Nájdete ma na</a>
                         <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
                             <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="30" height="30">
                         </a>
                         <a class="facebook-link" href="https://www.instagram.com/rastorubin/" target="_blank">
                             <img src="{% static 'css/instagram_icon.png' %}" alt="Facebook" width="30" height="30">
-                        </a>   
+                        </a> 
                     </div>
+                    <div class="col">
+                        <a href="{% url 'send_email' %}" data-toggle="tooltip" data-placement="left" title="Kontaktný formulár">   
+                            <span class="icon-envelope">{% include './icons/envelope-fill.svg' %} Kontaktný formulár</span>
+                        </a> 
+                    <div> 
                 </div>
             </div>
         </footer>

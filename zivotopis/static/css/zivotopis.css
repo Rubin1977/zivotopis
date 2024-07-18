@@ -109,10 +109,10 @@ nav {
         /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah 
     }
 }*/
-/*.row {
-    width: 100%;
+footer.row {
+    margin-bottom: 15px;
     
-}*/
+}
 
 .col {
     width: 80%;
@@ -417,13 +417,13 @@ a {
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
+    padding: 2%;
     color: white;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
     user-select: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     /* Pridáme pozadie pre lepšiu viditeľnosť */
 }
 

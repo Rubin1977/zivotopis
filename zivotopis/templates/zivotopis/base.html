@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sk">
+    <head>
+        <meta charset="utf-8" />
+        <title>Rastislav Ružbacký | Životopis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '/css/favicon-logo.png' %}">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <!-- Bootstrap JavaScript (nutné pre rozbalenie menu) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/zivotopis.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Roboto Mono&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+       <header>
+            <div class="container">
+                <a class="btn btn-primary ms-3" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right"
+                    title="Prihlásenie">Log in</a>
+                {% if user.is_authenticated %}
+                    <div class="top-menu d-flex align-items-center justify-content-between">
+                        <p class="mb-3">
+                            Prihlásený: {{ user.username }} 
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-primary" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="right" title="Logout">Odhlásiť</a>
+                            <div class="text-center">
+                                <a href="{% url 'post_new' %}" data-toggle="tooltip" data-placement="left" title="New Post">
+                                    {% include './icons/plus-square.svg' %}
+                                </a>
+                                <br>
+                                <a href="{% url 'post_draft_list' %}" data-toggle="tooltip" data-placement="left" title="Post draft list">
+                                    {% include './icons/pencil-square.svg' %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="/">
+                            <img src="{% static 'css/favicon-logo.png' %}" alt="favicon" width="40" height="40">
+                            Rastislav Ružbacký
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="/">Domov</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'zivo_view' %}">Životopis</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'send_email' %}">Kontaktný formulár</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Galéria</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                {% endif %}                  
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="col-6">
+                            <div class="col">
+                                <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; padding: 10px; min-height: 325px; max-width: 100%;" class="mx-auto"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container text-center py-3">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/">&copy; 2023 Rastislav Ružbacký</a>
+                    </div>
+                    <div class="col-12">
+                        <a href="mailto:vas.email@example.com">ruzbacky@yahoo.com</a>
+                        <span class="mx-2">|</span>
+                        <a href="tel:+421900123456">+421 948 900 850</a>
+                    </div>
+                    <div class="col-12">
+                        <a class="social-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
+                            <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="24" height="24">
+                        </a>
+                        <a class="social-link mx-2" href="https://www.instagram.com/rastorubin/" target="_blank">
+                            <img src="{% static 'css/instagram_icon.png' %}" alt="Instagram" width="24" height="24">
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank">
+                            <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/gallery.js' %}"></script>
+    </body>
+</html>
+
+

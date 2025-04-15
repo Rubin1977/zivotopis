@@ -1,0 +1,39 @@
+{% extends 'zivotopis/base.html' %}
+{% load static %}
+
+{% block content %}
+    <body>
+        <main>
+            <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="left" title="Návrat späť"> Domov
+            </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="contact-info-frame">
+                            <p>Môžete ma kontaktovať pomocou nižšie uvedeného formulára: </p>
+                        </div><br>    
+                    <form method="post" action="{% url 'send_email' %}">   
+                        {% csrf_token %}
+                        <div>
+                            <label for="{{ form.sender_name.id_for_label }}" class="form-label"> {{ form.sender_name.label }} </label><br>
+                            {{ form.sender_name }}
+                        </div>
+                        <div>
+                            <label for="{{ form.sender_email.id_for_label }}" class="form-label"> {{ form.sender_email.label }} </label><br>
+                            {{ form.sender_email }}
+                        </div>
+                        <div>
+                            <label for="{{ form.subject.id_for_label }}" class="form-label"> {{ form.subject.label }} </label><br>
+                            {{ form.subject }}
+                        </div>
+                        <div>
+                            <label for="{{ form.message.id_for_label }}" class="form-label"> {{ form.message.label }} </label><br>
+                            {{ form.message }} 
+                        </div>
+                        <button class="btn btn-secondary" type="submit" style="float: left">Odoslať</button>
+                    </form>      
+                </div>   
+            </div>
+        </main>
+    </body>
+{% endblock %}

@@ -1,0 +1,192 @@
+* {
+    /*border: 1px solid black;*/
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    color: rgb(23, 11, 148);
+    padding: 4%;
+    font-size: 16px;
+    background: linear-gradient(180deg, rgb(158, 155, 131)0%, rgb(184, 210, 219)100%);
+    min-height: 100vh;
+    min-width: 960px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    border: 1px solid black;
+    padding: 120px 0px 0px 0px;
+}
+
+footer {
+    background-color: #f8f9fa;
+    /* Svetlá farba pozadia */
+    padding: 20px 0;
+}
+
+footer .container {
+    max-width: 960px;
+    margin: auto;
+}
+
+footer .social-link img {
+    vertical-align: middle;
+}
+
+footer a {
+    color: #333;
+    /* Tmavšia farba textu pre lepšiu čitateľnosť */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .social-link {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(210, 238, 50);
+    /* Alebo iná farba */
+    z-index: 1;
+    /* Aby bola nad ostatnými prvkami */
+    padding: 10px 20px;
+    /* Priestor okolo obsahu */
+    display: flex;
+    /* Aktivujeme Flexbox */
+    justify-content: space-between;
+    /* Rovnomerne rozložené prvky */
+    align-items: center;
+    /* Vertikálne zarovnanie */
+    box-shadow: inset -5px 5px 7px 8px rgba(0, 0, 0, 0.1);
+    /* Tieň */
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Medzera medzi prvkami */
+}
+.box {
+    height: auto;
+    width: 50%;
+    float: left;
+}
+
+/*.mne, .skus:hover {
+    border: 2px solid #fff;
+}*/
+
+.box-jaz {
+    height: auto;
+    /*display: flex;*/
+    width: 50%;
+    display: inline-block;
+}
+
+.black-box {
+    background-color: black;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 4px 4px 1px 4px;
+}
+
+.small-square {
+    width: 10px;
+    /* Prispôsobte veľkosť štvorca podľa potreby */
+    height: 10px;
+    /* Prispôsobte veľkosť štvorca podľa potreby */
+    background-color: black;
+    margin-right: 5px;
+    /* Voliteľné nastavenie odstupu medzi štvorcami */
+    margin-bottom: 10px;
+    /* Voliteľné nastavenie odstupu medzi riadkami */
+    display: inline-block;
+}
+
+
+.zivo-meno {
+    flex: 1;
+    /* Každý prvok zaberá rovnaký podiel priestoru */
+    color: #fff;
+    background-color: #16148a;
+    max-width: 30%;
+    /* Neprekročí 30 % šírky */
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Obsah zarovnaný vertikálne */
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.zivo-meno p {
+    margin: 0;
+    font-size: 1.7em;
+    text-align: center;
+    /* Zarovnanie textu */
+}
+
+.zivo-pro {
+    color: #fff;
+    background-color: #07061f;
+    font-size: 0.8em;
+    width: auto;
+    padding: 2%;
+    margin-top: 5px;
+    /* Odstránenie relatívnych posunov */
+}
+
+.img-container {
+    flex: 1;
+    /* Rovnaký podiel priestoru ako zvyšné divy */
+    max-width: 125px;
+    /* Šírka obrázka */
+    height: auto;
+    /* Výška sa prispôsobí */
+    border: 2px solid #ccc;
+    /* Rámček */
+    border-radius: 50%;
+    /* Zaoblenie */
+    overflow: hidden;
+    /* Skrytie prebytočného obrázka */
+    box-shadow: 0px 4px 8px rgb(121 107 107 / 86%);
+    /* Tieň */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Zachovanie proporcií obrázka */
+}
+.button-container {
+    flex: 1;
+    /* Rovnaký podiel priestoru ako zvyšné divy */
+    display: flex;
+    justify-content: flex-end;
+    /* Zarovnanie tlačidla doprava */
+    align-items: center;
+}

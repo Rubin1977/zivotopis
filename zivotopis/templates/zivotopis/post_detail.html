@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sk">
+    <head>
+        <meta charset="utf-8" />
+        <title>Rastislav Ružbacký | Životopis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/zivotopis.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Roboto Mono&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <headerr>
+            <a href="/" > 
+                <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="60" height="60"><span>Rastislav Ružbacký</span></h1>
+            </a>
+            <div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Domov</a></li>
+                        <li><a href="{% url 'zivo_view' %}">Životopis</a></li>
+                        <li><a href="{% url 'send_email' %}">Kontaktný formulár</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </headerr>
+        <main>
+            <button id="myButton" class="mt-2">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
+            <p id="myText"></p>
+            <article class="post">
+                <aside class="actions">
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-secondary" data-toggle="tooltip" title="Post edit" href="{% url 'post_edit' pk=post.pk %}">
+                            {% include './icons/pencil-fill.svg' %}</a>
+                        <a class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Post delete" href="{% url 'post_remove' pk=post.pk %}">
+                        {% include './icons/trash-fill.svg' %}</a>
+                    {% endif %}
+                </aside>
+                {% if post.published_date %}
+                    <time class="date">
+                        {{ post.published_date }}
+                    </time>
+                {% else %}
+                    <a class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Post publish" href="{% url 'post_publish' pk=post.pk %}">
+                    Publish</a>
+                {% endif %}
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <div class="post-images">
+                    {% if post.image %}
+                        <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                    {% if post.images.all %}
+                        {% for image in post.images.all %}
+                            <img class="post-image" src="{{ image.image.url }}" alt="{{ post.title }}">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!--<a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Návrat späť">
+                    {% include './icons/house-fill.svg' %} Home
+                </a>-->
+            </article>
+            <div style="padding-bottom: 20px;"></div>
+            <!-- Modálne okno pre zväčšený obrázok -->
+            <div id="zoomed-in-modal" class="modal">
+                <span id="close" onclick="closeModal()">&times;</span>
+                <img id="zoomed-in-image" class="modal-content">
+            </div> 
+        </main>
+        <footer>
+            <div class="container text-center py-3">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/">&copy; 2023 Rastislav Ružbacký</a>
+                    </div>
+                    <div class="col-12">
+                        <a href="mailto:vas.email@example.com">ruzbacky@yahoo.com</a>
+                        <span class="mx-2">|</span>
+                        <a href="tel:+421900123456">+421 948 900 850</a>
+                    </div>
+                    <div class="col-12">
+                        <a class="social-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
+                            <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="24" height="24">
+                        </a>
+                        <a class="social-link mx-2" href="https://www.instagram.com/rastorubin/" target="_blank">
+                            <img src="{% static 'css/instagram_icon.png' %}" alt="Instagram" width="24" height="24">
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank">
+                            <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>

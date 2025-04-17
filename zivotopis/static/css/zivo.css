@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     padding-top: 150px!important;
     /* Prispôsob výške fixed-header */
@@ -20,6 +19,7 @@ body {
 }
 
 main {
+    padding-top: 125px!important; /* Posunie obsah pod header */
     border: 1px solid black;
     padding: 120px 0px 0px 0px;
 }
@@ -73,6 +73,8 @@ footer .social-link img {
     /* Vertikálne zarovnanie */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         /* Hladší tieň */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Jemná deliaca čiara */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Príjemný tieň */
 }
 
 .fixed-header.scroll {
@@ -82,28 +84,65 @@ footer .social-link img {
     /* Menší priestor pri posúvaní */
 }
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /* Medzera medzi prvkami */
-}
-.box {
-    height: auto;
-    width: 50%;
-    float: left;
-}
-
-/*.mne, .skus:hover {
-    border: 2px solid #fff;
-}*/
-
-.box-jaz {
-    height: auto;
-    /*display: flex;*/
-    width: 50%;
-    display: inline-block;
+    background-color: #f9f9f9;
+    /* Jemné kontrastné pozadie */
+    /*border: 2px solid #00f1ff;
+    /* Svetlé ohraničenie */
+    /*border-radius: 10px;
+    /* Zaoblené rohy */
+    padding: 20px;
+    /* Priestor okolo obsahu */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Jemný tieň */
 }
 
+.container strong {
+    color: #333;
+    /* Tmavší text pre lepšiu čitateľnosť */
+    font-size: 1.2rem;
+    /* Vyvážená veľkosť textu */
+    font-weight: bold;
+    /* Dôraz na obsah */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        /* Zmenšenie paddingu na mobiloch */
+        text-align: center;
+        /* Zarovnanie na stred */
+    }
+
+    .container strong {
+        font-size: 1rem;
+        /* Menší text pre mobilné zariadenia */
+    }
+}
+
+.container span:hover {
+    background-color: #00f1ff;
+    /* Zvýraznenie na hover */
+    color: #fff;
+    /* Svetlejší text */
+    transition: 0.3s ease-in-out;
+    /* Plynulý efekt */
+}
+
+.container {
+    animation: fade-in 0.8s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .black-box {
     background-color: black;
     color: white;
@@ -131,37 +170,73 @@ footer .social-link img {
 
 .zivo-meno {
     flex: 1;
-    /* Každý prvok zaberá rovnaký podiel priestoru */
     color: #fff;
     background-color: #16148a;
     max-width: 30%;
-    /* Neprekročí 30 % šírky */
-    height: fit-content;
+    width: 100%;
+    /* Zabezpečí, že prvok vypĺňa dostupný priestor */
+    height: auto;
+    /* Pre lepšiu flexibilitu */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Obsah zarovnaný vertikálne */
     align-items: center;
     padding: 15px;
     text-align: center;
+    box-sizing: border-box;
+    /* Zabezpečí, že padding neovplyvní šírku */
 }
 
+@media (max-width: 768px) {
+    .zivo-meno {
+        max-width: 100%;
+        /* Na mobiloch zaberá celý priestor */
+        padding: 10px;
+    }
+
+    .zivo-meno p {
+        font-size: 1.5rem;
+        /* Zmenšený text na mobiloch */
+    }
+
+    .zivo-pro p {
+        font-size: 1rem;
+        /* Zmenšený podtitul */
+    }
+}
 .zivo-meno p {
-    font-size: 1.8rem;
-    /* Väčší text */
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    /* Dynamická veľkosť textu podľa šírky obrazovky */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    margin: 0;
+    /* Odstránenie nadbytočného priestoru okolo textu */
 }
 
 .zivo-pro p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     font-style: italic;
     opacity: 0.8;
-    /* Jemný efekt */
+    margin-top: 5px;
+    /* Jemný odstup medzi nadpisom a podtitulom */
 }
 
+.zivo-meno {
+    animation: fade-in 0.5s ease-in-out;
+}
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .img-container {
     flex: 1;
     /* Rovnaký podiel priestoru ako zvyšné divy */

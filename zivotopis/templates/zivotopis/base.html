@@ -16,7 +16,6 @@
     <body>
        <header>
             <div class="container">
-                
                 {% if user.is_authenticated %}
                     <div class="top-menu d-flex align-items-center justify-content-between">
                         <p class="mb-3">
@@ -56,20 +55,22 @@
                 {% endif %}                  
             </div>
         </header>
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                    <div class="col-6">
-                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 2px solid #4caf50; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; padding: 10px; min-height: 325px; max-width: 100%; display: block;
-                        " class="mx-auto"></iframe>
-                    </div>
+        <main class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% block content %}
+                    {% endblock %}
                 </div>
             </div>
         </main>
+        <!-- Widget s počasím pod hlavným obsahom -->
+        <div class="container weather-widget">
+            <iframe
+                src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius"
+                name="CW2" scrolling="yes" frameborder="1"
+                style="border: 2px solid #4caf50; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; padding: 10px; min-height: 325px; max-width: 100%; display: block;"
+                class="mx-auto"></iframe>
+        </div>
         <footer>
             <div class="container text-center py-3">
                 <div class="row">

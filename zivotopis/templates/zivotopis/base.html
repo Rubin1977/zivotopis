@@ -16,8 +16,7 @@
     <body>
        <header>
             <div class="container">
-                <a class="btn btn-primary ms-3" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right"
-                    title="Prihlásenie">Log in</a>
+                
                 {% if user.is_authenticated %}
                     <div class="top-menu d-flex align-items-center justify-content-between">
                         <p class="mb-3">
@@ -65,10 +64,8 @@
                         {% endblock %}
                     </div>
                     <div class="col-6">
-                            <div class="col">
-                                <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 1px solid #caf369; border-radius: 8px; padding: 10px; min-height: 325px; max-width: 100%;" class="mx-auto"></iframe>
-                            </div>
-                        </div>
+                        <iframe src="https://api.wo-cloud.com/content/widget/?geoObjectKey=8178221&language=sk&region=SK&timeFormat=HH:mm&windUnit=kmh&systemOfMeasurement=metric&temperatureUnit=celsius" name="CW2" scrolling="yes" frameborder="1" style="border: 2px solid #4caf50; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; padding: 10px; min-height: 325px; max-width: 100%; display: block;
+                        " class="mx-auto"></iframe>
                     </div>
                 </div>
             </div>
@@ -94,6 +91,8 @@
                         <a class="social-link" href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank">
                             <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
                         </a>
+                        <a class="btn btn-primary ms-3" href="{% url 'login' %}" data-toggle="tooltip" data-placement="right"
+                            title="Prihlásenie">Log in</a>
                     </div>
                 </div>
             </div>

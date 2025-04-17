@@ -105,10 +105,7 @@ nav {
         /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah 
     }
 }*/
-footer.row {
-    margin-bottom: 15px;
-    
-}
+
 
 .col {
     width: 80%;
@@ -141,7 +138,7 @@ article {
 }
 
 p {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: justify;
     line-height: 1.5;
     display: block;
@@ -157,6 +154,11 @@ footer {
     flex-direction: column;
     align-items: center;
     font-size: 16px;
+}
+
+footer.row {
+    margin-bottom: 15px;
+
 }
 
 .facebook-link {
@@ -322,10 +324,10 @@ a {
 
 .contact-info-frame {
     text-align: center;
-    margin: 20px 10px 10px 0;
+    margin: 11px 10px 10px 0;
     background-color: #d5dee7;
     border: 3px solid #afad10;
-    border-radius:3px;
+    border-radius: 5px;
     max-width: max-content;
 }
 

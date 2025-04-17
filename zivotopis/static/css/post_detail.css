@@ -1,0 +1,71 @@
+@import url('/static/css/zivotopis.css');
+headerr {
+    height: 20vh;
+    /* Dynamická výška založená na výške obrazovky */
+    width: 100%;
+    position: relative;
+    padding: 2% 4%;
+    border-bottom: 3px solid #00f1ff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('/static/images/Licht-jazero.jpg') no-repeat center center;
+    /* Centrovanie obrázka */
+    background-size: cover;
+    /* Zabezpečí, že obrázok zaplní celý priestor */
+}
+
+@media (max-width: 768px) {
+    headerr {
+        height: 15vh;
+        /* Zmenšenie na menších zariadeniach */
+    }
+}
+
+@media (min-width: 768px) {
+    headerr {
+        height: 25vh;
+        /* Zvýšenie na tabletoch */
+    }
+}
+
+@media (min-width: 1200px) {
+    headerr {
+        height: 30vh;
+        /* Maximálna výška na desktopoch */
+    }
+}
+
+.nav-links a {
+    color: #00f1ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #2c29c0;
+    /* Zmena farby na hover */
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    /* Dynamický text */
+    color: #2c29c0;
+}
+
+h1 img {
+    width: 50px;
+    /* Zmenšenie na mobiloch */
+    height: 50px;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        /* Väčší text na desktopoch */
+    }
+}
+

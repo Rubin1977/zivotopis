@@ -25,18 +25,6 @@ header {
     display: flex;
 }
 
-headerr {
-    height: 8%;
-    width: 100%;
-    position: relative;
-    padding: 2% 4%;
-    border-bottom: 3px solid #00f1ff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: url('/static/images/Licht-jazero.jpg') no-repeat;
-    background-size: cover;
-}
 
 
 .img-container img {
@@ -287,11 +275,12 @@ a {
 
 
 .btn-primary {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    margin-left: 20px;
+    /* Posunie gombík mierne doľava */
+    margin-top: 10px;
+    /* Posunie gombík smerom dole */
     border-color: #9c8a7f;
-    z-index: 2;
+    /* Zachová jemný rám */
 }
 
 .btn-secondary,

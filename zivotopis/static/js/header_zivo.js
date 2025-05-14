@@ -27,3 +27,5 @@ window.addEventListener("scroll", function () {
         header.classList.remove("scroll"); // Odstráni triedu, keď si hore
     }
 });
+
+document.getElementById("year").textContent = new Date().getFullYear();

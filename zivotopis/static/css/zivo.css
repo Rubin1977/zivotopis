@@ -67,8 +67,8 @@ footer .social-link img {
     /* Priestor okolo obsahu */
     display: flex;
     /* Aktivujeme Flexbox */
-    justify-content: space-between;
-    /* Rovnomerne rozložené prvky */
+    justify-content: center;
+        /* Zarovná prvky do stredu */
     align-items: center;
     /* Vertikálne zarovnanie */
     box-shadow: 0px 4px 8px rgba(160, 146, 86, 0.3);
@@ -172,8 +172,6 @@ footer .social-link img {
     color: #ddd;
     background-color: #5a58ac;
     max-width: 30%;
-    width: 100%;
-    /* Zabezpečí, že prvok vypĺňa dostupný priestor */
     height: auto;
     /* Pre lepšiu flexibilitu */
     display: flex;
@@ -241,7 +239,7 @@ footer .social-link img {
 .img-container {
     flex: 1;
     /* Rovnaký podiel priestoru ako zvyšné divy */
-    max-width: 125px;
+    max-width: 40%;
     /* Šírka obrázka */
     height: auto;
     /* Výška sa prispôsobí */

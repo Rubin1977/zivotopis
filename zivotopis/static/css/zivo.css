@@ -239,7 +239,7 @@ footer .social-link img {
 .img-container {
     flex: 1;
     /* Rovnaký podiel priestoru ako zvyšné divy */
-    max-width: 40%;
+    max-width: max-content;
     /* Šírka obrázka */
     height: auto;
     /* Výška sa prispôsobí */

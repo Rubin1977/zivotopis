@@ -60,7 +60,7 @@ footer .social-link img {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(90deg, #d6e65e, #a4c639); /* Jemný prechod 
+    background: linear-gradient(90deg, #c6d26e, #a4c639); /* Jemný prechod 
     z-index: 1;
     /* Aby bola nad ostatnými prvkami */
     padding: 15px 30px;
@@ -71,10 +71,9 @@ footer .social-link img {
     /* Rovnomerne rozložené prvky */
     align-items: center;
     /* Vertikálne zarovnanie */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 8px rgba(160, 146, 86, 0.3);
         /* Hladší tieň */
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Jemná deliaca čiara */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Príjemný tieň */
+    border-bottom: 2px solid rgba(108, 138, 131, 0.308); /* Jemná deliaca čiara */
 }
 
 .fixed-header.scroll {
@@ -170,8 +169,8 @@ footer .social-link img {
 
 .zivo-meno {
     flex: 1;
-    color: #fff;
-    background-color: #16148a;
+    color: #ddd;
+    background-color: #5a58ac;
     max-width: 30%;
     width: 100%;
     /* Zabezpečí, že prvok vypĺňa dostupný priestor */
@@ -212,6 +211,8 @@ footer .social-link img {
     letter-spacing: 1.2px;
     margin: 0;
     /* Odstránenie nadbytočného priestoru okolo textu */
+    transform: scale(1.05); 
+    transition: 0.2s ease-in-out
 }
 
 .zivo-pro p {
@@ -255,6 +256,7 @@ footer .social-link img {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .img-container img {
@@ -268,6 +270,7 @@ footer .social-link img {
     /* Jemný tieň */
     object-fit: cover;
     /* Zabezpečí, že obrázok bude vyplnený a centrálne zarovnaný */
+    
 }
 
 .img-container img:hover {

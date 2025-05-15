@@ -30,17 +30,19 @@
         <section class="container text-center my-3">
             <div class="row row-cols-1 row-cols-md-2 g-3">
                 {% for icon, text in [
-                ('house-door-fill.svg', 'Bratislava'),
-                ('telephone-fill.svg', '+421 948 900 850'),
-                ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
-                ('calendar-event-fill.svg', '47r.')
+                    ('house-door-fill.svg', 'Bratislava'),
+                    ('telephone-fill.svg', '+421 948 900 850'),
+                    ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
+                    ('calendar-event-fill.svg', '47r.')
                 ] %}
-                <div class="col">
-                    <span class="d-inline-flex justify-content-center align-items-center">
-                        {% include './icons/' + icon %}
-                        <strong class="ms-2">{{ text }}</strong>
-                    </span>
-                </div>
+                    {% with icon_path="./icons/"|add:icon %}
+                    <div class="col">
+                        <span class="d-inline-flex justify-content-center align-items-center">
+                            {% include icon_path %}
+                            <strong class="ms-2">{{ text }}</strong>
+                        </span>
+                    </div>
+                    {% endwith %}
                 {% endfor %}
             </div>
         </section>

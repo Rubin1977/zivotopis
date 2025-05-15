@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone #format_html #formátuje hlavičku
-from .models import Post, Image, Email
-from .forms import PostForm, ImageForm, EmailForm
+from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
+
+from .models import Post, Image, Email
+from .forms import PostForm, ImageForm, EmailForm
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -104,7 +105,13 @@ def send_email(request):
     return render(request, 'registration/send_email.html', {'form': form})
 
 def zivo_view(request):
-    return render(request, 'zivotopis/zivo.html')
+    icons_data = [
+        ('house-door-fill.svg', 'Bratislava'),
+        ('telephone-fill.svg', '+421 948 900 850'),
+        ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
+        ('calendar-event-fill.svg', '47r.')
+    ]
+    return render(request, 'zivotopis/zivo.html', {'icons_data': icons_data})
 
 def gallery_view(request):
     return render(request, 'zivotopis/gallery.html')  # Zobrazíme šablónu gallery.html

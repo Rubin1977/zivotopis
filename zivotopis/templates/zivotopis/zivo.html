@@ -22,27 +22,22 @@
             </div>      
         </div> 
         <div class="img-container"> 
-            <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="120" height="120">
+            <a href="/">
+            <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="100" height="100">
+            </a>
         </div>
     </div>
     <main class="container my-4">
         <!-- Informácie (Bratislava, kontakt...) -->
         <section class="container text-center my-3">
             <div class="row row-cols-1 row-cols-md-2 g-3">
-                {% for icon, text in [
-                ('house-door-fill.svg', 'Bratislava'),
-                ('telephone-fill.svg', '+421 948 900 850'),
-                ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
-                ('calendar-event-fill.svg', '47r.')
-                ] %}
-                {% with "./icons/"|add:icon as icon_path %}
+                {% for icon, text in icons_data %}
                 <div class="col">
                     <span class="d-inline-flex justify-content-center align-items-center">
-                        {% include icon_path %}
+                        <img src="{% static 'icons/' %}{{ icon }}" alt="{{ text }}" class="me-2" width="24">
                         <strong class="ms-2">{{ text }}</strong>
                     </span>
                 </div>
-                {% endwith %}    
                 {% endfor %}
             </div>
         </section>
@@ -50,8 +45,8 @@
         <!-- Sekcia O MNE -->
         <section class="my-5 bg-light p-4 rounded">
             <h2 class="text-center mb-4">
-                <i class="fas fa-user-circle"></i>
-                <strong>O MNE</strong>
+                <i class="fas fa-user-circle" style="color: #3b5998; font-size: 2em; margin-right: 10px;"></i>
+                <strong>O MNE</strong>       
             </h2>
             <div class="container">
                 <p class="text-justify">
@@ -83,13 +78,21 @@
         </section>
         <!-- Pracovné skúsenosti -->
         <section>
+            <h2 class="text-center mb-4">
+                <i class="fa-solid fa-user-tie" style="color: #3b5998; font-size: 2em; margin-right: 10px;"></i>
+                <strong>PRACOVNÉ SKÚSENOSTI</strong>       
+            </h2>
             <div class="container">
-                <h2 class="text-center mb-4"><i class="fa-solid fa-user-tie" style="color: #3b5998; font-size: 2em;"></i><strong>PRACOVNÉ SKÚSENOSTI</strong></h2>
                 <div class="row">
                     <!-- Prvá pozícia -->
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Cytogenetik | Národný onkologický ústav</h3>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Bratislava</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Bratislava ikona" width="24">
+                                Bratislava
+                            </small>
+                        </p>
                         <p><strong>01/06/2006 - 31/12/2013</strong></p>
                         <ul class="list-unstyled">
                             <li>Zakladanie a spracovanie nenádorových a nádorových bunkových kultúr</li>
@@ -110,7 +113,12 @@
                     <!-- Druhá pozícia -->
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Cytogenetik | Nemocnica s poliklinikou</h3>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Spišská Nová Ves</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona" width="24">
+                                Spišská Nová Ves
+                            </small>           
+                        </p>
                         <p><strong>01/11/2003 - 31/05/2006</strong></p>
                         <ul class="list-unstyled">
                             <li>Zakladanie a spracovanie krátkodobých tkanivových kultúr (72 hodín), periférnej krvi a dlhodobá kultivácia amniocytov</li>
@@ -122,8 +130,12 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-4">
-                        <h3 class="text-center">Civilná vojenská služba ako biológ-genetik / Nemocnica s poliklinikou</h3>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Spišská Nová Ves</small></span>
+                        <h3 class="text-center">Civilná vojenská služba ako biológ-genetik | Nemocnica s poliklinikou</h3>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona" width="24">
+                                Spišská Nová Ves
+                            </small>                    
                         </p>
                         <p><strong>15/02/2002 - 31/03/2003</strong></p>
                         <ul class="list-unstyled">
@@ -135,6 +147,7 @@
                 </div>
             </div>
         </section>
+        <br>
         <section>
             <p>
                 <i class="fa-solid fa-user-graduate" style="color: #3b5998; font-size: 2em;"></i>
@@ -147,8 +160,12 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <p>Mgr.| Biológia / Antropológia</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Univerzita Pavla Jozefa
-                        Šafárika v Košiciach</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Univerzita Pavla Jozefa Šafárika ikona" width="24">
+                                Univerzita Pavla Jozefa Šafárika v Košiciach
+                            </small>                    
+                        </p>
                     </div>
                 </div>
                 <div class="row">
@@ -157,7 +174,12 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <p>RNDr.| Interná forma postgraduálneho štúdia antropológie| Rigorózna práca z biológie: Detekcia STR lókusov v rómskej populácií východného Slovenska a PCR metóda.</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Prešovská Univerzita Fakulta humanitných a prírodných vied</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Prešovská Univerzita ikona" width="24">
+                                Prešovská Univerzita Fakulta humanitných a prírodných vied
+                            </small>                    
+                        </p>
                     </div>
                 </div>
             </div>
@@ -175,52 +197,88 @@
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Certifikát pre prácu v zdravotníctve pre zdravotníckych pracovníkov v lekárskej genetike</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Slovenská zdravotnícka univerzita v Bratislave</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                Slovenská zdravotnícka univerzita v Bratislave
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                     <p>20/10/2004</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Zaradenie do špecializačného štúdia v odbore vyšetrovacie metódy v lekárskej genetike</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Slovenská zdravotnícka univerzita v Bratislave</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                Slovenská zdravotnícka univerzita v Bratislave
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                     <p>28/02/2005</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Registrácia v komore iných zdravotníckych pracovníkov</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Slovenská zdravotnícka univerzita v Bratislave</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                Slovenská zdravotnícka univerzita v Bratislave
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                     <p>14/06/2007</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Diplom v špecializácii v odbore laboratórne a diagnostické metódy v klinickej genetike</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Slovenská zdravotnícka univerzita v Bratislave</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                Slovenská zdravotnícka univerzita v Bratislave
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>08-09/2017</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Kurz pivovarníctva (kurz Univerzity v Leuvene pre profesionálov o technológiách v pivovarníctve a sladovníctve)</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Univerzita v Leuvene</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Univerzita v Leuvene ikona" width="24">
+                                Univerzita v Leuvene
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>2024</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Certifikát o absolvovaní základov jazyka Python</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} www.itnetwork.cz/</small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="IT Network ikona" width="24">
+                                <a href="https://www.itnetwork.cz/" target="_blank">www.itnetwork.cz</a>
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>2024</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Vytvorenie vlastnej webovej stránky pomocou frameworku Django na platforme PythonAnywhere v rámci kurzu Django Girls,
-                        vrátane návrhu, implementácie a nasadenia. Administrátorský prístup s možnosťou úpravy obsahu</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Stránka dostupná na: <a href="https://rastislavruzbacky.eu.pythonanywhere.com"
-                                target="_blank">rastislavruzbacky.eu.pythonanywhere.com</a>
-                            </small></span></p>
+                        vrátane návrhu, implementácie a nasadenia. Administrátorský prístup s možnosťou úpravy obsahu.</p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
+                                Stránka dostupná na:
+                                <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">
+                                    rastislavruzbacky.eu.pythonanywhere.com
+                                </a>
+                            </small>                    
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>2025</p>
@@ -228,12 +286,17 @@
                     <div class="col-md-6 col-sm-12 box">
                         <p>Vytvorenie webovej aplikácie pomocou .NET frameworku, implementácie backend logiky a nasadenia
                         do produkcie.</p>
-                        <p><span class="icon-envelope"><small>{% include './icons/house-door-fill.svg' %} Stránka dostupná na:
-                            </small></span></p>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
+                                Stránka dostupná na:
+                            </small>                    
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+        <br>
         <section>  
             <p>
                 <i class="fas fa-comments" style="color: rgb(34, 172, 193); font-size: 2em;"></i>
@@ -262,6 +325,7 @@
                 </div>
             </div>
         </section>
+        <br>
         <section>
             <p>
                 <i class="fa-solid fa-palette" style="color: #3b5998; font-size: 2em;"></i>
@@ -289,8 +353,7 @@
             </div>
         </section>
         <div class="button-container">
-            <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Domov">
-                {% include './icons/house-fill.svg' %} Domov</a>
+            <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Domov">Domov</a>
         </div>
     </main>
 </body>

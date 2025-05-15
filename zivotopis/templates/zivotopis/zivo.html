@@ -27,26 +27,21 @@
     </div>
     <main class="container my-4">
         <!-- Informácie (Bratislava, kontakt...) -->
-        <section class="row text-center my-3">
-            <div class="col-md-6 col-sm-12 mb-2">
-                <span class="d-flex justify-content-center align-items-center">
-                    <strong>{% include './icons/house-door-fill.svg' %} Bratislava</strong>
-                </span>
-            </div>
-            <div class="col-md-6 col-sm-12 mb-2">
-                <span class="d-flex justify-content-center align-items-center">
-                    <strong>{% include './icons/telephone-fill.svg' %} +421 948 900 850</strong>
-                </span>
-            </div>
-            <div class="col-md-6 col-sm-12 mb-2">
-                <span class="d-flex justify-content-center align-items-center">
-                    <strong>{% include './icons/envelope-fill.svg' %} ruzbacky@yahoo.com</strong>
-                </span>
-            </div>
-            <div class="col-md-6 col-sm-12 mb-2">
-                <span class="d-flex justify-content-center align-items-center">
-                    <strong>{% include './icons/calendar-event-fill.svg' %} 47r.</strong>
-                </span>
+        <section class="container text-center my-3">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                {% for icon, text in [
+                ('house-door-fill.svg', 'Bratislava'),
+                ('telephone-fill.svg', '+421 948 900 850'),
+                ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
+                ('calendar-event-fill.svg', '47r.')
+                ] %}
+                <div class="col">
+                    <span class="d-inline-flex justify-content-center align-items-center">
+                        {% include './icons/' + icon %}
+                        <strong class="ms-2">{{ text }}</strong>
+                    </span>
+                </div>
+                {% endfor %}
             </div>
         </section>
         
@@ -168,7 +163,7 @@
         <br>    
         <section>
             <p>
-                <i class="fa-solid fa-user-graduate" style="color: rgb(73, 177, 73); font-size: 2em;"></i>
+                <i class="fa-solid fa-book-open" style="color: rgb(129, 156, 8); font-size: 2em;"></i>
                 <strong> KURZY A ŠKOLENIA</strong> 
             </p>
             <div class="container">
@@ -240,7 +235,7 @@
         <section>  
             <p>
                 <i class="fas fa-comments" style="color: rgb(34, 172, 193); font-size: 2em;"></i>
-                <strong>JAZYKOVÉ ZNALOSTI</strong> 
+                <strong> JAZYKOVÉ ZNALOSTI</strong> 
             </p>
             <div class="container">
                 <div class="box-jaz">

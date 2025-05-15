@@ -35,12 +35,14 @@
                 ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
                 ('calendar-event-fill.svg', '47r.')
                 ] %}
+                {% with "./icons/"|add:icon as icon_path %}
                 <div class="col">
                     <span class="d-inline-flex justify-content-center align-items-center">
-                        {% include "./icons/"|add:icon %}
+                        {% include icon_path %}
                         <strong class="ms-2">{{ text }}</strong>
                     </span>
-                </div>    
+                </div>
+                {% endwith %}    
                 {% endfor %}
             </div>
         </section>

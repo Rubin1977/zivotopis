@@ -134,9 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
+""" STATICFILES_DIRS = [
     BASE_DIR / "static",  # Umožňuje hľadanie statických súborov počas vývoja
-]
+] """
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Použité iba na produkčné `collectstatic`
 
 

@@ -133,11 +133,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 """ STATICFILES_DIRS = [
     BASE_DIR / "static",  # Umožňuje hľadanie statických súborov počas vývoja
-] """
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Použité iba na produkčné `collectstatic`
+]  """
+STATIC_ROOT = BASE_DIR / 'static'  # Použité iba na produkčné `collectstatic`
 
 
 MEDIA_URL = '/media/'
@@ -154,5 +154,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WAGTAIL_SITE_NAME = 'Rubin Zivotopis'
 WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
 
-#SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 

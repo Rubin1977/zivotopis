@@ -136,6 +136,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'  # Použité iba na produkčné `collectstatic`
 
+
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -150,5 +153,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WAGTAIL_SITE_NAME = 'Rubin Zivotopis'
 WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
+
 

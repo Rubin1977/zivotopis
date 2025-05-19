@@ -33,31 +33,39 @@ header {
     object-fit: cover; /* Zabezpečenie zachovania pomeru strán obrázka */
 }
 
+/* 📌 Nastavenie navigácie */
 nav {
     display: flex;
-    /*align-items: center;*/
     justify-content: center;
-    background-color: #f8f9fa;
-    /* Pridajte pozadie, ak je potrebné */
-    width: 100%;
-        /* Zabezpečí, že sa menu roztiahne po celej šírke */
     padding: 10px;
-        /* Pridajte padding pre lepší vzhľad */
 }
 
-.nav-links li {
+/* 📌 Flexbox pre navigačné odkazy */
+.nav-links {
     display: flex;
-    margin: 0 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* Medzera medzi položkami */
+    list-style: none;
+    padding: 0;
+}
+
+/* 📌 Položky v navigácii */
+.nav-links li {
     list-style: none;
 }
 
+/* 📌 Odkazy v navigácii */
 .nav-links li a {
     text-decoration: none;
     padding: 5px 0;
     position: relative;
-    /*margin: 0 0 0 5%;*/
+    color: #99900c;
+    font-weight: bold;
 }
 
+/* 📌 Hover efekt pre podčiarknutie */
 .nav-links li a::after {
     content: '';
     background: #03cf0d;
@@ -71,6 +79,23 @@ nav {
 
 .nav-links li a:hover::after {
     width: 100%;
+}
+
+/* 📌 📱 Responzívne nastavenie pre menšie obrazovky (do 670px) */
+@media (max-width: 670px) {
+    .nav-links {
+        flex-direction: column;
+        /* Vertikálne zobrazenie */
+        align-items: center;
+        gap: 10px;
+        /* Lepší rozstup medzi položkami */
+    }
+
+    .nav-links li {
+        width: 100%;
+        /* Položky budú roztiahnuté cez celý riadok */
+        text-align: center;
+    }
 }
 
 .container {
@@ -192,7 +217,6 @@ a {
     height: 100%;
     object-fit: cover;
 }
-
 
 
 /* Skrytie modálneho okna predtým, než je aktivované */
@@ -327,7 +351,6 @@ a {
     /* Pridanie priestoru vo vnútri */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 
 .post {

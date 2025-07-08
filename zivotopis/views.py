@@ -109,7 +109,7 @@ def zivo_view(request):
         ('house-door-fill.svg', 'Bratislava'),
         ('telephone-fill.svg', '+421 948 900 850'),
         ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
-        ('calendar-event-fill.svg', '47r.')
+        ('calendar-event-fill.svg', '48r.')
     ]
     return render(request, 'zivotopis/zivo.html', {'icons_data': icons_data})
 

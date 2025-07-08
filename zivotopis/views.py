@@ -113,6 +113,15 @@ def zivo_view(request):
     ]
     return render(request, 'zivotopis/zivo.html', {'icons_data': icons_data})
 
+def ang_zivo_view(request):
+    icons_data = [
+        ('house-door-fill.svg', 'Bratislava'),
+        ('telephone-fill.svg', '+421 948 900 850'),
+        ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
+        ('calendar-event-fill.svg', '48r.')
+    ]
+    return render(request, 'zivotopis/angzivo.html', {'icons_data': icons_data})
+
 def gallery_view(request):
     return render(request, 'zivotopis/gallery.html')  # Zobrazíme šablónu gallery.html
 

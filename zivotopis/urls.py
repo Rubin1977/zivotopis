@@ -13,6 +13,7 @@ urlpatterns = [
     path('success/', views.success_view, name='success_view'),  
     path('unsuccess/', views.unsuccess_view, name='unsuccess_view'), 
     path('zivo/', views.zivo_view, name='zivo_view'),
+    path('en/zivo/', views.ang_zivo_view, name='zivo_en'),
     path('gallery/', views.gallery_view, name='gallery'),  # URL pre galériu
       
 ]

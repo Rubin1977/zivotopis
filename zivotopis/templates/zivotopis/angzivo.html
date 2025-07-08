@@ -1,32 +1,38 @@
 {% load static %}
 <!doctype html>
 <html lang="sk">
+
 <head>
     <meta charset="utf-8">
     <title>Ružbacký životopis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/zivo.css' %}">
     <script src="{% static 'js/header_zivo.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <div class="fixed-header">
         <div class="zivo-meno">
             <p><strong>Rastislav Ružbacký</strong></p>
             <div class="zivo-pro">
                 <p><strong>IT</strong>self-student</p>
-            </div>   
-            <div class="text-end" style="margin-right: 20px; margin-top: 10px;">|
-                <a href="{% url 'zivo_en' %}" class="btn btn-sm btn-outline-secondary">EN</a>
-            </div>               
-        </div> 
-        <div class="img-container"> 
+            </div>
+            <div class="text-end" style="margin-right: 20px; margin-top: 10px;">
+                <a href="{% url 'zivo_view' %}" class="btn btn-sm btn-outline-secondary">SK</a> |
+            </div>
+            
+        </div>
+        <div class="img-container">
             <a href="/">
-            <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="100" height="100">
+                <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="100" height="100">
             </a>
         </div>
     </div>
@@ -44,33 +50,82 @@
                 {% endfor %}
             </div>
         </section>
-        
+
         <!-- Sekcia O MNE -->
         <section class="my-5 bg-light p-4 rounded">
             <h2 class="text-center mb-4">
                 <i class="fas fa-user-circle" style="color: #3b5998; font-size: 2em; margin-right: 10px;"></i>
-                <strong>O MNE</strong>       
+                <strong>ABOUT ME</strong>
             </h2>
             <div class="container">
                 <p class="text-justify">
-                    <h2>Moja cesta k technológiám</h2>
-                    <p>Vždy som mal blízko k presnosti a systematickému mysleniu, ktoré ma prirodzene priviedli k záujmu o IT.Po rokoch
-                        praxe ako cytogenetik v zdravotníctve som sa rozhodol tento zmysel pre detail a precíznosť preniesť do oblasti
-                        technológií.Moja cesta zatiaľ nevedie cez IT firmu, ale cez túžbu učiť sa nové veci — momentálne sa pripravujem na
-                        kurz softvérového testovania.</p>
-                    <p>Ako samouk som začal objavovať svet programovania, pričom som sa zameral na jazyk Python. Pomocou Django Girls
-                        tutoriálusom vytvoril túto stránku ako svoj osobný životopis — čím som získal prvé skúsenosti s vývojom webových
-                        aplikácií v prostredí Djangoa prehĺbil svoje znalosti HTML a CSS.</p>
-                    <p>Pri vývoji som využíval Visual Studio Code, osvojil si prácu s virtuálnymi prostrediami v Pythone a aktívne využíval
-                        Git a GitHub na správu verzií. Neskôr som sa začal venovať aj C# a .NET frameworku, kde som po absolvovaní kurzu
-                        pochopil princípy vývoja aplikácií v tomto ekosystéme.Visual Studio sa stalo mojím hlavným nástrojom pre vývoj, čo
-                        mi umožnilo zefektívniť prácu a ďalej rozvíjať svoje projekty.</p>
-                    <p>Popri tom som pôsobil v zahraničí, kde som sprevádzal manželku počas jej diplomatickej misie v Bruseli. Túto životnú
-                        fázu som využil naplno:absolvoval som kurz varenia piva na KU Leuven, rozvíjal svoje technické zručnosti a budoval
-                        nové kontakty. Momentálne pracujem na vylepšení mojej stránky <a
-                            href="https://rastislavruzbacky.eu.pythonanywhere.com/zivo/"
-                            target="_blank">rastislavruzbacky.eu.pythonanywhere.com</a> a pripravujem sa na ďalší rozvoj v IT oblasti — s
-                        cieľom nájsť uplatnenie ako softvérový tester prípadne junior developer.</p>
+                <h2>My Journey Toward Technology</h2>
+                <p>I have always been drawn to precision and systematic thinking — qualities that naturally led me to explore the world of
+                    IT. After years of experience as a cytogeneticist in healthcare, I decided to apply this attention to detail to the field of
+                    technology. Although my path hasn’t yet taken me into an IT company, I’m driven by a desire to learn and grow — currently preparing
+                    for a software testing course.
+                </p>
+                <p>As a self-learner, I began exploring programming, focusing on the Python language. With the help of the Django Girls
+                    tutorial, I created this site as my personal résumé — gaining initial experience in developing web applications using
+                    the Django framework and deepening my understanding of HTML and CSS.
+                </p>
+                <p>Throughout development, I used Visual Studio Code, mastered managing Python virtual environments, and actively worked
+                with Git and GitHub for version control — gaining experience in structured and well-documented development.
+                Later, I expanded into C# and the .NET framework. After completing a dedicated course, I developed a solid understanding
+                of application development within this ecosystem.
+                Visual Studio became my primary tool for development, helping me streamline my work and further enhance my projects.
+                </p>
+                <p>
+                    Alongside this, I spent time abroad accompanying my wife on her diplomatic mission in Brussels. I made the most of this
+                    unique life chapter — completing a brewing course at KU Leuven, expanding my technical skills, and building new
+                    professional connections.
+                    I’m currently working on improving my website rastislavruzbacky.eu.pythonanywhere.com and preparing to continue my IT
+                    journey — aiming to find opportunities as a software tester or junior developer.
+                    
+                    WORK EXPERIENCE
+                    Independent Professional Experience | International Engagement
+                    📍 Etterbeek, Brussels (Belgium)
+                    01/01/2014 – 31/12/2025
+                    - Development of analytical and technical skills in a multicultural environment during long-term residency abroad
+                    - Active travel and exploration of new cultures and technological trends
+                    - Completion of Beer Sensory Evaluation course
+                    - Study of brewing technology at KU Leuven with a focus on professional malting and brewing processes
+                    - Practical experience with beer brewing, including recipe experimentation and knowledge of both home and industrial
+                    techniques
+                    - Course: “How to Increase Your Value in the Job Market” — focused on personal branding and career development
+                    - Independent programming studies, online courses, and personal digital projects (e.g. building a website using Python)
+                    
+                    Cytogeneticist | National Oncology Institute
+                    📍 Bratislava, Slovakia
+                    01/06/2006 – 31/12/2013
+                    - Establishment and processing of non-tumor and tumor cell cultures
+                    - Application of genotoxic substances to cultures
+                    - Analysis of cytogenetic samples using direct microscopy, chromosomal banding techniques, visual analysis, and
+                    cytogenetic diagnostics
+                    - Cancer cytogenetics (G-banding) across a broad spectrum of pediatric and adult tumor samples (e.g. CML, AML, ALL, MDS
+                    — approx. 220 patients annually)
+                    - Diagnostic evaluation of samples using direct and indirect DNA/RNA methods (Nested PCR, Real-time PCR)
+                    - Cytogenetic evaluation using FISH technique (approx. 200 samples, 200 nuclei per case)
+                    - Methodical and professional supervision in the laboratory
+                    - Separation of CD138+ plasma cells in multiple myeloma cases (MACS, Stemcell)
+                    - Basic knowledge of CGH method
+                    - Active and passive participation in genetic conferences and events — see annex
+                    
+                    Cytogeneticist | Hospital with Polyclinic
+                    📍 Spišská Nová Ves, Slovakia
+                    01/11/2003 – 31/05/2006
+                    - Preparation and processing of short-term tissue cultures (72h), peripheral blood, and long-term amniocyte cultures
+                    - Prenatal assessment from amniotic fluid and constitutional karyotyping from peripheral blood
+                    - Application of genotoxic substances to cultures
+                    - Preparation of microscope slides, chromosomal staining (G-, C-banding), microscopy, and automated karyotyping (LUCIA),
+                    including precise karyotype creation and analysis
+                    - Analysis of cytogenetic sections using direct microscopy, chromosomal banding, visual interpretation, and cytogenetic
+                    diagnostics
+                    - 
+                    
+                    
+
+                </p>
                 </p>
             </div>
         </section>
@@ -78,7 +133,7 @@
         <section>
             <h2 class="text-center mb-4">
                 <i class="fa-solid fa-user-tie" style="color: #3b5998; font-size: 2em; margin-right: 10px;"></i>
-                <strong>PRACOVNÉ SKÚSENOSTI</strong>       
+                <strong>PRACOVNÉ SKÚSENOSTI</strong>
             </h2>
             <div class="container">
                 <div class="row">
@@ -93,14 +148,19 @@
                         </p>
                         <p><strong>01/01/2014 – 31/12/2025</strong></p>
                         <ul class="list-unstyled">
-                            <li>Rozvoj analytických a technických zručností v multikultúrnom prostredí počas dlhodobého pobytu v zahraničí</li>
+                            <li>Rozvoj analytických a technických zručností v multikultúrnom prostredí počas dlhodobého
+                                pobytu v zahraničí</li>
                             <li>Aktívne cestovanie a spoznávanie nových kultúr a technologických trendov</li>
                             <li>Absolvovanie kurzu senzorického hodnotenia piva (Beer Sensory Evaluation)</li>
-                            <li>Štúdium technológie varenia piva na KU Leuven (Brewing Technology) — dôraz na profesionálne sladovnícke a
+                            <li>Štúdium technológie varenia piva na KU Leuven (Brewing Technology) — dôraz na
+                                profesionálne sladovnícke a
                                 pivovarské procesy</li>
-                            <li>Praktická skúsenosť s varením piva, experimentovanie s receptami, znalosť domácich aj priemyselných techník</li>
-                            <li>Kurz "Ako zvýšiť svoju hodnotu na pracovnom trhu" — zameraný na sebaprezentáciu a profesijný rozvoj</li>
-                            <li>Samostatné štúdium programovania, online kurzy, práca na vlastných projektoch (napr. vývoj webstránky v Pythone)
+                            <li>Praktická skúsenosť s varením piva, experimentovanie s receptami, znalosť domácich aj
+                                priemyselných techník</li>
+                            <li>Kurz "Ako zvýšiť svoju hodnotu na pracovnom trhu" — zameraný na sebaprezentáciu a
+                                profesijný rozvoj</li>
+                            <li>Samostatné štúdium programovania, online kurzy, práca na vlastných projektoch (napr.
+                                vývoj webstránky v Pythone)
                             </li>
                         </ul>
                     </div>
@@ -116,13 +176,17 @@
                         <ul class="list-unstyled">
                             <li>Zakladanie a spracovanie nenádorových a nádorových bunkových kultúr</li>
                             <li>Pridávanie genotoxických látok do kultúr</li>
-                            <li>Hodnotenie cytogenetických sekcii metódami priamej mikroskopie, diferenčné farbenie chromozómov, vizuálna analýza a
+                            <li>Hodnotenie cytogenetických sekcii metódami priamej mikroskopie, diferenčné farbenie
+                                chromozómov, vizuálna analýza a
                                 cytogenetická diagnostická determinácia </li>
-                            <li>Nádorová cytogenetika (G-prúžkovanie) zo širokého spektra detských a dospelých nádorových tkanív ako CML, AML, ALL,
+                            <li>Nádorová cytogenetika (G-prúžkovanie) zo širokého spektra detských a dospelých
+                                nádorových tkanív ako CML, AML, ALL,
                                 MDS (cca 220 pacientov ročne) </li>
-                            <li>Spracovanie a diagnostické vyhodnotenie materiálu metódami priamej a nepriamej DNA/RNA diagnostiky (Nested PCR,
+                            <li>Spracovanie a diagnostické vyhodnotenie materiálu metódami priamej a nepriamej DNA/RNA
+                                diagnostiky (Nested PCR,
                                 Real-time PCR) </li>
-                            <li>Spracovanie a diagnostické vyhodnotenie sekcií pomocou FISH metódy (cca 200 vzoriek/200 jadier v každej)</li>
+                            <li>Spracovanie a diagnostické vyhodnotenie sekcií pomocou FISH metódy (cca 200 vzoriek/200
+                                jadier v každej)</li>
                             <li>Metodické a profesionálne vedenie prace v laboratóriu</li>
                             <li>Separácia CD 138+ plazmatických buniek pri mnohopočetnom myelóme (MACS, Stemcell)</li>
                             <li>Základy CGH metódy</li>
@@ -134,33 +198,41 @@
                         <h3 class="text-center">Cytogenetik | Nemocnica s poliklinikou</h3>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona"
+                                    width="24">
                                 Spišská Nová Ves
-                            </small>           
+                            </small>
                         </p>
                         <p><strong>01/11/2003 - 31/05/2006</strong></p>
                         <ul class="list-unstyled">
-                            <li>Zakladanie a spracovanie krátkodobých tkanivových kultúr (72 hodín), periférnej krvi a dlhodobá kultivácia amniocytov</li>
-                            <li>Prenatálne hodnotenie z plodovej vody a bežné hodnotenie konštitučného karyotypu z periférnej krvi</li>
+                            <li>Zakladanie a spracovanie krátkodobých tkanivových kultúr (72 hodín), periférnej krvi a
+                                dlhodobá kultivácia amniocytov</li>
+                            <li>Prenatálne hodnotenie z plodovej vody a bežné hodnotenie konštitučného karyotypu z
+                                periférnej krvi</li>
                             <li>Pridávanie genotoxických látok do kultúr</li>
-                            <li>Pripravovanie preparátov na mikroskopovanie, cytogenetické farbiace techniky (G, C-prúžkovanie), mikroskopavanie a automatické karyotypovanie (LUCIA), schopnosť vytvárať presné karyotypy a analýzy</li>
-                            <li>Hodnotenie cytogenetických sekcii metódami priamej mikroskopie, diferenčné farbenie chromozómov, vizuálna analýza a cytogenetická diagnostická determinácia</li>
-                            <li>Metodické a profesionálne vedenie prace v laboratóriu</li>
+                            <li>Pripravovanie preparátov na mikroskopovanie, cytogenetické farbiace techniky (G,
+                                C-prúžkovanie), mikroskopavanie a automatické karyotypovanie (LUCIA), schopnosť vytvárať
+                                presné karyotypy a analýzy</li>
+                            <li>Hodnotenie cytogenetických sekcii metódami priamej mikroskopie, diferenčné farbenie
+                                chromozómov, vizuálna analýza a cytogenetická diagnostická determinácia</li>
+                            <li>Methodical and professional oversight of laboratory operations</li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-4">
-                        <h3 class="text-center">Civilná vojenská služba ako biológ-genetik | Nemocnica s poliklinikou</h3>
+                        <h3 class="text-center">Civil Service as Biologist-Geneticist | Hospital with Polyclinic
+                        </h3>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona" width="24">
-                                Spišská Nová Ves
-                            </small>                    
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Spišská Nová Ves ikona"
+                                    width="24">
+                                Spišská Nová Ves, Slovakia
+                            </small>
                         </p>
                         <p><strong>15/02/2002 - 31/03/2003</strong></p>
                         <ul class="list-unstyled">
-                            <li>Biológ na Oddelení klinickej genetiky v cytogenetickom laboratóriu.</li>
-                            <li>Prax vo všetkých cytogenetických metódach (spracovanie a zakladanie bunkových kultúr z periférnej krvi,
-                                sternálnych punkcií, plodovej vody po amniocentéze)</li>
+                            <li>Biologist at the Department of Clinical Genetics in the cytogenetics laboratory</li>
+                            <li>Hands-on experience with all standard cytogenetic methods: establishing and processing cell cultures from peripheral
+                            blood, bone marrow aspirates, and amniotic fluid after amniocentesis</li>
                         </ul>
                     </div>
                 </div>
@@ -170,7 +242,7 @@
         <section>
             <p>
                 <i class="fa-solid fa-user-graduate" style="color: #3b5998; font-size: 2em;"></i>
-                <strong>VZDELANIE</strong> 
+                <strong>VZDELANIE</strong>
             </p>
             <div class="container">
                 <div class="row">
@@ -181,9 +253,10 @@
                         <p>Mgr.| Biológia / Antropológia</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Univerzita Pavla Jozefa Šafárika ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}"
+                                    alt="Univerzita Pavla Jozefa Šafárika ikona" width="24">
                                 Univerzita Pavla Jozefa Šafárika v Košiciach
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                 </div>
@@ -192,83 +265,91 @@
                         <p>01/10/2000 - 14/02/2002 a 01/04/2003 - 31/10/2003</p>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <p>RNDr.| Interná forma postgraduálneho štúdia antropológie| Rigorózna práca z biológie: Detekcia STR lókusov v rómskej populácií východného Slovenska a PCR metóda.</p>
+                        <p>RNDr.| Interná forma postgraduálneho štúdia antropológie| Rigorózna práca z biológie:
+                            Detekcia STR lókusov v rómskej populácií východného Slovenska a PCR metóda.</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Prešovská Univerzita ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Prešovská Univerzita ikona"
+                                    width="24">
                                 Prešovská Univerzita Fakulta humanitných a prírodných vied
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-        <br>    
+        <br>
         <section>
             <p>
                 <i class="fa-solid fa-book-open" style="color: rgb(129, 156, 8); font-size: 2em;"></i>
-                <strong> KURZY A ŠKOLENIA</strong> 
+                <strong> KURZY A ŠKOLENIA</strong>
             </p>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 box">
-                    <p>01/11/2003- 29/04/2004</p>
+                        <p>01/11/2003- 29/04/2004</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Certifikát pre prácu v zdravotníctve pre zdravotníckych pracovníkov v lekárskej genetike</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}"
+                                    alt="Slovenská zdravotnícka univerzita ikona" width="24">
                                 Slovenská zdravotnícka univerzita v Bratislave
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                    <p>20/10/2004</p>
+                        <p>20/10/2004</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Zaradenie do špecializačného štúdia v odbore vyšetrovacie metódy v lekárskej genetike</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}"
+                                    alt="Slovenská zdravotnícka univerzita ikona" width="24">
                                 Slovenská zdravotnícka univerzita v Bratislave
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                    <p>28/02/2005</p>
+                        <p>28/02/2005</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Registrácia v komore iných zdravotníckych pracovníkov</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}"
+                                    alt="Slovenská zdravotnícka univerzita ikona" width="24">
                                 Slovenská zdravotnícka univerzita v Bratislave
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                    <p>14/06/2007</p>
+                        <p>14/06/2007</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>Diplom v špecializácii v odbore laboratórne a diagnostické metódy v klinickej genetike</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Slovenská zdravotnícka univerzita ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}"
+                                    alt="Slovenská zdravotnícka univerzita ikona" width="24">
                                 Slovenská zdravotnícka univerzita v Bratislave
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>08-09/2017</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Kurz pivovarníctva (kurz Univerzity v Leuvene pre profesionálov o technológiách v pivovarníctve a sladovníctve)</p>
+                        <p>Kurz pivovarníctva (kurz Univerzity v Leuvene pre profesionálov o technológiách v
+                            pivovarníctve a sladovníctve)</p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Univerzita v Leuvene ikona" width="24">
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Univerzita v Leuvene ikona"
+                                    width="24">
                                 Univerzita v Leuvene
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
@@ -280,15 +361,17 @@
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}" alt="IT Network ikona" width="24">
                                 <a href="https://www.itnetwork.cz/" target="_blank">www.itnetwork.cz</a>
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>2024</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Vytvorenie vlastnej webovej stránky pomocou frameworku Django na platforme PythonAnywhere v rámci kurzu Django Girls,
-                        vrátane návrhu, implementácie a nasadenia. Administrátorský prístup s možnosťou úpravy obsahu.</p>
+                        <p>Vytvorenie vlastnej webovej stránky pomocou frameworku Django na platforme PythonAnywhere v
+                            rámci kurzu Django Girls,
+                            vrátane návrhu, implementácie a nasadenia. Administrátorský prístup s možnosťou úpravy
+                            obsahu.</p>
                         <p>
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
@@ -296,30 +379,31 @@
                                 <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">
                                     rastislavruzbacky.eu.pythonanywhere.com
                                 </a>
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>2025</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Vytvorenie webovej aplikácie pomocou .NET frameworku, implementácie backend logiky a nasadenia
-                        do produkcie.</p>
+                        <p>Vytvorenie webovej aplikácie pomocou .NET frameworku, implementácie backend logiky a
+                            nasadenia
+                            do produkcie.</p>
                         <p>
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
                                 Stránka dostupná na:
-                            </small>                    
+                            </small>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
         <br>
-        <section>  
+        <section>
             <p>
                 <i class="fas fa-comments" style="color: rgb(34, 172, 193); font-size: 2em;"></i>
-                <strong> JAZYKOVÉ ZNALOSTI</strong> 
+                <strong> JAZYKOVÉ ZNALOSTI</strong>
             </p>
             <div class="container">
                 <div class="box-jaz">
@@ -397,11 +481,13 @@
                 <a class="social-link" href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank">
                     <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
                 </a>
-                <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" class="btn btn-primary" target="_blank">
+                <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" class="btn btn-primary"
+                    target="_blank">
                     Spojiť sa na LinkedIn
                 </a>
             </div>
         </div>
     </div>
 </footer>
+
 </html>

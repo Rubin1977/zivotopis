@@ -3,15 +3,18 @@
 
 {% block content %}
 <div class="gallery">
-    <h2>Lichtenštajnsko apríl 2024</h2>
+    <h2>Lichtenstein – April 2024</h2>
     <div class="slides">
-        <img src="{% static 'images/Lichtenstein.jpg' %}" alt="Photo 1">
-        <img src="{% static 'images/Balzers-kam.jpg' %}" alt="Photo 2">
-        <img src="{% static 'images/Licht-jazero.jpg' %}" alt="Photo 3">
-        <img src="{% static 'images/Do-udolia.jpg' %}" alt="Photo 4">
-        <img src="{% static 'images/Vinica-pod-hradom.jpg' %}" alt="Photo 5">
-        <!-- Ďalšie fotky -->
+        {% for item in items %}
+        <div class="slide-item">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            <p>{{ item.title }}</p>
+        </div>
+        {% empty %}
+        <p>Žiadne obrázky v galérii zatiaľ nie sú.</p>
+        {% endfor %}
     </div>
+
     <button class="prev">&#10094;</button>
     <button class="next">&#10095;</button>
 </div>

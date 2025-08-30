@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
 
-from .models import Post, Image, Email
+from .models import Post, Image, Email, GalleryItem
 from .forms import PostForm, ImageForm, EmailForm
 
 def post_list(request):
@@ -123,6 +123,8 @@ def ang_zivo_view(request):
     return render(request, 'zivotopis/angzivo.html', {'icons_data': icons_data})
 
 def gallery_view(request):
-    return render(request, 'zivotopis/gallery.html')  # Zobrazíme šablónu gallery.html
+    items = GalleryItem.objects.all().order_by('-created')
+    return render(request, 'zivotopis/gallery.html', {'items': items}) # Zobrazíme šablónu gallery.html
+
 
 # Create your views here.

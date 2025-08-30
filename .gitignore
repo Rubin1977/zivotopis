@@ -1,32 +1,36 @@
-# Python
+# 🐍 Python
 *.pyc
 *~
-__pycache__
+__pycache__/
 
-# Env
+# 🔐 Virtuálne prostredia
 .env
-myvenv/
 venv/
+myvenv/
+ruvenv/
 
-# Database
+# 🗃️ Databáza
 db.sqlite3
 
-# Static folder at project root
-/static/
+# 📦 Výstupné statické súbory (collectstatic)
+staticfiles/
 
-# macOS
+# ✅ Sleduj vlastné statické súbory
+!static/
+
+# 🍏 macOS
 ._*
 .DS_Store
 .fseventsd
 .Spotlight-V100
 
-# Windows
+# 🪟 Windows
 Thumbs.db*
 ehthumbs*.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
 
-# Visual Studio
+# 🧠 Visual Studio Code
 .vscode/
 .history/
 *.code-workspace

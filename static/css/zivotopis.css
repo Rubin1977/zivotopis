@@ -361,10 +361,9 @@ a {
 
 /* stýly pre galériu */
 .gallery {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
 }
 
 .gallery h2 {
@@ -422,27 +421,29 @@ a {
 /* Navigačné šípky */
 .prev,
 .next {
-    cursor: pointer;
-    position: fixed;
-    bottom: 40px;
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
     font-size: 24px;
     color: #fff;
-    background-color: rgba(138, 95, 95, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
 .prev {
-    left: 30px;
+    left: 10px;
 }
 
 .next {
-    right: 30px;
+    right: 10px;
 }
 
 .prev:hover,

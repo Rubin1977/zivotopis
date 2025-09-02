@@ -43,11 +43,15 @@
                 {% for icon, text in icons_data %}
                 <div class="col">
                     <span class="d-inline-flex justify-content-center align-items-center">
-                        <img src="{% static 'icons/' %}{{ icon }}" alt="{{ text }}" class="me-2" width="24">
+                        <img src="{% static 'icons/' %}{{ icon }}" alt="{{ text }}" class="me-2" width="24" data-bs-toggle="tooltip"
+                            title="{{ text }}">
                         {% if '@' in text %}
-                        <a href="mailto:{{ text }}"><strong class="ms-2">{{ text }}</strong></a>
+                        <a href="mailto:{{ text }}" data-bs-toggle="tooltip" title="Klikni pre odoslanie emailu">
+                            <strong class="ms-2">{{ text }}</strong>
+                        </a>
                         {% elif text|slice:":4" == '+421' %}
-                        <a href="tel:{{ text }}"><strong class="ms-2">{{ text }}</strong></a>
+                        <a href="tel:{{ text }}" role="button" data-bs-toggle="tooltip" data-bs-trigger="click"
+                            title="Ak nezdvihnem, píš mail 😉">
                         {% else %}
                         <strong class="ms-2">{{ text }}</strong>
                         {% endif %}
@@ -387,6 +391,12 @@
             <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Domov">Domov</a>
         </div>
     </main>
+<script>
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 </body>
 <footer>
     <div class="container text-center py-3">

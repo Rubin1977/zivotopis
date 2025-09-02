@@ -11,7 +11,7 @@
         <link href="//fonts.googleapis.com/css?family=Roboto Mono&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <headerr>
+        <header class="site-header">
             <a href="/" > 
                 <h1><img class="img" src="{% static 'css/favicon-logo.png' %}" alt="môj favicon" width="60" height="60"><span>Rastislav Ružbacký</span></h1>
             </a>
@@ -22,7 +22,7 @@
                     <li><a href="{% url 'send_email' %}">Kontaktný formulár</a></li>
                 </ul>
             </nav>  
-        </headerr>
+        </header>
         <main>
             <button id="myButton" class="mt-2">Kliknutím sa zmení pozadie tlačidla na náhodnú farbu</button>
             <p id="myText"></p>
@@ -48,15 +48,15 @@
                 {% endif %}
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.text|linebreaksbr }}</p>
-                <div class="post-images">
-                    {% if post.image %}
-                        <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
-                    {% endif %}
-                    {% if post.images.all %}
-                        {% for image in post.images.all %}
-                            <img class="post-image" src="{{ image.image.url }}" alt="{{ post.title }}">
+                <div class="container">
+                    <div class="row">
+                        {% for image in post.post_images.all %}
+                        <div class="col-md-4 mb-4 text-center">
+                            <img src="{{ image.image.url }}" class="img-fluid rounded shadow-sm" alt="Obrázok"
+                                style="max-height: 250px; object-fit: cover;">
+                        </div>
                         {% endfor %}
-                    {% endif %}
+                    </div>
                 </div>
                 <!--<a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Návrat späť">
                     {% static './icons/house-fill.svg' %} Home

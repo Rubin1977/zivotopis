@@ -25,7 +25,7 @@ class Post(models.Model):
     
 class Image(models.Model):
     post = models.ForeignKey(Post, related_name='post_images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/', null=True, blank=True)
+    image = models.ImageField(upload_to='post_images/', null=True, blank=True)
 
     def __str__(self):
         return f"Obrázok pre post: {self.post.title}"

@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text', 'images')
+        fields = ('title', 'text',)
         
 class ImageForm(forms.ModelForm):
     class Meta:

@@ -25,30 +25,48 @@ def post_detail(request, pk):
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
+        image_files = request.FILES.getlist('images')  # získaj všetky nahraté obrázky
+
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            #post.published_date = timezone.now()
             post.save()
+
+            # vytvor Image objekty pre každý nahratý súbor
+            for image_file in image_files:
+                Image.objects.create(post=post, image=image_file)
+
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'zivotopis/post_edit.html', {'form': form})
+
 
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES, instance=post)
+        image_files = request.FILES.getlist('images')
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            #post.published_date = timezone.now()
             post.save()
+            for image_file in image_files:
+                Image.objects.create(post=post, image=image_file)
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'zivotopis/post_edit.html', {'form': form})
+    return render(request, 'zivotopis/post_edit.html', {'form': form, 'post': post})
+
+@login_required
+def image_delete(request, pk):
+    image = get_object_or_404(Image, pk=pk)
+    post_pk = image.post.pk
+    if request.method == "POST":
+        image.delete()
+    return redirect('post_edit', pk=post_pk)
+
 
 @login_required
 def post_draft_list(request):

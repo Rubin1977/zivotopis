@@ -1,11 +1,25 @@
 {% extends 'zivotopis/base.html' %}
 
 {% block content %}
-    <h2>Nový príspevok</h2>
+    <h2>{% if post.pk %}Upraviť príspevok{% else %}Nový príspevok{% endif %}</h2>
     <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        {{ image_form.as_p }}
+        <label for="images">Pridať obrázky:</label>
+        <input type="file" name="images" multiple>
+
         <button type="submit" class="save btn btn-secondary">Uložiť</button>
     </form>
+    <h5>Existujúce obrázky:</h5>
+    <div class="row">
+        {% for image in post.post_images.all %}
+        <div class="col-md-3 mb-3 text-center">
+            <img src="{{ image.image.url }}" class="img-fluid rounded" alt="Obrázok" style="max-height: 150px;">
+            <form method="POST" action="{% url 'image_delete' image.id %}" style="margin-top: 5px;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-danger">Vymazať</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

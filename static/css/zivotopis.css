@@ -13,88 +13,80 @@ body {
     flex-direction: column;
 }
 
-header {
-    height: 120px;
+.site-header {
+    height: 20vh;
     width: 100%;
-    background: linear-gradient(180deg, rgb(132 153 151) 10%,
-                rgb(175 235 120) 50%,
-                rgb(132 132 211) 90%);
-    color: #963030;
-    padding: 20px 20px;
-    border-bottom: 3px solid #00f1ff;
-    display: flex;
-}
-
-
-
-.img-container img {
-    width: 100%; /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
-    height: 100%; /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
-    object-fit: cover; /* Zabezpečenie zachovania pomeru strán obrázka */
-}
-
-nav {
-    display: flex;
-    /*align-items: center;*/
-    justify-content: center;
-    /*background-color: #f8f9fa;
-    /* Pridajte pozadie, ak je potrebné */
-    width: 100%;
-        /* Zabezpečí, že sa menu roztiahne po celej šírke */
-    padding: 10px;
-        /* Pridajte padding pre lepší vzhľad */
-}
-
-.nav-links li {
-    display: flex;
-    margin: 0 15px;
-    list-style: none;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    padding: 5px 0;
     position: relative;
-    /*margin: 0 0 0 5%;*/
+    padding: 2% 4%;
+    border-bottom: 3px solid #00f1ff;
+    background: url('/static/images/Vinica-pod-hradom.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.nav-links li a::after {
+@media (min-width: 768px) {
+    .site-header {
+        height: 25vh;
+    }
+}
+
+@media (min-width: 1200px) {
+    .site-header {
+        height: 30vh;
+    }
+}
+
+.navbar-nav {
+    justify-content: center;
+    width: 100%;
+}
+.navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #00f1ff;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2c29c0;
+}
+
+.navbar-nav .nav-link::after {
     content: '';
-    background: #03cf0d;
-    width: 0;
-    height: 3px;
     position: absolute;
     bottom: -5px;
     left: 0;
-    transition: width 0.3s;
+    width: 0;
+    height: 3px;
+    background-color: #03cf0d;
+    transition: width 0.3s ease;
 }
 
-.nav-links li a:hover::after {
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
     width: 100%;
 }
-
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
-    /*height: 100%;
-    /* Zabezpečuje, aby kontajner zaberával 100% výšky rodičovského elementu (napr. tela stránky) */
+.img-container img {
+    width: 100%;
+    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    height: 100%;
+    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    object-fit: cover;
+    /* Zabezpečenie zachovania pomeru strán obrázka */
 }
-
-/* Media query pre zariadenia s maximálnou šírkou obrazovky 768px (napr. tablety a mobilné zariadenia) */
-/*@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        /* Zmení flex-direction na column pre vertikálny layout 
-        justify-content: center;
-        /* Zarovná obsah vertikálne do stredu *
-        height: auto;
-        /* Nastaví výšku na auto, aby kontajner zaberával iba toľko miesta, koľko je potrebné pre obsah 
-    }
-}*/
-
 
 .col {
     width: 80%;
@@ -381,12 +373,16 @@ a {
 }
 
 .slide-item {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: opacity 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px 15px;
 }
 
 .slide-item.active {
@@ -394,7 +390,7 @@ a {
     position: relative;
 }
 
-.slide-item:hover {
+.slide-item img:hover {
     transform: scale(1.03);
 }
 
@@ -410,6 +406,10 @@ a {
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid #681717;
+    transition: transform 0.3s ease;
+    z-index: 1;
+    position: relative;
+    transform-origin: center center;
 }
 
 .slide-item p {

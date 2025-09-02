@@ -13,25 +13,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+
+<header class="site-header">
     <div class="fixed-header">
         <div class="zivo-meno">
             <p><strong>Rastislav Ružbacký</strong></p>
             <div class="zivo-pro">
                 <p><strong>IT</strong>self-student</p>
-            </div>   
+            </div>
             <div class="text-end" style="margin-right: 20px; margin-top: 10px;">|
-                <a href="{% url 'zivo_en' %}" class="btn btn-sm" style="background-color: #ffffff; color: #4b0082; border: none;">
+                <a href="{% url 'zivo_en' %}" class="btn btn-sm"
+                    style="background-color: #ffffff; color: #4b0082; border: none;">
                     EN
-                </a>                  
-            </div>               
-        </div> 
-        <div class="img-container"> 
+                </a>
+            </div>
+        </div>
+        <div class="img-container">
             <a href="/">
-            <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="100" height="100">
+                <img src="{% static 'images/ja.jpg' %}" alt="Moja foto" width="100" height="100">
             </a>
         </div>
     </div>
+</header>
+<body>
     <main class="container my-4">
         <!-- Informácie (Bratislava, kontakt...) -->
         <section class="container text-center my-3">
@@ -40,7 +44,13 @@
                 <div class="col">
                     <span class="d-inline-flex justify-content-center align-items-center">
                         <img src="{% static 'icons/' %}{{ icon }}" alt="{{ text }}" class="me-2" width="24">
+                        {% if '@' in text %}
+                        <a href="mailto:{{ text }}"><strong class="ms-2">{{ text }}</strong></a>
+                        {% elif text|slice:":4" == '+421' %}
+                        <a href="tel:{{ text }}"><strong class="ms-2">{{ text }}</strong></a>
+                        {% else %}
                         <strong class="ms-2">{{ text }}</strong>
+                        {% endif %}
                     </span>
                 </div>
                 {% endfor %}

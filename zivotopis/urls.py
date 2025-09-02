@@ -15,5 +15,8 @@ urlpatterns = [
     path('zivo/', views.zivo_view, name='zivo_view'),
     path('en/zivo/', views.ang_zivo_view, name='zivo_en'),
     path('gallery/', views.gallery_view, name='gallery'),  # URL pre galériu
+    path('image/<int:pk>/delete/', views.image_delete, name='image_delete'),
+
+
       
 ]

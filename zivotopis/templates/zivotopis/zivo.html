@@ -45,13 +45,17 @@
                     <span class="d-inline-flex justify-content-center align-items-center">
                         <img src="{% static 'icons/' %}{{ icon }}" alt="{{ text }}" class="me-2" width="24" data-bs-toggle="tooltip"
                             title="{{ text }}">
+                
                         {% if '@' in text %}
-                        <a href="mailto:{{ text }}" data-bs-toggle="tooltip" title="Klikni pre odoslanie emailu">
+                        <a href="mailto:{{ text }}" data-bs-toggle="tooltip" data-bs-trigger="hover focus click"
+                            data-bs-delay='{"show": 100, "hide": 3000}' title="Klikni pre odoslanie emailu">
                             <strong class="ms-2">{{ text }}</strong>
                         </a>
                         {% elif text|slice:":4" == '+421' %}
-                        <a href="tel:{{ text }}" role="button" data-bs-toggle="tooltip" data-bs-trigger="click"
-                            title="Ak nezdvihnem, píš mail 😉">
+                        <a href="tel:{{ text }}" role="button" data-bs-toggle="tooltip" data-bs-trigger="hover focus click"
+                            data-bs-delay='{"show": 100, "hide": 3000}' title="Ak nezdvihnem, píš mail 😉">
+                            <strong class="ms-2">{{ text }}</strong>
+                        </a>
                         {% else %}
                         <strong class="ms-2">{{ text }}</strong>
                         {% endif %}

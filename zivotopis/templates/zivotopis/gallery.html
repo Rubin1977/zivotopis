@@ -8,7 +8,7 @@
         {% for item in items %}
         <div class="slide-item">
             <h3>{{ item.title }}</h3>
-            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
             <p>{{ item.description }}</p>  
         </div>
         {% empty %}

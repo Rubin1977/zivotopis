@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function openGalleryModal(index) {
+        if (slideItems.length === 0) return;
+        if (index < 0) index = slideItems.length - 1;
+        if (index >= slideItems.length) index = 0;
+
         const slide = slideItems[index];
         const img = slide.querySelector("img");
         const title = slide.querySelector("h3")?.textContent || "";
@@ -80,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (event.key === "Escape") {
                 closeGalleryModal();
             } else if (event.key === "ArrowLeft") {
-                showGallerySlide(currentSlideIndex - 1);
+                openGalleryModal(currentSlideIndex - 1);
             } else if (event.key === "ArrowRight") {
-                showGallerySlide(currentSlideIndex + 1);
+                openGalleryModal(currentSlideIndex + 1);
             }
         }
     });

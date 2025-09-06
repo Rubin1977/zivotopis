@@ -10,6 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentSlideIndex = 0;
 
+    function showGallerySlide(index) {
+        if (slideItems.length === 0) return;
+        if (index < 0) index = slideItems.length - 1;
+        if (index >= slideItems.length) index = 0;
+
+        slideItems.forEach((slide, i) => {
+            slide.classList.remove("active");
+            slide.style.display = "none";
+            if (i === index) {
+                slide.classList.add("active");
+                slide.style.display = "block";
+            }
+        });
+
+        currentSlideIndex = index;
+    }
+
     function openGalleryModal(index) {
         const slide = slideItems[index];
         const img = slide.querySelector("img");
@@ -34,15 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
         modalDescription.textContent = "";
     }
 
-    slideItems.forEach((slide, i) => {
-        slide.classList.remove("active");
-        slide.style.display = "none";
-        if (i === index) {
-            slide.classList.add("active");
-            slide.style.display = "block";
-        }
-    }
-
     slideItems.forEach((slide, index) => {
         const img = slide.querySelector("img");
         if (img) {
@@ -56,11 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (galleryPrev) {
-        galleryPrev.addEventListener("click", () => showGallerySlide(currentSlideIndex - 1));
+        galleryPrev.addEventListener("click", () => openGalleryModal(currentSlideIndex - 1));
     }
 
     if (galleryNext) {
-        galleryNext.addEventListener("click", () => showGallerySlide(currentSlideIndex + 1));
+        galleryNext.addEventListener("click", () => openGalleryModal(currentSlideIndex + 1));
     }
 
     window.addEventListener("keydown", function (event) {
@@ -80,4 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             closeGalleryModal();
         }
     });
+
+    // Inicializuj zobrazenie prvého obrázka v galérii
+    showGallerySlide(currentSlideIndex);
 });

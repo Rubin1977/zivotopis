@@ -1,33 +1,47 @@
 @import url('/static/css/zivotopis.css');
-headerr {
-    height: 20vh;
-    /* Dynamická výška založená na výške obrazovky */
+
+/* Modálne pozadie */
+#zoomed-in-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    position: relative;
-    padding: 2% 4%;
-    border-bottom: 3px solid #00f1ff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: url('/static/images/Brussel_jazero.jpg') no-repeat center center;
-    /* Centrovanie obrázka */
-    background-size: cover;
-    /* Zabezpečí, že obrázok zaplní celý priestor */
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding-top: 60px;
 }
 
-
-@media (min-width: 768px) {
-    headerr {
-        height: 25vh;
-        /* Zvýšenie na tabletoch */
-    }
+/* Zväčšený obrázok */
+.modal-content-custom {
+    display: block;
+    margin: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-@media (min-width: 1200px) {
-    headerr {
-        height: 30vh;
-        /* Maximálna výška na desktopoch */
-    }
+/* Krížik na zatvorenie */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.close-button:hover {
+    color: #ccc;
 }
 
 .nav-links a {

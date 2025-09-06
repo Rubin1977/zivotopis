@@ -187,55 +187,6 @@ a {
 
 
 
-/* Skrytie modálneho okna predtým, než je aktivované */
-#zoomed-in-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    /* Zabezpečuje, aby bolo modálne okno nad ostatnými elementmi */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(68 84 93 / 81%);
-    /* Prehľadné pozadie s alfa hodnotou */
-}
-
-/* Štýly pre modálne okno s obrázkom */
-.modal-content {
-    margin: 10%;
-    display: block;
-    /*width: auto;
-    /* Zmena šírky na auto */
-    max-width: 80%;
-    /* Maximálna šírka */
-    /*height: auto;
-    /* Zmena výšky na auto 
-    max-height: 80%;
-    /* Maximálna výška */    
-    object-fit: contain;
-    /* Zabezpečuje, aby sa obrázok zmestil do modálneho okna */
-}
-
-/* Štýly pre zatváracie tlačidlo */
-#close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-#close:hover {
-    color: #bb1414;
-    /* Farebná zmena pri najazdení myšou */
-}
-
-
 .top-menu,
 .top-menu:visited {
     display: flex;
@@ -319,7 +270,6 @@ a {
     /* Pridanie priestoru vo vnútri */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 
 .post {
@@ -460,4 +410,4 @@ a {
     .gallery h2 {
         font-size: 1.5em;
     }
-}
+}}

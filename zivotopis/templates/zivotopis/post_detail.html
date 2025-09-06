@@ -52,7 +52,7 @@
                     <div class="row">
                         {% for image in post.post_images.all %}
                         <div class="col-md-4 mb-4 text-center">
-                            <img src="{{ image.image.url }}" class="img-fluid rounded shadow-sm" alt="Obrázok"
+                            <img src="{{ image.image.url }}" class="img-fluid rounded shadow-sm post-image" alt="Obrázok"
                                 style="max-height: 250px; object-fit: cover;">
                         </div>
                         {% endfor %}
@@ -64,10 +64,10 @@
             </article>
             <div style="padding-bottom: 20px;"></div>
             <!-- Modálne okno pre zväčšený obrázok -->
-            <div id="zoomed-in-modal" class="modal">
-                <span id="close" onclick="closeModal()">&times;</span>
-                <img id="zoomed-in-image" class="modal-content">
-            </div> 
+            <div id="zoomed-in-modal" class="modal-custom">
+                <span id="close" class="close-button">&times;</span>
+                <img id="zoomed-in-image" class="modal-content-custom" alt="Zväčšený obrázok">
+            </div>
         </main>
         <footer>
             <div class="container text-center py-3">

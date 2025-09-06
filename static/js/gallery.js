@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index >= slideItems.length) index = 0;
 
         slideItems.forEach((slide, i) => {
-            slide.classList.remove("active");
-            slide.style.display = "none";
             if (i === index) {
                 slide.classList.add("active");
                 slide.style.display = "block";
+            } else {
+                slide.classList.remove("active");
+                slide.style.display = "none";
             }
         });
 
@@ -49,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
         galleryImage.src = "";
         modalTitle.textContent = "";
         modalDescription.textContent = "";
+
+        // Aktualizuj galériu
+        showGallerySlide(currentSlideIndex);
     }
 
     slideItems.forEach((slide, index) => {

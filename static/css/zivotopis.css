@@ -1,3 +1,4 @@
+/* === ZÁKLADNÉ NASTAVENIA === */
 * {
     /*border: 1px solid black;*/
     box-sizing: border-box;
@@ -7,12 +8,11 @@ body {
     margin: 0;
     color: rgb(36, 32, 71);
     background: linear-gradient(180deg, rgb(169 159 78)0%, rgb(44 93 109)100%);
-    box-sizing: border-box;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-
+/* === HLAVIČKA === */
 .site-header {
     height: 20vh;
     width: 100%;
@@ -37,7 +37,7 @@ body {
         height: 30vh;
     }
 }
-
+/* === NAVIGÁCIA === */
 .navbar-nav {
     justify-content: center;
     width: 100%;
@@ -73,6 +73,7 @@ body {
 .navbar-nav .nav-link.active::after {
     width: 100%;
 }
+/* === OBSAH STRÁNKY === */
 .container {
     display: flex;
     flex-direction: row;
@@ -122,7 +123,6 @@ p {
     margin-top: 15px;
     text-align: justify;
     line-height: 1.5;
-    display: block;
 }
 
 footer {
@@ -274,10 +274,9 @@ a {
 
 .post {
     color: #260544d5;
-    margin: 20px 20px 40px 20px;
     border-radius: 10px;
     width: 75%;
-    margin: 0 auto;
+    margin: 20px auto 40px auto;
     /* Centrovanie */
     text-align: center;
     /* Ak má obsah text, zarovnanie na stred */
@@ -323,6 +322,7 @@ a {
 }
 
 .slide-item {
+    display:block;
     position: relative;
     overflow: hidden;
     padding: 15px;
@@ -410,4 +410,103 @@ a {
     .gallery h2 {
         font-size: 1.5em;
     }
-}}
+}
+
+#modal-description {
+    color: #e0e0e0;
+    font-size: 1em;
+    margin-top: 15px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+/* Modálne okno pre galériu */
+.modal-custom {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding-top: 60px;
+}
+
+.modal-inner {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+/* Zväčšený obrázok v modále */
+.modal-content-custom {
+    display: block;
+    margin: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Titulok obrázka */
+#gallery-caption {
+    color: white;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* Krížik na zatvorenie */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+
+/* Šípky v modálnom okne */
+#gallery-prev,
+#gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1100;
+    transition: background-color 0.3s ease;
+}
+
+#gallery-prev {
+    left: 10px;
+}
+
+#gallery-next {
+    right: 10px;
+}
+
+#gallery-prev:hover,
+#gallery-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

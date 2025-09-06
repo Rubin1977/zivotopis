@@ -15,8 +15,15 @@
         <p>Žiadne obrázky v galérii zatiaľ nie sú.</p>
         {% endfor %}
     </div>
-
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
+    <div id="gallery-modal" class="modal-custom">
+        <div class="modal-inner">
+            <span id="gallery-close" class="close-button">&times;</span>
+            <h3 id="modal-title"></h3>
+            <img id="gallery-image" class="modal-content-custom" alt="Zväčšený obrázok">
+            <p id="modal-description"></p>
+            <button id="gallery-prev" class="prev">&#10094;</button>
+            <button id="gallery-next" class="next">&#10095;</button>
+        </div>
+    </div>
 </div>
 {% endblock %}

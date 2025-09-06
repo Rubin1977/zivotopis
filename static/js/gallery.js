@@ -1,27 +1,83 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".slide-item");
-    let currentIndex = 0;
+    const galleryModal = document.getElementById("gallery-modal");
+    const galleryImage = document.getElementById("gallery-image");
+    const galleryClose = document.getElementById("gallery-close");
+    const galleryPrev = document.getElementById("gallery-prev");
+    const galleryNext = document.getElementById("gallery-next");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescription = document.getElementById("modal-description");
+    const slideItems = document.querySelectorAll(".slide-item");
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove("active");
-            slide.style.display = "none";
-            if (i === index) {
-                slide.classList.add("active");
-                slide.style.display = "block";
-            }
-        });
+    let currentSlideIndex = 0;
+
+    function openGalleryModal(index) {
+        const slide = slideItems[index];
+        const img = slide.querySelector("img");
+        const title = slide.querySelector("h3")?.textContent || "";
+        const description = slide.querySelector("p")?.textContent || "";
+
+        if (img) {
+            galleryImage.src = img.src;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            galleryModal.style.display = "block";
+            galleryModal.classList.add("open");
+            currentSlideIndex = index;
+        }
     }
 
-    document.querySelector(".next").addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
+    function closeGalleryModal() {
+        galleryModal.style.display = "none";
+        galleryModal.classList.remove("open");
+        galleryImage.src = "";
+        modalTitle.textContent = "";
+        modalDescription.textContent = "";
+    }
+
+    slideItems.forEach((slide, i) => {
+        slide.classList.remove("active");
+        slide.style.display = "none";
+        if (i === index) {
+            slide.classList.add("active");
+            slide.style.display = "block";
+        }
+    }
+
+    slideItems.forEach((slide, index) => {
+        const img = slide.querySelector("img");
+        if (img) {
+            img.style.cursor = "pointer";
+            img.addEventListener("click", () => openGalleryModal(index));
+        }
     });
 
-    document.querySelector(".prev").addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        showSlide(currentIndex);
+    if (galleryClose) {
+        galleryClose.addEventListener("click", closeGalleryModal);
+    }
+
+    if (galleryPrev) {
+        galleryPrev.addEventListener("click", () => showGallerySlide(currentSlideIndex - 1));
+    }
+
+    if (galleryNext) {
+        galleryNext.addEventListener("click", () => showGallerySlide(currentSlideIndex + 1));
+    }
+
+    window.addEventListener("keydown", function (event) {
+        if (galleryModal.classList.contains("open")) {
+            if (event.key === "Escape") {
+                closeGalleryModal();
+            } else if (event.key === "ArrowLeft") {
+                showGallerySlide(currentSlideIndex - 1);
+            } else if (event.key === "ArrowRight") {
+                showGallerySlide(currentSlideIndex + 1);
+            }
+        }
     });
 
-    showSlide(currentIndex);
+    window.addEventListener("click", function (event) {
+        if (event.target === galleryModal) {
+            closeGalleryModal();
+        }
+    });
 });

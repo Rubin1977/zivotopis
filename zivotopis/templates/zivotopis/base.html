@@ -24,7 +24,6 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
                     <div class="collapse navbar-collapse" id="menu">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
@@ -43,7 +42,6 @@
                                     href="{% url 'send_email' %}">Kontakt</a>
                             </li>
                         </ul>
-
                         <ul class="navbar-nav ms-auto">
                             {% if user.is_authenticated %}
                             <li class="nav-item">
@@ -61,10 +59,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-outline-primary" href="{% url 'logout' %}">Odhlásiť</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="btn btn-outline-success" href="{% url 'login' %}">Prihlásiť</a>
                             </li>
                             {% endif %}
                         </ul>

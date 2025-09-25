@@ -95,7 +95,7 @@ if os.getenv('PYTHONANYWHERE_DOMAIN'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'RastislavRuzbacky$default',
+            'NAME': 'RastislavRuzback$default',
             'USER': 'RastislavRuzback',
             'PASSWORD': 'Mojsql13',
             'HOST': 'RastislavRuzbacky.mysql.eu.pythonanywhere-services.com',

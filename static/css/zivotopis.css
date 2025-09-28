@@ -307,10 +307,19 @@ a {
     margin: auto;
 }
 
+.gallery h2::before {
+  content: "🗻 ";
+}
 .gallery h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: #681717;
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 2px solid #2e7d32;
+  border-radius: 10px;
+  background: linear-gradient(to right, #388e3c, #81c784);
 }
 
 .slides {

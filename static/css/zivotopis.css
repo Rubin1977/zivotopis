@@ -308,8 +308,9 @@ a {
 }
 
 .gallery h2::before {
-  content: "🗻 ";
+  content: attr(data-icon);
 }
+
 .gallery h2 {
   font-size: 2rem;
   font-family: 'Georgia', serif;

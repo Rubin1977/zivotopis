@@ -7,11 +7,17 @@ from django.utils import timezone
 #from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 #from wagtail.images.models import Image
 
+CATEGORY_CHOICES = [
+    ('bio', 'O mne'),
+    ('trip', 'Výlet'),
+    ('tech', 'IT'),
+]
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='bio')
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     images = models.ManyToManyField('Image', related_name='posts', blank=True)

@@ -6,16 +6,23 @@
             <time class="date">
                 {{ post.published_date }}
             </time>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+           <h2>
+            {% if post.category == 'bio' %}
+                🧬
+            {% elif post.category == 'trip' %}
+                🏔️
+            {% elif post.category == 'tech' %}
+                💻
+            {% endif %}
+            <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+            </h2>
             <p>{{ post.text|truncatechars:150 }}</p>
             <!-- Zobrazenie obrázkov pre daný príspevok -->
-            {% if images_dict|length %}
-                {% if images_dict.post.pk %}
-                    {% for image in images_dict.post.pk %}
+                {% for image in post.post_images.all %}
+                    <div class="post-image">
                         <img src="{{ image.image.url }}" alt="{{ post.title }}">
-                    {% endfor %}
-                {% endif %}
-            {% endif %}
+                    </div>
+                {% endfor %}
             <a href="{% url 'post_detail' pk=post.pk %}">Detail</a>
         </article>
     {% endfor %}

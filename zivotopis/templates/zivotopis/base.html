@@ -30,6 +30,11 @@
                                 <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="/">Domov</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'ceny_list' %}active{% endif %}"
+                                    href="{% url 'home' %}">Reality</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link {% if request.resolver_match.url_name == 'zivo_view' %}active{% endif %}"
                                     href="{% url 'zivo_view' %}">Životopis</a>
                             </li>

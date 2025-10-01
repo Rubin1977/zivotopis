@@ -4,8 +4,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
 
-from .models import Post, Image, Email, GalleryItem
-from .forms import PostForm, ImageForm, EmailForm
+from .models import Post, Image, Email, GalleryItem, Ceny
+from .forms import PostForm, ImageForm, EmailForm, AddCenyForm 
+
+import requests
+from bs4 import BeautifulSoup
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from .utils import get_reality_price
+
+
+
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -144,5 +154,65 @@ def gallery_view(request):
     items = GalleryItem.objects.all().order_by('-created')
     return render(request, 'zivotopis/gallery.html', {'items': items}) # Zobrazíme šablónu gallery.html
 
+def home_view(request):
+    no_discounted = 0
+    error = None
+    
+    form = AddCenyForm(request.POST or None)
+    
+    if request.method == 'POST':
+        form = AddCenyForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+
+            if instance.url:
+                name, price = get_reality_price(instance.url)
+
+                if name is None or price is None:
+                    error = "Nepodarilo sa získať názov alebo cenu"
+                else:
+                    instance.name = name
+                    instance.now_price = price
+                    instance.old_price = price  # prvýkrát rovnaká
+                    instance.differ_price = 0
+                    instance.save()
+                    return redirect('home')
+            else:
+                error = "URL je prázdna"
+    else:
+        error = form.errors
+
+    
+    quse = Ceny.objects.all()
+    items_no = quse.count()
+    
+    if items_no > 0:
+        discount_list = []
+        for item in quse:
+            if item.old_price > item.now_price:
+                discount_list.append(item)
+            no_discounted = len(discount_list)
+            
+    context = {
+        'quse': quse,
+        'items_no': items_no,
+        'no_discounted': no_discounted,
+        'form': form,
+        'error': error,
+    }
+    
+    return render(request, 'ceny/main.html', context)
+
+class CenyDeleteView(DeleteView):
+    model = Ceny
+    template_name = 'ceny/confirm_del.html'
+    success_url = reverse_lazy('home')
+    
+def update_prices(request):
+    quse = Ceny.objects.all()
+    for link in quse:
+        link.save()
+    return redirect('home')       
+    
 
 # Create your views here.

@@ -1,7 +1,7 @@
 from django.conf import settings 
 from django.db import models
 from django.utils import timezone 
-from .utils import get_reality_price
+from .utils import get_price
 
 # Importy pre Wagtail
 #from wagtail.models import Page
@@ -56,38 +56,52 @@ class GalleryItem(models.Model):
     def __str__(self):
         return self.title
 
+
 class Ceny(models.Model):
+    SOURCE_CHOICES = [
+            ('book', 'Kniha'),
+            ('flat', 'Byt'),
+        ]
+    source_type = models.CharField(max_length=10, choices=SOURCE_CHOICES, default='flat')
+
     name = models.CharField(max_length=220, blank=True)
     url = models.URLField(null=True, blank=True)
-    now_price = models.IntegerField(blank=True)
+    now_price = models.IntegerField(blank=True, null=True)
     old_price = models.IntegerField(default=0)
     differ_price = models.IntegerField(default=0)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
-        return str(self.name)
-    
+        return self.name or "Neznáma položka"
+
     class Meta:
         ordering = ('differ_price', '-created')
-        
+
     def save(self, *args, **kwargs):
-        name, price = get_reality_price(self.url)
-        old_price = self.now_price
-        if self.now_price:
-            if price != old_price:
-                diff = price - old_price
-                self.differ_price = diff
-                self.old_price = old_price
+        name, price = get_price(self)
+
+        self.name = name or "Neznáma položka"
+        new_price = price if price is not None else 0
+
+        if self.pk:
+            # aktualizácia existujúceho objektu
+            previous = Ceny.objects.get(pk=self.pk)
+            previous_price = previous.now_price if previous.now_price is not None else 0
+            self.old_price = previous_price
+            self.differ_price = new_price - previous_price
         else:
-            self.old_price = 0
+            # nový objekt → old_price = now_price
+            self.old_price = new_price
             self.differ_price = 0
-            
-        self.name = name
-        self.now_price = price
-                
+
+        self.now_price = new_price
         super().save(*args, **kwargs)
-        
+
+    
+    
+
+
     
 #class HomePage(Page):
 #    intro_image = models.ForeignKey(

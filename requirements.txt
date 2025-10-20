@@ -14,19 +14,19 @@ django-recaptcha==3.0.0
 djangorestframework==3.15.1
 et-xmlfile==1.1.0
 filetype==1.2.0
-idna==3.7 # alebo 3.6, ak 3.7 nefunguje s parsovaním
-lxml==6.0.2  
+idna==3.7
 l18n==2021.3
 laces==0.1.1
+lxml==6.0.2
 openpyxl==3.1.2
 pillow==11.1.0
+PyMySQL==1.1.2
 python-dotenv==1.0.1
 pytz==2024.1
-requests==2.32.2  # alebo downgrade na 2.31.0, ak treba
+requests==2.32.2
 six==1.16.0
 soupsieve==2.5
 sqlparse==0.4.4
 typing_extensions==4.10.0
 tzdata==2024.1
 urllib3==2.2.1
-

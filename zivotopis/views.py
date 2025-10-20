@@ -10,8 +10,8 @@ from .forms import PostForm, ImageForm, EmailForm, AddCenyForm
 import requests
 from bs4 import BeautifulSoup
 from django.views.generic.edit import DeleteView
-from django.urls import reverse_lazy
-from .utils import get_reality_price
+from django.urls import reverse, reverse_lazy
+from .utils import get_price, detect_source_type, save_post_with_images, save_ceny_instance
 
 
 
@@ -31,25 +31,19 @@ def post_detail(request, pk):
     images = Image.objects.filter(post=post)
     return render(request, 'zivotopis/post_detail.html', {'post': post, 'images': images})
 
+
 @login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
-        image_files = request.FILES.getlist('images')  # získaj všetky nahraté obrázky
-
+        image_files = request.FILES.getlist('images')
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-
-            # vytvor Image objekty pre každý nahratý súbor
-            for image_file in image_files:
-                Image.objects.create(post=post, image=image_file)
-
+            post = save_post_with_images(form, request.user, image_files)
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'zivotopis/post_edit.html', {'form': form})
+
 
 
 @login_required
@@ -59,15 +53,12 @@ def post_edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         image_files = request.FILES.getlist('images')
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            for image_file in image_files:
-                Image.objects.create(post=post, image=image_file)
+            post = save_post_with_images(form, request.user, image_files)
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'zivotopis/post_edit.html', {'form': form, 'post': post})
+
 
 @login_required
 def image_delete(request, pk):
@@ -155,64 +146,60 @@ def gallery_view(request):
     return render(request, 'zivotopis/gallery.html', {'items': items}) # Zobrazíme šablónu gallery.html
 
 def home_view(request):
-    no_discounted = 0
+    source = request.GET.get('type', 'book')  # defaultne 'book'
     error = None
-    
     form = AddCenyForm(request.POST or None)
-    
+
     if request.method == 'POST':
-        form = AddCenyForm(request.POST)
         if form.is_valid():
-            instance = form.save(commit=False)
+            instance, error = save_ceny_instance(form, get_price, detect_source_type)
+            if instance:
+                print(f"🔍 Pridávam {instance.source_type}: {instance.name} za {instance.now_price} €")
+                return redirect(f"{reverse('home')}?type={instance.source_type}")
+        else:
+            error = form.errors
 
-            if instance.url:
-                name, price = get_reality_price(instance.url)
+    items = Ceny.objects.filter(source_type=source)
+    no_discounted = items.filter(differ_price__lt=0).count()
 
-                if name is None or price is None:
-                    error = "Nepodarilo sa získať názov alebo cenu"
-                else:
-                    instance.name = name
-                    instance.now_price = price
-                    instance.old_price = price  # prvýkrát rovnaká
-                    instance.differ_price = 0
-                    instance.save()
-                    return redirect('home')
-            else:
-                error = "URL je prázdna"
-    else:
-        error = form.errors
-
-    
-    quse = Ceny.objects.all()
-    items_no = quse.count()
-    
-    if items_no > 0:
-        discount_list = []
-        for item in quse:
-            if item.old_price > item.now_price:
-                discount_list.append(item)
-            no_discounted = len(discount_list)
-            
     context = {
-        'quse': quse,
-        'items_no': items_no,
+        'quse': items,
+        'items_no': items.count(),
         'no_discounted': no_discounted,
         'form': form,
         'error': error,
+        'source_type': source,
     }
-    
+
     return render(request, 'ceny/main.html', context)
+
+
 
 class CenyDeleteView(DeleteView):
     model = Ceny
     template_name = 'ceny/confirm_del.html'
     success_url = reverse_lazy('home')
     
+
+
 def update_prices(request):
-    quse = Ceny.objects.all()
+    source = request.GET.get('type', 'book')
+    quse = Ceny.objects.filter(source_type=source)
+
     for link in quse:
-        link.save()
-    return redirect('home')       
+        try:
+            link.save()
+        except Exception as e:
+            print(f"❌ Chyba pri aktualizácii {link.url}: {e}")
+
+    # Pridaj vizuálnu správu
+    messages.success(request, "Ceny boli aktualizované ✅")
+
+    # Presmeruj späť na home s aktuálnym typom
+    return redirect(f"{reverse('home')}?type={source}")
+
+
+      
     
 
 # Create your views here.

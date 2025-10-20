@@ -2,57 +2,137 @@
 {% load crispy_forms_tags %}
 {% load farbic %}
 {% block content %}
-<!-- Modal -->
-    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pridaj nový byt na sledovanie jeho ceny !</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST" autocomplete="off">
-                        {% csrf_token %}
-                        {{form|crispy}}
-                        <button type="submit" class="btn btn-primary">Uložiť</button>
-                    </form>
-                </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
+
+{% if messages %}
+  <div class="mt-3">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- Akcie a filter -->
+<div class="action-bar bg-light p-3 rounded shadow-sm mt-4 mb-3">
+  <div class="row g-3 align-items-center">
+    
+    <!-- Ľavá sekcia: navigácia a akcie -->
+    <div class="col-12 col-md-6 d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
+      <a href="{% url 'post_list' %}" class="btn btn-outline-primary">
+        <i class="bi bi-house-door"></i> Domov
+      </a>
+
+      <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addItemModal">
+        <i class="bi bi-plus-circle"></i>
+        {% if source_type == "book" %} Pridať knihu {% else %} Pridať byt {% endif %}
+      </button>
+
+      <a href="{% url 'update' %}?type={{ source_type }}" class="btn btn-outline-info">
+        <i class="bi bi-arrow-repeat"></i> Aktualizovať ceny
+      </a>
+    </div>
+
+    <!-- Stredná sekcia: prepínač typov -->
+    <div class="col-12 col-md-3 d-flex justify-content-center">
+      <div class="btn-group w-100" role="group">
+        <a href="?type=book" class="btn btn-outline-secondary {% if source_type == 'book' %}active{% endif %}">
+          Knihy
+        </a>
+        <a href="?type=flat" class="btn btn-outline-secondary {% if source_type == 'flat' %}active{% endif %}">
+          Byty
+        </a>
       </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">Pridaj</button>
-            <a href="{% url 'update' %}">
-                <button class="btn btn-info">Refresh</button>
+
+    <!-- Pravá sekcia: štatistiky -->
+    <div class="col-12 col-md-3 text-center text-md-end">
+      <span class="badge bg-dark me-1">
+        {% if source_type == "book" %}
+          Počet sledovaných kníh: {{ items_no }}
+        {% else %}
+          Počet sledovaných bytov: {{ items_no }}
+        {% endif %}
+      </span>
+      <span class="badge bg-success">
+        {% if source_type == "book" %}
+          Počet zlacnených kníh: {{ no_discounted }}
+        {% else %}
+          Počet zlacnených bytov: {{ no_discounted }}
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    {% if source_type == "book" %}
+                        Pridaj novú knihu
+                    {% else %}
+                        Pridaj nový byt
+                    {% endif %}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zavrieť"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="text-end mt-3">
+                        <button type="submit" class="btn btn-primary">Uložiť</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavrieť</button>
+            </div>
+      </div>
+  </div>
+</div>
+
+<!-- Výpis položiek -->
+{% if quse %}
+    {% for item in quse %}
+    <div class="card shadow-sm mt-4 {{ item.differ_price|border_class }}">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                {% if item.source_type == "book" %}📚{% else %}🏠{% endif %}
+                {{ item.name }}
+            </h5>
+            <a href="{% url 'delete' item.pk %}" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i> Zmazať
             </a>
         </div>
-        <div class="col" style="text-align:right">
-            <div>Celkový počet bytov ktorých cenu sledujeme: {{items_no}}</div>
-            <div>Zlacnené byty: {{no_discounted}}</div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    💰 Aktuálna cena: <span class="{{ item.now_price|border_class }}">{{ item.now_price }}</span> €
+                </li>
+                <li class="list-group-item">
+                    📉 Predchádzajúca cena: {{ item.old_price }} €
+                </li>
+                <li class="list-group-item">
+                    📊 Rozdiel: <span class="{{ item.differ_price|border_class }}">{{ item.differ_price }}</span> €
+                </li>
+                <li class="list-group-item">🔗 <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
+            </ul>
         </div>
     </div>
-    {% if quse %}
-        {% for item in quse %}
-        <div class="card mt-3">
-            <div class="card-header">
-                <h5>{{item.name}}</h5>
-                <a href="{% url 'delete' item.pk %}"><button class="btn btn-danger">Zmazať?</button></a>
-            </div>
-            <div class="card-body">
-                <div class="blockquote">
-                    <div>Momentálna cena: {{item.now_price|farbic}} eur</div>
-                    <div>Cena pred tým: {{item.old_price}} eur</div>
-                    <div>Cenový rozdiel: {{item.differ_price|farbic}} eur</div>
-                    <div>link: <a href="{{item.url}}">{{item.url}}</a></div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+    {% endfor %}
     {% else %}
-        <h3>Žiadne sledované byty!</h3>
-    {% endif %}
-{% endblock content%}
+        <div class="alert alert-warning mt-4">
+        {% if source_type == "book" %}
+            Žiadne sledované knihy!
+        {% else %}
+            Žiadne sledované byty!
+        {% endif %}
+    </div>            
+{% endif %}
+
+{% endblock content %}

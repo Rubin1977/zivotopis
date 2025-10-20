@@ -14,48 +14,67 @@ body {
 }
 /* === HLAVIČKA === */
 .site-header {
-    height: 20vh;
-    width: 100%;
-    position: relative;
-    padding: 2% 4%;
-    border-bottom: 3px solid #00f1ff;
-    background: url('/static/images/Vinica-pod-hradom.jpg') no-repeat center center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    padding: 8px 0;
+    border-bottom: 3px solid #00c853;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Výška hlavičky podľa zariadenia */
 @media (min-width: 768px) {
     .site-header {
-        height: 25vh;
+        height: 15vh;
     }
 }
 
 @media (min-width: 1200px) {
     .site-header {
-        height: 30vh;
+        height: 18vh;
     }
 }
+
 /* === NAVIGÁCIA === */
-.navbar-nav {
-    justify-content: center;
-    width: 100%;
+.navbar {
+    background: transparent !important;
 }
+
+.navbar-brand strong {
+    color: #00e5ff;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.navbar-brand strong,
+.navbar-brand .fw-bold {
+    color: #00e5ff; /* tyrkysová farba */
+    text-shadow: 0 0 6px rgba(0, 229, 255, 0.6),
+                 0 0 12px rgba(0, 229, 255, 0.4);
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand strong:hover,
+.navbar-brand .fw-bold:hover {
+    color: #66faff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+
 .navbar-nav .nav-item {
     margin: 0 15px;
 }
 
 .navbar-nav .nav-link {
+    color: #f1f1f1 !important;
     position: relative;
     text-decoration: none;
-    color: #00f1ff;
+    font-weight: 500;
     padding: 5px 0;
     transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #2c29c0;
+    color: #00e5ff !important;
 }
 
 .navbar-nav .nav-link::after {
@@ -64,8 +83,8 @@ body {
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 3px;
-    background-color: #03cf0d;
+    height: 2px;
+    background-color: #00c853;
     transition: width 0.3s ease;
 }
 
@@ -73,12 +92,24 @@ body {
 .navbar-nav .nav-link.active::after {
     width: 100%;
 }
+
+/* === PRE MOBILNÉ ZARIADENIA === */
+@media (max-width: 768px) {
+  .navbar-nav .nav-item {
+    margin: 5px 0;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
 /* === OBSAH STRÁNKY === */
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
 
 .img-container img {
     width: 100%;
@@ -126,20 +157,59 @@ p {
 }
 
 footer {
-    background: linear-gradient(180deg, rgb(51 125 0),
-            rgb(195 195 107),
-            rgb(125 125 120 / 58%));
+    background: linear-gradient(180deg, rgb(51, 125, 0),
+            rgb(195, 195, 107),
+            rgba(125, 125, 120, 0.58));
     border-top: 3px solid red;
-    padding: 2%;
+    padding: 1% 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: 16px;
+    color: #222;
+    text-align: center;
 }
 
-footer.row {
-    margin-bottom: 15px;
+footer a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
 
+footer a:hover {
+    color: #b30000; /* jemne červený hover efekt */
+    transform: scale(1.05);
+}
+
+footer img {
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.2);
+}
+
+footer .btn.btn-primary {
+    background-color: #0077b5; /* LinkedIn modrá */
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer .btn.btn-primary:hover {
+    background-color: #005f8d;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    footer {
+        font-size: 14px;
+        padding: 4%;
+    }
+
+    footer .btn {
+        margin-top: 10px;
+    }
 }
 
 .facebook-link {
@@ -519,4 +589,4 @@ a {
 #gallery-prev:hover,
 #gallery-next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-}}
+}

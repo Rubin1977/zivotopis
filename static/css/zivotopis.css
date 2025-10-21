@@ -38,15 +38,11 @@ body {
     background: transparent !important;
 }
 
-.navbar-brand strong {
-    color: #00e5ff;
-    font-weight: 700;
-    font-size: 1.4rem;
-}
-
 .navbar-brand strong,
 .navbar-brand .fw-bold {
     color: #00e5ff; /* tyrkysová farba */
+    font-weight: 700;
+    font-size: 1.4rem;
     text-shadow: 0 0 6px rgba(0, 229, 255, 0.6),
                  0 0 12px rgba(0, 229, 255, 0.4);
     transition: text-shadow 0.3s ease, color 0.3s ease;
@@ -54,11 +50,10 @@ body {
 
 .navbar-brand strong:hover,
 .navbar-brand .fw-bold:hover {
-    color: #66faff;
+    color: #66faff; /* svetlejší tyrkys pri hover */
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
                  0 0 20px rgba(0, 255, 255, 0.5);
 }
-
 
 .navbar-nav .nav-item {
     margin: 0 15px;
@@ -84,7 +79,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #00c853;
+    background-color: #15c1df; /* link hover underline */
     transition: width 0.3s ease;
 }
 
@@ -93,15 +88,38 @@ body {
     width: 100%;
 }
 
-/* === PRE MOBILNÉ ZARIADENIA === */
-@media (max-width: 768px) {
-  .navbar-nav .nav-item {
-    margin: 5px 0;
-  }
-  .navbar-nav {
-    text-align: center;
-  }
+/* === Hamburger menu na mobile === */
+.navbar-toggler {
+    border: 2px solid #00e5ff !important; /* okraj tlačidla */
+    border-radius: 4px; /* zaoblené rohy */
+    background: transparent !important; /* žiadne pozadie */
+    transition: border-color 0.3s ease;
 }
+
+.navbar-light .navbar-toggler-icon {
+    /* tyrkysová farba ikonky, ladí s navbar-brand */
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%2300e5ff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    transition: transform 0.3s ease;
+}
+/* Efekt pri hover – rámček trocha zosvetlí */
+.navbar-toggler:hover {
+    border-color: rgba(0, 229, 255, 0.9) !important; /* svetlejšia tyrkysová */
+}
+
+
+/* efekt pri hover – mierne zväčšenie ikonky */
+.navbar-toggler:hover .navbar-toggler-icon {
+    transform: scale(1.1);
+}
+
+/* iba na mobiloch (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        margin-right: 10px;
+    }
+}
+
+
 
 /* === OBSAH STRÁNKY === */
 .container {

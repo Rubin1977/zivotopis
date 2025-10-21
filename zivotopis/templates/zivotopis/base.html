@@ -32,21 +32,26 @@
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'send_email' %}active{% endif %}" href="{% url 'send_email' %}">Kontakt</a></li>
                 </ul>
 
-                {% if user.is_authenticated %}
                 <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><span class="navbar-text me-2">Prihlásený: <strong>{{ user.username }}</strong></span></li>
-                    <li class="nav-item"><a class="btn btn-outline-primary btn-sm me-2" href="{% url 'logout' %}">Odhlásiť</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="navbar-text me-2">Prihlásený: <strong>{{ user.username }}</strong></span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary btn-sm me-2" href="{% url 'logout' %}">Odhlásiť</a>
+                        </li>
+                    {% else %}
+                        {% if debug %}
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Prihlásenie</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
                 </ul>
-                {% else %}
-                <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'login' %}">Prihlásenie</a></li>
-                </ul>
-                {% endif %}
             </div>
         </div>
     </nav>
 </header>
-
 
 <main class="container mt-4">
     {% block content %}

@@ -1,9 +1,24 @@
 {% extends 'zivotopis/base.html' %}
     
 {% block content %}
-  <h1>Email bol úspešne odoslaný!</h1>
-  <button id="backtohomeButton">Návrat na úvodnú stránku</button>
-  <button id="backtoemailButton" style="color: red; margin-top: 2px;">Návrat do kontaktného formulára</button>
+  <div class="container py-5 text-center">
+    <div class="alert alert-success shadow-sm">
+      <h2 class="mb-3">
+        <i class="bi bi-check-circle-fill text-success me-2"></i>
+        Email bol úspešne odoslaný!
+      </h2>
+      <p class="lead">Ďakujeme za správu. Ozveme sa čo najskôr.</p>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <a href="{% url 'post_list' %}" class="btn btn-outline-primary">
+        <i class="bi bi-house-door-fill me-1"></i> Návrat na úvodnú stránku
+      </a>
+      <a href="{% url 'send_email' %}" class="btn btn-outline-danger">
+        <i class="bi bi-envelope-fill me-1"></i> Späť na kontaktný formulár
+      </a>
+    </div>
+  </div>
 
   <script>
     document.getElementById("backtohomeButton").addEventListener("click", function() {

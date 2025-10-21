@@ -30,7 +30,7 @@ load_dotenv(BASE_DIR / ".django_env")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.pythonanywhere.com', 'eu.pythonanywhere.com' ]
 
@@ -41,7 +41,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-
+print("EMAIL_HOST_USER:", repr(EMAIL_HOST_USER))
+print("EMAIL_HOST_PASSWORD:", repr(EMAIL_HOST_PASSWORD))
 # Application definition
 
 INSTALLED_APPS = [

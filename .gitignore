@@ -5,6 +5,7 @@ __pycache__/
 
 # 🔐 Virtuálne prostredia
 .env
+.django_env
 venv/
 myvenv/
 ruvenv/

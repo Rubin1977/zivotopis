@@ -395,33 +395,8 @@
             <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Domov">Domov</a>
         </div>
     </main>
-<script>
-    // Inicializácia tooltipov
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
 
-    // Automatické skrytie tooltipu po kliknutí (napr. na mobile)
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
-        el.addEventListener('click', function () {
-            const tooltip = bootstrap.Tooltip.getInstance(el);
-            if (tooltip) {
-                setTimeout(() => {
-                    tooltip.hide();
-                }, 3000); // 3 sekundy
-            }
-        });
-    });
-
-    // Skrytie tooltipu pri scrollovaní (napr. keď sa posunie stránka)
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-            const tooltip = bootstrap.Tooltip.getInstance(el);
-            if (tooltip) tooltip.hide();
-        });
-    });
-</script>
+    
 </body>
 <footer>
     <div class="container text-center py-3">

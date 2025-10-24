@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/zivotopis.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
 <header class="site-header shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -59,44 +60,37 @@
     {% endblock %}
 </main>
 
-<footer class="bg-light border-top mt-5">
-  <div class="container text-center py-2">
-    <div class="row">
-      <div class="col-12 mb-2">
-        <a href="{% url 'home' %}" class="text-decoration-none text-dark fw-semibold">
-          &copy; <span id="year"></span> Rastislav Ružbacký
-        </a>
-      </div>
+<footer>
+  <a href="{% url 'home' %}">&copy; <span id="year"></span> Rastislav Ružbacký</a>
+  <span>|</span>
+  <a href="mailto:ruzbacky@yahoo.com">ruzbacky@yahoo.com</a>
+  <span>|</span>
+  <a href="tel:+421948900850">+421 948 900 850</a>
+  
+  <a href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">
+    <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="24" height="24">
+  </a>
+  <a href="https://www.instagram.com/rastorubin/" target="_blank">
+    <img src="{% static 'css/instagram_icon.png' %}" alt="Instagram" width="24" height="24">
+  </a>
+  <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank">
+    <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
+  </a>
 
-      <div class="col-12 mb-2">
-        <a href="mailto:ruzbacky@yahoo.com" class="text-dark">ruzbacky@yahoo.com</a>
-        <span class="mx-2 text-muted">|</span>
-        <a href="tel:+421948900850" class="text-dark">+421 948 900 850</a>
-      </div>
-
-      <div class="col-12">
-        <a href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank" class="mx-1">
-          <img src="{% static 'css/facebook.png' %}" alt="Facebook" width="24" height="24">
-        </a>
-        <a href="https://www.instagram.com/rastorubin/" target="_blank" class="mx-1">
-          <img src="{% static 'css/instagram_icon.png' %}" alt="Instagram" width="24" height="24">
-        </a>
-        <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank" class="mx-1">
-          <img src="{% static 'css/linkedin.png' %}" alt="LinkedIn" width="24" height="24">
-        </a>
-        <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/"
-           target="_blank"
-           class="btn btn-primary btn-sm ms-2">
-          Spojiť sa na LinkedIn
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <a href="https://www.linkedin.com/in/rastislav-ruzbacky-99a8a645/" target="_blank" class="btn btn-primary btn-sm">
+    Spojiť sa na LinkedIn
+  </a>
 </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+document.addEventListener("scroll", function() {
+    const header = document.querySelector(".site-header");
+    header.classList.toggle("shrink", window.scrollY > 50);
+});
+</script>
 
 
 <script src="{% static 'js/main.js' %}"></script>

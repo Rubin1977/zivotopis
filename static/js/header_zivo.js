@@ -1,31 +1,40 @@
-window.addEventListener("DOMContentLoaded", function () {
-    const header = document.querySelector(".fixed-header");
-    const main = document.querySelector("main");
+document.addEventListener('DOMContentLoaded', function() {
+    // -------------------------------
+    // Tooltipy Bootstrap
+    // -------------------------------
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+        new bootstrap.Tooltip(el);
 
-    if (header) {
-        document.body.style.paddingTop = `${header.offsetHeight}px`;
-    }
+        // Automatické skrytie tooltipu po kliknutí (napr. mobil)
+        el.addEventListener('click', () => {
+            const tooltip = bootstrap.Tooltip.getInstance(el);
+            if (tooltip) setTimeout(() => tooltip.hide(), 3000); // 3 sekundy
+        });
+    });
 
-    if (header && main) {
-        main.style.paddingTop = `${header.offsetHeight}px`;
-    }
+    // Skrytie tooltipu pri scrollovaní
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+            const tooltip = bootstrap.Tooltip.getInstance(el);
+            if (tooltip) tooltip.hide();
+        });
+    });
+
+    // -------------------------------
+    // Scroll header
+    // -------------------------------
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('shrink');
+        } else {
+            header.classList.remove('shrink');
+        }
+    });
+
+    // -------------------------------
+    // Dynamický rok vo footeri
+    // -------------------------------
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
-
-window.addEventListener("resize", function () {
-    const header = document.querySelector(".fixed-header");
-
-    if (header) {
-        document.body.style.paddingTop = `${header.offsetHeight}px`;
-    }
-});
-
-window.addEventListener("scroll", function () {
-    let header = document.querySelector(".fixed-header");
-    if (window.scrollY > 50) {
-        header.classList.add("scroll"); // Pridá triedu pri posunutí
-    } else {
-        header.classList.remove("scroll"); // Odstráni triedu, keď si hore
-    }
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();

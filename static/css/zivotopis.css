@@ -11,31 +11,56 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 14vh;
 }
 /* === HLAVIČKA === */
+/* ================== HEADER ================== */
 .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
     background: linear-gradient(135deg, #1a1a1a, #333);
-    padding: 8px 0;
-    border-bottom: 3px solid #00c853;
+    padding: 12px 0;                 /* default padding */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;             /* vertikálne centrovanie */
+    justify-content: space-between;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Výška hlavičky podľa zariadenia */
-@media (min-width: 768px) {
-    .site-header {
-        height: 15vh;
-    }
+/* Shrink efekt pri scroll */
+.site-header.shrink {
+    padding: 6px 0;                  /* menší padding pri scroll */
+    background: linear-gradient(135deg, #111, #222);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-@media (min-width: 1200px) {
-    .site-header {
-        height: 18vh;
-    }
+/* Logo + text */
+.site-header .navbar-brand {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* Zmenšenie loga + textu pri shrink */
+.site-header.shrink .navbar-brand {
+    transform: scale(0.85);
+}
+
+/* Voliteľne: zmenši hamburger menu pri scroll */
+.site-header .navbar-toggler {
+    transition: transform 0.3s ease;
+}
+
+.site-header.shrink .navbar-toggler {
+    transform: scale(0.85);
 }
 
 /* === NAVIGÁCIA === */
 .navbar {
     background: transparent !important;
+    padding: 0.5rem 1rem;
 }
 
 .navbar-brand strong,
@@ -106,7 +131,6 @@ body {
     border-color: rgba(0, 229, 255, 0.9) !important; /* svetlejšia tyrkysová */
 }
 
-
 /* efekt pri hover – mierne zväčšenie ikonky */
 .navbar-toggler:hover .navbar-toggler-icon {
     transform: scale(1.1);
@@ -120,127 +144,88 @@ body {
 }
 
 
-
 /* === OBSAH STRÁNKY === */
+/* Hlavný kontajner pre obsah */
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: start;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* Obrázky vo vnútri kontajnerov */
 .img-container img {
     width: 100%;
-    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
-    height: 100%;
-    /* Zabezpečenie, aby obrázok zapĺňal celý rámček */
+    height: auto;
     object-fit: cover;
-    /* Zabezpečenie zachovania pomeru strán obrázka */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.img-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Každý stĺpec alebo blok obsahu */
 .col {
-    width: 80%;
     text-align: center;
-    /* Zabezpečuje zacentrovanie obsahu v stĺpci */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+/* Hlavná časť stránky */
 main {
     flex: 1;
-    /* Táto časť sa rozťahuje a zaberá zvyšný voľný priestor */
+    padding: 20px;
 }
 
+/* Nadpisy */
 h1, h2, h3 {
     color: #2c29c0;
-    /*font-family: 'Roboto Mono';*/
     font-stretch: normal;
-    /*text-shadow: 0 0 3px #045970;*/
 }
 
+/* Zvýraznenie časti nadpisu */
 h1 span {
     font-weight: bold;
     text-transform: uppercase;
 }
 
+/* Každý článok (post) */
 article {
-    border: 3px solid rgb(170, 59, 59);
-    background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%,
-                rgb(169 168 108) 100%);
-    padding: 5%;
+    border: 2px solid rgb(170, 59, 59);
+    background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%, rgb(169 168 108) 100%);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Odstavce v článku */
 p {
     margin-top: 15px;
     text-align: justify;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-footer {
-    background: linear-gradient(180deg, rgb(51, 125, 0),
-            rgb(195, 195, 107),
-            rgba(125, 125, 120, 0.58));
-    border-top: 3px solid red;
-    padding: 1% 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: #222;
-    text-align: center;
-}
 
-footer a {
-    color: #222;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-footer a:hover {
-    color: #b30000; /* jemne červený hover efekt */
-    transform: scale(1.05);
-}
-
-footer img {
-    transition: transform 0.3s ease;
-}
-
-footer img:hover {
-    transform: scale(1.2);
-}
-
-footer .btn.btn-primary {
-    background-color: #0077b5; /* LinkedIn modrá */
-    border: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-footer .btn.btn-primary:hover {
-    background-color: #005f8d;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 576px) {
-    footer {
-        font-size: 14px;
-        padding: 4%;
-    }
-
-    footer .btn {
-        margin-top: 10px;
-    }
-}
-
-.facebook-link {
-    margin-left: 20px;
-    border-radius: 5px;
-    transform: scale(1.1);
-    display: inline-block;
-}
 
 img {
-    margin-right: 1%;
-    border-radius: 4px;
+    margin: auto;       /* centrálny margin */
+    display: block;          /* aby sa margin auto fungoval */
+    max-width: 250px;        /* maximálna šírka */
+    height: auto;            /* zachovanie pomeru strán */
+    border-radius: 8px;      /* jemné zaoblenie rohov */
 }
+
 
 a {
     color: #460564;
@@ -248,31 +233,29 @@ a {
     font-size: 20px
 }
 
-/* Štýly pre obrázky vo vnútri postu */
 .post-images {
-    display: contents;
-    /* justify-content: flex-start;
-    flex-wrap: wrap; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    
 }
 
 .post-image {
-    position: relative;
-    width: 80%; /* definujte požadovanú šírku */
-    height: unset; /* definujte požadovanú výšku */
-    margin: 10px; /* definujte okraje */
-    /* object-fit: scale-down; zabezpečuje, aby sa obrázok preskaloval na určenú veľkosť */
+    display: block;
+    width: 250px; /* pevná šírka */
     border: 2px solid #6b3838;
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;/* Zmení kurzor na ruku, aby naznačil, že obrázok je klikateľný */
+    cursor: pointer;
 }
 
 .post-image img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
 }
-
 
 
 .top-menu,
@@ -607,4 +590,74 @@ a {
 #gallery-prev:hover,
 #gallery-next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+footer {
+    background: linear-gradient(180deg, rgb(51, 125, 0), rgb(195, 195, 107), rgba(125, 125, 120, 0.58));
+    border-top: 3px solid red;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: row; /* všetko v jednom riadku */
+    flex-wrap: wrap;     /* zalamovanie na menších obrazovkách */
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #222;
+    text-align: center;
+    gap: 10px; /* medzera medzi prvkami */
+}
+
+footer a {
+    color: #222;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer a:hover {
+    color: #b30000;
+    transform: scale(1.05);
+}
+
+footer img {
+    margin: 0 4px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.2);
+}
+
+footer .btn.btn-primary {
+    background-color: #0077b5;
+    border: none;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer .btn.btn-primary:hover {
+    background-color: #005f8d;
+    transform: translateY(-1px);
+}
+
+/* Responzívne zmeny */
+@media (max-width: 576px) {
+    footer {
+        font-size: 12px;
+        padding: 6px 5px;
+        gap: 6px;
+    }
+
+    footer .btn.btn-primary {
+        font-size: 0.8rem;
+        padding: 2px 6px;
+    }
+
+    footer img {
+        width: 20px;
+        height: 20px;
+    }
 }

@@ -3,6 +3,12 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.conf import settings
+from django.http import JsonResponse
+import subprocess
+import sys
+import os
+
 
 from .models import Post, Image, Email, GalleryItem, Ceny
 from .forms import PostForm, ImageForm, EmailForm, AddCenyForm 
@@ -32,14 +38,14 @@ def post_detail(request, pk):
     images = Image.objects.filter(post=post)
     return render(request, 'zivotopis/post_detail.html', {'post': post, 'images': images})
 
-
 @login_required
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
-        image_files = request.FILES.getlist('images')
+        form = PostForm(request.POST)
         if form.is_valid():
-            post = save_post_with_images(form, request.user, image_files)
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
@@ -105,21 +111,19 @@ def send_email(request):
             hlavicka = '\nJeho emailová adresa:\n' + form.cleaned_data['sender_email']
             hlavicka += "\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"utf-8\"\n"
             predmet_odosielatela = 'Predmet: ' + form.cleaned_data['subject']
-            #hlavicka = format_html(
-                #"<p>{}</p><p>MIME-Version: 1.0</p><p>Content-Type: text/html; charset=\"utf-8\"</p>",
-                #meno + "<br>" + predmet_odosielatela + "<br>" + sprava
-            #)    
-            uspech = send_mail (predmet, 
-                               form.cleaned_data['subject'], 
-                               form.cleaned_data['sender_email'], 
-                               [adresa], 
-                               fail_silently=False, 
-                               html_message=meno + hlavicka + predmet_odosielatela + sprava
-                               )
-            if uspech:
-                return redirect('success_view')
+
+            send_mail(
+                predmet,
+                form.cleaned_data['subject'],
+                form.cleaned_data['sender_email'],
+                [adresa],
+                fail_silently=False,
+                html_message=meno + hlavicka + predmet_odosielatela + sprava
+            )
+            return redirect('success_view')
         else:
-            return redirect('unsuccess_view') 
+            # Pri nevalidnom formulári redirect na unsuccess_view
+            return redirect('unsuccess_view')
     else:
         form = EmailForm()    
     return render(request, 'registration/send_email.html', {'form': form})
@@ -223,6 +227,35 @@ def sql_test_view(request):
         'result': result,
         'error': error
     })    
-    
+
+def run_tests_page(request):
+    # Zobrazí HTML stránku s tlačítkom
+    return render(request, "zivotopis/test_page.html")
+
+
+def run_tests(request):
+    # Endpoint, ktorý spustí testy a vráti JSON
+    try:
+        # Spustenie testov cez manage.py test
+        result = subprocess.run(
+            [sys.executable, "manage.py", "test", "zivotopis"],
+            capture_output=True,
+            text=True,
+        )
+
+        success = result.returncode == 0
+
+        return JsonResponse({
+            "success": success,
+            "stdout": result.stdout,
+            "stderr": result.stderr
+        })
+    except Exception as e:
+        return JsonResponse({
+            "success": False,
+            "stdout": "",
+            "stderr": str(e)
+        })
+
 
 # Create your views here.

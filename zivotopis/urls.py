@@ -47,7 +47,11 @@ urlpatterns = [
     # -----------------------------------
     # Sql/testovanie
     # -----------------------------------
-
     path('sql-test/', views.sql_test_view, name='sql_test'),
+    # HTML stránka s tlačidlom a spinnerom
+    path("test_page/", views.run_tests_page, name="test_page"),
+    # Endpoint pre JS, ktorý spúšťa testy a vracia JSON
+    path("run_tests/", views.run_tests, name="run_tests_api"),
+
 
 ]

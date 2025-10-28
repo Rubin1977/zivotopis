@@ -32,6 +32,12 @@
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'zivo_view' %}active{% endif %}" href="{% url 'zivo_view' %}">Životopis</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Galéria</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'send_email' %}active{% endif %}" href="{% url 'send_email' %}">Kontakt</a></li>
+
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                             <a class="nav-link {% if request.resolver_match.url_name == 'sql_test' %}active{% endif %}" href="{% url 'sql_test' %}">SQL Test</a>
+                    </li>
+                    {% endif %}
                 </ul>
 
                 <ul class="navbar-nav ms-3">
@@ -43,7 +49,7 @@
                             <a class="btn btn-outline-primary btn-sm me-2" href="{% url 'logout' %}">Odhlásiť</a>
                         </li>
                     {% else %}
-                        {% if debug %}
+                        {% if not user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Prihlásenie</a>
                             </li>

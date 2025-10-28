@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from .models import Post, Image, Email, GalleryItem, Ceny
 from .forms import PostForm, ImageForm, EmailForm, AddCenyForm 
 
+from django.db import connection
 import requests
 from bs4 import BeautifulSoup
 from django.views.generic.edit import DeleteView
@@ -199,7 +200,29 @@ def update_prices(request):
     return redirect(f"{reverse('home')}?type={source}")
 
 
-      
+@login_required
+def sql_test_view(request):
+    query = ''
+    result = None
+    error = None
+
+    if request.method == 'POST':
+        query = request.POST.get('query', '')
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                if cursor.description:  # SELECT
+                    result = cursor.fetchall()
+                else:  # UPDATE/DELETE/INSERT
+                    result = f"{cursor.rowcount} riadkov ovplyvnených"
+        except Exception as e:
+            error = str(e)
+
+    return render(request, 'zivotopis/sql_test.html', {
+        'query': query,
+        'result': result,
+        'error': error
+    })    
     
 
 # Create your views here.

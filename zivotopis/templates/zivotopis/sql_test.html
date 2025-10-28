@@ -1,0 +1,30 @@
+{% extends 'zivotopis/base.html' %}
+
+{% block content %}
+<h2>SQL Testovacia stránka</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="query" rows="6" class="form-control">{{ query }}</textarea>
+    <button type="submit" class="btn btn-primary mt-2">Spustiť</button>
+</form>
+
+{% if error %}
+    <div class="alert alert-danger mt-2">{{ error }}</div>
+{% endif %}
+
+{% if result %}
+    <h4>Výsledky:</h4>
+    <table class="table table-sm table-striped mt-2">
+        <tbody>
+        {% for row in result %}
+            <tr>
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}

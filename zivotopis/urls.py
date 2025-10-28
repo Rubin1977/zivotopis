@@ -44,4 +44,10 @@ urlpatterns = [
     path('reality/delete/<int:pk>/', views.CenyDeleteView.as_view(), name='delete'),
     path('reality/update/', views.update_prices, name='update'),
 
+    # -----------------------------------
+    # Sql/testovanie
+    # -----------------------------------
+
+    path('sql-test/', views.sql_test_view, name='sql_test'),
+
 ]

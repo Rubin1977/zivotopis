@@ -4,17 +4,20 @@
 {% block content %}
 <div class="gallery">
     <h2 data-icon="🗻">Popradské pleso a Ostrva Tatry (august 2025)</h2>
+
     <div class="slides">
         {% for item in items %}
         <div class="slide-item">
             <h3>{{ item.title }}</h3>
             <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
-            <p>{{ item.description }}</p>  
+            <p>{{ item.description }}</p>
         </div>
         {% empty %}
         <p>Žiadne obrázky v galérii zatiaľ nie sú.</p>
         {% endfor %}
     </div>
+
+    <!-- Modálne okno -->
     <div id="gallery-modal" class="modal-custom">
         <div class="modal-inner">
             <span id="gallery-close" class="close-button">&times;</span>

@@ -16,13 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index >= slideItems.length) index = 0;
 
         slideItems.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.add("active");
-                slide.style.display = "block";
-            } else {
-                slide.classList.remove("active");
-                slide.style.display = "none";
-            }
+            slide.style.display = i === index ? "block" : "none";
         });
 
         currentSlideIndex = index;
@@ -42,9 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
             galleryImage.src = img.src;
             modalTitle.textContent = title;
             modalDescription.textContent = description;
-            galleryModal.style.display = "block";
+            galleryModal.style.display = "flex";
             galleryModal.classList.add("open");
             currentSlideIndex = index;
+
+            // Reset scroll pozície modálu
+            galleryModal.scrollTop = 0;
+
+            // Dynamické centrovanie obrázka pri načítaní
+            galleryImage.onload = () => {
+                const modalInner = galleryImage.closest(".modal-inner");
+                const availableHeight = window.innerHeight * 0.8; // max-height obrázka
+                const imageHeight = galleryImage.offsetHeight;
+                const topMargin = Math.max((availableHeight - imageHeight) / 2, 10);
+                galleryImage.style.marginTop = `${topMargin}px`;
+                galleryImage.style.marginBottom = `${topMargin}px`;
+            };
         }
     }
 
@@ -55,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         modalTitle.textContent = "";
         modalDescription.textContent = "";
 
-        // Aktualizuj galériu
         showGallerySlide(currentSlideIndex);
     }
 

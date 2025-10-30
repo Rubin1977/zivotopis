@@ -7,6 +7,7 @@ from django.conf import settings
 from django.http import JsonResponse
 import subprocess
 import sys
+import socket
 import os
 
 
@@ -234,11 +235,20 @@ def run_tests_page(request):
 
 
 def run_tests(request):
-    # Endpoint, ktorý spustí testy a vráti JSON
     try:
-        # Spustenie testov cez manage.py test
+        # Detekcia prostredia podľa hostname
+        hostname = socket.gethostname()
+        is_remote = "pythonanywhere" in hostname.lower()
+
+        # Určenie, ktoré testy sa majú spustiť
+        if is_remote:
+            test_path = "zivotopis.tests.save"
+        else:
+            test_path = "zivotopis.tests.all_tests"
+
+        # Spustenie testov
         result = subprocess.run(
-            [sys.executable, "manage.py", "test", "zivotopis"],
+            [sys.executable, "manage.py", "test", test_path],
             capture_output=True,
             text=True,
         )

@@ -234,27 +234,36 @@ def run_tests_page(request):
 
 def run_tests(request):
     try:
+        # --- Rozlíšenie prostredia ---
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
+        # --- Cesty ---
         if is_remote:
-            # Remote: iba testy, ktoré nezasahujú do DB
-            test_path = "zivotopis.tests.test_save"
-            manage_py_path = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com/manage.py"
-            python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
+            # Remote: iba testy, ktoré nezasahujú DB
+            test_module = "zivotopis.tests.test_save"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
+            python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
         else:
             # Lokálne: všetky testy
-            test_path = "zivotopis"
-            manage_py_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "manage.py")
+            test_module = "zivotopis"
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             python_bin = sys.executable
-            project_root = os.path.dirname(os.path.abspath(manage_py_path))
 
+        manage_py = os.path.join(project_root, "manage.py")
+
+        # --- Environment ---
+        env = os.environ.copy()
+        env["DJANGO_SETTINGS_MODULE"] = "mysite.settings"  # uprav podľa svojho settings.py
+        env["PYTHONPATH"] = project_root  # zabezpečí import modulov
+
+        # --- Spustenie testov ---
         result = subprocess.run(
-            [python_bin, manage_py_path, "test", test_path],
+            [python_bin, manage_py, "test", test_module],
+            cwd=project_root,
             capture_output=True,
             text=True,
-            cwd=project_root
+            env=env
         )
 
         success = result.returncode == 0
@@ -264,6 +273,7 @@ def run_tests(request):
             "stdout": result.stdout,
             "stderr": result.stderr
         })
+
     except Exception as e:
         return JsonResponse({
             "success": False,

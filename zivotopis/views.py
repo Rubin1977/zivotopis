@@ -233,28 +233,25 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
-
     try:
-        # Detekcia prostredia podľa hostname
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
         if is_remote:
-            # Remote: len testy, ktoré nezasahujú DB
+            # Remote: iba testy, ktoré nezasahujú do DB
             test_path = "zivotopis.tests.test_save"
+            manage_py_path = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com/manage.py"
+            python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
         else:
             # Lokálne: všetky testy
             test_path = "zivotopis"
-            # Predpokladáme, že manage.py je v aktuálnom priečinku projektu
-            project_root = os.path.dirname(os.path.abspath(__file__))  # zložka zivotopis
-            project_root = os.path.dirname(project_root)  # koreň projektu
+            manage_py_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "manage.py")
+            python_bin = sys.executable
+            project_root = os.path.dirname(os.path.abspath(manage_py_path))
 
-        manage_py_path = os.path.join(project_root, "manage.py")
-
-        # Spustenie testov cez subprocess
         result = subprocess.run(
-            [sys.executable, manage_py_path, "test", test_path],
+            [python_bin, manage_py_path, "test", test_path],
             capture_output=True,
             text=True,
             cwd=project_root
@@ -267,7 +264,6 @@ def run_tests(request):
             "stdout": result.stdout,
             "stderr": result.stderr
         })
-
     except Exception as e:
         return JsonResponse({
             "success": False,

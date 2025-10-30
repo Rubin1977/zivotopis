@@ -230,23 +230,18 @@ def sql_test_view(request):
     })    
 
 def run_tests_page(request):
-    # Zobrazí HTML stránku s tlačítkom
     return render(request, "zivotopis/test_page.html")
-
 
 def run_tests(request):
     try:
-        # Detekcia prostredia podľa hostname
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
-        # Určenie, ktoré testy sa majú spustiť
         if is_remote:
-            test_path = "zivotopis.tests.save"
+            test_path = "zivotopis.tests.test_save"  # iba testy, ktoré nezasahujú DB
         else:
-            test_path = "zivotopis.tests.all_tests"
+            test_path = "zivotopis"  # všetky testy
 
-        # Spustenie testov
         result = subprocess.run(
             [sys.executable, "manage.py", "test", test_path],
             capture_output=True,
@@ -266,6 +261,5 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
-
 
 # Create your views here.

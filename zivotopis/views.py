@@ -233,19 +233,31 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
+
     try:
+        # Detekcia prostredia podľa hostname
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
         if is_remote:
-            test_path = "zivotopis.tests.test_save"  # iba testy, ktoré nezasahujú DB
+            # Remote: len testy, ktoré nezasahujú DB
+            test_path = "zivotopis.tests.test_save"
+            project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
         else:
-            test_path = "zivotopis"  # všetky testy
+            # Lokálne: všetky testy
+            test_path = "zivotopis"
+            # Predpokladáme, že manage.py je v aktuálnom priečinku projektu
+            project_root = os.path.dirname(os.path.abspath(__file__))  # zložka zivotopis
+            project_root = os.path.dirname(project_root)  # koreň projektu
 
+        manage_py_path = os.path.join(project_root, "manage.py")
+
+        # Spustenie testov cez subprocess
         result = subprocess.run(
-            [sys.executable, "manage.py", "test", test_path],
+            [sys.executable, manage_py_path, "test", test_path],
             capture_output=True,
             text=True,
+            cwd=project_root
         )
 
         success = result.returncode == 0
@@ -255,11 +267,13 @@ def run_tests(request):
             "stdout": result.stdout,
             "stderr": result.stderr
         })
+
     except Exception as e:
         return JsonResponse({
             "success": False,
             "stdout": "",
             "stderr": str(e)
         })
+
 
 # Create your views here.

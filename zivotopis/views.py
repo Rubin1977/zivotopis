@@ -233,48 +233,48 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
+    import os
+    import sys
+    import socket
+    import subprocess
+    from django.http import JsonResponse
+
     try:
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
         if is_remote:
-            test_module = "zivotopis.tests.test_save"  # iba testy, ktoré nezasahujú DB
-            project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
+            # Remote: iba testy, ktoré nezasahujú DB
+            test_path = "zivotopis.tests.test_save"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
+            project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
         else:
-            test_module = "zivotopis"  # všetky testy lokálne
-            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            # Lokálne: všetky testy
+            test_path = "zivotopis"
             python_bin = sys.executable
+            project_root = os.path.dirname(os.path.abspath(__file__))  # priečinok appky
+            project_root = os.path.join(project_root, "..")  # koreň projektu, kde je manage.py
 
-        # Nastavenie prostredia
+        # Skopíruj aktuálne prostredie a nastav DJANGO_SETTINGS_MODULE a PYTHONPATH
         env = os.environ.copy()
         env["DJANGO_SETTINGS_MODULE"] = "mysite.settings"
         env["PYTHONPATH"] = project_root
 
         # Spustenie testov
         result = subprocess.run(
-            [python_bin, "manage.py", "test", test_module],
+            [python_bin, "manage.py", "test", test_path],
             cwd=project_root,
             capture_output=True,
             text=True,
             env=env
         )
 
-        output = result.stdout + "\n" + result.stderr
-
-        # Farebné zvýraznenie kľúčových slov
-        output = (output
-            .replace("OK", "✅ <span style='color:#28a745;font-weight:bold'>OK</span>")
-            .replace("FAILED", "❌ <span style='color:#dc3545;font-weight:bold'>FAILED</span>")
-            .replace("ERROR", "⚠️ <span style='color:#ffc107;font-weight:bold'>ERROR</span>")
-        )
-
         success = result.returncode == 0
 
         return JsonResponse({
             "success": success,
-            "stdout": output,
-            "stderr": "",
+            "stdout": result.stdout,
+            "stderr": result.stderr
         })
 
     except Exception as e:
@@ -283,5 +283,6 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
+
 
 # Create your views here.

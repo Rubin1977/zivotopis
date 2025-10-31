@@ -233,11 +233,6 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
-    import os
-    import sys
-    import socket
-    import subprocess
-    from django.http import JsonResponse
 
     try:
         hostname = socket.gethostname()
@@ -261,13 +256,16 @@ def run_tests(request):
         env["PYTHONPATH"] = project_root
 
         # Spustenie testov
+        print("🧭 CWD:", project_root)
+        print("🗂 manage.py exists:", os.path.exists(os.path.join(project_root, "manage.py")))
+
         result = subprocess.run(
-            [python_bin, "manage.py", "test", test_path],
+            [python_bin, os.path.join(project_root, "manage.py"), "test", test_path],
             cwd=project_root,
             capture_output=True,
             text=True,
             env=env
-        )
+            )
 
         success = result.returncode == 0
 

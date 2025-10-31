@@ -233,31 +233,37 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
+    """Spustí testy (lokálne všetky, na PA len bezpečné)"""
     try:
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
         if is_remote:
-            test_path = "zivotopis.tests.test_save"  # bezpečné testy
+            # Remote – iba bezpečné testy
+            test_path = "zivotopis.tests.test_save"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
             settings_module = "mysite.settings_test"
         else:
-            test_path = "zivotopis"  # všetky testy lokálne
+            # Lokálne – všetky testy
+            test_path = "zivotopis"
             python_bin = sys.executable
-            project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
             settings_module = "mysite.settings"
 
         env = os.environ.copy()
         env["DJANGO_SETTINGS_MODULE"] = settings_module
         env["PYTHONPATH"] = project_root
 
+        print("🧭 CWD:", project_root)
+        print("🗂 manage.py exists:", os.path.exists(os.path.join(project_root, "manage.py")))
+
         result = subprocess.run(
             [python_bin, os.path.join(project_root, "manage.py"), "test", test_path],
             cwd=project_root,
             capture_output=True,
             text=True,
-            env=env,
+            env=env
         )
 
         success = result.returncode == 0
@@ -274,5 +280,4 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e),
         })
-
 # Create your views here.

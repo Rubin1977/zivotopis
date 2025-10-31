@@ -17,12 +17,15 @@
     <div class="text-center">
         <button id="run-tests-btn" class="btn btn-primary">Spustiť testy</button>
     </div>
+    <a id="download-link" href="#" style="display:none;" download>📥 Stiahnuť výsledky testov</a>
+
 
     <!-- Spinner -->
     <div id="loading" class="text-center mt-3" style="display:none;">
         <div class="spinner-border text-primary" role="status"></div>
         <p>Prebieha testovanie...</p>
     </div>
+
 
     <!-- Výstup -->
     <pre id="test-output" class="text-start bg-dark text-light p-3 rounded mt-4"
@@ -69,6 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 .replace(/Ran (\d+) tests?/g, "<span style='color:#0dcaf0'>Ran $1 test(s)</span>");
 
             output.innerHTML = combinedOutput;
+            // Zobrazenie odkazu na stiahnutie výsledkov, ak je k dispozícii
+            if (data.download_url) {
+                const link = document.getElementById("download-link");
+                link.href = data.download_url;
+                link.style.display = "inline-block";
+            }
+
 
             // Zobrazenie štatistiky
             output.innerHTML += `

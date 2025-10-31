@@ -9,6 +9,7 @@ import subprocess
 import sys
 import socket
 import os, logging
+from datetime import datetime
 
 
 from .models import Post, Image, Email, GalleryItem, Ceny
@@ -234,59 +235,43 @@ def run_tests_page(request):
 
 logger = logging.getLogger(__name__)
 
-def run_tests(request):
-    """Spustí testy: lokálne všetky, na PythonAnywhere len bezpečné."""
-    try:
-        # Zistenie, či bežíme na PythonAnywhere
-        is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
 
-        test_path = request.GET.get("target", "zivotopis")  # default: všetky testy
+def extract_stats(stdout: str):
+    lines = stdout.splitlines()
+    passed = sum(1 for line in lines if "... ok" in line)
+    failed = sum(1 for line in lines if "... FAIL" in line)
+    errors = sum(1 for line in lines if "... ERROR" in line)
+    total = passed + failed + errors
+    return passed, failed, errors, total
+
+
+
+def run_tests(request):
+    try:
+        is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
+        test_path = request.GET.get("target", "zivotopis")
 
         if is_remote:
-            # 🟢 Remote – bezpečné testy cez Django modul
-            #test_path = "zivotopis.tests.test_save.test_forms"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
             settings_module = "mysite.settings_test"
-            if is_remote and not settings_module.endswith("settings_test"):
-                return JsonResponse({
-                    "success": False,
-                    "stdout": "",
-                    "stderr": "❌ Na remote serveri musíš použiť settings_test.py pre bezpečné testovanie."
-                })
-
-            command = [
-                python_bin,
-                os.path.join(project_root, "manage.py"),
-                "test",
-                test_path,
-                "--settings=" + settings_module,
-                "--keepdb",
-                "--verbosity=2"
-            ]
         else:
-            # 💻 Lokálne – všetky testy cez manage.py
-            #test_path = "zivotopis"
             python_bin = sys.executable
             project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
             settings_module = "mysite.settings"
 
-            command = [
-                python_bin,
-                os.path.join(project_root, "manage.py"),
-                "test",
-                test_path,
-                "--settings=" + settings_module,
-                "--verbosity=2"
-            ]
+        command = [
+            python_bin,
+            os.path.join(project_root, "manage.py"),
+            "test",
+            test_path,
+            "--settings=" + settings_module,
+            "--verbosity=2"
+        ]
 
         env = os.environ.copy()
         env["DJANGO_SETTINGS_MODULE"] = settings_module
         env["PYTHONPATH"] = project_root
-
-        logger.info(f"🧭 CWD: {project_root}")
-        logger.info(f"🗂 manage.py exists: {os.path.exists(os.path.join(project_root, 'manage.py'))}")
-        logger.info(f"💻 Command: {' '.join(command)}")
 
         result = subprocess.run(
             command,
@@ -298,16 +283,38 @@ def run_tests(request):
         )
 
         success = result.returncode == 0
-        logger.info(f"✅ Return code: {result.returncode}")
-        if result.stdout:
-            logger.info(f"STDOUT:\n{result.stdout}")
-        if result.stderr:
-            logger.error(f"STDERR:\n{result.stderr}")
+        combined_output = result.stdout + "\n" + result.stderr
+        passed, failed, errors, total = extract_stats(combined_output)
+
+
+        # 📁 Export výstupu do súboru
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"test_output_{timestamp}.txt"
+        media_dir = os.path.join(project_root, "media")
+        os.makedirs(media_dir, exist_ok=True)
+        output_path = os.path.join(media_dir, filename)
+
+        export_text = f"""
+        📅 Dátum: {timestamp}
+        📂 Modul: {test_path}
+        ✅ Úspešné: {passed}
+        ❌ Zlyhané: {failed}
+        ⚠️ Chybné: {errors}
+        📊 Počet testov: {total}
+
+
+        --- Výstup testov ---
+        {combined_output}
+        """
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(export_text)
 
         return JsonResponse({
             "success": success,
             "stdout": result.stdout,
-            "stderr": result.stderr
+            "stderr": result.stderr,
+            "download_url": f"/media/{filename}"
         })
 
     except Exception as e:

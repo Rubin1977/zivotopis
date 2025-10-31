@@ -233,54 +233,46 @@ def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
 def run_tests(request):
-
     try:
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
 
         if is_remote:
-            # Remote: iba testy, ktoré nezasahujú DB
-            test_path = "zivotopis.tests.test_save"
+            test_path = "zivotopis.tests.test_save"  # bezpečné testy
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
+            settings_module = "mysite.settings_test"
         else:
-            # Lokálne: všetky testy
-            test_path = "zivotopis"
+            test_path = "zivotopis"  # všetky testy lokálne
             python_bin = sys.executable
-            project_root = os.path.dirname(os.path.abspath(__file__))  # priečinok appky
-            project_root = os.path.join(project_root, "..")  # koreň projektu, kde je manage.py
+            project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+            settings_module = "mysite.settings"
 
-        # Skopíruj aktuálne prostredie a nastav DJANGO_SETTINGS_MODULE a PYTHONPATH
         env = os.environ.copy()
-        env["DJANGO_SETTINGS_MODULE"] = "mysite.settings"
+        env["DJANGO_SETTINGS_MODULE"] = settings_module
         env["PYTHONPATH"] = project_root
-
-        # Spustenie testov
-        print("🧭 CWD:", project_root)
-        print("🗂 manage.py exists:", os.path.exists(os.path.join(project_root, "manage.py")))
 
         result = subprocess.run(
             [python_bin, os.path.join(project_root, "manage.py"), "test", test_path],
             cwd=project_root,
             capture_output=True,
             text=True,
-            env=env
-            )
+            env=env,
+        )
 
         success = result.returncode == 0
 
         return JsonResponse({
             "success": success,
             "stdout": result.stdout,
-            "stderr": result.stderr
+            "stderr": result.stderr,
         })
 
     except Exception as e:
         return JsonResponse({
             "success": False,
             "stdout": "",
-            "stderr": str(e)
+            "stderr": str(e),
         })
-
 
 # Create your views here.

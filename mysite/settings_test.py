@@ -1,5 +1,8 @@
 # settings_test.py
 from .settings import *
+import os
+
+print("✅ Bežíme v testovacom režime (settings_test.py)")
 
 # Ak sa nenačíta z .env, použijeme testovaciu hodnotu
 SECRET_KEY = os.getenv("SECRET_KEY", "test-secret-key")

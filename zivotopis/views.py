@@ -244,10 +244,16 @@ def run_tests(request):
 
         if is_remote:
             # 🟢 Remote – bezpečné testy cez Django modul
-            test_path = "zivotopis.tests.test_save.test_forms"
+            #test_path = "zivotopis.tests.test_save.test_forms"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
             settings_module = "mysite.settings_test"
+            if is_remote and not settings_module.endswith("settings_test"):
+                return JsonResponse({
+                    "success": False,
+                    "stdout": "",
+                    "stderr": "❌ Na remote serveri musíš použiť settings_test.py pre bezpečné testovanie."
+                })
 
             command = [
                 python_bin,

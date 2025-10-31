@@ -234,14 +234,6 @@ def run_tests_page(request):
 
 logger = logging.getLogger(__name__)
 
-import os
-import sys
-import logging
-import subprocess
-from django.http import JsonResponse
-
-logger = logging.getLogger(__name__)
-
 def run_tests(request):
     """Spustí testy: lokálne všetky, na PythonAnywhere len bezpečné."""
     try:
@@ -250,7 +242,7 @@ def run_tests(request):
 
         if is_remote:
             # 🟢 Remote – bezpečné testy cez Django modul
-            test_path = "zivotopis.tests.test_save"
+            test_path = "zivotopis/tests/test_save.py"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
             settings_module = "mysite.settings_test"

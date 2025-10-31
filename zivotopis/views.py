@@ -238,7 +238,7 @@ def run_tests(request):
     """Spustí testy (lokálne všetky, na PA len bezpečné)"""
     try:
         hostname = socket.gethostname()
-        is_remote = "pythonanywhere" in hostname.lower()
+        is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
 
         if is_remote:
             # 🟢 Remote – bezpečné testy cez Django modul

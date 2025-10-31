@@ -257,7 +257,7 @@ def run_tests(request):
 
             command = [
                 python_bin,
-                "-m", "django",
+                os.path.join(project_root, "manage.py"),
                 "test",
                 test_path,
                 "--settings=" + settings_module,

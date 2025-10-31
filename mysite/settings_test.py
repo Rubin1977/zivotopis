@@ -1,6 +1,9 @@
 # settings_test.py
 from .settings import *
 
+# Ak sa nenačíta z .env, použijeme testovaciu hodnotu
+SECRET_KEY = os.getenv("SECRET_KEY", "test-secret-key")
+
 # Použijeme jednoduchú databázu SQLite len pre testy
 DATABASES = {
     'default': {

@@ -242,7 +242,7 @@ def run_tests(request):
 
         if is_remote:
             # 🟢 Remote – bezpečné testy cez Django modul
-            test_path = "zivotopis.tests.test_save.py"
+            test_path = "zivotopis.tests.test_save.test_forms"
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
             settings_module = "mysite.settings_test"

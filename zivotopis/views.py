@@ -259,12 +259,14 @@ def run_tests(request):
         print("🗂 manage.py exists:", os.path.exists(os.path.join(project_root, "manage.py")))
 
         result = subprocess.run(
-            [python_bin, os.path.join(project_root, "manage.py"), "test", test_path],
+            [python_bin, os.path.join(project_root, "manage.py"), "test", test_path, "--no-input", "--keepdb"],
             cwd=project_root,
             capture_output=True,
             text=True,
-            env=env
+            env=env,
+            timeout=60
         )
+
 
         success = result.returncode == 0
 

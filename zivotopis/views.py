@@ -8,7 +8,7 @@ from django.http import JsonResponse
 import subprocess
 import sys
 import socket
-import os
+import os, logging
 
 
 from .models import Post, Image, Email, GalleryItem, Ceny
@@ -232,9 +232,10 @@ def sql_test_view(request):
 def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")
 
+logger = logging.getLogger(__name__)
+
 def run_tests(request):
     """Spustí testy (lokálne všetky, na PA len bezpečné)"""
-    import platform
     try:
         hostname = socket.gethostname()
         is_remote = "pythonanywhere" in hostname.lower()
@@ -269,9 +270,9 @@ def run_tests(request):
         env["DJANGO_SETTINGS_MODULE"] = settings_module
         env["PYTHONPATH"] = project_root
 
-        print("🧭 CWD:", project_root)
-        print("🗂 manage.py exists:", os.path.exists(os.path.join(project_root, "manage.py")))
-        print("💻 Command:", " ".join(command))
+        logger.info(f"🧭 CWD: {project_root}")
+        logger.info(f"🗂 manage.py exists: {os.path.exists(os.path.join(project_root, 'manage.py'))}")
+        logger.info(f"💻 Command: {' '.join(command)}")
 
         result = subprocess.run(
             command,
@@ -279,10 +280,15 @@ def run_tests(request):
             capture_output=True,
             text=True,
             env=env,
-            timeout=60
+            timeout=90
         )
 
         success = result.returncode == 0
+        logger.info(f"✅ Return code: {result.returncode}")
+        if result.stdout:
+            logger.info(f"STDOUT:\n{result.stdout}")
+        if result.stderr:
+            logger.error(f"STDERR:\n{result.stderr}")
 
         return JsonResponse({
             "success": success,
@@ -291,6 +297,7 @@ def run_tests(request):
         })
 
     except Exception as e:
+        logger.exception("❌ Chyba pri spúšťaní testov:")
         return JsonResponse({
             "success": False,
             "stdout": "",

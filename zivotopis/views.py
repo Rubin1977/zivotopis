@@ -234,10 +234,18 @@ def run_tests_page(request):
 
 logger = logging.getLogger(__name__)
 
+import os
+import sys
+import logging
+import subprocess
+from django.http import JsonResponse
+
+logger = logging.getLogger(__name__)
+
 def run_tests(request):
-    """Spustí testy (lokálne všetky, na PA len bezpečné)"""
+    """Spustí testy: lokálne všetky, na PythonAnywhere len bezpečné."""
     try:
-        hostname = socket.gethostname()
+        # Zistenie, či bežíme na PythonAnywhere
         is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
 
         if is_remote:
@@ -250,7 +258,9 @@ def run_tests(request):
             command = [
                 python_bin,
                 "-m", "django",
-                "test", test_path,
+                "test",
+                test_path,
+                "--settings=" + settings_module,
                 "--keepdb"
             ]
         else:
@@ -263,7 +273,9 @@ def run_tests(request):
             command = [
                 python_bin,
                 os.path.join(project_root, "manage.py"),
-                "test", test_path
+                "test",
+                test_path,
+                "--settings=" + settings_module
             ]
 
         env = os.environ.copy()
@@ -280,7 +292,7 @@ def run_tests(request):
             capture_output=True,
             text=True,
             env=env,
-            timeout=90
+            timeout=120
         )
 
         success = result.returncode == 0
@@ -303,5 +315,6 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
+
 
 # Create your views here.

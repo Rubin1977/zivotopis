@@ -5,6 +5,15 @@
     <h2 class="text-center mb-3">🧪 Testovacie rozhranie</h2>
     <p class="text-center">Spusti automatické testy pre svoj Django projekt.</p>
 
+    <div class="text-center mb-3">
+    <label for="test-selector" class="form-label">Vyber testovaciu skupinu:</label>
+    <select id="test-selector" class="form-select text-center" style="max-width:300px;margin:auto;">
+        <option value="zivotopis">Všetky testy</option>
+        <option value="zivotopis.tests.test_save.test_forms">Formuláre</option>
+        <option value="zivotopis.tests.test_save.test_urls">URL</option>
+    </select>
+    </div>
+
     <div class="text-center">
         <button id="run-tests-btn" class="btn btn-primary">Spustiť testy</button>
     </div>
@@ -33,14 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
         output.textContent = "";
 
         try {
-            const response = await fetch("{% url 'run_tests_api' %}");
+            const selector = document.getElementById("test-selector");
+            const selectedTest = selector.value;
+
+            const response = await fetch("{% url 'run_tests_api' %}?target=" + encodeURIComponent(selectedTest));
+
             const data = await response.json();
 
             loading.style.display = "none";
             output.style.display = "block";
             btn.disabled = false;
 
+
             let combinedOutput = (data.stdout || "") + "\n" + (data.stderr || "");
+
+            // 📊 Výpočet štatistiky testov (pred zvýraznením)
+            const passed = (combinedOutput.match(/\.{3} ok/g) || []).length;
+            const failed = (combinedOutput.match(/\.{3} FAIL/g) || []).length;
+            const errored = (combinedOutput.match(/\.{3} ERROR/g) || []).length;
 
             // zvýraznenie kľúčových slov farbami
             combinedOutput = combinedOutput
@@ -50,6 +69,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 .replace(/Ran (\d+) tests?/g, "<span style='color:#0dcaf0'>Ran $1 test(s)</span>");
 
             output.innerHTML = combinedOutput;
+
+            // Zobrazenie štatistiky
+            output.innerHTML += `
+            <div class="mt-3">
+                <strong>📊 Štatistika:</strong><br>
+                ✅ Úspešné: ${passed}<br>
+                ❌ Zlyhané: ${failed}<br>
+                ⚠️ Chybné: ${errored}
+            </div>
+            `;
 
             if (data.success) {
                 output.innerHTML += "\n✅ <strong style='color:#28a745'>Testy prebehli úspešne.</strong>";

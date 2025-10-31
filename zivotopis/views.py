@@ -240,6 +240,8 @@ def run_tests(request):
         # Zistenie, či bežíme na PythonAnywhere
         is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
 
+        test_path = request.GET.get("target", "zivotopis")  # default: všetky testy
+
         if is_remote:
             # 🟢 Remote – bezpečné testy cez Django modul
             test_path = "zivotopis.tests.test_save.test_forms"
@@ -253,11 +255,12 @@ def run_tests(request):
                 "test",
                 test_path,
                 "--settings=" + settings_module,
-                "--keepdb"
+                "--keepdb",
+                "--verbosity=2"
             ]
         else:
             # 💻 Lokálne – všetky testy cez manage.py
-            test_path = "zivotopis"
+            #test_path = "zivotopis"
             python_bin = sys.executable
             project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
             settings_module = "mysite.settings"
@@ -267,7 +270,8 @@ def run_tests(request):
                 os.path.join(project_root, "manage.py"),
                 "test",
                 test_path,
-                "--settings=" + settings_module
+                "--settings=" + settings_module,
+                "--verbosity=2"
             ]
 
         env = os.environ.copy()

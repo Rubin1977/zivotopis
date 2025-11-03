@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import JsonResponse
 import subprocess
 import sys
-import socket
 import os, logging
 from datetime import datetime
 
@@ -182,7 +182,7 @@ def home_view(request):
 
 
 
-class CenyDeleteView(DeleteView):
+class CenyDeleteView(LoginRequiredMixin, DeleteView):
     model = Ceny
     template_name = 'ceny/confirm_del.html'
     success_url = reverse_lazy('home')

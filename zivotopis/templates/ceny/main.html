@@ -105,9 +105,11 @@
                 {% if item.source_type == "book" %}📚{% else %}🏠{% endif %}
                 {{ item.name }}
             </h5>
-            <a href="{% url 'delete' item.pk %}" class="btn btn-sm btn-outline-danger">
-                <i class="bi bi-trash"></i> Zmazať
-            </a>
+            {% if user.is_authenticated %}
+              <a href="{% url 'delete' item.pk %}" class="btn btn-sm btn-outline-danger">
+                  <i class="bi bi-trash"></i> Zmazať
+              </a>
+            {% endif %}
         </div>
         <div class="card-body">
             <ul class="list-group list-group-flush">

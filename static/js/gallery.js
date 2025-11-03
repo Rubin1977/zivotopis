@@ -9,17 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const slideItems = document.querySelectorAll(".slide-item");
 
     let currentSlideIndex = 0;
+    
 
     function showGallerySlide(index) {
-        if (slideItems.length === 0) return;
-        if (index < 0) index = slideItems.length - 1;
-        if (index >= slideItems.length) index = 0;
+    if (slideItems.length === 0) return;
+    if (index < 0) index = slideItems.length - 1;
+    if (index >= slideItems.length) index = 0;
 
-        slideItems.forEach((slide, i) => {
-            slide.style.display = i === index ? "block" : "none";
-        });
+    slideItems.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+    });
 
-        currentSlideIndex = index;
+    currentSlideIndex = index;
     }
 
     function openGalleryModal(index) {
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             galleryImage.src = img.src;
             modalTitle.textContent = title;
             modalDescription.textContent = description;
-            galleryModal.style.display = "flex";
+            galleryModal.removeAttribute("hidden");
             galleryModal.classList.add("open");
             currentSlideIndex = index;
 
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Dynamické centrovanie obrázka pri načítaní
             galleryImage.onload = () => {
-                const modalInner = galleryImage.closest(".modal-inner");
                 const availableHeight = window.innerHeight * 0.8; // max-height obrázka
                 const imageHeight = galleryImage.offsetHeight;
                 const topMargin = Math.max((availableHeight - imageHeight) / 2, 10);
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function closeGalleryModal() {
-        galleryModal.style.display = "none";
+        galleryModal.setAttribute("hidden", "");
         galleryModal.classList.remove("open");
         galleryImage.src = "";
         modalTitle.textContent = "";

@@ -9,7 +9,7 @@
         {% for item in items %}
         <div class="slide-item">
             <h3>{{ item.title }}</h3>
-            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
             <p>{{ item.description }}</p>
         </div>
         {% empty %}
@@ -18,14 +18,14 @@
     </div>
 
     <!-- Modálne okno -->
-    <div id="gallery-modal" class="modal-custom">
+    <div id="gallery-modal" class="modal-custom" role="dialog" aria-modal="true" tabindex="-1" hidden>
         <div class="modal-inner">
-            <span id="gallery-close" class="close-button">&times;</span>
+            <span id="gallery-close" class="close-button" aria-label="Zatvoriť modál">&times;</span>
             <h3 id="modal-title"></h3>
             <img id="gallery-image" class="modal-content-custom" alt="Zväčšený obrázok">
             <p id="modal-description"></p>
-            <button id="gallery-prev" class="prev">&#10094;</button>
-            <button id="gallery-next" class="next">&#10095;</button>
+            <button id="gallery-prev" class="prev" aria-label="Predchádzajúci obrázok">&#10094;</button>
+            <button id="gallery-next" class="next" aria-label="Ďalší obrázok">&#10095;</button>
         </div>
     </div>
 </div>

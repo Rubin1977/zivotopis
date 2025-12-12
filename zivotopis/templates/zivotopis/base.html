@@ -33,9 +33,8 @@
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Galéria</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'send_email' %}active{% endif %}" href="{% url 'send_email' %}">Kontakt</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'test_page' %}active{% endif %}" href="{% url 'test_page' %}">Testy</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'sql_test' %}active{% endif %}" href="{% url 'sql_test' %}">
-                            SQL Test {% if not user.is_authenticated %}🔒{% endif %}
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'sql_test' %}active{% endif %}" href="{% url 'sql_test' %}">
+                            SQLTest <i class="bi bi-lock-fill">🔒</i>
                         </a>
                     </li>
                 </ul>

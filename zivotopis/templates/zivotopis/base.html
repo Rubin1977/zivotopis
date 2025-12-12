@@ -33,11 +33,11 @@
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Galéria</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'send_email' %}active{% endif %}" href="{% url 'send_email' %}">Kontakt</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'test_page' %}active{% endif %}" href="{% url 'test_page' %}">Testy</a></li>
-                    {% if user.is_superuser %}
-                        <li class="nav-item">
-                             <a class="nav-link {% if request.resolver_match.url_name == 'sql_test' %}active{% endif %}" href="{% url 'sql_test' %}">SQL Test</a>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'sql_test' %}active{% endif %}" href="{% url 'sql_test' %}">
+                            SQL Test {% if not user.is_authenticated %}🔒{% endif %}
+                        </a>
                     </li>
-                    {% endif %}
                 </ul>
 
                 <ul class="navbar-nav ms-3">

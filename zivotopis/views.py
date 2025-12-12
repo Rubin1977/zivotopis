@@ -206,15 +206,22 @@ def update_prices(request):
     return redirect(f"{reverse('home')}?type={source}")
 
 
-@login_required
+
 def sql_test_view(request):
     query = ''
     result = None
     error = None
 
+    # zoznam povolených cvičných tabuliek
+    allowed_tables = ["sql_playground", "students", "courses", "teachers"]
+
     if request.method == 'POST':
-        query = request.POST.get('query', '')
+        query = request.POST.get('query', '').strip()
         try:
+            # kontrola – príkaz musí obsahovať aspoň jednu povolenú tabuľku
+            if not any(tbl in query.lower() for tbl in allowed_tables):
+                raise Exception(f"Povolené sú len príkazy nad tabuľkami: {', '.join(allowed_tables)}")
+
             with connection.cursor() as cursor:
                 cursor.execute(query)
                 if cursor.description:  # SELECT
@@ -227,8 +234,10 @@ def sql_test_view(request):
     return render(request, 'zivotopis/sql_test.html', {
         'query': query,
         'result': result,
-        'error': error
-    })    
+        'error': error,
+        'allowed_tables': allowed_tables,   # ➜ pridáme do kontextu
+    })
+
 
 def run_tests_page(request):
     return render(request, "zivotopis/test_page.html")

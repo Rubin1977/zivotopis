@@ -3,6 +3,12 @@
 {% block content %}
 <h2>SQL Testovacia stránka</h2>
 
+<p>Cvičíme na tabuľkách:
+    {% for tbl in allowed_tables %}
+        <span class="badge bg-secondary">{{ tbl }}</span>
+    {% endfor %}
+</p>
+
 <form method="post">
     {% csrf_token %}
     <textarea name="query" rows="6" class="form-control">{{ query }}</textarea>
@@ -14,7 +20,7 @@
 {% endif %}
 
 {% if result %}
-    <h4>Výsledky:</h4>
+    <h3>Výsledky:</h3>
     <table class="table table-sm table-striped mt-2">
         <tbody>
         {% for row in result %}

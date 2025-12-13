@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from zivotopis.models import Post
-from zivotopis.forms import EmailForm
+
 
 class ContactFormViewTest(TestCase):
     def test_contact_form_get(self):

@@ -18,6 +18,7 @@ staticfiles/
 
 # ✅ Sleduj vlastné statické súbory
 !static/
+media/*.txt
 
 # 🍏 macOS
 ._*

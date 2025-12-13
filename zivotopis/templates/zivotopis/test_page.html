@@ -1,0 +1,191 @@
+{% extends "zivotopis/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-3">🧪 Testovacie rozhranie</h2>
+    <p class="text-center">Spustí automatické testy pre môj Django projekt.</p>
+    <div class="text-center mb-3">
+    <label for="test-selector" class="form-label">Vyber testovaciu skupinu:</label>
+    <select id="test-selector" class="form-select text-center" style="max-width:300px;margin:auto;">
+        <option value="zivotopis">Všetky testy</option>
+        <option value="zivotopis.tests.test_save.test_forms">Formuláre</option>
+        <option value="zivotopis.tests.test_save.test_urls">URL</option>
+    </select>
+    </div>
+
+    <div class="text-center">
+        <button id="run-tests-btn" class="btn btn-primary">Spustiť testy</button>
+    </div>
+    <a id="download-link" href="#" style="display:none;" download>📥 Stiahnuť výsledky testov</a>
+
+
+    <!-- Spinner -->
+    <div id="loading" class="text-center mt-3" style="display:none;">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p>Prebieha testovanie...</p>
+    </div>
+
+
+    <!-- Výstup -->
+    <pre id="test-output" class="text-start bg-dark text-light p-3 rounded mt-4"
+         style="white-space: pre-wrap; display:none; font-size:0.9rem; border-left:5px solid transparent; max-height:500px; overflow-y:auto;"></pre>
+</div>
+<!-- ===== Rozšírenie: Portfólio / Roadmapa ===== -->
+    <div class="card mt-5">
+        <div class="card-header bg-primary text-white">
+            📂 Projekt: Životopis –> vývoj + testovanie
+        </div>
+        <div class="card-body">
+            <p><strong>Popis:</strong> Osobná stránka životopisu s dôrazom na čisté UI/UX, responzívnosť a jasnú navigáciu. Tento zápis dokumentuje moju prácu ako autora (vývoj) aj testera (QA). Okrem samotného vývoja obsahuje aj automatické testy v Djangu, ktoré overujú funkčnosť aplikácie, autentifikáciu používateľov, správne spracovanie požiadaviek, validáciu formulárov, routing URL a logiku modelov.</p>
+            <div class="d-flex flex-wrap gap-3 mt-2">
+            <div class="flex-fill" style="min-width:320px;">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Stack:</strong> Django, HTML/CSS, PythonAnywhere</li>
+                <li class="list-group-item">
+                    <strong>Endpointy:</strong> 
+                    <a href="/zivo/">/zivo/</a>, 
+                    <a href="/en/zivo/">/en/zivo/</a>, 
+                    <a href="/email/">/email/</a>
+                </li>
+                </ul>
+            </div>
+
+            <div class="flex-fill" style="min-width:320px;">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Moja rola:</strong> Vývoj (Django + UI), QA (SOAPUI + Selenium), dokumentácia testovacích prípadov a roadmapy</li>
+                <li class="list-group-item"><strong>Ciele kvality:</strong> Dostupnosť (200 OK), správny obsah, funkčné linky, EN/SK lokalizácia</li>
+                </ul>
+            </div>
+            </div>
+
+            <h5 class="mt-3">Testovacie prípady</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>TC01:</strong> GET <code>/zivo/</code> → očakávaný výsledok: HTTP 200, obsahuje „O mne“ <span class="text-success">✅ Splnené</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC02:</strong> GET <code>/en/zivo/</code> → očakávaný výsledok: obsah v angličtine <span class="text-muted">🕒 Doplním</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC03:</strong> Kontrola odkazov (mailto, LinkedIn) <span class="text-muted">🕒 Doplním</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC04:</strong> Validácia kontaktného formulára – správne/nesprávne dáta → form.is_valid()/ <span class="text-muted">✅ Splnené/✅ Splnené</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC05:</strong> View testy – GET zobrazí formulár, POST validný → redirect na success, POST nevalidný → redirect na unsuccess <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC06:</strong> Autentifikácia – prihlásený používateľ môže vytvoriť Post, neprihlásený je redirectovaný na login<span class="text-muted"></span>
+                </li><li class="list-group-item">
+                    <strong>TC07:</strong> Model testy – __str__ vracia názov Postu, Post sa zobrazí v list view, Post sa správne uloží s autorom <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC08:</strong> URL routing – reverse('send_email') správne smeruje na funkciu views.send_email<span class="text-muted"></span>
+                </li>
+            </ul>
+
+            <h5 class="mt-4">Roadmapa učenia</h5>
+            <ol>
+                <li><strong>Týždeň 1:</strong> SOAPUI základy – REST/GET požiadavky, status kódy, základné Assertions (Contains/Not Contains), prvé Test Suites <span class="text-success">Splnené ✅</span></li>
+                <li><strong>Týždeň 2:</strong> SOAPUI – SOAP/WSDL operácie, XPath Match, Property Transfer medzi testami, základné Groovy skripty na dynamické assertions <span class="text-warning">Prebieha</span></li>
+                <li><strong>Týždeň 3:</strong> Selenium WebDriver – základné UI testy (navigácia, kliknutia, vyhľadávanie elementov), testovanie formulárov, validácia chýb, Page Object Pattern <span class="text-secondary">📌 Plán</span></li>
+                <li><strong>Týždeň 4:</strong> Pokročilé QA – kombinácia SOAPUI + Selenium (API + UI scenáre), Mock Services v SOAPUI, reportovanie výsledkov, príprava portfólia na GitHub <span class="text-secondary">📌 Plán</span></li>
+            </ol>
+
+            <h5 class="mt-4">Poznámky</h5>
+            <ul>
+                <li>Groovy vs Python – interpolácia reťazcov, logovanie, parsovanie XML</li>
+                <li>CSRF – netýka sa GET; pri POST treba token + cookies</li>
+                <li>Assertions – Contains/Not Contains pre HTML; XPath pre SOAP XML</li>                
+                <li>Django TestCase – integračné testy simulujú reálne požiadavky cez testovacieho klienta, overujú redirecty a stav databázy</li>
+                <li>Django SimpleTestCase – unit testy URL routingu, kontrola mapovania názvov na view funkcie</li>
+                <li>Kombinácia SOAPUI + Selenium – umožňuje end-to-end scenáre, kde sa testuje API aj UI vrstva naraz</li>
+                <li>Mock Services – využitie v SOAPUI na simuláciu odpovedí API, vhodné pri integračných testoch</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ... pôvodný script zostáva nezmenený ... -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("run-tests-btn");
+    const loading = document.getElementById("loading");
+    const output = document.getElementById("test-output");
+
+    btn.addEventListener("click", async () => {
+        btn.disabled = true;
+        loading.style.display = "block";
+        output.style.display = "none";
+        output.textContent = "";
+
+        try {
+            const selector = document.getElementById("test-selector");
+            const selectedTest = selector.value;
+
+            const response = await fetch("{% url 'run_tests_api' %}?target=" + encodeURIComponent(selectedTest));
+
+            const data = await response.json();
+
+            loading.style.display = "none";
+            output.style.display = "block";
+            btn.disabled = false;
+
+
+            let combinedOutput = (data.stdout || "") + "\n" + (data.stderr || "");
+
+            // 📊 Výpočet štatistiky testov (pred zvýraznením)
+            const passed = (combinedOutput.match(/\.{3} ok/g) || []).length;
+            const failed = (combinedOutput.match(/\.{3} FAIL/g) || []).length;
+            const errored = (combinedOutput.match(/\.{3} ERROR/g) || []).length;
+
+            // zvýraznenie kľúčových slov farbami
+            combinedOutput = combinedOutput
+                .replace(/OK/g, "✅ <span style='color:#28a745;font-weight:bold'>OK</span>")
+                .replace(/FAILED/g, "❌ <span style='color:#dc3545;font-weight:bold'>FAILED</span>")
+                .replace(/ERROR/g, "⚠️ <span style='color:#ffc107;font-weight:bold'>ERROR</span>")
+                .replace(/Ran (\d+) tests?/g, "<span style='color:#0dcaf0'>Ran $1 test(s)</span>");
+
+            output.innerHTML = combinedOutput;
+            // Zobrazenie odkazu na stiahnutie výsledkov, ak je k dispozícii
+            if (data.download_url) {
+                const link = document.getElementById("download-link");
+                link.href = data.download_url;
+                link.style.display = "inline-block";
+            }
+
+
+            // Zobrazenie štatistiky
+            output.innerHTML += `
+            <div class="mt-3">
+                <strong>📊 Štatistika:</strong><br>
+                ✅ Úspešné: ${passed}<br>
+                ❌ Zlyhané: ${failed}<br>
+                ⚠️ Chybné: ${errored}
+            </div>
+            `;
+
+            if (data.success) {
+                output.innerHTML += "\n✅ <strong style='color:#28a745'>Testy prebehli úspešne.</strong>";
+                output.style.borderLeft = "5px solid #28a745";
+            } else {
+                output.innerHTML += "\n❌ <strong style='color:#dc3545'>Testy zlyhali.</strong>";
+                output.style.borderLeft = "5px solid #dc3545";
+            }
+
+            // Automatické skrolovanie na koniec výstupu
+            output.scrollTop = output.scrollHeight;
+
+        } catch (error) {
+            loading.style.display = "none";
+            output.style.display = "block";
+            btn.disabled = false;
+            output.innerHTML =
+                "⚠️ <strong style='color:#ffc107'>Chyba pri komunikácii so serverom:</strong><br>" + error;
+            output.style.borderLeft = "5px solid #ffc107";
+        }
+    });
+});
+</script>
+{% endblock %}

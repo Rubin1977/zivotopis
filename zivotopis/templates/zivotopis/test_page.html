@@ -36,7 +36,14 @@
             📂 Projekt: Životopis –> vývoj + testovanie
         </div>
         <div class="card-body">
-            <p><strong>Popis:</strong> Osobná stránka životopisu s dôrazom na čisté UI/UX, responzívnosť a jasnú navigáciu. Tento zápis dokumentuje moju prácu ako autora (vývoj) aj testera (QA). Okrem samotného vývoja obsahuje aj automatické testy v Djangu, ktoré overujú funkčnosť aplikácie, autentifikáciu používateľov, správne spracovanie požiadaviek, validáciu formulárov, routing URL a logiku modelov.</p>
+            <p><strong>Popis:</strong> Osobná stránka životopisu s dôrazom na čisté UI/UX, responzívnosť a jasnú navigáciu. Tento zápis dokumentuje moju prácu ako autor (vývoj) aj tester (QA). Okrem samotného vývoja obsahuje aj automatické testy v Djangu, ktoré overujú:</p>
+            <ul>
+                <li>funkčnosť aplikácie a autentifikáciu používateľov,</li>
+                <li>správne spracovanie požiadaviek a validáciu formulárov,</li>
+                <li>routing URL a logiku modelov,</li>
+                <li>REST API bezpečnosť, kde verejné endpointy sú read-only, write operácie sú viazané na autentifikáciu a formulárové endpointy neumožňujú čítanie dát.</li>
+            </ul>
+
             <div class="d-flex flex-wrap gap-3 mt-2">
             <div class="flex-fill" style="min-width:320px;">
                 <ul class="list-group list-group-flush">
@@ -52,8 +59,8 @@
 
             <div class="flex-fill" style="min-width:320px;">
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Moja rola:</strong> Vývoj (Django + UI), QA (SOAPUI + Selenium), dokumentácia testovacích prípadov a roadmapy</li>
-                <li class="list-group-item"><strong>Ciele kvality:</strong> Dostupnosť (200 OK), správny obsah, funkčné linky, EN/SK lokalizácia</li>
+                <li class="list-group-item"><strong>Moja rola:</strong> Vývoj (Django + UI + REST API návrh), QA (SOAPUI + Selenium), dokumentácia testovacích prípadov a roadmapy</li>
+                <li class="list-group-item"><strong>Ciele kvality:</strong> Dostupnosť (HTTP 200 OK), správny obsah, funkčné linky, EN/SK lokalizácia, bezpečné REST API (permissions, read-only/write operations, validácia formulárov)</li>
                 </ul>
             </div>
             </div>
@@ -82,6 +89,9 @@
                 </li>
                 <li class="list-group-item">
                     <strong>TC08:</strong> URL routing – reverse('send_email') správne smeruje na funkciu views.send_email<span class="text-muted"></span>
+                </li>
+                <li class="list-group-item">
+                    <strong>TC09:</strong> API testy – read-only endpointy vracajú dáta správne, write operácie sú chránené, validácia dát a permissions<span class="text-muted"></span>
                 </li>
             </ul>
 

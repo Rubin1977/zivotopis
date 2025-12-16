@@ -11,20 +11,53 @@ import sys
 import os, logging
 from datetime import datetime
 
-
 from .models import Post, Image, Email, GalleryItem, Ceny
-from .forms import PostForm, ImageForm, EmailForm, AddCenyForm 
+from .forms import PostForm, EmailForm, AddCenyForm 
 
 from django.db import connection
-import requests
-from bs4 import BeautifulSoup
 from django.views.generic.edit import DeleteView
 from django.urls import reverse, reverse_lazy
 from .utils import get_price, detect_source_type, save_post_with_images, save_ceny_instance
 
 
+from rest_framework.viewsets import ModelViewSet 
+from .models import Post, Image, Email, GalleryItem, Ceny 
+
+from .serializers import PostSerializer, ImageSerializer, EmailSerializer, GalleryItemSerializer, CenySerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import AllowAny
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.mixins import CreateModelMixin
+from rest_framework.viewsets import GenericViewSet
 
 
+class PostViewSet(ModelViewSet): 
+    queryset = Post.objects.all() 
+    serializer_class = PostSerializer 
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+    
+class ImageViewSet(ModelViewSet): 
+    queryset = Image.objects.all() 
+    serializer_class = ImageSerializer 
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+class EmailViewSet(CreateModelMixin, GenericViewSet): 
+    queryset = Email.objects.all() 
+    serializer_class = EmailSerializer
+    permission_classes = [AllowAny]
+    
+class GalleryItemViewSet(ReadOnlyModelViewSet): 
+    queryset = GalleryItem.objects.all() 
+    serializer_class = GalleryItemSerializer 
+    permission_classes = [AllowAny]
+    
+class CenyViewSet(ReadOnlyModelViewSet): 
+    queryset = Ceny.objects.all() 
+    serializer_class = CenySerializer
+    permission_classes = [AllowAny]
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')

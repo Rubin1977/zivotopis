@@ -16,16 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter 
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView 
+from zivotopis.views import PostViewSet, ImageViewSet, EmailViewSet, GalleryItemViewSet, CenyViewSet 
 
+router = DefaultRouter() 
+router.register(r'posts', PostViewSet) 
+router.register(r'images', ImageViewSet) 
+router.register(r'emails', EmailViewSet) 
+router.register(r'gallery', GalleryItemViewSet) 
+router.register(r'ceny', CenyViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', views.LoginView.as_view(), name='login'),
-    path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'), 
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('', include('zivotopis.urls')),
+    path('api/', include(router.urls)), 
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'), 
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema')),
 ]  
 
 if settings.DEBUG:

@@ -30,7 +30,8 @@ load_dotenv(BASE_DIR / ".django_env")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.pythonanywhere.com', 'eu.pythonanywhere.com' ]
 
@@ -54,6 +55,9 @@ INSTALLED_APPS = [
     'zivotopis',
     'crispy_forms',
     'crispy_bootstrap5',
+    "rest_framework",
+    "corsheaders", 
+    "drf_spectacular",
     #'captcha',
 ]
 
@@ -64,6 +68,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -90,6 +95,15 @@ TEMPLATES = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [ "http://localhost:3000", # napr. React lokálne
+                         "https://tvojprojekt.pythonanywhere.com", # produkcia 
+                         ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -102,7 +116,7 @@ if os.getenv('PYTHONANYWHERE_DOMAIN'):
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'RastislavRuzback$default',
             'USER': 'RastislavRuzback',
-            'PASSWORD': 'Mojsql13',
+            'PASSWORD': os.getenv('DB_PASSWORD'),
             'HOST': 'RastislavRuzbacky.mysql.eu.pythonanywhere-services.com',
             'PORT': '3306',
         }
@@ -170,6 +184,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WAGTAIL_SITE_NAME = 'Rubin Zivotopis'
 WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = not DEBUG
+
 
 

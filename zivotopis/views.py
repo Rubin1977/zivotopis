@@ -287,7 +287,6 @@ def extract_stats(stdout: str):
     return passed, failed, errors, total
 
 
-
 def run_tests(request):
     try:
         is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
@@ -296,11 +295,11 @@ def run_tests(request):
         if is_remote:
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
-            settings_module = "mysite.settings_test"
+            settings_module = "mysite.settings.test"
         else:
             python_bin = sys.executable
             project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-            settings_module = "mysite.settings"
+            settings_module = "mysite.settings.test"
 
         command = [
             python_bin,

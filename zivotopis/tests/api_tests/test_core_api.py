@@ -5,13 +5,13 @@ import json
 class CoreAPITest(TestCase):
     def setUp(self):
         # Base endpoints podľa tvojho deployed API
-        self.endpoints = {
-            "posts": "/api/posts/",
-            "images": "/api/images/",
-            "emails": "/api/emails/",
-            "gallery": "/api/gallery/",
-            "ceny": "/api/ceny/"
-        }
+        self.endpoints = { 
+            "posts": reverse("posts-list"), 
+            "images": reverse("images-list"), 
+            "emails": reverse("emails-list"), 
+            "gallery": reverse("gallery-list"), 
+            "ceny": reverse("ceny-list"), 
+            }
 
     def test_endpoints_available(self):
         """Test, že všetky endpointy sú dostupné (HTTP 200 alebo správny kód)"""

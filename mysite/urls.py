@@ -24,11 +24,12 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from zivotopis.views import PostViewSet, ImageViewSet, EmailViewSet, GalleryItemViewSet, CenyViewSet 
 
 router = DefaultRouter() 
-router.register(r'posts', PostViewSet) 
-router.register(r'images', ImageViewSet) 
-router.register(r'emails', EmailViewSet) 
-router.register(r'gallery', GalleryItemViewSet) 
-router.register(r'ceny', CenyViewSet)
+router.register(r'posts', PostViewSet, basename="posts")
+router.register(r'images', ImageViewSet, basename="images")
+router.register(r'emails', EmailViewSet, basename="emails")
+router.register(r'gallery', GalleryItemViewSet, basename="gallery")
+router.register(r'ceny', CenyViewSet, basename="ceny")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

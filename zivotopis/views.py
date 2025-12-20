@@ -6,6 +6,10 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
+import pathlib
+
+
 import subprocess
 import sys
 import os, logging
@@ -21,6 +25,9 @@ from .utils import get_price, detect_source_type, save_post_with_images, save_ce
 
 
 from rest_framework.viewsets import ModelViewSet 
+from rest_framework.response import Response
+from rest_framework.decorators import action
+
 from .models import Post, Image, Email, GalleryItem, Ceny 
 
 from .serializers import PostSerializer, ImageSerializer, EmailSerializer, GalleryItemSerializer, CenySerializer
@@ -271,12 +278,11 @@ def sql_test_view(request):
         'allowed_tables': allowed_tables,   # ➜ pridáme do kontextu
     })
 
-
-def run_tests_page(request):
+def run_tests_page(request): 
+    # zobrazí HTML stránku s tlačidlom a výstupom 
     return render(request, "zivotopis/test_page.html")
 
 logger = logging.getLogger(__name__)
-
 
 def extract_stats(stdout: str):
     lines = stdout.splitlines()
@@ -285,7 +291,6 @@ def extract_stats(stdout: str):
     errors = sum(1 for line in lines if "... ERROR" in line)
     total = passed + failed + errors
     return passed, failed, errors, total
-
 
 def run_tests(request):
     try:
@@ -301,8 +306,10 @@ def run_tests(request):
             project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
             settings_module = "mysite.settings.test"
 
+        # 🦆 Spustíme testy cez coverage
         command = [
             python_bin,
+            "-m", "coverage", "run",
             os.path.join(project_root, "manage.py"),
             "test",
             test_path,
@@ -327,6 +334,16 @@ def run_tests(request):
         combined_output = result.stdout + "\n" + result.stderr
         passed, failed, errors, total = extract_stats(combined_output)
 
+        # 🦆 Spustíme coverage report
+        coverage_command = [python_bin, "-m", "coverage", "report", "-m"]
+        coverage_result = subprocess.run(
+            coverage_command,
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            env=env
+        )
+        coverage_output = coverage_result.stdout
 
         # 📁 Export výstupu do súboru
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -343,6 +360,8 @@ def run_tests(request):
         ⚠️ Chybné: {errors}
         📊 Počet testov: {total}
 
+        --- Pokrytie kódu ---
+        {coverage_output}
 
         --- Výstup testov ---
         {combined_output}
@@ -355,6 +374,7 @@ def run_tests(request):
             "success": success,
             "stdout": result.stdout,
             "stderr": result.stderr,
+            "coverage": coverage_output,
             "download_url": f"/media/{filename}"
         })
 
@@ -365,6 +385,7 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
+
 
 
 # Create your views here.

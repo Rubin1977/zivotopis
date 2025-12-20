@@ -2,7 +2,7 @@
 from .base import *
 import os
 
-print("[OK] Bežíme v testovacom režime (mysite/settings/test.py)")
+print("OK Bežíme v testovacom režime (mysite/settings/test.py)")
 
 
 # Ak sa nenačíta z .env, použijeme testovaciu hodnotu

@@ -1,7 +1,17 @@
-# Django Životopis
-
-Webová aplikácia na prezentáciu životopisu, galérie a dokumentov. Vytvorená pomocou Django 4.2.3. Projekt slúži ako osobná prezentácia autora – obsahuje galériu, formuláre, exporty a REST API.
-
+# 📘 Django Životopis Osobná webová aplikácia vytvorená v Django 4.2.3. 
+Slúži ako interaktívna prezentácia životopisu, galérie, dokumentov a API rozhraní. 
+Projekt obsahuje aj vlastný test runner, coverage report a ukážky API testovania. 
+--- ## 🚀 Funkcionalita 
+- 🖼️ **Galéria obrázkov** (upload, správa, kategórie)
+- 📄 **Životopis** + exporty
+- 📬 **Kontaktný formulár** s validáciou a reCAPTCHA
+- 🔌 **REST API** (Django REST Framework)
+- 🧪 **Automatizované testy**
+  - unit tests
+  - API tests
+  - integration tests
+- 📊 **Coverage report** dostupný priamo v aplikácii
+- 🗂️ Prehľadná štruktúra settings (base/dev/prod/test)
 ## 🔧 Inštalácia
 
 ```bash
@@ -20,13 +30,9 @@ Django==4.2.3
 
 djangorestframework==3.15.1
 
-django-filter, django-recaptcha, django-permissionedforms
-
-beautifulsoup4, requests, python-dotenv
-
-openpyxl, pillow, anyascii, filetype
-
 ➡️ Kompletný zoznam nájdeš v súbore requirements.txt.
 
 🌐 Online verzia
-Galéria je dostupná na: 👉 rastislavruzbacky.eu.pythonanywhere.com/gallery
+Aplikácia je dostupná na:
+
+👉 https://rastislavruzbacky.eu.pythonanywhere.com

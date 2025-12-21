@@ -30,5 +30,9 @@ PASSWORD_HASHERS = [
 # Zabezpečí, že testy budú bežať izolovane a rýchlo
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
 }
+
+#TEST_DISCOVER_PATTERN = "test_*.py"
+TEST_RUNNER = "django.test.runner.DiscoverRunner"
+

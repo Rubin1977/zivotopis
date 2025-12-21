@@ -295,31 +295,31 @@ def extract_stats(stdout: str):
 def run_tests(request):
     try:
         is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
-        test_path = request.GET.get("target", "zivotopis")
+        
 
         if is_remote:
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
             project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
-            settings_module = "mysite.settings.test"
+            
         else:
             python_bin = sys.executable
             project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-            settings_module = "mysite.settings.test"
+            
 
         # 🦆 Spustíme testy cez coverage
         command = [
             python_bin,
             "-m", "coverage", "run",
-            os.path.join(project_root, "manage.py"),
+            
+            "-m", "django",
             "test",
-            test_path,
-            "--settings=" + settings_module,
             "--verbosity=2"
         ]
 
+
         env = os.environ.copy()
-        env["DJANGO_SETTINGS_MODULE"] = settings_module
-        env["PYTHONPATH"] = project_root
+        env["PYTHONPATH"] = project_root + os.pathsep + env.get("PYTHONPATH", "")
+
 
         result = subprocess.run(
             command,
@@ -354,7 +354,7 @@ def run_tests(request):
 
         export_text = f"""
         📅 Dátum: {timestamp}
-        📂 Modul: {test_path}
+        📂 Modul: celý projekt
         ✅ Úspešné: {passed}
         ❌ Zlyhané: {failed}
         ⚠️ Chybné: {errors}

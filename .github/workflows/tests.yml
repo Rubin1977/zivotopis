@@ -32,4 +32,7 @@ jobs:
 
       - name: Run Django tests
         run: |
-          python manage.py test
+          coverage run manage.py test --settings=mysite.settings.test
+
+          
+

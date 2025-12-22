@@ -1,4 +1,5 @@
 # 📘 Django Životopis Osobná webová aplikácia vytvorená v Django 4.2.3. 
+![Tests](https://github.com/USERNAME/REPO/actions/workflows/tests.yml/badge.svg)
 Slúži ako interaktívna prezentácia životopisu, galérie, dokumentov a API rozhraní. 
 Projekt obsahuje aj vlastný test runner, coverage report a ukážky API testovania. 
 --- ## 🚀 Funkcionalita 

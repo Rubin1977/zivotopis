@@ -1,0 +1,26 @@
+from unittest.mock import Mock, patch
+from zivotopis.utils import save_post_with_images
+
+@patch("zivotopis.utils.Image")
+def test_save_post_with_images(mock_image_model):
+    form = Mock()
+    post = Mock()
+    form.save.return_value = post
+
+    user = Mock()
+    image_files = ["img1.jpg", "img2.jpg"]
+
+    result = save_post_with_images(form, user, image_files)
+
+    form.save.assert_called_once_with(commit=False)
+    assert post.author == user
+    post.save.assert_called_once()
+
+    assert mock_image_model.objects.create.call_count == 2
+    mock_image_model.objects.create.assert_any_call(post=post, image="img1.jpg")
+    mock_image_model.objects.create.assert_any_call(post=post, image="img2.jpg")
+
+    assert result == post
+    print("FUNKCIA SA SPUSTILA")
+
+print("TEST SA SPUSTIL")

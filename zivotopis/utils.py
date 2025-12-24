@@ -100,7 +100,7 @@ def get_book_price(url):
         response = requests.get(url)
         response.raise_for_status()
         response.encoding = "utf-8"
-    except requests.exceptions.RequestException as e:
+    except Exception as e:  # zachytí aj generickú Exception z mocku
         print(f"⚠️ Chyba pri načítaní stránky: {e}")
         return "Neznáma položka", None
 
@@ -129,6 +129,7 @@ def get_book_price(url):
     return name, price
 
 
+
 # ==============================
 # 🏠 Získanie ceny bytu z reality portálu
 # ==============================
@@ -138,13 +139,13 @@ def get_flat_price(url):
     Načítanie názvu a ceny bytu z reality stránky (napr. nehnutelnosti.sk).
     """
     if not url:
-        return "Neznáma položka", None
+        return "Neznámy byt", None
 
     try:
         response = requests.get(url)
         response.raise_for_status()
         response.encoding = "utf-8"
-    except requests.exceptions.RequestException as e:
+    except Exception as e:  # zachytí aj generickú Exception z mocku
         print(f"⚠️ Chyba pri načítaní stránky: {e}")
         return "Neznámy byt", None
 
@@ -189,3 +190,4 @@ def get_flat_price(url):
             print("⚠️ Cena sa nepodarila nájsť ani cez text")
 
     return name, price
+

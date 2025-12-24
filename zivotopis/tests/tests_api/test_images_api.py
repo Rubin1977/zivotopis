@@ -43,8 +43,6 @@ class ImageAPITest(APITestCase):
         data = {"post": self.post.pk, "image": image_file}
         # 🦆 Pošlem POST request na API 
         response = self.client.post(self.url_list, data, format="multipart") 
-        print(response.status_code)
-        print(response.content) 
         # 🦆 Očakávam, že sa obrázok uloží 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED) 
         self.assertTrue(Image.objects.filter(post=self.post).exists()) 

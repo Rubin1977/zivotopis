@@ -284,13 +284,26 @@ def run_tests_page(request):
 
 logger = logging.getLogger(__name__)
 
-def extract_stats(stdout: str):
-    lines = stdout.splitlines()
-    passed = sum(1 for line in lines if "... ok" in line)
-    failed = sum(1 for line in lines if "... FAIL" in line)
-    errors = sum(1 for line in lines if "... ERROR" in line)
+import re
+
+def extract_stats(output: str):
+    passed = 0
+    failed = 0
+    errors = 0
+
+    for line in output.splitlines():
+        if "PASSED" in line:
+            passed += 1
+        elif "FAILED" in line:
+            failed += 1
+        elif "ERROR" in line:
+            errors += 1
+
     total = passed + failed + errors
     return passed, failed, errors, total
+
+
+
 
 def run_tests(request):
     try:
@@ -310,11 +323,10 @@ def run_tests(request):
         command = [
             python_bin,
             "-m", "coverage", "run",
-            
-            "-m", "django",
-            "test",
+            "-m", "pytest",
             "--verbosity=2"
         ]
+
 
 
         env = os.environ.copy()
@@ -332,6 +344,7 @@ def run_tests(request):
 
         success = result.returncode == 0
         combined_output = result.stdout + "\n" + result.stderr
+        
         passed, failed, errors, total = extract_stats(combined_output)
 
         # 🦆 Spustíme coverage report
@@ -345,38 +358,46 @@ def run_tests(request):
         )
         coverage_output = coverage_result.stdout
 
-        # 📁 Export výstupu do súboru
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        filename = f"test_output_{timestamp}.txt"
-        media_dir = os.path.join(project_root, "media")
-        os.makedirs(media_dir, exist_ok=True)
-        output_path = os.path.join(media_dir, filename)
+        # 📁 Export výstupu do súboru len ak je ?download=true 
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M") 
+        filename = f"test_output_{timestamp}.txt" 
+        download_requested = request.GET.get("download") == "true" 
+        if download_requested: 
+            media_dir = os.path.join(project_root, "media") 
+            os.makedirs(media_dir, exist_ok=True) 
+            output_path = os.path.join(media_dir, filename) 
+            export_text = f""" 
+            📅 Dátum: {timestamp} 
+            📂 Modul: zivotopis 
+            ✅ Úspešné: {passed} 
+            ❌ Zlyhané: {failed} 
+            ⚠️ Chybné: {errors} 📊 
+            Počet testov: {total} 
+            --- Pokrytie kódu --- 
+            {coverage_output} 
+            --- Výstup testov --- 
+            {combined_output} """
 
-        export_text = f"""
-        📅 Dátum: {timestamp}
-        📂 Modul: celý projekt
-        ✅ Úspešné: {passed}
-        ❌ Zlyhané: {failed}
-        ⚠️ Chybné: {errors}
-        📊 Počet testov: {total}
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(export_text) 
+            download_url = f"/media/{filename}" 
 
-        --- Pokrytie kódu ---
-        {coverage_output}
-
-        --- Výstup testov ---
-        {combined_output}
-        """
-
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(export_text)
-
-        return JsonResponse({
-            "success": success,
-            "stdout": result.stdout,
-            "stderr": result.stderr,
-            "coverage": coverage_output,
-            "download_url": f"/media/{filename}"
+        else: 
+            download_url = None 
+        return JsonResponse({ 
+            "success": success, 
+            "stdout": result.stdout, 
+            "stderr": result.stderr, 
+            "coverage": coverage_output, 
+            "download_url": download_url, 
+            "timestamp": timestamp, 
+            "module": "zivotopis", 
+            "passed": passed, 
+            "failed": failed, 
+            "errors": errors, 
+            "total": total 
         })
+
 
     except Exception as e:
         logger.exception("❌ Chyba pri spúšťaní testov:")

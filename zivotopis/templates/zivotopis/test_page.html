@@ -123,18 +123,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("run-tests-btn");
     const loading = document.getElementById("loading");
     const output = document.getElementById("test-output");
+    const link = document.getElementById("download-link");
 
     btn.addEventListener("click", async () => {
         btn.disabled = true;
         loading.style.display = "block";
         output.style.display = "none";
         output.textContent = "";
+        link.style.display = "none"; // vždy skryjeme na začiatku
 
         try {
             const selector = document.getElementById("test-selector");
             const selectedTest = selector.value;
 
-            const response = await fetch("{% url 'run_tests_api' %}?target=" + encodeURIComponent(selectedTest));
+            // ak chceš súbor, pridaj &download=true 
+            const response = await fetch(
+                "{% url 'run_tests_api' %}?target=" + encodeURIComponent(selectedTest) + "&download=true" 
+            );
 
             const data = await response.json();
 
@@ -145,10 +150,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let combinedOutput = (data.stdout || "") + "\n" + (data.stderr || "");
 
-            // 📊 Výpočet štatistiky testov (pred zvýraznením)
-            const passed = (combinedOutput.match(/\.{3} ok/g) || []).length;
-            const failed = (combinedOutput.match(/\.{3} FAIL/g) || []).length;
-            const errored = (combinedOutput.match(/\.{3} ERROR/g) || []).length;
+            /// 📊 Výpočet štatistiky testov – priamo z backendu
+            
+            const passed = data.passed || 0;
+            const failed = data.failed || 0;
+            const errored = data.errors || 0;
+            const total = data.total || 0;
+
 
             // zvýraznenie kľúčových slov farbami
             combinedOutput = combinedOutput
@@ -164,11 +172,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.href = data.download_url;
                 link.style.display = "inline-block";
             }
-
+            
+            
             // Zobrazenie štatistiky
             output.innerHTML += `
             <div class="mt-3">
                 <strong>📊 Štatistika:</strong><br>
+                📅 Dátum: ${data.timestamp}<br>
+                📂 Modul: ${data.module}<br>
                 ✅ Úspešné: ${passed}<br>
                 ❌ Zlyhané: ${failed}<br>
                 ⚠️ Chybné: ${errored}<br>

@@ -292,35 +292,60 @@ def extract_stats(output: str):
     errors = 0
 
     for line in output.splitlines():
-        if "PASSED" in line:
-            passed += 1
-        elif "FAILED" in line:
-            failed += 1
-        elif "ERROR" in line:
-            errors += 1
+        line_lower = line.lower()
+
+        # Zachytí summary typu "31 passed in 1.44s"
+        if " passed" in line_lower and " in " in line_lower:
+            try:
+                passed = int(line_lower.split(" passed")[0].strip().split()[-1])
+            except:
+                pass
+
+        # Zachytí summary typu "2 failed, 1 passed"
+        if "failed" in line_lower and "," in line_lower:
+            parts = line_lower.split(",")
+            for p in parts:
+                if "failed" in p:
+                    failed = int(p.strip().split()[0])
+                if "passed" in p:
+                    passed = int(p.strip().split()[0])
+
+        # Zachytí explicitné chyby
+        if "error" in line_lower and "errors" in line_lower:
+            try:
+                errors = int(line_lower.split()[0])
+            except:
+                pass
 
     total = passed + failed + errors
     return passed, failed, errors, total
 
+
 def run_tests(request):
     try:
-        # 1️⃣ Zistíme koreň projektu (funguje lokálne aj na PA)
+        # 1️⃣ Koreň projektu (funguje lokálne aj na PA)
         project_root = settings.BASE_DIR
 
-        # 2️⃣ Python interpreter (funguje lokálne aj na PA)
-        python_bin = sys.executable
+        # 2️⃣ Python interpreter – absolútna cesta pre PA, sys.executable pre lokál
+        if "PYTHONANYWHERE_DOMAIN" in os.environ:
+            python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
+        else:
+            python_bin = sys.executable
 
-        # 3️⃣ Pripravíme environment pre testy
+        # 3️⃣ Coverage data file – musí byť absolútna cesta
+        coverage_file = os.path.join(project_root, ".coverage")
+
+        # 4️⃣ Environment pre subprocess
         env = os.environ.copy()
         env["DJANGO_SETTINGS_MODULE"] = "mysite.settings.test"
         env["PYTHONPATH"] = str(project_root)
 
-        # 4️⃣ Spustíme pytest cez coverage
+        # 5️⃣ Spustenie testov cez coverage
         command = [
             python_bin,
             "-m", "coverage", "run",
+            f"--data-file={coverage_file}",
             "-m", "pytest"
-            
         ]
 
         result = subprocess.run(
@@ -337,17 +362,25 @@ def run_tests(request):
 
         passed, failed, errors, total = extract_stats(combined_output)
 
-        # 5️⃣ Coverage report
+        # 6️⃣ Coverage report
+        coverage_command = [
+            python_bin,
+            "-m", "coverage", "report",
+            f"--data-file={coverage_file}",
+            "-m"
+        ]
+
         coverage_result = subprocess.run(
-            [python_bin, "-m", "coverage", "report", "-m"],
+            coverage_command,
             cwd=project_root,
             capture_output=True,
             text=True,
             env=env
         )
+
         coverage_output = coverage_result.stdout
 
-        # 6️⃣ Export do súboru (ak ?download=true)
+        # 7️⃣ Export do súboru (ak ?download=true)
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
         download_requested = request.GET.get("download") == "true"
         download_url = None
@@ -395,6 +428,7 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
+
 
 
 

@@ -5,6 +5,7 @@ import os
 
 print("OK – Bežíme v testovacom režime (mysite/settings/test.py)")
 
+SECRET_KEY = "test-secret-key"
 
 DATABASES = {
     'default': {

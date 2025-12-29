@@ -1,38 +1,48 @@
 # settings_test.py
 from .base import *
 import os
+import socket
 
-print("OK Bežíme v testovacom režime (mysite/settings/test.py)")
+print("OK – Bežíme v testovacom režime (mysite/settings/test.py)")
 
+# Rozlíšime lokálne vs. remote podľa hostname
+HOSTNAME = socket.gethostname()
 
-# Ak sa nenačíta z .env, použijeme testovaciu hodnotu
-SECRET_KEY = os.getenv("SECRET_KEY", "test-secret-key")
-
-# Použijeme jednoduchú databázu SQLite len pre testy
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'test_db.sqlite3',
+# Lokálne testy → SQLite
+if "pythonanywhere" not in HOSTNAME:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'test_db.sqlite3',
+        }
     }
-}
 
-# V testoch zapneme DEBUG, nech sa chyby zobrazia priamo
+# Remote testy → MySQL test DB
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'RastislavRuzback$Rastislav',
+            'USER': 'RastislavRuzback',
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': 'RastislavRuzbacky.mysql.eu.pythonanywhere-services.com',
+            'PORT': '3306',
+        }
+    }
+
 DEBUG = True
 
-# Neposielame žiadne skutočné e-maily počas testovania
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
-# Zrýchlime testy vypnutím heslovania a migrácií (nepovinné, ale rýchlejšie)
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# Zabezpečí, že testy budú bežať izolovane a rýchlo
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
 }
 
-#TEST_DISCOVER_PATTERN = "test_*.py"
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
+
 

@@ -302,36 +302,26 @@ def extract_stats(output: str):
     total = passed + failed + errors
     return passed, failed, errors, total
 
-
-
-
 def run_tests(request):
     try:
-        is_remote = "PYTHONANYWHERE_DOMAIN" in os.environ
-        
+        # 1️⃣ Zistíme koreň projektu (funguje lokálne aj na PA)
+        project_root = settings.BASE_DIR
 
-        if is_remote:
-            python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
-            project_root = "/home/RastislavRuzbacky/rastislavruzbacky.eu.pythonanywhere.com"
-            
-        else:
-            python_bin = sys.executable
-            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-            
+        # 2️⃣ Python interpreter (funguje lokálne aj na PA)
+        python_bin = sys.executable
 
-        # 🦆 Spustíme testy cez coverage
+        # 3️⃣ Pripravíme environment pre testy
+        env = os.environ.copy()
+        env["DJANGO_SETTINGS_MODULE"] = "mysite.settings.test"
+        env["PYTHONPATH"] = str(project_root)
+
+        # 4️⃣ Spustíme pytest cez coverage
         command = [
             python_bin,
             "-m", "coverage", "run",
             "-m", "pytest",
             "--verbosity=2"
         ]
-
-
-
-        env = os.environ.copy()
-        env["PYTHONPATH"] = project_root + os.pathsep + env.get("PYTHONPATH", "")
-
 
         result = subprocess.run(
             command,
@@ -342,15 +332,14 @@ def run_tests(request):
             timeout=120
         )
 
-        success = result.returncode == 0
         combined_output = result.stdout + "\n" + result.stderr
-        
+        success = result.returncode == 0
+
         passed, failed, errors, total = extract_stats(combined_output)
 
-        # 🦆 Spustíme coverage report
-        coverage_command = [python_bin, "-m", "coverage", "report", "-m"]
+        # 5️⃣ Coverage report
         coverage_result = subprocess.run(
-            coverage_command,
+            [python_bin, "-m", "coverage", "report", "-m"],
             cwd=project_root,
             capture_output=True,
             text=True,
@@ -358,46 +347,46 @@ def run_tests(request):
         )
         coverage_output = coverage_result.stdout
 
-        # 📁 Export výstupu do súboru len ak je ?download=true 
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M") 
-        filename = f"test_output_{timestamp}.txt" 
-        download_requested = request.GET.get("download") == "true" 
-        if download_requested: 
-            media_dir = os.path.join(project_root, "media") 
-            os.makedirs(media_dir, exist_ok=True) 
-            output_path = os.path.join(media_dir, filename) 
-            export_text = f""" 
-            📅 Dátum: {timestamp} 
-            📂 Modul: zivotopis 
-            ✅ Úspešné: {passed} 
-            ❌ Zlyhané: {failed} 
-            ⚠️ Chybné: {errors} 📊 
-            Počet testov: {total} 
-            --- Pokrytie kódu --- 
-            {coverage_output} 
-            --- Výstup testov --- 
-            {combined_output} """
+        # 6️⃣ Export do súboru (ak ?download=true)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+        download_requested = request.GET.get("download") == "true"
+        download_url = None
+
+        if download_requested:
+            filename = f"test_output_{timestamp}.txt"
+            media_dir = os.path.join(project_root, "media")
+            os.makedirs(media_dir, exist_ok=True)
+            output_path = os.path.join(media_dir, filename)
+
+            export_text = (
+                f"📅 Dátum: {timestamp}\n"
+                f"📂 Modul: zivotopis\n"
+                f"✅ Úspešné: {passed}\n"
+                f"❌ Zlyhané: {failed}\n"
+                f"⚠️ Chybné: {errors}\n"
+                f"📊 Počet testov: {total}\n\n"
+                f"--- Pokrytie kódu ---\n{coverage_output}\n\n"
+                f"--- Výstup testov ---\n{combined_output}"
+            )
 
             with open(output_path, "w", encoding="utf-8") as f:
-                f.write(export_text) 
-            download_url = f"/media/{filename}" 
+                f.write(export_text)
 
-        else: 
-            download_url = None 
-        return JsonResponse({ 
-            "success": success, 
-            "stdout": result.stdout, 
-            "stderr": result.stderr, 
-            "coverage": coverage_output, 
-            "download_url": download_url, 
-            "timestamp": timestamp, 
-            "module": "zivotopis", 
-            "passed": passed, 
-            "failed": failed, 
-            "errors": errors, 
-            "total": total 
+            download_url = f"/media/{filename}"
+
+        return JsonResponse({
+            "success": success,
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "coverage": coverage_output,
+            "download_url": download_url,
+            "timestamp": timestamp,
+            "module": "zivotopis",
+            "passed": passed,
+            "failed": failed,
+            "errors": errors,
+            "total": total
         })
-
 
     except Exception as e:
         logger.exception("❌ Chyba pri spúšťaní testov:")
@@ -406,6 +395,7 @@ def run_tests(request):
             "stdout": "",
             "stderr": str(e)
         })
+
 
 
 

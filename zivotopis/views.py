@@ -319,8 +319,8 @@ def run_tests(request):
         command = [
             python_bin,
             "-m", "coverage", "run",
-            "-m", "pytest",
-            "--verbosity=2"
+            "-m", "pytest"
+            
         ]
 
         result = subprocess.run(

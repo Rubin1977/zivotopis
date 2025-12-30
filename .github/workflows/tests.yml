@@ -47,7 +47,7 @@ jobs:
 
       - name: Trigger PythonAnywhere reload
         run: |
-          curl -X POST https://www.eu.pythonanywhere.com/api/v0/user/${{ secrets.PA_USERNAME }}/webapps/${{ secrets.PA_APP_NAME }}/reload/ \
+          curl -X POST https://eu.pythonanywhere.com/api/v0/user/${{ secrets.PA_USERNAME }}/webapps/${{ secrets.PA_APP_NAME }}/reload/ \
           -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}"
 
 

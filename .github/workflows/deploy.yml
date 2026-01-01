@@ -1,0 +1,33 @@
+name: Deploy to PythonAnywhere
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.PA_SSH_PRIVATE_KEY }}
+
+    - name: Add PythonAnywhere to known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.PA_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+    - name: Deploy to PythonAnywhere
+      run: |
+        ssh rastislavruzbacky@ssh.pythonanywhere.com "
+          cd ~/rastislavruzbacky.eu.pythonanywhere.com &&
+          git pull &&
+          workon rastislavruzbacky.eu.pythonanywhere.com &&
+          python manage.py migrate &&
+          touch /var/www/rastislavruzbacky_pythonanywhere_com_wsgi.py
+        "

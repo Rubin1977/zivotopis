@@ -24,10 +24,13 @@ jobs:
 
     - name: Deploy to PythonAnywhere
       run: |
-        ssh rastislavruzbacky@ssh.pythonanywhere.com "
+        ssh RastislavRuzbacky@ssh.pythonanywhere.com "
           cd ~/rastislavruzbacky.eu.pythonanywhere.com &&
           git pull &&
           workon rastislavruzbacky.eu.pythonanywhere.com &&
           python manage.py migrate &&
-          touch /var/www/rastislavruzbacky_pythonanywhere_com_wsgi.py
+          touch /var/www/rastislavruzbacky_eu_pythonanywhere_com_wsgi.py
         "
+
+
+

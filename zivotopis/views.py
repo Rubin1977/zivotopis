@@ -317,7 +317,7 @@ def extract_stats(output: str):
                 if seg_parts and seg_parts[0].isdigit():
                     number = int(seg_parts[0])
                     if "failed" in seg:
-                        failed = num
+                        failed = number
                     if "passed" in seg:
                         passed = num
 
@@ -335,6 +335,9 @@ def extract_stats(output: str):
 
 def run_tests(request):
     try:
+
+        # 0️⃣ Načítanie testovacej skupiny 
+        test_path = request.GET.get("tests", "zivotopis")
         # 1️⃣ Koreň projektu (funguje lokálne aj na PA)
         project_root = settings.BASE_DIR
 
@@ -357,7 +360,8 @@ def run_tests(request):
             python_bin,
             "-m", "coverage", "run",
             f"--data-file={coverage_file}",
-            "-m", "pytest"
+            "-m", "pytest",
+            test_path # 🔥 sem doplníme cestu
         ]
 
         result = subprocess.run(
@@ -378,8 +382,8 @@ def run_tests(request):
         coverage_command = [
             python_bin,
             "-m", "coverage", "report",
-            f"--data-file={coverage_file}",
-            "-m"
+            f"--data-file={coverage_file}"
+            
         ]
 
         coverage_result = subprocess.run(

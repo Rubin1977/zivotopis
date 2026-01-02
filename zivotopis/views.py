@@ -293,32 +293,44 @@ def extract_stats(output: str):
 
     for line in output.splitlines():
         line_lower = line.lower()
+        parts = line_lower.split()
+
+        # preskoč prázdne riadky alebo riadky bez čísla
+        # nájdi prvé číslo v riadku 
+        numbers = [p for p in parts if p.isdigit()] 
+        if not numbers: 
+            continue 
+        num = int(numbers[0])
 
         # Zachytí summary typu "31 passed in 1.44s"
-        if " passed" in line_lower and " in " in line_lower:
+        if "passed" in line_lower and " in " in line_lower:
             try:
-                passed = int(line_lower.split(" passed")[0].strip().split()[-1])
+                passed = num
             except:
                 pass
 
         # Zachytí summary typu "2 failed, 1 passed"
         if "failed" in line_lower and "," in line_lower:
-            parts = line_lower.split(",")
-            for p in parts:
-                if "failed" in p:
-                    failed = int(p.strip().split()[0])
-                if "passed" in p:
-                    passed = int(p.strip().split()[0])
+            segments = line_lower.split(",")
+            for seg in segments:
+                seg_parts = seg.strip().split()
+                if seg_parts and seg_parts[0].isdigit():
+                    number = int(seg_parts[0])
+                    if "failed" in seg:
+                        failed = num
+                    if "passed" in seg:
+                        passed = num
 
         # Zachytí explicitné chyby
-        if "error" in line_lower and "errors" in line_lower:
+        if "errors" in line_lower:
             try:
-                errors = int(line_lower.split()[0])
+                errors = int(parts[0])
             except:
                 pass
 
     total = passed + failed + errors
     return passed, failed, errors, total
+
 
 
 def run_tests(request):

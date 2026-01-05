@@ -361,6 +361,7 @@ def run_tests(request):
             "-m", "coverage", "run",
             f"--data-file={coverage_file}",
             "-m", "pytest",
+            "-s", # 🔥 umožní zobrazenie print() a ASCII grafov
             test_path # 🔥 sem doplníme cestu
         ]
 

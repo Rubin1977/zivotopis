@@ -22,6 +22,17 @@
 {% if result %}
     <h3>Výsledky:</h3>
     <table class="table table-sm table-striped mt-2">
+
+        {% if columns %} 
+            <thead> 
+                <tr> 
+                    {% for col in columns %} 
+                        <th>{{ col }}</th> 
+                    {% endfor %} 
+                </tr> 
+            </thead> 
+        {% endif %}
+        
         <tbody>
         {% for row in result %}
             <tr>

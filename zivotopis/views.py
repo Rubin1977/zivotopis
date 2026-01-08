@@ -251,6 +251,7 @@ def sql_test_view(request):
     query = ''
     result = None
     error = None
+    columns = None
 
     # zoznam povolených cvičných tabuliek
     allowed_tables = ["sql_playground", "students", "courses", "teachers"]
@@ -264,7 +265,9 @@ def sql_test_view(request):
 
             with connection.cursor() as cursor:
                 cursor.execute(query)
+
                 if cursor.description:  # SELECT
+                    columns = [col[0] for col in cursor.description]
                     result = cursor.fetchall()
                 else:  # UPDATE/DELETE/INSERT
                     result = f"{cursor.rowcount} riadkov ovplyvnených"
@@ -274,6 +277,7 @@ def sql_test_view(request):
     return render(request, 'zivotopis/sql_test.html', {
         'query': query,
         'result': result,
+        'columns': columns,
         'error': error,
         'allowed_tables': allowed_tables,   # ➜ pridáme do kontextu
     })

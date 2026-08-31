@@ -175,18 +175,20 @@ def zivo_view(request):
         ('house-door-fill.svg', 'Bratislava'),
         ('telephone-fill.svg', '+421 948 900 850'),
         ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
-        ('calendar-event-fill.svg', '48r.')
+        ('calendar-event-fill.svg', '49r.')
     ]
-    return render(request, 'zivotopis/zivo.html', {'icons_data': icons_data})
+    bio_post = Post.objects.filter(category='bio', title='CV - Niečo o mne').first()
+    return render(request, 'zivotopis/zivo.html', {'icons_data': icons_data, 'bio_post': bio_post})
 
 def ang_zivo_view(request):
     icons_data = [
         ('house-door-fill.svg', 'Bratislava'),
         ('telephone-fill.svg', '+421 948 900 850'),
         ('envelope-fill.svg', 'ruzbacky@yahoo.com'),
-        ('calendar-event-fill.svg', '48r.')
+        ('calendar-event-fill.svg', '49r.')
     ]
-    return render(request, 'zivotopis/angzivo.html', {'icons_data': icons_data})
+    bio_post = Post.objects.filter(category='bio', title='CV - About Me (EN)').first()
+    return render(request, 'zivotopis/angzivo.html', {'icons_data': icons_data, 'bio_post': bio_post})
 
 def gallery_view(request):
     items = GalleryItem.objects.all().order_by('-created')

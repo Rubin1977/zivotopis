@@ -60,32 +60,11 @@
             </h2>
             <div class="container">
                 <h3 class="text-justify">My Journey Between Genetics and Technology</h3>
-
-                <p>
-                    I am a cytogeneticist with more than 20 years of experience in clinical genetics in Slovakia.
-                    I currently work as a laboratory diagnostician specializing in cytogenetics and aCGH at the
-                    Department of Molecular and Biochemical Genetics (Institute of Medical Biology, Genetics and
-                    Clinical Genetics, Faculty of Medicine, Comenius University and University Hospital Bratislava),
-                    Staré Mesto Hospital.
-                </p>
-
-                <p>
-                    While living in Brussels, I built on my clinical background by teaching myself programming and
-                    data-related skills — Python, Django, C# and .NET, SQL, and QA testing principles. I built this
-                    website myself using the Django Girls tutorial, and later expanded into a second web application
-                    built with .NET.
-                </p>
-
-                <p>
-                    Since returning to Slovakia, I actively apply these skills in the laboratory — organizing and
-                    structuring laboratory data, digitalizing processes, and approaching quality control (QC) of
-                    aCGH and karyotyping results with the same systematic precision that software testing requires.
-                </p>
-
-                <p>
-                    My goal isn't to leave genetics for IT, but to combine the two: the precision of clinical
-                    cytogenetics with the systematic rigor of data work.
-                </p>
+                {% if bio_post %}
+                {{ bio_post.text|linebreaks }}
+                {% else %}
+                <p><em>Content coming soon.</em></p>
+                {% endif %}
             </div>
         </section>
         <!-- Pracovné skúsenosti -->

@@ -73,22 +73,11 @@
             </h2>
             <div class="container">
                 <h3 class="text-justify">Niečo o mne 😊</h3>
- 
-                <p>
-                Som cytogenetik 🧬 s viac ako 14-ročnou praxou v klinickej genetike na Slovensku. Aktuálne pôsobím ako laboratórny diagnostik so špecializáciou v cytogenetike a aCGH na Oddelení molekulovej a biochemickej genetiky (Ústav lekárskej biológie, genetiky a klinickej genetiky LF UK a UNB), Nemocnica Staré Mesto.
-                </p>
- 
-                <p>
-                Počas pôsobenia v Bruseli som si popri klinickej praxi osvojil aj programovanie a prácu s dátami — <strong>Python</strong> 🐍, Django 🌐, C# a .NET Core ⚙️, SQL 📊 a princípy QA testovania ✅. Túto stránku som si postavil sám pomocou <em>Django Girls tutoriálu</em>.
-                </p>
- 
-                <p>
-                Po návrate na Slovensko tieto zručnosti aktívne využívam priamo v laboratóriu 🔬 — pri organizácii laboratórnych dát, digitalizácii procesov a kontrole kvality (QC) výsledkov aCGH a karyotypizácie pristupujem s rovnakou systematickosťou a precíznosťou, akú vyžaduje písanie testovacieho scenára.
-                </p>
- 
-                <p>
-                Cieľom nie je opustiť genetiku pre IT 💡, ale spojiť dve oblasti, ktoré sa navzájom posilňujú: precíznosť klinickej cytogenetiky a systematickosť dátovej práce.
-                </p>
+                {% if bio_post %}
+                {{ bio_post.text|linebreaks }}
+                {% else %}
+                <p><em>Obsah sa práve pripravuje.</em></p>
+                {% endif %}
             </div>
         </section>
  

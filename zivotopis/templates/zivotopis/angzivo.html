@@ -1,10 +1,10 @@
 {% load static %}
 <!doctype html>
-<html lang="sk">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Ružbacký životopis</title>
+    <title>Rastislav Ružbacký | CV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/favicon-logo.png' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,7 +23,7 @@
         <div class="zivo-meno">
             <p><strong>Rastislav Ružbacký</strong></p>
             <div class="zivo-pro">
-                <p><strong>IT</strong>self-student</p>
+                <p><strong>Cytogeneticist</strong> | aCGH &amp; Karyotyping</p>
             </div>
             <div class="text-end" style="margin-right: 20px; margin-top: 10px;">
                 <a href="{% url 'zivo_view' %}" class="btn btn-sm" style="background-color: #ffffff; color: #4b0082; border: none;">
@@ -59,33 +59,32 @@
                 <strong>ABOUT ME</strong>
             </h2>
             <div class="container">
-                <p class="text-justify">
-                <h2>My Journey Toward Technology</h2>
+                <h3 class="text-justify">My Journey Between Genetics and Technology</h3>
+
                 <p>
-                    I have always been drawn to precision and systematic thinking — qualities that naturally led me to explore the world of
-                    IT. After years of experience as a cytogeneticist in healthcare, I decided to apply this attention to detail to the field of
-                    technology. Although my path hasn’t yet taken me into an IT company, I’m driven by a desire to learn and grow — currently preparing
-                    for a software testing course.
+                    I am a cytogeneticist with more than 20 years of experience in clinical genetics in Slovakia.
+                    I currently work as a laboratory diagnostician specializing in cytogenetics and aCGH at the
+                    Department of Molecular and Biochemical Genetics (Institute of Medical Biology, Genetics and
+                    Clinical Genetics, Faculty of Medicine, Comenius University and University Hospital Bratislava),
+                    Staré Mesto Hospital.
                 </p>
+
                 <p>
-                    As a self-learner, I began exploring programming, focusing on the Python language. With the help of the Django Girls
-                    tutorial, I created this site as my personal résumé — gaining initial experience in developing web applications using
-                    the Django framework and deepening my understanding of HTML and CSS.
+                    While living in Brussels, I built on my clinical background by teaching myself programming and
+                    data-related skills — Python, Django, C# and .NET, SQL, and QA testing principles. I built this
+                    website myself using the Django Girls tutorial, and later expanded into a second web application
+                    built with .NET.
                 </p>
+
                 <p>
-                    Throughout development, I used Visual Studio Code, mastered managing Python virtual environments, and actively worked
-                    with Git and GitHub for version control — gaining experience in structured and well-documented development.
-                    Later, I expanded into C# and the .NET framework. After completing a dedicated course, I developed a solid understanding
-                    of application development within this ecosystem.
-                    Visual Studio became my primary tool for development, helping me streamline my work and further enhance my projects.
+                    Since returning to Slovakia, I actively apply these skills in the laboratory — organizing and
+                    structuring laboratory data, digitalizing processes, and approaching quality control (QC) of
+                    aCGH and karyotyping results with the same systematic precision that software testing requires.
                 </p>
+
                 <p>
-                    Alongside this, I spent time abroad accompanying my wife on her diplomatic mission in Brussels. I made the most of this
-                    unique life chapter — completing a brewing course at KU Leuven, expanding my technical skills, and building new
-                    professional connections.
-                    I’m currently working on improving my website rastislavruzbacky.eu.pythonanywhere.com and preparing to continue my IT
-                    journey — aiming to find opportunities as a software tester or junior developer.   
-                </p>
+                    My goal isn't to leave genetics for IT, but to combine the two: the precision of clinical
+                    cytogenetics with the systematic rigor of data work.
                 </p>
             </div>
         </section>
@@ -97,7 +96,22 @@
             </h2>
             <div class="container">
                 <div class="row">
-                    <!-- Prvá pozícia -->
+                    <!-- Aktuálna pozícia -->
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <h3 class="text-center">Laboratory Diagnostician specializing in Cytogenetics | Staré Mesto Hospital (University Hospital Bratislava)</h3>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Bratislava icon" width="24">
+                                Bratislava, Slovakia
+                            </small>
+                        </p>
+                        <p><strong>since 03/2026</strong></p>
+                        <ul class="list-unstyled">
+                            <li>Cytogenetic diagnostics, aCGH and karyotyping</li>
+                            <li>Digitalization and organization of laboratory data</li>
+                            <li>Quality control (QC) of results using Python scripts</li>
+                        </ul>
+                    </div>
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Independent Professional Experience | International Engagement</h3>
                         <p>
@@ -148,7 +162,7 @@
                                 karyotyping using LUCIA software, including precise karyotype construction and interpretation</li>
                             <li>Evaluation of cytogenetic sections using direct microscopy, differential chromosome staining, visual analysis,
                                 and cytogenetic diagnostic interpretation</li>
-                            <li>Methodical and professional oversight of laboratory operations</li>                       
+                            <li>Methodical and professional oversight of laboratory operations</li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-4">
@@ -204,10 +218,8 @@
                         </p>
                         <p>
                             <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="University of Prešov icon"
-                                    width="24">
-                                    University of Prešov, Faculty of Humanities and Natural Sciences
-                                    </small>                        
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="University of Prešov icon" width="24">
+                                University of Prešov, Faculty of Humanities and Natural Sciences
                             </small>
                         </p>
                     </div>
@@ -226,9 +238,8 @@
                         <p>01/11/2003- 29/04/2004</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
+                        <p>Certificate for work in healthcare – specialization in medical genetics for healthcare professionals</p>
                         <p>
-                            Certificate for work in healthcare – specialization in medical genetics for healthcare professionals
-                        </p>
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}"
                                     alt="Slovak Medical University icon" width="24">
@@ -308,36 +319,30 @@
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>2024</p>
+                        <p>2024 – 2025</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
                         <p>
-                            Development of a personal website using the Django framework, hosted on the PythonAnywhere platform as part of the
-                            Django Girls workshop. The project included design, implementation, deployment, and an admin interface with content
-                            editing capabilities.
+                            Built and deployed two web applications (Django/PythonAnywhere and .NET Core) — design,
+                            backend implementation, and production deployment.
                         </p>
                         <p>
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}" alt="Website icon" width="24">
-                                Website available at:
-                                <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">
-                                    rastislavruzbacky.eu.pythonanywhere.com
-                                </a>
+                                <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">rastislavruzbacky.eu.pythonanywhere.com</a>
+                                ·
+                                <a href="https://zivotopis-rastislav.onrender.com" target="_blank">zivotopis-rastislav.onrender.com</a>
                             </small>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>2025</p>
+                        <p>Nov – Dec 2025</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Development of a web application using the .NET framework, implementation of backend logic, and deployment to
-                        production.
-                        </p>
                         <p>
-                            <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Website icon" width="24">
-                                Website available at:
-                            </small>
+                            Software Testing — 3 certificates (JUNIOR I ×2, SENIOR II), IT Learning Slovakia. QA
+                            fundamentals, test scenario design, manual and automated testing (Selenium, SOAPUI), bug
+                            reporting via Mantis, SQL SELECT.
                         </p>
                     </div>
                 </div>
@@ -411,9 +416,9 @@
                 <a href="/">&copy; <span id="year"></span> Rastislav Ružbacký</a>
             </div>
             <div class="col-12">
-                <a href="mailto:vas.email@example.com">ruzbacky@yahoo.com</a>
+                <a href="mailto:ruzbacky@yahoo.com">ruzbacky@yahoo.com</a>
                 <span class="mx-2">|</span>
-                <a href="tel:+421900123456">+421 948 900 850</a>
+                <a href="tel:+421948900850">+421 948 900 850</a>
             </div>
             <div class="col-12">
                 <a class="social-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">

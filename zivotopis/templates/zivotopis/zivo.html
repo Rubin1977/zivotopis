@@ -13,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
+ 
 <header class="site-header">
     <div class="fixed-header">
         <div class="zivo-meno">
             <p><strong>Rastislav Ružbacký</strong></p>
             <div class="zivo-pro">
-                <p><strong>IT</strong>self-student</p>
+                <p><strong>Cytogenetik</strong> | aCGH a karyotypizácia</p>
             </div>
             <div class="text-end" style="margin-right: 20px; margin-top: 10px;">|
                 <a href="{% url 'zivo_en' %}" class="btn btn-sm"
@@ -72,43 +72,26 @@
                 <strong>O MNE</strong>       
             </h2>
             <div class="container">
-                <p class="text-justify">
-                    <h2>Niečo o mne 😊</h2>
+                <h3 class="text-justify">Niečo o mne 😊</h3>
+ 
                 <p>
-                Táto stránka je vytvorená pomocou <strong>Django frameworku</strong> 🌐 a slúži ako môj osobný životopis, kde sa delím o svoju cestu do IT sveta 💻.
+                Som cytogenetik 🧬 s viac ako 14-ročnou praxou v klinickej genetike na Slovensku. Aktuálne pôsobím ako laboratórny diagnostik so špecializáciou v cytogenetike a aCGH na Oddelení molekulovej a biochemickej genetiky (Ústav lekárskej biológie, genetiky a klinickej genetiky LF UK a UNB), Nemocnica Staré Mesto.
                 </p>
-
+ 
                 <p>
-                Po rokoch praxe ako cytogenetik 🧬 v zdravotníctve som sa rozhodol rozšíriť svoj zmysel pre detail 🔍 a precíznosť ✨ do oblasti IT.
-                S nadšením som sa ponoril do sveta programovania, pričom som sa zameral na <strong>Python</strong> 🐍. 
-                Pomocou <em>Django Girls tutoriálu</em> som vytvoril svoju prvú stránku: 
-                <a href="https://rastislavruzbacky.eu.pythonanywhere.com">rastislavruzbacky.eu.pythonanywhere.com</a>, 
-                čím som získal cenné skúsenosti s vývojom webových aplikácií v Djangu 🌐 a prehĺbil svoje znalosti v HTML a CSS 🎨.
+                Počas pôsobenia v Bruseli som si popri klinickej praxi osvojil aj programovanie a prácu s dátami — <strong>Python</strong> 🐍, Django 🌐, C# a .NET Core ⚙️, SQL 📊 a princípy QA testovania ✅. Túto stránku som si postavil sám pomocou <em>Django Girls tutoriálu</em>.
                 </p>
-
+ 
                 <p>
-                Momentálne pracujem aj na druhej stránke: 
-                <a href="https://zivotopis-rastislav.onrender.com">zivotopis-rastislav.onrender.com</a>, 
-                kde sa učím spravovať databázu PostgreSQL 🗄️ cez pgAdmin4 🛠️ a osvojil som si základné SQL príkazy 📊.
+                Po návrate na Slovensko tieto zručnosti aktívne využívam priamo v laboratóriu 🔬 — pri organizácii laboratórnych dát, digitalizácii procesov a kontrole kvality (QC) výsledkov aCGH a karyotypizácie pristupujem s rovnakou systematickosťou a precíznosťou, akú vyžaduje písanie testovacieho scenára.
                 </p>
-
+ 
                 <p>
-                Pri práci používam <strong>Visual Studio Code</strong> 📝 a <strong>Visual Studio</strong> 🖥️ ako hlavné nástroje. 
-                Osvojil som si správu virtuálnych prostredí v Pythone ⚙️ a aktívne využívam Git 🔗 a GitHub 🌍 na správu verzií, čo mi umožňuje prehľadný a organizovaný vývoj.
-                </p>
-
-                <p>
-                Rozšíril som svoje znalosti aj o <strong>C# a .NET Core</strong> ⚙️, kde som získal praktické skúsenosti s vývojom aplikácií. 
-                Zároveň sa venujem testovaniu softvéru 🧪 – úspešne som absolvoval kurz IT Learning – Tester balík 📚, kde som sa naučil princípy QA ✅, tvorbu testovacích scenárov, systematické overovanie funkčnosti aplikácií a správne reportovanie chýb.
-                </p>
-
-                <p>
-                Moje skúsenosti mi poskytli pevné základy v programovaní 💡, databázach 🗃️ a testovaní 🛡️. 
-                Som motivovaný junior tester, ktorý sa neustále učí nové technológie a postupy 🚀. 
-                Do každého projektu prinášam precíznosť, kvalitu a chuť rásť 🌱 – presne to, čo hľadá firma, ktorá chce podporiť mladého špecialistu s potenciálom.
+                Cieľom nie je opustiť genetiku pre IT 💡, ale spojiť dve oblasti, ktoré sa navzájom posilňujú: precíznosť klinickej cytogenetiky a systematickosť dátovej práce.
                 </p>
             </div>
         </section>
+ 
         <!-- Pracovné skúsenosti -->
         <section>
             <h2 class="text-center mb-4">
@@ -117,7 +100,23 @@
             </h2>
             <div class="container">
                 <div class="row">
-                    <!-- Prvá pozícia -->
+                    <!-- Aktuálna pozícia -->
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <h3 class="text-center">Laboratórny diagnostik so špecializáciou v cytogenetike | Nemocnica Staré Mesto (UNB)</h3>
+                        <p>
+                            <small>
+                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Bratislava ikona" width="24">
+                                Bratislava
+                            </small>
+                        </p>
+                        <p><strong>od 03/2026</strong></p>
+                        <ul class="list-unstyled">
+                            <li>Cytogenetická diagnostika, aCGH a karyotypizácia</li>
+                            <li>Digitalizácia a organizácia laboratórnych dát</li>
+                            <li>Kontrola kvality (QC) výsledkov s využitím Python skriptov</li>
+                        </ul>
+                    </div>
+                    <!-- Medzinárodná skúsenosť -->
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Medzinárodná skúsenosť - vyslanie v zahraničí</h3>
                         <p>
@@ -129,10 +128,9 @@
                         <p><strong>01/01/2014 – 31/07/2025</strong></p>
                         <ul class="list-unstyled">
                             <li>Sprevádzanie manželky</li>
-                            <li>Samostatné štúdium programovania</li>
+                            <li>Samostatné štúdium programovania (Python, Django, C#/.NET, SQL, QA)</li>
                             <li>Kurz senzorického hodnotenia piva (Beer Sensory Evaluation)</li>
-                            <li>Tvorba webovej stránky a digitálnych projektov</li>
-                            
+                        </ul>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Cytogenetik | Národný onkologický ústav</h3>
@@ -147,7 +145,6 @@
                             <li>Cytogenetická diagnostika nádorových ochorení, PCR, FISH, CGH, vizuálna analýza chromozómov</li>
                         </ul>
                     </div>
-                    <!-- Druhá pozícia -->
                     <div class="col-md-6 col-sm-12 mb-4">
                         <h3 class="text-center">Cytogenetik | Nemocnica s poliklinikou</h3>
                         <p>
@@ -295,57 +292,24 @@
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>2024</p>
+                        <p>2024 – 2025</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Vytvorenie vlastnej webovej stránky pomocou frameworku Django na platforme PythonAnywhere v rámci kurzu Django Girls,
-                        vrátane návrhu, implementácie a nasadenia. Administrátorský prístup s možnosťou úpravy obsahu.</p>
+                        <p>Vytvorenie a nasadenie dvoch webových aplikácií (Django/PythonAnywhere a .NET Core) — návrh, implementácia backend logiky a deploy do produkcie.</p>
                         <p>
                             <small>
                                 <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
-                                Stránka dostupná na:
-                                <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">
-                                    rastislavruzbacky.eu.pythonanywhere.com
-                                </a>
+                                <a href="https://rastislavruzbacky.eu.pythonanywhere.com" target="_blank">rastislavruzbacky.eu.pythonanywhere.com</a>
+                                ·
+                                <a href="https://zivotopis-rastislav.onrender.com" target="_blank">zivotopis-rastislav.onrender.com</a>
                             </small>                    
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>2025</p>
+                        <p>nov – dec 2025</p>
                     </div>
                     <div class="col-md-6 col-sm-12 box">
-                        <p>Vytvorenie webovej aplikácie pomocou .NET frameworku, implementácie backend logiky a nasadenia
-                        do produkcie.</p>
-                        <p>
-                            <small>
-                                <img src="{% static 'icons/house-door-fill.svg' %}" alt="Ikona stránky" width="24">
-                                Stránka dostupná na: 
-                                <a href="https://zivotopis-rastislav.onrender.com" target="_blank">
-                                    zivotopis-rastislav.onrender.com
-                                </a>
-                            </small>                    
-                        </p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p>november 2025</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p>Testovanie softwaru JUNIOR I. – certifikát (IT Learning Slovakia). 
-                        Zameranie: základy QA, bug reporting, manuálne testovanie webových aplikácií.</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p>november 2025</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p>Testovanie softwaru JUNIOR I. – certifikát (IT Learning Slovakia).  
-                        Zameranie: práca s dokumentáciou, tvorba testovacích scenárov, manuálne testovanie, bug reporting cez Mantis a SQL SELECT cvičenia.</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p> december 2025</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 box">
-                        <p>Pokročilý kurz Testovanie softwaru SENIOR II. – certifikát (IT Learning Slovakia).
-                        Zameranie: automatizované testovanie, Selenium, SOAPUI, praktické QA cvičenia.</p>
+                        <p>Testovanie softvéru — 3 certifikáty (JUNIOR I ×2, SENIOR II), IT Learning Slovakia. QA základy, tvorba testovacích scenárov, manuálne aj automatizované testovanie (Selenium, SOAPUI), bug reporting cez Mantis, SQL SELECT.</p>
                     </div>
                 </div>
             </div>
@@ -410,7 +374,7 @@
             <a class="btn btn-primary" href="/" data-toggle="tooltip" data-placement="right" title="Domov">Domov</a>
         </div>
     </main>
-
+ 
     
 </body>
 <footer>
@@ -420,9 +384,9 @@
                 <a href="/">&copy; <span id="year"></span> Rastislav Ružbacký</a>
             </div>
             <div class="col-12">
-                <a href="mailto:vas.email@example.com">ruzbacky@yahoo.com</a>
+                <a href="mailto:ruzbacky@yahoo.com">ruzbacky@yahoo.com</a>
                 <span class="mx-2">|</span>
-                <a href="tel:+421900123456">+421 948 900 850</a>
+                <a href="tel:+421948900850">+421 948 900 850</a>
             </div>
             <div class="col-12">
                 <a class="social-link" href="https://www.facebook.com/profile.php?id=100009882270245" target="_blank">

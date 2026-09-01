@@ -18,7 +18,7 @@ from datetime import datetime
 from .models import Post, Image, Email, GalleryItem, Ceny
 from .forms import PostForm, EmailForm, AddCenyForm 
 
-from django.db import connection
+from django.db import connection, connections
 from django.views.generic.edit import DeleteView
 from django.urls import reverse, reverse_lazy
 from .utils import get_price, detect_source_type, save_post_with_images, save_ceny_instance
@@ -265,7 +265,7 @@ def sql_test_view(request):
             if not any(tbl in query.lower() for tbl in allowed_tables):
                 raise Exception(f"Povolené sú len príkazy nad tabuľkami: {', '.join(allowed_tables)}")
 
-            with connection.cursor() as cursor:
+            with connections['playground'].cursor() as cursor:
                 cursor.execute(query)
 
                 if cursor.description:  # SELECT
@@ -341,18 +341,24 @@ def extract_stats(output: str):
 
 def run_tests(request):
     try:
-
-        # 0️⃣ Načítanie testovacej skupiny 
+        # 0️⃣ Načítanie testovacej skupiny
+        ALLOWED_TEST_PATHS = {
+            "zivotopis/tests/tests_unit",
+            "zivotopis/tests/tests_api",
+            "zivotopis/tests/tests_integration",
+            "zivotopis/tests/tests_performance",
+            "zivotopis",
+        }
         test_path = request.GET.get("tests", "zivotopis")
+        if test_path not in ALLOWED_TEST_PATHS:
+            return JsonResponse({"error": "Neplatná testovacia skupina."}, status=400)
         # 1️⃣ Koreň projektu (funguje lokálne aj na PA)
         project_root = settings.BASE_DIR
-
         # 2️⃣ Python interpreter – absolútna cesta pre PA, sys.executable pre lokál
         if "PYTHONANYWHERE_DOMAIN" in os.environ:
             python_bin = "/home/RastislavRuzbacky/.virtualenvs/rastislavruzbacky.eu.pythonanywhere.com/bin/python"
         else:
             python_bin = sys.executable
-
         # 3️⃣ Coverage data file – musí byť absolútna cesta
         coverage_file = os.path.join(project_root, ".coverage")
 

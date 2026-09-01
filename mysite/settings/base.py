@@ -84,6 +84,14 @@ REST_FRAMEWORK = {
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+# Databases
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+DATABASES = {
+    'playground': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'sql_playground.sqlite3',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [

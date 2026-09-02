@@ -1,10 +1,28 @@
-{% extends 'zivotopis/base.html' %} {% load static %} {% block content %}
-Galéria
-{% for item in items %}
-{{ item.title }}
-{{ item.title }}
-{% empty %}
-Žiadne obrázky v galérii zatiaľ nie sú.
-
-{% endfor %}
+{% extends 'zivotopis/base.html' %}
+{% load static %}
+{% block content %}
+<div class="gallery">
+    <h2>Galéria</h2>
+    <div class="gallery-grid">
+        {% for item in items %}
+        <div class="gallery-item" data-description="{{ item.description|default:'' }}">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            <div class="gallery-item-caption">{{ item.title }}</div>
+        </div>
+        {% empty %}
+        <p>Žiadne obrázky v galérii zatiaľ nie sú.</p>
+        {% endfor %}
+    </div>
+    <!-- Modálne okno -->
+    <div id="gallery-modal" class="modal-custom" role="dialog" aria-modal="true" tabindex="-1" hidden>
+        <div class="modal-inner">
+            <span id="gallery-close" class="close-button" aria-label="Zatvoriť modál">&times;</span>
+            <h3 id="modal-title"></h3>
+            <img id="gallery-image" class="modal-content-custom" alt="Zväčšený obrázok">
+            <p id="modal-description"></p>
+            <button id="gallery-prev" class="prev" aria-label="Predchádzajúci obrázok">&#10094;</button>
+            <button id="gallery-next" class="next" aria-label="Ďalší obrázok">&#10095;</button>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,43 @@
+/* ==========================================================================
+   THEME - zdieľané CSS premenné pre celý web
+   Paleta inšpirovaná Giemsa farbením (klinické farbenie chromozómov
+   pri karyotypizácii) - fialovo-modrá ako signatúrna farba profesie,
+   klinická tealová ako druhý akcent.
+   ========================================================================== */
+ 
+:root {
+    /* Pozadia */
+    --color-bg: #F7F7FA;
+    --color-bg-alt: #FFFFFF;
+ 
+    /* Text */
+    --color-ink: #1C1F2E;
+    --color-ink-soft: #4A4D5E;
+    --color-ink-muted: #7A7D8E;
+ 
+    /* Značková farba - Giemsa fialová */
+    --color-primary: #3D3163;
+    --color-primary-dark: #2A2145;
+    --color-primary-light: #6C5B9E;
+ 
+    /* Druhý akcent - klinická tealová */
+    --color-accent: #2E7D6B;
+    --color-accent-light: #4FA491;
+ 
+    /* Neutrálne */
+    --color-border: #D8D6E0;
+    --color-border-soft: #E8E7ED;
+ 
+    /* Tiene */
+    --shadow-sm: 0 2px 8px rgba(28, 31, 46, 0.08);
+    --shadow-md: 0 4px 16px rgba(28, 31, 46, 0.12);
+ 
+    /* Zaoblenie */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+ 
+    /* Typografia */
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+ 

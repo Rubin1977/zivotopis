@@ -366,6 +366,7 @@ def run_tests(request):
         env = os.environ.copy()
         env["DJANGO_SETTINGS_MODULE"] = "mysite.settings.test"
         env["PYTHONPATH"] = str(project_root)
+        env["PYTHONIOENCODING"] = "utf-8"
 
         # 5️⃣ Spustenie testov cez coverage
         command = [
@@ -382,11 +383,12 @@ def run_tests(request):
             cwd=project_root,
             capture_output=True,
             text=True,
+            encoding="utf-8",
             env=env,
             timeout=120
         )
 
-        combined_output = result.stdout + "\n" + result.stderr
+        combined_output = (result.stdout or "") + "\n" + (result.stderr or "")
         success = result.returncode == 0
 
         passed, failed, errors, total = extract_stats(combined_output)
@@ -404,6 +406,7 @@ def run_tests(request):
             cwd=project_root,
             capture_output=True,
             text=True,
+            encoding="utf-8",
             env=env
         )
 

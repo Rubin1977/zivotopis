@@ -1,102 +1,95 @@
 /* === ZÁKLADNÉ NASTAVENIA === */
 * {
-    /*border: 1px solid black;*/
     box-sizing: border-box;
 }
-
+ 
 body {
     margin: 0;
-    color: rgb(36, 32, 71);
-    background: linear-gradient(180deg, rgb(169 159 78)0%, rgb(44 93 109)100%);
+    color: var(--color-ink);
+    background: var(--color-bg);
+    font-family: var(--font-body);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     padding-top: 14vh;
 }
-/* === HLAVIČKA === */
+ 
 /* ================== HEADER ================== */
 .site-header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    padding: 12px 0;                 /* default padding */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    padding: 12px 0;
+    box-shadow: var(--shadow-md);
     display: flex;
-    align-items: center;             /* vertikálne centrovanie */
+    align-items: center;
     justify-content: space-between;
     transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Shrink efekt pri scroll */
+ 
 .site-header.shrink {
-    padding: 6px 0;                  /* menší padding pri scroll */
-    background: linear-gradient(135deg, #111, #222);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    padding: 6px 0;
+    background: linear-gradient(135deg, var(--color-primary-dark), #1E1836);
+    box-shadow: var(--shadow-md);
 }
-
-/* Logo + text */
+ 
 .site-header .navbar-brand {
     display: flex;
     align-items: center;
     transition: transform 0.3s ease;
 }
-
-/* Zmenšenie loga + textu pri shrink */
+ 
 .site-header.shrink .navbar-brand {
     transform: scale(0.85);
 }
-
-/* Voliteľne: zmenši hamburger menu pri scroll */
+ 
 .site-header .navbar-toggler {
     transition: transform 0.3s ease;
 }
-
+ 
 .site-header.shrink .navbar-toggler {
     transform: scale(0.85);
 }
-
+ 
 /* === NAVIGÁCIA === */
 .navbar {
     background: transparent !important;
     padding: 0.5rem 1rem;
 }
-
+ 
 .navbar-brand strong,
 .navbar-brand .fw-bold {
-    color: #00e5ff; /* tyrkysová farba */
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 1.4rem;
-    text-shadow: 0 0 6px rgba(0, 229, 255, 0.6),
-                 0 0 12px rgba(0, 229, 255, 0.4);
-    transition: text-shadow 0.3s ease, color 0.3s ease;
+    font-family: var(--font-display);
+    transition: color 0.3s ease;
 }
-
+ 
 .navbar-brand strong:hover,
 .navbar-brand .fw-bold:hover {
-    color: #66faff; /* svetlejší tyrkys pri hover */
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
-                 0 0 20px rgba(0, 255, 255, 0.5);
+    color: var(--color-accent-light);
 }
-
+ 
 .navbar-nav .nav-item {
     margin: 0 15px;
 }
-
+ 
 .navbar-nav .nav-link {
-    color: #f1f1f1 !important;
+    color: #EDEBF5 !important;
     position: relative;
     text-decoration: none;
     font-weight: 500;
     padding: 5px 0;
     transition: color 0.3s ease;
 }
-
+ 
 .navbar-nav .nav-link:hover {
-    color: #00e5ff !important;
+    color: var(--color-accent-light) !important;
 }
-
+ 
 .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
@@ -104,48 +97,43 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #15c1df; /* link hover underline */
+    background-color: var(--color-accent-light);
     transition: width 0.3s ease;
 }
-
+ 
 .navbar-nav .nav-link:hover::after,
 .navbar-nav .nav-link.active::after {
     width: 100%;
 }
-
+ 
 /* === Hamburger menu na mobile === */
 .navbar-toggler {
-    border: 2px solid #00e5ff !important; /* okraj tlačidla */
-    border-radius: 4px; /* zaoblené rohy */
-    background: transparent !important; /* žiadne pozadie */
+    border: 2px solid var(--color-accent-light) !important;
+    border-radius: var(--radius-sm);
+    background: transparent !important;
     transition: border-color 0.3s ease;
 }
-
+ 
 .navbar-light .navbar-toggler-icon {
-    /* tyrkysová farba ikonky, ladí s navbar-brand */
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%2300e5ff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%234FA491' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
     transition: transform 0.3s ease;
 }
-/* Efekt pri hover – rámček trocha zosvetlí */
+ 
 .navbar-toggler:hover {
-    border-color: rgba(0, 229, 255, 0.9) !important; /* svetlejšia tyrkysová */
+    border-color: var(--color-accent) !important;
 }
-
-/* efekt pri hover – mierne zväčšenie ikonky */
+ 
 .navbar-toggler:hover .navbar-toggler-icon {
     transform: scale(1.1);
 }
-
-/* iba na mobiloch (max-width: 768px) */
+ 
 @media (max-width: 768px) {
     .navbar-toggler {
         margin-right: 10px;
     }
 }
-
-
+ 
 /* === OBSAH STRÁNKY === */
-/* Hlavný kontajner pre obsah */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -154,246 +142,233 @@ body {
     justify-content: center;
     padding: 20px;
 }
-
-/* Obrázky vo vnútri kontajnerov */
+ 
 .img-container img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+ 
 .img-container img:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-sm);
 }
-
-/* Každý stĺpec alebo blok obsahu */
+ 
 .col {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
 }
-
-/* Hlavná časť stránky */
+ 
 main {
     flex: 1;
     padding: 20px;
 }
-
+ 
 /* Nadpisy */
 h1, h2, h3 {
-    color: #2c29c0;
+    color: var(--color-primary);
+    font-family: var(--font-display);
     font-stretch: normal;
 }
-
-/* Zvýraznenie časti nadpisu */
+ 
 h1 span {
     font-weight: bold;
     text-transform: uppercase;
 }
-
+ 
 /* Každý článok (post) */
 article {
-    border: 2px solid rgb(170, 59, 59);
-    background: linear-gradient(180deg, rgb(167 223 167) 0%, rgb(164 226 221) 50%, rgb(169 168 108) 100%);
-    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
     padding: 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
+ 
 article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
-
-/* Odstavce v článku */
+ 
 p {
     margin-top: 15px;
     text-align: justify;
     line-height: 1.6;
 }
-
-
-
+ 
 img {
-    margin: auto;       /* centrálny margin */
-    display: block;          /* aby sa margin auto fungoval */
-    max-width: 250px;        /* maximálna šírka */
-    height: auto;            /* zachovanie pomeru strán */
-    border-radius: 8px;      /* jemné zaoblenie rohov */
+    margin: auto;
+    display: block;
+    max-width: 250px;
+    height: auto;
+    border-radius: var(--radius-sm);
 }
-
-
+ 
 a {
-    color: #460564;
+    color: var(--color-primary);
     text-decoration: unset;
-    font-size: 20px
+    font-size: 20px;
+    transition: color 0.2s ease;
 }
-
+ 
+a:hover {
+    color: var(--color-accent);
+}
+ 
 .post-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    
 }
-
+ 
 .post-image {
     display: block;
-    width: 250px; /* pevná šírka */
-    border: 2px solid #6b3838;
-    border-radius: 10px;
+    width: 250px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     overflow: hidden;
     cursor: pointer;
 }
-
+ 
 .post-image img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
 }
-
-
+ 
 .top-menu,
 .top-menu:visited {
     display: flex;
     justify-content: space-evenly;
-    color: #3d3808;
-    background-color: #d4dcdf;
+    color: var(--color-ink);
+    background-color: var(--color-bg-alt);
     text-decoration: none;
-    border: solid rgb(8, 53, 8) 4px;
-    border-radius: 7px;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-sm);
     padding: 5px;
-
 }
-
+ 
 .top-menu:hover {
-    color: #072e09;
+    color: var(--color-primary);
 }
-
-
+ 
 .btn-primary {
     margin-left: 20px;
-    /* Posunie gombík mierne doľava */
     margin-top: 10px;
-    /* Posunie gombík smerom dole */
-    border-color: #9c8a7f;
-    /* Zachová jemný rám */
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
 }
-
+ 
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+ 
 .btn-secondary,
 .btn-secondary:visited {
-    color: #dedee9;
-    background: #3b3305;
-    border-color: #0c0e95;
+    color: #FFFFFF;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     float: right;
 }
-
+ 
 .btn-secondary:hover {
-    color: #1d0c5e;
-    background-color: #0a8d50;
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent-light);
 }
-
+ 
 .date {
-    color: #076c97;
+    color: var(--color-ink-muted);
     font-size: 10px;
     text-decoration: none;
     float: right;
 }
-
+ 
 .save {
     float: right;
 }
-
+ 
 .post-form textarea, .post-form input {
     width: 80%;
 }
-
+ 
 .contact-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Zarovnanie na stred */
     text-align: center;
     width: 100%;
-    /* Aby zaujal celú dostupnú šírku */
     max-width: 500px;
-    /* Obmedzenie šírky formulára */
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
-
+ 
 .contact-info-frame {
     text-align: center;
     margin: 11px auto;
-    /* Zarovnávanie na stred */
-    background-color: #d5dee7;
-    border: 3px solid #afad10;
-    border-radius: 5px;
+    background-color: var(--color-bg-alt);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
     max-width: max-content;
     padding: 10px;
-    /* Pridanie priestoru vo vnútri */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
-
-
+ 
 .post {
-    color: #260544d5;
-    border-radius: 10px;
+    color: var(--color-ink);
+    border-radius: var(--radius-sm);
     width: 75%;
     margin: 20px auto 40px auto;
-    /* Centrovanie */
     text-align: center;
-    /* Ak má obsah text, zarovnanie na stred */
 }
-
+ 
 .post a,
 .post a:visited {
-    color: #03460c;
+    color: var(--color-accent);
     text-decoration: none;
 }
-
+ 
 .post>.date,
 .post>.actions {
     float: right;
-    color: #2a1281;
+    color: var(--color-ink-soft);
 }
-
+ 
 .comment {
     margin: 20px 0 20px 20px;
-    color: #1f1888;
+    color: var(--color-ink-soft);
 }
-
-
+ 
 /* Galéria */
 .gallery {
     position: relative;
     max-width: 600px;
     margin: auto;
 }
-
+ 
 .gallery h2::before {
     content: attr(data-icon);
 }
-
+ 
 .gallery h2 {
     font-size: 2rem;
-    font-family: 'Georgia', serif;
-    color: #fff;
+    font-family: var(--font-display);
+    color: #FFFFFF;
     text-align: center;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    border: 2px solid #2e7d32;
-    border-radius: 10px;
-    background: linear-gradient(to right, #388e3c, #81c784);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
-
+ 
 .slides {
     position: relative;
     width: 100%;
@@ -401,53 +376,53 @@ a {
     margin: auto;
     overflow: hidden;
 }
-
+ 
 .slide-item {
     display: none;
     position: relative;
     overflow: hidden;
     padding: 25px 15px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-alt);
+    box-shadow: var(--shadow-sm);
     text-align: center;
     max-width: 600px;
     margin: auto;
 }
-
+ 
 .slide-item.active {
     display: block;
     position: relative;
 }
-
+ 
 .slide-item img:hover {
     transform: scale(1.03);
 }
-
+ 
 .slide-item h3 {
     margin-bottom: 10px;
     font-size: 1.2em;
-    color: #681717;
+    color: var(--color-primary);
 }
-
+ 
 .slide-item img {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid #681717;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-primary);
     transition: transform 0.3s ease;
     z-index: 1;
     position: relative;
     transform-origin: center center;
 }
-
+ 
 .slide-item p {
     margin-top: 10px;
     font-size: 0.95em;
-    color: #444;
+    color: var(--color-ink-soft);
 }
-
+ 
 /* Navigačné šípky v galérii */
 .prev,
 .next {
@@ -458,7 +433,7 @@ a {
     height: 40px;
     font-size: 24px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(28, 31, 46, 0.55);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -467,31 +442,30 @@ a {
     z-index: 10;
     transition: background-color 0.3s ease;
 }
-
+ 
 .prev {
     left: 10px;
 }
-
+ 
 .next {
     right: 10px;
 }
-
+ 
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(28, 31, 46, 0.85);
 }
-
-/* Responzívne zobrazenie */
+ 
 @media (max-width: 600px) {
     .slide-item {
         width: 90%;
     }
-
+ 
     .gallery h2 {
         font-size: 1.5em;
     }
 }
-
+ 
 /* Modálne okno */
 .modal-custom {
     display: none;
@@ -501,15 +475,14 @@ a {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto; /* scroll, ak je obsah vyšší ako viewport */
-    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    background-color: rgba(28, 31, 46, 0.75);
     display: flex;
     justify-content: center;
-    align-items: center; /* vertikálne centrovanie */
-    padding: 10px; /* menší padding namiesto fixného top */
+    align-items: center;
+    padding: 10px;
 }
-
-/* Obsah modálneho okna */
+ 
 .modal-inner {
   display: flex;
   flex-direction: column;
@@ -518,16 +491,13 @@ a {
   max-width: 900px;
   width: 100%;
   padding: 20px;
-  background: #222;
-  border-radius: 10px;
+  background: var(--color-primary-dark);
+  border-radius: var(--radius-md);
   position: relative;
   text-align: center;
   box-sizing: border-box;
 }
-
-
-
-/* Zväčšený obrázok */
+ 
 .modal-content-custom {
     max-width: 90vw;
     max-height: 80vh;
@@ -535,15 +505,12 @@ a {
     height: auto;
     object-fit: contain;
     display: block;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
 }
-
-
-
-/* Popis obrázka */
+ 
 #modal-description {
-    color: #e0e0e0;
+    color: #E8E7ED;
     font-size: 1em;
     margin-top: 15px;
     max-width: 80%;
@@ -551,8 +518,7 @@ a {
     margin-right: auto;
     line-height: 1.4;
 }
-
-/* Krížik na zatvorenie */
+ 
 .close-button {
     position: absolute;
     top: 10px;
@@ -563,12 +529,11 @@ a {
     cursor: pointer;
     z-index: 1100;
 }
-
+ 
 .close-button:hover {
-    color: #ccc;
+    color: var(--color-accent-light);
 }
-
-/* Šípky navigácie v modále */
+ 
 #gallery-prev,
 #gallery-next {
     position: absolute;
@@ -578,7 +543,7 @@ a {
     height: 35px;
     font-size: 24px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(28, 31, 46, 0.55);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -587,51 +552,50 @@ a {
     z-index: 1100;
     transition: background-color 0.3s ease;
 }
-
+ 
 #gallery-prev {
     left: 10px;
 }
-
+ 
 #gallery-next {
     right: 10px;
 }
-
+ 
 #gallery-prev:hover,
 #gallery-next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(28, 31, 46, 0.85);
 }
-/* Responzívne zmeny pre gallery */
+ 
 @media (max-width: 600px) {
   .slide-item {
     width: 95%;
     padding: 15px 10px;
   }
-
+ 
   .slide-item img {
     aspect-ratio: auto;
     max-width: 100%;
     height: auto;
   }
 }
-
-/* Responzívne zmeny pre mobil */
+ 
 @media (max-width: 600px) {
   .modal-inner {
     max-width: 100%;
     padding: 10px;
   }
-
+ 
   .modal-content-custom {
     max-width: 95vw;
     max-height: 75vh;
   }
-
+ 
   .close-button {
     font-size: 24px;
     top: 8px;
     right: 10px;
   }
-
+ 
   #gallery-prev,
   #gallery-next {
     width: 40px;
@@ -639,46 +603,44 @@ a {
     font-size: 22px;
   }
 }
-
-
-
+ 
 footer {
-    background: linear-gradient(180deg, rgb(51, 125, 0), rgb(195, 195, 107), rgba(125, 125, 120, 0.58));
-    border-top: 3px solid red;
-    padding: 8px 10px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    padding: 12px 10px;
     display: flex;
-    flex-direction: row; /* všetko v jednom riadku */
-    flex-wrap: wrap;     /* zalamovanie na menších obrazovkách */
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     font-size: 13px;
-    color: #222;
+    color: #EDEBF5;
     text-align: center;
-    gap: 10px; /* medzera medzi prvkami */
+    gap: 10px;
 }
-
+ 
 footer a {
-    color: #222;
+    color: #EDEBF5;
     text-decoration: none;
     margin: 0 5px;
     transition: color 0.2s ease, transform 0.2s ease;
 }
-
+ 
 footer a:hover {
-    color: #b30000;
+    color: var(--color-accent-light);
     transform: scale(1.05);
 }
-
+ 
 footer img {
     margin: 0 4px;
     vertical-align: middle;
     transition: transform 0.3s ease;
 }
-
+ 
 footer img:hover {
     transform: scale(1.2);
 }
-
+ 
+/* LinkedIn tlačidlo - úmyselne ponechaná značková modrá LinkedIn */
 footer .btn.btn-primary {
     background-color: #0077b5;
     border: none;
@@ -686,25 +648,24 @@ footer .btn.btn-primary {
     padding: 2px 8px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
+ 
 footer .btn.btn-primary:hover {
     background-color: #005f8d;
     transform: translateY(-1px);
 }
-
-/* Responzívne zmeny */
+ 
 @media (max-width: 576px) {
     footer {
         font-size: 12px;
         padding: 6px 5px;
         gap: 6px;
     }
-
+ 
     footer .btn.btn-primary {
         font-size: 0.8rem;
         padding: 2px 6px;
     }
-
+ 
     footer img {
         width: 20px;
         height: 20px;

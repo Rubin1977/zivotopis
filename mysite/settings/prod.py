@@ -7,15 +7,13 @@ ALLOWED_HOSTS = ['.pythonanywhere.com', 'eu.pythonanywhere.com']
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RastislavRuzback$default',
-        'USER': 'RastislavRuzback',
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'RastislavRuzbacky.mysql.eu.pythonanywhere-services.com',
-        'PORT': '3306',
-    }
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'RastislavRuzback$default',
+    'USER': 'RastislavRuzback',
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': 'RastislavRuzbacky.mysql.eu.pythonanywhere-services.com',
+    'PORT': '3306',
 }
 
 # Email – produkcia cez Gmail SMTP

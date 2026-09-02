@@ -7,8 +7,7 @@ print("OK – Bežíme v testovacom režime (mysite/settings/test.py)")
 
 SECRET_KEY = "test-secret-key"
 
-DATABASES = {
-    'default': {
+DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'test_db.sqlite3',
     }
